@@ -15,6 +15,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
       colors: {
@@ -93,6 +94,10 @@ export default {
           "0%": { transform: "translateY(100%)", opacity: "0" },
           "100%": { transform: "translateY(0)", opacity: "1" },
         },
+        "slide-in-right": {
+          "0%": { transform: "translateX(100%)" },
+          "100%": { transform: "translateX(0)" },
+        },
         "scale-in": {
           "0%": { transform: "scale(0.95)", opacity: "0" },
           "100%": { transform: "scale(1)", opacity: "1" },
@@ -105,6 +110,10 @@ export default {
           "0%": { transform: "rotate(0deg)" },
           "100%": { transform: "rotate(360deg)" },
         },
+        "marquee": {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -112,15 +121,17 @@ export default {
         "float": "float 6s ease-in-out infinite",
         "glow-pulse": "glow-pulse 3s ease-in-out infinite",
         "slide-in-bottom": "slide-in-bottom 0.5s ease-out",
+        "slide-in-right": "slide-in-right 0.3s ease-out",
         "scale-in": "scale-in 0.3s ease-out",
         "fade-in": "fade-in 0.5s ease-out",
         "spin-slow": "spin-slow 20s linear infinite",
+        "marquee": "marquee 25s linear infinite",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-        "hero-gradient": "linear-gradient(180deg, hsl(222 47% 6%) 0%, hsl(222 47% 11%) 50%, hsl(222 47% 6%) 100%)",
-        "card-gradient": "linear-gradient(145deg, hsl(222 47% 10%) 0%, hsl(222 47% 7%) 100%)",
+        "hero-gradient": "linear-gradient(180deg, hsl(0 20% 97%) 0%, hsl(219 41% 90%) 50%, hsl(0 20% 97%) 100%)",
+        "card-gradient": "linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(0 20% 97%) 100%)",
       },
       boxShadow: {
         "glow-sm": "0 0 20px hsl(var(--primary) / 0.3)",

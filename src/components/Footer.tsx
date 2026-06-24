@@ -1,136 +1,106 @@
 import { Link } from 'react-router-dom';
-import { Zap, Mail, Linkedin, Github, ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Instagram } from 'lucide-react';
+import { LogoIcon } from '@/components/ui/LogoIcon';
+import { services } from '@/data/services';
 
 export const Footer = () => {
   return (
-    <footer className="relative bg-card border-t border-border">
-      {/* Sticky CTA Bar */}
-      <div className="sticky-cta py-4">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-primary-foreground text-center sm:text-left font-medium">
-              Planning a $1K+ ML or Data project? Book a discovery call.
-            </p>
-            <Button
-              asChild
-              variant="outline"
-              className="bg-primary-foreground text-primary hover:bg-primary hover:text-primary-foreground border-2 border-primary-foreground hover:border-primary font-semibold group transition-all duration-300"
-            >
-              <Link to="/contact" className="flex items-center gap-2">
-                Book Discovery Call
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Footer */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          {/* Brand */}
-          <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-                <Zap className="w-6 h-6 text-primary-foreground" />
+    <footer className="bg-background border-t border-border/50 pt-20 pb-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
+          
+          {/* Column 1: Brand & About */}
+          <div className="space-y-6">
+            <Link to="/" className="flex items-center gap-2 group">
+              <div className="w-8 h-8 rounded bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                <LogoIcon className="w-5 h-5 text-primary-foreground" />
               </div>
-              <span className="text-xl font-bold">
-                <span className="text-foreground">Qory</span>
-                <span className="gradient-text">nta</span>
-              </span>
+              <span className="text-xl font-bold tracking-tight">Qorynta</span>
             </Link>
-            <p className="text-muted-foreground max-w-sm mb-6">
-              Production-grade ML deployments for US & UK FinTech teams. 
-              Boutique expertise with enterprise results.
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Full-stack digital agency delivering production-grade web, mobile, and AI solutions for startups and enterprises worldwide.
             </p>
-            <div className="flex items-center gap-4">
-              <a
-                href="mailto:qorynta@gmail.com"
-                className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-muted/80 transition-colors"
-              >
-                <Mail className="w-5 h-5" />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-muted/80 transition-colors"
-              >
+            <div className="flex gap-4">
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a
-                href="https://github.com/rishvmiyani"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-muted/80 transition-colors"
-              >
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
                 <Github className="w-5 h-5" />
+              </a>
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <Twitter className="w-5 h-5" />
+              </a>
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <Instagram className="w-5 h-5" />
               </a>
             </div>
           </div>
 
-          {/* Services */}
+          {/* Column 2: Services */}
           <div>
-            <h4 className="text-foreground font-semibold mb-4">Services</h4>
-            <ul className="space-y-3">
-              <li>
-                <Link to="/services" className="text-muted-foreground hover:text-primary transition-colors">
-                  AI Development
-                </Link>
+            <h4 className="text-sm font-bold text-foreground uppercase tracking-wider mb-6">Services</h4>
+            <ul className="space-y-4">
+              {services.slice(0, 6).map((service, idx) => (
+                <li key={idx}>
+                  <Link to={`/services/${service.slug}`} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    {service.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 3: Company */}
+          <div>
+            <h4 className="text-sm font-bold text-foreground uppercase tracking-wider mb-6">Company</h4>
+            <ul className="space-y-4">
+              <li><Link to="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors">About Us</Link></li>
+              <li><Link to="/case-studies" className="text-sm text-muted-foreground hover:text-primary transition-colors">Portfolio</Link></li>
+              <li><Link to="/contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">Contact</Link></li>
+              <li><Link to="/careers" className="text-sm text-muted-foreground hover:text-primary transition-colors">Careers</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 4: Contact */}
+          <div>
+            <h4 className="text-sm font-bold text-foreground uppercase tracking-wider mb-6">Get in Touch</h4>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <Mail className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                <a href="mailto:hello@qorynta.in" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  hello@qorynta.in
+                </a>
               </li>
-              <li>
-                <Link to="/services" className="text-muted-foreground hover:text-primary transition-colors">
-                  Data Analytics
-                </Link>
+              <li className="flex items-start gap-3">
+                <Phone className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                <a href="tel:+910000000000" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  +91 00000 00000
+                </a>
               </li>
-              <li>
-                <Link to="/services" className="text-muted-foreground hover:text-primary transition-colors">
-                  Gen AI Solutions
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="text-muted-foreground hover:text-primary transition-colors">
-                  Digital Systems
-                </Link>
+              <li className="flex items-start gap-3">
+                <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                <span className="text-sm text-muted-foreground">
+                  Your Address Line 1,<br />
+                  City, State, India - PIN
+                </span>
               </li>
             </ul>
           </div>
 
-          {/* Company */}
-          <div>
-            <h4 className="text-foreground font-semibold mb-4">Company</h4>
-            <ul className="space-y-3">
-              <li>
-                <Link to="/about" className="text-muted-foreground hover:text-primary transition-colors">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/case-studies" className="text-muted-foreground hover:text-primary transition-colors">
-                  Case Studies
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-muted-foreground hover:text-primary transition-colors">
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-muted-foreground text-sm">
-            © {new Date().getFullYear()} Qorynta. All rights reserved.
+        <div className="border-t border-border/50 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-muted-foreground text-center md:text-left">
+            &copy; {new Date().getFullYear()} Qorynta. All rights reserved. GSTIN: [YOUR_GST_NO]
           </p>
-          <div className="flex items-center gap-6 text-sm">
-            <span className="text-muted-foreground">⭐ Clutch Verified 2025</span>
-            <span className="text-muted-foreground">🔒 SOC2 Process</span>
-            <span className="text-muted-foreground">🌐 EST Overlap</span>
+          <div className="flex gap-6">
+            <Link to="/privacy-policy" className="text-xs text-muted-foreground hover:text-primary transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="text-xs text-muted-foreground hover:text-primary transition-colors">Terms of Service</Link>
           </div>
         </div>
+
       </div>
     </footer>
   );

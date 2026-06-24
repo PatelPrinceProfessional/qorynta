@@ -1,65 +1,73 @@
-import { Target, Rocket, Handshake } from 'lucide-react';
+import { Globe2, DollarSign, Zap, Shield, Users, Trophy } from 'lucide-react';
+import { SectionLabel } from '@/components/ui/SectionLabel';
+import { GlassCard } from '@/components/ui/GlassCard';
 
 const differentiators = [
   {
-    icon: Target,
-    title: 'ML-First Boutique',
-    description: 'No generic dev outsourcing. Pure machine learning expertise.',
+    icon: Globe2,
+    title: 'Global-Standard Delivery',
+    description: "We follow Western project management standards: daily standups, GitHub PRs, Slack/email comms, and structured delivery milestones. You'll never feel the time zone difference.",
   },
   {
-    icon: Rocket,
-    title: 'Production Focus',
-    description: 'We deploy to production, not POCs that gather dust.',
+    icon: DollarSign,
+    title: 'Transparent Pricing',
+    description: 'No surprises. Fixed-scope quotes or flexible hourly engagements. Our rates start at $25/hr — delivering $150/hr quality at a fraction of agency cost.',
   },
   {
-    icon: Handshake,
-    title: 'Founder Involvement',
-    description: 'Direct access to senior leadership on every project.',
+    icon: Zap,
+    title: 'Fast Turnaround',
+    description: 'MVP in 2–4 weeks. Sprint-based delivery. We move at startup velocity because we know time-to-market is your competitive edge.',
+  },
+  {
+    icon: Shield,
+    title: 'IP Security & NDA First',
+    description: 'Every engagement begins with a signed NDA. Your code, designs, and data remain exclusively yours. We operate under strict confidentiality.',
+  },
+  {
+    icon: Users,
+    title: 'Dedicated Team Model',
+    description: 'You get a named project manager, lead developer, and QA engineer — not an anonymous support ticket queue.',
+  },
+  {
+    icon: Trophy,
+    title: 'End-to-End Ownership',
+    description: 'From requirement gathering to deployment and post-launch support — one team handles it all. No hand-offs, no gaps, no blame game.',
   },
 ];
 
 export const WhyQorynta = () => {
   return (
-    <section className="py-16 md:py-24 relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/10 to-background" />
+    <section className="py-24 md:py-32 relative overflow-hidden bg-background">
+      {/* Background Gradient */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/5 via-background to-background" />
+      <div className="section-divider absolute top-0 left-0 w-full" />
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-            Why <span className="gradient-text">Qorynta</span>?
+        <div className="text-center max-w-4xl mx-auto mb-16 md:mb-24">
+          <SectionLabel text="WHY QORYNTA" />
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
+            Agency Quality. Startup Speed.<br className="hidden md:block" /> Startup-Friendly Price.
           </h2>
-          <p className="text-muted-foreground">
-            For Clutch comparison shoppers — here's what sets us apart.
-          </p>
         </div>
 
-        {/* Differentiators */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
+        {/* Differentiators Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {differentiators.map((item, index) => (
-            <div
-              key={item.title}
-              className="flex flex-col items-center text-center max-w-xs group"
+            <GlassCard 
+              key={index} 
+              hover 
+              className="flex flex-col"
             >
-              {/* Icon */}
-              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 border border-primary/20 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:border-primary/40 transition-all duration-300">
-                <item.icon className="w-10 h-10 text-primary" />
-              </div>
-
-              {/* Title */}
-              <h3 className="text-lg font-bold text-foreground mb-2">{item.title}</h3>
-
-              {/* Description */}
-              <p className="text-sm text-muted-foreground">{item.description}</p>
-
-              {/* Connector Line (except last) */}
-              {index < differentiators.length - 1 && (
-                <div className="hidden md:block absolute">
-                  {/* Line handled by flex gap */}
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-12 rounded-full bg-secondary/10 border border-secondary/20 flex items-center justify-center flex-shrink-0">
+                  <item.icon className="w-6 h-6 text-secondary drop-shadow-[0_0_8px_rgba(6,182,212,0.5)]" />
                 </div>
-              )}
-            </div>
+                <h3 className="text-lg font-bold text-foreground leading-tight">{item.title}</h3>
+              </div>
+              <p className="text-muted-foreground text-sm leading-relaxed">{item.description}</p>
+            </GlassCard>
           ))}
         </div>
       </div>

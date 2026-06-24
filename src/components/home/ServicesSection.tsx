@@ -1,132 +1,70 @@
 import { Link } from 'react-router-dom';
-import { Brain, BarChart3, Bot, Settings, ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Code, Smartphone, Palette, Brain, Cloud, ShoppingCart, Package, Link as LinkIcon, Target, ArrowRight } from 'lucide-react';
+import { SectionLabel } from '@/components/ui/SectionLabel';
+import { GlassCard } from '@/components/ui/GlassCard';
 
-const services = [
-  {
-    icon: Brain,
-    title: 'AI Development',
-    percentage: '40%',
-    description: 'Production ML models that scale securely',
-    metrics: '99.2% Fraud Accuracy',
-    techs: ['TensorFlow', 'PyTorch', 'MLflow'],
-    gradient: 'from-primary to-primary/60',
-    glowColor: 'primary',
-  },
-  {
-    icon: BarChart3,
-    title: 'Data Analytics',
-    percentage: '30%',
-    description: 'Executive dashboards driving measurable ROI',
-    metrics: '15% Cost Reduction',
-    techs: ['PowerBI', 'Tableau', 'Looker'],
-    gradient: 'from-secondary to-secondary/60',
-    glowColor: 'secondary',
-  },
-  {
-    icon: Bot,
-    title: 'Gen AI',
-    percentage: '20%',
-    description: 'LLM agents, RAG pipelines, internal automation',
-    metrics: '40% Faster Reviews',
-    techs: ['LangChain', 'GPT-4', 'RAG'],
-    gradient: 'from-accent to-accent/60',
-    glowColor: 'accent',
-  },
-  {
-    icon: Settings,
-    title: 'Digital Systems',
-    percentage: '10%',
-    description: 'Microservices APIs and cloud infrastructure',
-    metrics: '99.9% Uptime',
-    techs: ['Kafka', 'OCI', 'AWS'],
-    gradient: 'from-green-500 to-green-500/60',
-    glowColor: 'green',
-  },
-];
+import { services } from '@/data/services';
 
 export const ServicesSection = () => {
   return (
-    <section className="py-20 md:py-32 relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 particles-bg opacity-50" />
-      
+    <section className="py-24 md:py-32 relative overflow-hidden bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
+          <SectionLabel text="WHAT WE BUILD" />
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            3 Core Services <span className="gradient-text">Decision Framework</span>
+            End-to-End Digital Services
           </h2>
           <p className="text-lg text-muted-foreground">
-            Match your need to the right service. Each delivered with enterprise precision.
+            From concept to deployment — everything your business needs to dominate online.
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16">
           {services.map((service, index) => (
-            <div
-              key={service.title}
-              className="service-card group relative p-[1px] rounded-xl overflow-hidden"
-              style={{ animationDelay: `${index * 0.1}s` }}
+            <GlassCard 
+              key={index} 
+              hover 
+              className="flex flex-col group"
             >
-              {/* Gradient Border */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-50 group-hover:opacity-100 transition-opacity duration-500`} />
-              
-              {/* Card Content */}
-              <div className="relative bg-card rounded-xl p-6 h-full flex flex-col">
-                {/* Icon */}
-                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-4`}>
-                  <service.icon className="w-7 h-7 text-primary-foreground" />
-                </div>
-
-                {/* Percentage Badge */}
-                <div className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-muted text-xs font-semibold text-muted-foreground mb-3 w-fit">
-                  <span>{service.percentage}</span>
-                  <span>Clutch</span>
-                </div>
-
-                {/* Title */}
-                <h3 className="text-xl font-bold text-foreground mb-2">{service.title}</h3>
-
-                {/* Description */}
-                <p className="text-muted-foreground text-sm mb-4 flex-grow">{service.description}</p>
-
-                {/* Metrics */}
-                <div className="py-3 px-4 rounded-lg bg-muted/50 mb-4">
-                  <p className={`text-sm font-semibold bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent`}>
-                    {service.metrics}
-                  </p>
-                </div>
-
-                {/* Tech Stack */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {service.techs.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2 py-1 rounded text-xs bg-muted text-muted-foreground"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                {/* CTA */}
-                <Button
-                  asChild
-                  variant="ghost"
-                  size="sm"
-                  className="w-full justify-between text-muted-foreground hover:text-foreground group/btn"
-                >
-                  <Link to="/services">
-                    Learn More
-                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                  </Link>
-                </Button>
+              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <service.icon className="w-7 h-7 text-primary group-hover:text-secondary transition-colors duration-300 drop-shadow-[0_0_10px_rgba(59,130,246,0.5)] group-hover:drop-shadow-[0_0_15px_rgba(6,182,212,0.8)]" />
               </div>
-            </div>
+              
+              <h3 className="text-xl font-bold text-foreground mb-3">{service.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-grow">{service.description}</p>
+              
+              <div className="flex flex-wrap gap-2 mb-6">
+                {service.tags.map(tag => (
+                  <span key={tag} className="text-xs px-2 py-1 bg-muted border border-border rounded-md text-muted-foreground">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <Link 
+                to={`/services/${service.slug}`}
+                className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-secondary transition-colors mt-auto group/link"
+              >
+                Learn More
+                <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+              </Link>
+            </GlassCard>
           ))}
         </div>
+
+        {/* Bottom CTA */}
+        <div className="text-center">
+          <Link 
+            to="/contact" 
+            className="inline-flex items-center gap-2 text-base font-semibold text-muted-foreground hover:text-foreground transition-colors px-6 py-3 rounded-full border border-border hover:border-primary/50 bg-card hover:bg-muted"
+          >
+            Need something specific? <span className="text-primary group-hover:text-secondary ml-1">Let's Talk <ArrowRight className="inline-block w-4 h-4 ml-1" /></span>
+          </Link>
+        </div>
+
       </div>
     </section>
   );

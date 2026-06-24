@@ -1,21 +1,19 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Zap } from 'lucide-react';
+import { Menu, X, ChevronDown, Github, Linkedin, Twitter, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { LogoIcon } from '@/components/ui/LogoIcon';
 
-const navLinks = [
-  { name: 'Home', path: '/' },
-  { name: 'Services', path: '/services' },
-  { name: 'Case Studies', path: '/case-studies' },
-  { name: 'About', path: '/about' },
-  { name: 'Contact', path: '/contact' },
-];
+import { services } from '@/data/services';
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
   const location = useLocation();
+  const drawerRef = useRef<HTMLDivElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,104 +23,184 @@ export const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Handle escape key and focus trap for mobile menu
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+      document.addEventListener('keydown', handleKeyDown);
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isMobileMenuOpen]);
+
   return (
-    <header
-      className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        isScrolled
-          ? 'bg-background/90 backdrop-blur-xl border-b border-border shadow-lg'
-          : 'bg-transparent'
-      )}
-    >
-      <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
-            <div className="relative">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-                <Zap className="w-6 h-6 text-primary-foreground" />
+    <>
+      <header
+        className={cn(
+          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+          isScrolled
+            ? 'bg-background/95 backdrop-blur-md border-b border-border shadow-sm'
+            : 'bg-transparent'
+        )}
+      >
+        <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 md:h-20">
+            {/* Logo */}
+            <Link to="/" className="flex items-center gap-2 group z-50" onClick={() => setIsMobileMenuOpen(false)}>
+              <div className="relative">
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                  <LogoIcon className="w-6 h-6 text-primary-foreground" />
+                </div>
+                <div className="absolute inset-0 w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-secondary blur-xl opacity-50 group-hover:opacity-75 transition-opacity" />
               </div>
-              <div className="absolute inset-0 w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-secondary blur-xl opacity-50 group-hover:opacity-75 transition-opacity" />
+              <span className="text-xl font-bold tracking-tight">
+                <span className="gradient-text">Qorynta</span>
+              </span>
+            </Link>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center gap-2 lg:gap-4">
+              <Link to="/" className={cn("px-3 py-2 text-sm font-medium transition-colors animated-underline", location.pathname === '/' ? 'text-primary border-b-2 border-primary' : 'text-muted-foreground hover:text-foreground')}>Home</Link>
+              
+              {/* Services Dropdown */}
+              <div 
+                className="relative group"
+                onMouseEnter={() => setIsServicesOpen(true)}
+                onMouseLeave={() => setIsServicesOpen(false)}
+              >
+                <Link 
+                  to="/services" 
+                  className={cn("px-3 py-2 text-sm font-medium transition-colors flex items-center gap-1", location.pathname === '/services' ? 'text-primary border-b-2 border-primary' : 'text-muted-foreground hover:text-foreground')}
+                >
+                  Services
+                  <ChevronDown className="w-4 h-4" />
+                </Link>
+                
+                {/* Dropdown Menu */}
+                <div className={cn(
+                  "absolute top-full left-0 w-64 pt-2 transition-all duration-200 origin-top-left",
+                  isServicesOpen ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none"
+                )}>
+                  <div className="bg-card border border-border rounded-xl shadow-xl overflow-hidden glass-card p-2">
+                    {services.map((service, idx) => (
+                      <Link
+                        key={idx}
+                        to={`/services/${service.slug}`}
+                        className="block px-4 py-2 text-sm text-muted-foreground hover:text-primary hover:bg-muted/50 rounded-lg transition-colors"
+                        onClick={() => setIsServicesOpen(false)}
+                      >
+                        {service.title}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <Link to="/about" className={cn("px-3 py-2 text-sm font-medium transition-colors animated-underline", location.pathname === '/about' ? 'text-primary border-b-2 border-primary' : 'text-muted-foreground hover:text-foreground')}>About</Link>
+              <Link to="/case-studies" className={cn("px-3 py-2 text-sm font-medium transition-colors animated-underline", location.pathname === '/case-studies' ? 'text-primary border-b-2 border-primary' : 'text-muted-foreground hover:text-foreground')}>Portfolio</Link>
+              {/* Blog omitted as per prompt 'Blog Teaser' section, no separate page mentioned yet */}
+              <Link to="/contact" className={cn("px-3 py-2 text-sm font-medium transition-colors animated-underline", location.pathname === '/contact' ? 'text-primary border-b-2 border-primary' : 'text-muted-foreground hover:text-foreground')}>Contact</Link>
             </div>
-            <span className="text-xl font-bold tracking-tight">
-              <span className="text-foreground">Qory</span>
-              <span className="gradient-text">nta</span>
-            </span>
-          </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={cn(
-                  'px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 animated-underline',
-                  location.pathname === link.path
-                    ? 'text-primary'
-                    : 'text-muted-foreground hover:text-foreground'
-                )}
-              >
-                {link.name}
-              </Link>
-            ))}
-          </div>
-
-          {/* CTA Button */}
-          <div className="hidden md:flex items-center gap-4">
-            <Button
-              asChild
-              className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-primary-foreground shadow-glow-sm hover:shadow-glow-md transition-all duration-300"
-            >
-              <Link to="/contact">Start $5K+ Project</Link>
-            </Button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg text-foreground hover:bg-muted transition-colors"
-          >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        <div
-          className={cn(
-            'md:hidden overflow-hidden transition-all duration-300',
-            isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-          )}
-        >
-          <div className="py-4 space-y-2 border-t border-border">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={cn(
-                  'block px-4 py-3 rounded-lg text-sm font-medium transition-colors',
-                  location.pathname === link.path
-                    ? 'text-primary bg-primary/10'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted'
-                )}
-              >
-                {link.name}
-              </Link>
-            ))}
-            <div className="pt-4 px-4">
+            {/* CTA Button */}
+            <div className="hidden md:flex items-center">
               <Button
                 asChild
-                className="w-full bg-gradient-to-r from-primary to-primary/80 text-primary-foreground"
+                className="bg-primary text-primary-foreground shadow-[0_0_24px_rgba(59,130,246,0.35)] hover:shadow-[0_0_32px_rgba(59,130,246,0.5)] transition-all duration-300 rounded-full px-6"
               >
-                <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                  Start $5K+ Project
-                </Link>
+                <Link to="/contact">Get Free Consultation</Link>
+              </Button>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              ref={menuButtonRef}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden p-2 rounded-lg text-foreground hover:bg-muted transition-colors z-50 relative"
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMobileMenuOpen}
+            >
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
+        </nav>
+      </header>
+
+      <div 
+        className={cn(
+          "fixed inset-0 bg-foreground/20 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300",
+          isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        )}
+        onClick={() => setIsMobileMenuOpen(false)}
+        aria-hidden="true"
+      />
+
+      <div
+        ref={drawerRef}
+        className={cn(
+          "fixed top-0 right-0 bottom-0 w-[80%] max-w-sm bg-background z-50 md:hidden flex flex-col border-l border-border transition-transform duration-300 ease-out",
+          isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+        )}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile navigation menu"
+      >
+        <div className="flex-1 overflow-y-auto pt-24 pb-8 px-6 flex flex-col">
+          <div className="flex flex-col space-y-6 flex-1">
+            <Link to="/" className="text-xl font-medium text-foreground hover:text-primary transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
+            
+            <div className="space-y-4">
+              <Link to="/services" className="text-xl font-medium text-foreground hover:text-primary transition-colors block" onClick={() => setIsMobileMenuOpen(false)}>Services</Link>
+              <div className="pl-4 border-l border-border/50 space-y-3 flex flex-col">
+                {services.slice(0, 5).map((service, idx) => (
+                  <Link key={idx} to={`/services/${service.slug}`} className="text-sm text-muted-foreground hover:text-primary transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
+                    {service.title}
+                  </Link>
+                ))}
+                <Link to="/services" className="text-sm text-primary font-medium" onClick={() => setIsMobileMenuOpen(false)}>View All Services →</Link>
+              </div>
+            </div>
+
+            <Link to="/about" className="text-xl font-medium text-foreground hover:text-primary transition-colors" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
+            <Link to="/case-studies" className="text-xl font-medium text-foreground hover:text-primary transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Portfolio</Link>
+            <Link to="/contact" className="text-xl font-medium text-foreground hover:text-primary transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Contact</Link>
+            
+            <div className="pt-6 mt-auto">
+              <Button asChild className="w-full bg-primary text-primary-foreground shadow-[0_0_24px_rgba(59,130,246,0.35)] rounded-full h-12 text-lg">
+                <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>Get Free Consultation</Link>
               </Button>
             </div>
           </div>
+          
+          {/* Social Icons Bottom */}
+          <div className="pt-8 mt-8 border-t border-border flex justify-center gap-6">
+            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <Linkedin className="w-6 h-6" />
+            </a>
+            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <Github className="w-6 h-6" />
+            </a>
+            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <Twitter className="w-6 h-6" />
+            </a>
+            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <Instagram className="w-6 h-6" />
+            </a>
+          </div>
         </div>
-      </nav>
-    </header>
+      </div>
+    </>
   );
 };
