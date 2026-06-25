@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, Github, Linkedin, Twitter, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { LogoIcon } from '@/components/ui/LogoIcon';
+
 
 import { services } from '@/data/services';
 
@@ -59,13 +59,8 @@ export const Navbar = () => {
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 group z-50" onClick={() => setIsMobileMenuOpen(false)}>
-              <div className="relative">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-                  <LogoIcon className="w-6 h-6 text-primary-foreground" />
-                </div>
-                <div className="absolute inset-0 w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-secondary blur-xl opacity-50 group-hover:opacity-75 transition-opacity" />
-              </div>
-              <span className="text-xl font-bold tracking-tight">
+              <img src="/logo.jpg" alt="Qorynta Logo" className="h-10 w-auto object-contain rounded-md" />
+              <span className="text-xl font-bold tracking-tight hidden sm:block">
                 <span className="gradient-text">Qorynta</span>
               </span>
             </Link>

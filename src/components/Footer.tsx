@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Instagram } from 'lucide-react';
-import { LogoIcon } from '@/components/ui/LogoIcon';
+
 import { services } from '@/data/services';
 
 export const Footer = () => {
@@ -13,9 +13,7 @@ export const Footer = () => {
           {/* Column 1: Brand & About */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center gap-2 group">
-              <div className="w-8 h-8 rounded bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-                <LogoIcon className="w-5 h-5 text-primary-foreground" />
-              </div>
+              <img src="/logo.jpg" alt="Qorynta Logo" className="h-8 w-auto object-contain rounded-md" />
               <span className="text-xl font-bold tracking-tight">Qorynta</span>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
