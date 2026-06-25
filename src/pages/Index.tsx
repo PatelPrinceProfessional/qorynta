@@ -4,7 +4,7 @@ import { TrustBar } from '@/components/home/TrustBar';
 import { ServicesSection } from '@/components/home/ServicesSection';
 import { WhyQorynta } from '@/components/home/WhyQorynta';
 import { ProcessSection } from '@/components/home/ProcessSection';
-import { StatsSection } from '@/components/home/StatsSection';
+
 import { CaseStudySection } from '@/components/home/CaseStudySection';
 import { TechStackSection } from '@/components/home/TechStackSection';
 import { TestimonialsSection } from '@/components/home/TestimonialsSection';
@@ -29,7 +29,7 @@ const Index = () => {
         <ServicesSection />
         <WhyQorynta />
         <ProcessSection />
-        <StatsSection />
+
         <CaseStudySection />
         <TechStackSection />
         <TestimonialsSection />
