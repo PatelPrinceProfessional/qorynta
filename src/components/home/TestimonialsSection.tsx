@@ -1,7 +1,8 @@
 import { Quote, Star } from 'lucide-react';
 import { SectionLabel } from '@/components/ui/SectionLabel';
 import { GlassCard } from '@/components/ui/GlassCard';
-import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
+import { StaggerContainer, StaggerItem } from '@/components/ui/StaggerContainer';
 
 const testimonials = [
   {
@@ -25,52 +26,52 @@ const testimonials = [
 ];
 
 export const TestimonialsSection = () => {
-  const revealRef = useScrollReveal<HTMLElement>();
-
   return (
-    <section ref={revealRef} className="py-16 md:py-20 relative bg-muted">
+    <section className="py-16 md:py-20 relative bg-muted">
       {/* Top Divider */}
       <div className="section-divider absolute top-0 left-0 w-full" />
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20 reveal">
+        <ScrollReveal className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
           <SectionLabel text="CLIENT FEEDBACK" />
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
             Don't Just Take Our Word For It
           </h2>
-        </div>
+        </ScrollReveal>
 
         {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <StaggerContainer staggerChildren={0.2} className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {testimonials.map((test, index) => (
-            <GlassCard key={index} className={`relative pt-12 p-8 reveal reveal-delay-${(index % 3) + 1}`}>
-              {/* Quote Icon */}
-              <div className="absolute top-6 right-6 opacity-20">
-                <Quote className="w-16 h-16 text-primary" />
-              </div>
+            <StaggerItem key={index} direction="up" className="h-full">
+              <GlassCard className="relative pt-12 p-8 h-full">
+                {/* Quote Icon */}
+                <div className="absolute top-6 right-6 opacity-20">
+                  <Quote className="w-16 h-16 text-primary" />
+                </div>
 
-              {/* Rating */}
-              <div className="flex gap-1 mb-6">
-                {[...Array(test.rating)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-[#F59E0B] text-[#F59E0B]" />
-                ))}
-              </div>
+                {/* Rating */}
+                <div className="flex gap-1 mb-6">
+                  {[...Array(test.rating)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-[#F59E0B] text-[#F59E0B]" />
+                  ))}
+                </div>
 
-              {/* Content */}
-              <p className="text-muted-foreground text-sm leading-relaxed mb-8 italic">
-                "{test.content}"
-              </p>
+                {/* Content */}
+                <p className="text-muted-foreground text-sm leading-relaxed mb-8 italic flex-grow">
+                  "{test.content}"
+                </p>
 
-              {/* Author */}
-              <div>
-                <h4 className="font-bold text-foreground">{test.name}</h4>
-                <p className="text-xs text-muted-foreground">{test.role}</p>
-              </div>
-            </GlassCard>
+                {/* Author */}
+                <div className="mt-auto">
+                  <h4 className="font-bold text-foreground">{test.name}</h4>
+                  <p className="text-xs text-muted-foreground">{test.role}</p>
+                </div>
+              </GlassCard>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

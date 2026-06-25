@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { SectionLabel } from '@/components/ui/SectionLabel';
-import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
+import { StaggerContainer, StaggerItem } from '@/components/ui/StaggerContainer';
 
 const projects = [
   {
@@ -22,14 +23,12 @@ const projects = [
 ];
 
 export const CaseStudySection = () => {
-  const revealRef = useScrollReveal<HTMLElement>();
-
   return (
-    <section ref={revealRef} className="py-16 md:py-20 relative overflow-hidden bg-muted">
+    <section className="py-16 md:py-20 relative overflow-hidden bg-muted">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-16 reveal">
+        <ScrollReveal className="flex flex-col md:flex-row items-center justify-between gap-6 mb-16">
           <div>
             <SectionLabel text="OUR WORK" />
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
@@ -43,15 +42,12 @@ export const CaseStudySection = () => {
           >
             <Link to="/case-studies">View All Projects</Link>
           </Button>
-        </div>
+        </ScrollReveal>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <StaggerContainer staggerChildren={0.2} className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
-            <div 
-              key={index}
-              className={`group relative rounded-2xl overflow-hidden bg-card border border-border/50 hover:border-primary/50 transition-all duration-500 hover:-translate-y-2 shadow-lg reveal reveal-delay-${(index % 2) + 1}`}
-            >
+            <StaggerItem key={index} direction="up" className={`group relative rounded-2xl overflow-hidden bg-card border border-border/50 hover:border-primary/50 transition-all duration-500 hover:-translate-y-2 shadow-lg`}>
               {/* Image */}
               <div className="relative h-64 md:h-80 overflow-hidden">
                 <img 
@@ -94,9 +90,9 @@ export const CaseStudySection = () => {
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
                 </Link>
               </div>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
 
       </div>
     </section>

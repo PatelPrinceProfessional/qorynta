@@ -4,17 +4,17 @@ import { SectionLabel } from '@/components/ui/SectionLabel';
 import { GlassCard } from '@/components/ui/GlassCard';
 
 import { services } from '@/data/services';
-import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
+import { StaggerContainer, StaggerItem } from '@/components/ui/StaggerContainer';
 
 export const ServicesSection = () => {
-  const revealRef = useScrollReveal<HTMLElement>();
 
   return (
-    <section ref={revealRef} className="py-16 md:py-20 relative overflow-hidden bg-background">
+    <section className="py-16 md:py-20 relative overflow-hidden bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20 reveal">
+        <ScrollReveal className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
           <SectionLabel text="WHAT WE BUILD" />
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
             End-to-End Digital Services
@@ -22,16 +22,16 @@ export const ServicesSection = () => {
           <p className="text-lg text-muted-foreground">
             From concept to deployment — everything your business needs to dominate online.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16">
+        <StaggerContainer staggerChildren={0.1} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16">
           {services.map((service, index) => (
-            <GlassCard 
-              key={index} 
-              hover 
-              className={`flex flex-col group reveal reveal-delay-${(index % 3) + 1}`}
-            >
+            <StaggerItem key={index} direction="up" className="h-full">
+              <GlassCard 
+                hover 
+                className="flex flex-col group h-full"
+              >
               <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 <service.icon className="w-7 h-7 text-primary group-hover:text-secondary transition-colors duration-300 drop-shadow-[0_0_10px_rgba(59,130,246,0.5)] group-hover:drop-shadow-[0_0_15px_rgba(6,182,212,0.8)]" />
               </div>
@@ -54,19 +54,20 @@ export const ServicesSection = () => {
                 Learn More
                 <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
               </Link>
-            </GlassCard>
+              </GlassCard>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
 
         {/* Bottom CTA */}
-        <div className="text-center reveal reveal-delay-2">
+        <ScrollReveal delay={0.4} direction="up" className="text-center">
           <Link 
             to="/contact" 
             className="inline-flex items-center gap-2 text-base font-semibold text-muted-foreground hover:text-foreground transition-colors px-6 py-3 rounded-full border border-border hover:border-primary/50 bg-card hover:bg-muted"
           >
             Need something specific? <span className="text-primary group-hover:text-secondary ml-1">Let's Talk <ArrowRight className="inline-block w-4 h-4 ml-1" /></span>
           </Link>
-        </div>
+        </ScrollReveal>
 
       </div>
     </section>

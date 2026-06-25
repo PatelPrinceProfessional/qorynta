@@ -4,13 +4,11 @@ import { Button } from '@/components/ui/button';
 import { SectionLabel } from '@/components/ui/SectionLabel';
 import { GradientText } from '@/components/ui/GradientText';
 import { GlassCard } from '@/components/ui/GlassCard';
-import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
 
 export const HeroSection = () => {
-  const revealRef = useScrollReveal<HTMLElement>();
-
   return (
-    <section ref={revealRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
       {/* Background Radial Glow & Dot Grid */}
       <div className="absolute inset-0 dot-grid opacity-[0.04]" />
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 animate-pulse-slow pointer-events-none" />
@@ -20,7 +18,7 @@ export const HeroSection = () => {
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
           {/* Left Content (7 cols on lg) */}
-          <div className="lg:col-span-7 flex flex-col text-center lg:text-left animate-fade-in-up items-center lg:items-start reveal">
+          <ScrollReveal direction="right" duration={0.8} className="lg:col-span-7 flex flex-col text-center lg:text-left animate-fade-in-up items-center lg:items-start">
             <SectionLabel text="TRUSTED BY GLOBAL CLIENTS" />
 
             {/* Headline */}
@@ -80,10 +78,10 @@ export const HeroSection = () => {
                 <span>48hr Kickoff</span>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Right Visual (5 cols on lg) */}
-          <div className="lg:col-span-5 relative w-full h-[400px] lg:h-[500px] flex items-center justify-center animate-scale-in reveal reveal-delay-2" style={{ animationDelay: '0.2s' }}>
+          <ScrollReveal delay={0.2} direction="left" duration={0.8} className="lg:col-span-5 relative w-full h-[400px] lg:h-[500px] flex items-center justify-center animate-scale-in">
             
             {/* Main Floating Dashboard Card */}
             <GlassCard className="w-[90%] md:w-[80%] lg:w-full max-w-md absolute z-20 animate-float p-5 border-t border-l border-border/50 shadow-2xl bg-card/40 backdrop-blur-xl">
@@ -150,7 +148,7 @@ export const HeroSection = () => {
               <span className="text-xs font-medium text-foreground">New project started</span>
             </div>
 
-          </div>
+          </ScrollReveal>
         </div>
       </div>
 
