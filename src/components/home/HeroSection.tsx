@@ -4,20 +4,23 @@ import { Button } from '@/components/ui/button';
 import { SectionLabel } from '@/components/ui/SectionLabel';
 import { GradientText } from '@/components/ui/GradientText';
 import { GlassCard } from '@/components/ui/GlassCard';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 export const HeroSection = () => {
+  const revealRef = useScrollReveal<HTMLElement>();
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
+    <section ref={revealRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
       {/* Background Radial Glow & Dot Grid */}
       <div className="absolute inset-0 dot-grid opacity-[0.04]" />
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 animate-pulse-slow pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-accent/20 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/3 animate-pulse-slow pointer-events-none" style={{ animationDelay: '2s' }} />
       
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 relative z-10">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
           {/* Left Content (7 cols on lg) */}
-          <div className="lg:col-span-7 flex flex-col text-center lg:text-left animate-fade-in-up items-center lg:items-start">
+          <div className="lg:col-span-7 flex flex-col text-center lg:text-left animate-fade-in-up items-center lg:items-start reveal">
             <SectionLabel text="TRUSTED BY GLOBAL CLIENTS" />
 
             {/* Headline */}
@@ -80,7 +83,7 @@ export const HeroSection = () => {
           </div>
 
           {/* Right Visual (5 cols on lg) */}
-          <div className="lg:col-span-5 relative w-full h-[400px] lg:h-[500px] flex items-center justify-center animate-scale-in" style={{ animationDelay: '0.2s' }}>
+          <div className="lg:col-span-5 relative w-full h-[400px] lg:h-[500px] flex items-center justify-center animate-scale-in reveal reveal-delay-2" style={{ animationDelay: '0.2s' }}>
             
             {/* Main Floating Dashboard Card */}
             <GlassCard className="w-[90%] md:w-[80%] lg:w-full max-w-md absolute z-20 animate-float p-5 border-t border-l border-border/50 shadow-2xl bg-card/40 backdrop-blur-xl">

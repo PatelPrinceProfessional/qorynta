@@ -1,4 +1,5 @@
 import { SectionLabel } from '@/components/ui/SectionLabel';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { GlassCard } from '@/components/ui/GlassCard';
 
 const techCategories = [
@@ -21,12 +22,14 @@ const techCategories = [
 ];
 
 export const TechStackSection = () => {
+  const revealRef = useScrollReveal<HTMLElement>();
+
   return (
-    <section className="py-24 md:py-32 relative bg-background">
+    <section ref={revealRef} className="py-16 md:py-20 relative bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
+        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20 reveal">
           <SectionLabel text="TECHNOLOGIES" />
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
             Modern Stack for Modern Scale

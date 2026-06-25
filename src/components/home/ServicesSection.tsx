@@ -4,14 +4,17 @@ import { SectionLabel } from '@/components/ui/SectionLabel';
 import { GlassCard } from '@/components/ui/GlassCard';
 
 import { services } from '@/data/services';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 export const ServicesSection = () => {
+  const revealRef = useScrollReveal<HTMLElement>();
+
   return (
-    <section className="py-24 md:py-32 relative overflow-hidden bg-background">
+    <section ref={revealRef} className="py-16 md:py-20 relative overflow-hidden bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
+        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20 reveal">
           <SectionLabel text="WHAT WE BUILD" />
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
             End-to-End Digital Services
@@ -27,7 +30,7 @@ export const ServicesSection = () => {
             <GlassCard 
               key={index} 
               hover 
-              className="flex flex-col group"
+              className={`flex flex-col group reveal reveal-delay-${(index % 3) + 1}`}
             >
               <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 <service.icon className="w-7 h-7 text-primary group-hover:text-secondary transition-colors duration-300 drop-shadow-[0_0_10px_rgba(59,130,246,0.5)] group-hover:drop-shadow-[0_0_15px_rgba(6,182,212,0.8)]" />
@@ -56,7 +59,7 @@ export const ServicesSection = () => {
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center">
+        <div className="text-center reveal reveal-delay-2">
           <Link 
             to="/contact" 
             className="inline-flex items-center gap-2 text-base font-semibold text-muted-foreground hover:text-foreground transition-colors px-6 py-3 rounded-full border border-border hover:border-primary/50 bg-card hover:bg-muted"

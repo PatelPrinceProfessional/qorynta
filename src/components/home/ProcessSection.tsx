@@ -1,6 +1,7 @@
 import { Mic, ClipboardList, Settings, Rocket } from 'lucide-react';
 import { SectionLabel } from '@/components/ui/SectionLabel';
 import { cn } from '@/lib/utils';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const steps = [
   {
@@ -26,8 +27,10 @@ const steps = [
 ];
 
 export const ProcessSection = () => {
+  const revealRef = useScrollReveal<HTMLElement>();
+
   return (
-    <section className="py-16 md:py-24 relative overflow-hidden bg-background">
+    <section ref={revealRef} className="py-12 md:py-16 relative overflow-hidden bg-background">
       {/* Premium subtle grid background */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
       
@@ -35,7 +38,7 @@ export const ProcessSection = () => {
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
           
           {/* Left Column: Sticky Header */}
-          <div className="lg:w-1/3">
+          <div className="lg:w-1/3 reveal">
             <div className="sticky top-32">
               <div className="inline-block mb-6">
                 <SectionLabel text="HOW WE WORK" />
@@ -65,7 +68,7 @@ export const ProcessSection = () => {
 
             <div className="space-y-6 md:space-y-8">
               {steps.map((step, index) => (
-                <div key={index} className="relative pl-12 md:pl-16 group">
+                <div key={index} className={`relative pl-12 md:pl-16 group reveal reveal-delay-${(index % 3) + 1}`}>
                   
                   {/* The Timeline Node / Glowing Dot */}
                   <div className="absolute left-0 md:left-1 top-6 w-10 h-10 md:w-12 md:h-12 rounded-full bg-background border-[4px] border-background flex items-center justify-center z-10 group-hover:scale-110 transition-transform duration-500 shadow-[0_0_0_1px_rgba(59,130,246,0.3)] group-hover:shadow-[0_0_0_2px_rgba(59,130,246,0.6)]">

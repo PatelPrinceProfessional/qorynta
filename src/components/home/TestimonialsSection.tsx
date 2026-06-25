@@ -1,6 +1,7 @@
 import { Quote, Star } from 'lucide-react';
 import { SectionLabel } from '@/components/ui/SectionLabel';
 import { GlassCard } from '@/components/ui/GlassCard';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const testimonials = [
   {
@@ -24,15 +25,17 @@ const testimonials = [
 ];
 
 export const TestimonialsSection = () => {
+  const revealRef = useScrollReveal<HTMLElement>();
+
   return (
-    <section className="py-24 md:py-32 relative bg-muted">
+    <section ref={revealRef} className="py-16 md:py-20 relative bg-muted">
       {/* Top Divider */}
       <div className="section-divider absolute top-0 left-0 w-full" />
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
+        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20 reveal">
           <SectionLabel text="CLIENT FEEDBACK" />
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
             Don't Just Take Our Word For It
@@ -42,7 +45,7 @@ export const TestimonialsSection = () => {
         {/* Testimonials Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {testimonials.map((test, index) => (
-            <GlassCard key={index} className="relative pt-12 p-8">
+            <GlassCard key={index} className={`relative pt-12 p-8 reveal reveal-delay-${(index % 3) + 1}`}>
               {/* Quote Icon */}
               <div className="absolute top-6 right-6 opacity-20">
                 <Quote className="w-16 h-16 text-primary" />

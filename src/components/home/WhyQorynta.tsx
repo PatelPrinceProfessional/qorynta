@@ -1,6 +1,7 @@
 import { Globe2, DollarSign, Zap, Shield, Users, Trophy } from 'lucide-react';
 import { SectionLabel } from '@/components/ui/SectionLabel';
 import { GlassCard } from '@/components/ui/GlassCard';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const differentiators = [
   {
@@ -36,8 +37,10 @@ const differentiators = [
 ];
 
 export const WhyQorynta = () => {
+  const revealRef = useScrollReveal<HTMLElement>();
+
   return (
-    <section className="py-24 md:py-32 relative overflow-hidden bg-background">
+    <section ref={revealRef} className="py-16 md:py-20 relative overflow-hidden bg-background">
       {/* Background Gradient */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/5 via-background to-background" />
       <div className="section-divider absolute top-0 left-0 w-full" />
@@ -45,7 +48,7 @@ export const WhyQorynta = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-4xl mx-auto mb-16 md:mb-24">
+        <div className="text-center max-w-4xl mx-auto mb-16 md:mb-20 reveal">
           <SectionLabel text="WHY QORYNTA" />
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
             Agency Quality. Startup Speed.<br className="hidden md:block" /> Startup-Friendly Price.
@@ -58,7 +61,7 @@ export const WhyQorynta = () => {
             <GlassCard 
               key={index} 
               hover 
-              className="flex flex-col"
+              className={`flex flex-col reveal reveal-delay-${(index % 3) + 1}`}
             >
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-12 h-12 rounded-full bg-secondary/10 border border-secondary/20 flex items-center justify-center flex-shrink-0">

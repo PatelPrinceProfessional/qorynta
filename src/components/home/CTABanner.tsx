@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, CalendarCheck } from 'lucide-react';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Button } from '@/components/ui/button';
 
 export const CTABanner = () => {
+  const revealRef = useScrollReveal<HTMLElement>();
+
   return (
-    <section className="py-20 md:py-28 relative overflow-hidden bg-primary/5">
+    <section ref={revealRef} className="py-16 md:py-16 relative overflow-hidden bg-primary/5">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent opacity-60" />
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">

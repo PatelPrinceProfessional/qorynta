@@ -20,16 +20,16 @@ export const Footer = () => {
               Full-stack digital agency delivering production-grade web, mobile, and AI solutions for startups and enterprises worldwide.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="javascript:void(0)" className="text-muted-foreground hover:text-primary transition-colors">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="javascript:void(0)" className="text-muted-foreground hover:text-primary transition-colors">
                 <Github className="w-5 h-5" />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="javascript:void(0)" className="text-muted-foreground hover:text-primary transition-colors">
                 <Twitter className="w-5 h-5" />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="javascript:void(0)" className="text-muted-foreground hover:text-primary transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
             </div>
@@ -56,7 +56,6 @@ export const Footer = () => {
               <li><Link to="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors">About Us</Link></li>
               <li><Link to="/case-studies" className="text-sm text-muted-foreground hover:text-primary transition-colors">Portfolio</Link></li>
               <li><Link to="/contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">Contact</Link></li>
-              <li><Link to="/careers" className="text-sm text-muted-foreground hover:text-primary transition-colors">Careers</Link></li>
             </ul>
           </div>
 
@@ -80,7 +79,7 @@ export const Footer = () => {
                 <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                 <span className="text-sm text-muted-foreground">
                   Your Address Line 1,<br />
-                  City, State, India - PIN
+                  City, State, India
                 </span>
               </li>
             </ul>
@@ -91,12 +90,8 @@ export const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-border/50 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground text-center md:text-left">
-            &copy; {new Date().getFullYear()} Qorynta. All rights reserved. GSTIN: [YOUR_GST_NO]
+            &copy; {new Date().getFullYear()} Qorynta. All rights reserved.
           </p>
-          <div className="flex gap-6">
-            <Link to="/privacy-policy" className="text-xs text-muted-foreground hover:text-primary transition-colors">Privacy Policy</Link>
-            <Link to="/terms" className="text-xs text-muted-foreground hover:text-primary transition-colors">Terms of Service</Link>
-          </div>
         </div>
 
       </div>

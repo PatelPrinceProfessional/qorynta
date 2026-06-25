@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { SectionLabel } from '@/components/ui/SectionLabel';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const projects = [
   {
@@ -21,12 +22,14 @@ const projects = [
 ];
 
 export const CaseStudySection = () => {
+  const revealRef = useScrollReveal<HTMLElement>();
+
   return (
-    <section className="py-24 md:py-32 relative overflow-hidden bg-muted">
+    <section ref={revealRef} className="py-16 md:py-20 relative overflow-hidden bg-muted">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-16">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-16 reveal">
           <div>
             <SectionLabel text="OUR WORK" />
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
@@ -47,7 +50,7 @@ export const CaseStudySection = () => {
           {projects.map((project, index) => (
             <div 
               key={index}
-              className="group relative rounded-2xl overflow-hidden bg-card border border-border/50 hover:border-primary/50 transition-all duration-500 hover:-translate-y-2 shadow-lg"
+              className={`group relative rounded-2xl overflow-hidden bg-card border border-border/50 hover:border-primary/50 transition-all duration-500 hover:-translate-y-2 shadow-lg reveal reveal-delay-${(index % 2) + 1}`}
             >
               {/* Image */}
               <div className="relative h-64 md:h-80 overflow-hidden">
