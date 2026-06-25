@@ -65,21 +65,27 @@ export const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Mail className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                <a href="mailto:hello@qorynta.in" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  hello@qorynta.in
+                <a href="mailto:qorynta@gmail.com" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  qorynta@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <Phone className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                <a href="tel:+910000000000" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  +91 00000 00000
+                <a href="tel:+919316157949" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  +91 93161 57949
+                </a>
+              </li>
+              <li className="flex items-start gap-3">
+                <Phone className="w-5 h-5 text-primary shrink-0 mt-0.5 opacity-0" /> {/* Spacer icon */}
+                <a href="tel:+919328606539" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  +91 93286 06539
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                 <span className="text-sm text-muted-foreground">
-                  Your Address Line 1,<br />
-                  City, State, India
+                  Ahmedabad,<br />
+                  Gujarat, India
                 </span>
               </li>
             </ul>

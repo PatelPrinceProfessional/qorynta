@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 
 export const WhatsAppButton = () => {
   // Use a default WhatsApp number if none provided in prompt
-  const whatsappNumber = "+910000000000"; // Placeholder
+  const whatsappNumber = "+919316157949";
 
   return (
     <div className="fixed bottom-0 left-0 right-0 p-4 md:hidden z-50 animate-slide-in-bottom pointer-events-none">

@@ -15,19 +15,19 @@ const contactInfo = [
   {
     icon: Mail,
     title: 'Email Us',
-    value: 'hello@qorynta.in',
-    href: 'mailto:hello@qorynta.in',
+    value: 'qorynta@gmail.com',
+    href: 'mailto:qorynta@gmail.com',
   },
   {
     icon: Phone,
     title: 'Call Us',
-    value: '+91 00000 00000',
-    href: 'tel:+910000000000',
+    value: '+91 9316157949 / 9328606539',
+    href: 'tel:+919316157949',
   },
   {
     icon: MapPin,
     title: 'Visit Us',
-    value: 'Your Address Line 1, City, State, India - PIN',
+    value: 'Ahmedabad, Gujarat, India',
     href: null,
   },
 ];
@@ -63,7 +63,7 @@ const Contact = () => {
 
     try {
       await emailjs.send('service_5br3fjc', 'template_g3k7h5m', {
-        to_email: 'hello@qorynta.in',
+        to_email: 'qorynta@gmail.com',
         from_name: formData.name,
         from_email: formData.email,
         company: formData.company || 'Not provided',
@@ -87,7 +87,7 @@ const Contact = () => {
       console.error('Email error:', error);
       toast({
         title: "Error sending message",
-        description: "Please try again or email us directly at hello@qorynta.in",
+        description: "Please try again or email us directly at qorynta@gmail.com",
         variant: "destructive",
       });
     } finally {
