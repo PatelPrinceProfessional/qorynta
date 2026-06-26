@@ -149,7 +149,7 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="p-6 rounded-2xl bg-gradient-to-br from-[#FFFFFF] to-[#FFFFFF] border border-border">
+                <div className="p-6 rounded-2xl bg-card border border-border shadow-sm">
                   <h3 className="text-lg font-bold text-foreground mb-4">What happens next?</h3>
                   <ul className="space-y-4">
                     <li className="flex items-start gap-3">
