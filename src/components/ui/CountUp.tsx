@@ -5,10 +5,11 @@ interface CountUpProps {
   end: number;
   suffix?: string;
   duration?: number;
+  decimals?: number;
   className?: string;
 }
 
-export const CountUp = ({ end, suffix = '', duration = 2000, className }: CountUpProps) => {
+export const CountUp = ({ end, suffix = '', duration = 2000, decimals = 0, className }: CountUpProps) => {
   const [count, setCount] = useState(0);
   const countRef = useRef<HTMLDivElement>(null);
   const hasAnimated = useRef(false);
@@ -27,7 +28,7 @@ export const CountUp = ({ end, suffix = '', duration = 2000, className }: CountU
             // easeOutQuart
             const easeProgress = 1 - Math.pow(1 - progress, 4);
             
-            setCount(Math.floor(easeProgress * end));
+            setCount(easeProgress * end);
             
             if (progress < 1) {
               window.requestAnimationFrame(step);
@@ -53,7 +54,7 @@ export const CountUp = ({ end, suffix = '', duration = 2000, className }: CountU
 
   return (
     <div ref={countRef} className={cn("inline-block", className)}>
-      {count}{suffix}
+      {count.toFixed(decimals)}{suffix}
     </div>
   );
 };

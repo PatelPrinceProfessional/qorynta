@@ -104,7 +104,7 @@ const Contact = () => {
 
       <Navbar />
       <main className="min-h-screen bg-background pt-20">
-        
+
         {/* Header Section */}
         <section className="py-16 md:py-24 relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent opacity-60" />
@@ -123,7 +123,7 @@ const Contact = () => {
         <section className="py-12 md:py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start max-w-7xl mx-auto">
-              
+
               {/* Left Column - Contact Info */}
               <div className="lg:col-span-5 space-y-12">
                 <div>
@@ -149,7 +149,7 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="p-6 rounded-2xl bg-gradient-to-br from-[#0F1629] to-[#141D35] border border-border">
+                <div className="p-6 rounded-2xl bg-gradient-to-br from-[#FFFFFF] to-[#FFFFFF] border border-border">
                   <h3 className="text-lg font-bold text-foreground mb-4">What happens next?</h3>
                   <ul className="space-y-4">
                     <li className="flex items-start gap-3">
@@ -181,9 +181,9 @@ const Contact = () => {
               <div className="lg:col-span-7">
                 <div className="bg-card rounded-2xl p-6 md:p-10 border border-border shadow-2xl relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[80px] pointer-events-none" />
-                  
+
                   <h2 className="text-2xl font-bold text-foreground mb-8 relative z-10">Send us a Message</h2>
-                  
+
                   <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
                     <div className="grid sm:grid-cols-2 gap-6">
                       <div className="space-y-2">
@@ -192,7 +192,7 @@ const Contact = () => {
                           required
                           value={formData.name}
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          placeholder="John Doe"
+                          placeholder="Your Name"
                           className="bg-muted border-border/50 h-12 focus-visible:ring-primary"
                         />
                       </div>
@@ -203,7 +203,7 @@ const Contact = () => {
                           type="email"
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          placeholder="john@company.com"
+                          placeholder="name@company.com"
                           className="bg-muted border-border/50 h-12 focus-visible:ring-primary"
                         />
                       </div>
@@ -215,7 +215,7 @@ const Contact = () => {
                         <Input
                           value={formData.company}
                           onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                          placeholder="Acme Corp"
+                          placeholder="Your Company Name"
                           className="bg-muted border-border/50 h-12 focus-visible:ring-primary"
                         />
                       </div>

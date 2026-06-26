@@ -5,9 +5,9 @@ import { StaggerContainer, StaggerItem } from '@/components/ui/StaggerContainer'
 const metrics = [
   { value: 40, suffix: '+', label: 'Happy Clients' },
   { value: 120, suffix: '+', label: 'Projects Delivered' },
-  { value: 8, suffix: '+', label: 'Countries Served' },
-  { value: 5, suffix: '★', label: 'Average Rating' },
-  { value: 3, suffix: 'yr', label: 'In Business' },
+  { value: 5, suffix: '+', label: 'Countries Served' },
+  { value: 4.7, suffix: '★', label: 'Average Rating', decimals: 1 },
+  { value: 1, suffix: 'yr', label: 'In Business' },
 ];
 
 const logos = [
@@ -28,7 +28,7 @@ export const TrustBar = () => {
           {metrics.map((metric, idx) => (
             <StaggerItem key={idx} direction="up" className="flex flex-col items-center text-center">
               <div className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-primary to-secondary mb-2">
-                <CountUp end={metric.value} suffix={metric.suffix} />
+                <CountUp end={metric.value} suffix={metric.suffix} decimals={metric.decimals} />
               </div>
               <div className="text-xs tracking-widest uppercase font-medium text-muted-foreground">
                 {metric.label}
