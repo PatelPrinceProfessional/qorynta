@@ -60,6 +60,43 @@
     --sidebar-border: 219 41% 90%;
     --sidebar-ring: 213 47% 47%;
   }
+
+  .dark {
+    --background: 212 64% 12%; /* Darker blue background */
+    --foreground: 0 20% 97%; /* Light text */
+
+    --card: 212 64% 16%; 
+    --card-foreground: 0 20% 97%;
+
+    --popover: 212 64% 16%;
+    --popover-foreground: 0 20% 97%;
+
+    --primary: 213 47% 47%; /* Keep primary blue */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 219 41% 90%; 
+    --secondary-foreground: 212 64% 19%;
+
+    --muted: 212 64% 24%;
+    --muted-foreground: 219 41% 70%;
+
+    --accent: 212 64% 24%;
+    --accent-foreground: 0 20% 97%;
+
+    --border: 212 64% 24%;
+    --input: 212 64% 24%;
+    --ring: 213 47% 47%;
+
+    --glow-primary: 213 47% 47%;
+    --glow-secondary: 219 41% 90%;
+    --glow-accent: 212 64% 19%;
+
+    --gradient-dark: linear-gradient(135deg, #112D4E 0%, #1e3a5f 100%);
+    --gradient-card: linear-gradient(145deg, #1e3a5f 0%, #112D4E 100%);
+    --gradient-primary: linear-gradient(135deg, #3F72AF 0%, #DBE2EF 100%);
+    --gradient-secondary: linear-gradient(135deg, #DBE2EF 0%, #3F72AF 100%);
+    --gradient-hero: linear-gradient(180deg, #0f2441 0%, #1e3a5f 50%, #0f2441 100%);
+  }
 }
 
 @layer base {
@@ -275,12 +312,79 @@
     box-shadow: 0 8px 32px rgba(17, 45, 78, 0.05);
   }
 
+  .dark .glass-card {
+    background: linear-gradient(135deg, rgba(30, 58, 95, 0.7) 0%, rgba(17, 45, 78, 0.4) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Dark mode stars background */
+  .stars-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .dark .stars-bg {
+    opacity: 0.8;
+  }
+
+  .stars-bg::before, .stars-bg::after {
+    content: '';
+    position: absolute;
+    width: 200vw;
+    height: 200vh;
+    top: -50%;
+    left: -50%;
+    background-repeat: repeat;
+  }
+
+  .stars-bg::before {
+    background-image: 
+      radial-gradient(1px 1px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+      radial-gradient(1px 1px at 40px 70px, #ffffff, rgba(0,0,0,0)),
+      radial-gradient(1.5px 1.5px at 50px 160px, #ffffff, rgba(0,0,0,0)),
+      radial-gradient(2px 2px at 90px 40px, #ffffff, rgba(0,0,0,0));
+    background-size: 200px 200px;
+    animation: move-stars 100s linear infinite;
+  }
+
+  .stars-bg::after {
+    background-image: 
+      radial-gradient(2.5px 2.5px at 130px 80px, #ffffff, rgba(0,0,0,0)),
+      radial-gradient(1px 1px at 160px 120px, #ffffff, rgba(0,0,0,0)),
+      radial-gradient(1px 1px at 180px 180px, #ffffff, rgba(0,0,0,0));
+    background-size: 250px 250px;
+    animation: move-stars 150s linear infinite;
+    opacity: 0.7;
+  }
+
+  @keyframes move-stars {
+    0% { transform: rotate(0deg) translateY(0); }
+    100% { transform: rotate(3deg) translateY(-250px); }
+  }
+
   .gradient-headline {
     background: linear-gradient(135deg, #112D4E 0%, #3F72AF 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     color: transparent;
+    padding-bottom: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .dark .gradient-headline {
+    background: linear-gradient(135deg, #F9F7F7 0%, #DBE2EF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    padding-bottom: 0.2em;
+    margin-bottom: -0.2em;
   }
 
   .dot-grid {
@@ -288,8 +392,16 @@
     background-size: 24px 24px;
   }
 
+  .dark .dot-grid {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  }
+
   .section-divider {
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(63, 114, 175, 0.3), transparent);
+  }
+
+  .dark .section-divider {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
   }
 }

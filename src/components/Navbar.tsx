@@ -4,7 +4,7 @@ import { Menu, X, ChevronDown, Github, Linkedin, Twitter, Instagram } from 'luci
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
-
+import { ThemeToggle } from '@/components/ThemeToggle';
 import { services } from '@/data/services';
 
 export const Navbar = () => {
@@ -105,12 +105,12 @@ export const Navbar = () => {
 
               <Link to="/about" className={cn("px-3 py-2 text-sm font-medium transition-colors animated-underline", location.pathname === '/about' ? 'text-primary border-b-2 border-primary' : 'text-muted-foreground hover:text-foreground')}>About</Link>
               <Link to="/case-studies" className={cn("px-3 py-2 text-sm font-medium transition-colors animated-underline", location.pathname === '/case-studies' ? 'text-primary border-b-2 border-primary' : 'text-muted-foreground hover:text-foreground')}>Portfolio</Link>
-              {/* Blog omitted as per prompt 'Blog Teaser' section, no separate page mentioned yet */}
               <Link to="/contact" className={cn("px-3 py-2 text-sm font-medium transition-colors animated-underline", location.pathname === '/contact' ? 'text-primary border-b-2 border-primary' : 'text-muted-foreground hover:text-foreground')}>Contact</Link>
             </div>
 
-            {/* CTA Button */}
-            <div className="hidden md:flex items-center">
+            {/* CTA Button & Theme Toggle (Desktop) */}
+            <div className="hidden md:flex items-center gap-4">
+              <ThemeToggle />
               <Button
                 asChild
                 className="bg-primary text-primary-foreground shadow-[0_0_24px_rgba(59,130,246,0.35)] hover:shadow-[0_0_32px_rgba(59,130,246,0.5)] transition-all duration-300 rounded-full px-6"
@@ -119,16 +119,20 @@ export const Navbar = () => {
               </Button>
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              ref={menuButtonRef}
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg text-foreground hover:bg-muted transition-colors z-50 relative"
-              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-              aria-expanded={isMobileMenuOpen}
-            >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+            {/* Mobile Actions */}
+            <div className="flex md:hidden items-center gap-2">
+              <ThemeToggle />
+              {/* Mobile Menu Button */}
+              <button
+                ref={menuButtonRef}
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="p-2 rounded-lg text-foreground hover:bg-muted transition-colors z-50 relative"
+                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={isMobileMenuOpen}
+              >
+                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
           </div>
         </nav>
       </header>

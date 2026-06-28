@@ -27,7 +27,7 @@ export const TrustBar = () => {
         <StaggerContainer staggerChildren={0.15} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mb-10">
           {metrics.map((metric, idx) => (
             <StaggerItem key={idx} direction="up" className="flex flex-col items-center text-center">
-              <div className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-primary to-secondary mb-2">
+              <div className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-800 dark:from-cyan-400 dark:to-blue-500 mb-2 inline-block">
                 <CountUp end={metric.value} suffix={metric.suffix} decimals={metric.decimals} />
               </div>
               <div className="text-xs tracking-widest uppercase font-medium text-muted-foreground">
@@ -47,7 +47,7 @@ export const TrustBar = () => {
             {/* First set of logos */}
             <div className="flex items-center justify-around min-w-full gap-12 px-6">
               {logos.map((logo, idx) => (
-                <span key={`1-${idx}`} className="text-xl font-bold text-muted-foreground/40 uppercase tracking-wider">
+                <span key={`1-${idx}`} className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-400 to-slate-500 dark:from-blue-200 dark:to-cyan-200 uppercase tracking-wider opacity-80">
                   {logo}
                 </span>
               ))}
@@ -55,7 +55,7 @@ export const TrustBar = () => {
             {/* Duplicate set for infinite loop */}
             <div className="flex items-center justify-around min-w-full gap-12 px-6">
               {logos.map((logo, idx) => (
-                <span key={`2-${idx}`} className="text-xl font-bold text-muted-foreground/40 uppercase tracking-wider">
+                <span key={`2-${idx}`} className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-400 to-slate-500 dark:from-blue-200 dark:to-cyan-200 uppercase tracking-wider opacity-80">
                   {logo}
                 </span>
               ))}
