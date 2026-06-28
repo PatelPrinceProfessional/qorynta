@@ -29,11 +29,14 @@ const CyclingText = () => {
   }, []);
 
   return (
-    <span 
-      className={`inline-block bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-cyan-300 dark:to-blue-500 drop-shadow-sm transition-opacity duration-500 ${fade ? 'opacity-100' : 'opacity-0'}`}
-    >
-      {words[index]}
-    </span>
+    <>
+      <span className="md:hidden text-foreground">Scale Businesses</span>
+      <span 
+        className={`hidden md:inline-block bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-cyan-300 dark:to-blue-500 drop-shadow-sm transition-opacity duration-500 ${fade ? 'opacity-100' : 'opacity-0'}`}
+      >
+        {words[index]}
+      </span>
+    </>
   );
 };
 
@@ -119,7 +122,7 @@ export const HeroSection = () => {
           <div className="lg:col-span-7 flex flex-col text-center lg:text-left items-center lg:items-start relative min-w-0">
             
             {/* Massive Background Text Animation (Desktop Only) */}
-            <div className="hidden lg:flex absolute top-1/2 left-0 -translate-y-1/2 -translate-x-4 z-[-1] pointer-events-none select-none">
+            <div className="hidden lg:flex absolute top-[65%] left-0 -translate-y-1/2 -translate-x-4 z-[-2] pointer-events-none select-none">
               <BackgroundKeywords />
             </div>
             <div className="hero-eyebrow opacity-0 translate-y-3">
@@ -135,14 +138,15 @@ export const HeroSection = () => {
             </div>
 
             {/* Headline */}
-            <h1 ref={headlineRef} className="hero-headline w-full max-w-full text-4xl md:text-5xl lg:text-6xl xl:text-[64px] font-extrabold leading-[1.35] mb-6">
+            <h1 ref={headlineRef} className="hero-headline w-full max-w-full text-4xl md:text-5xl lg:text-[64px] xl:text-[72px] font-extrabold lg:leading-[1.15] mb-6">
               <span className="word inline-block opacity-0 translate-y-4 gradient-headline">Build</span>{" "}
               <span className="word inline-block opacity-0 translate-y-4 gradient-headline">Digital</span>{" "}
               <span className="word inline-block opacity-0 translate-y-4 gradient-headline">Products</span>
               <br className="hidden md:block" />
               <span className="word inline-block opacity-0 translate-y-4 text-foreground">That</span>{" "}
-              <span className="word inline-block opacity-0 translate-y-4 text-foreground">Scale</span>{" "}
-              <span className="word inline-block opacity-0 translate-y-4 text-foreground">Businesses</span>
+              <span className="word inline-block opacity-0 translate-y-4">
+                <CyclingText />
+              </span>
             </h1>
 
             {/* Subheading */}
@@ -213,38 +217,8 @@ export const HeroSection = () => {
           </div>
 
           {/* Right Visual (5 cols on lg) */}
-          <div className="hero-visual opacity-0 lg:col-span-5 relative w-full h-[400px] sm:h-[450px] lg:h-[500px] flex items-center justify-center max-w-full mt-8 lg:mt-0">
-            
-            {/* Main Floating Dashboard Card (Now AI Thought Stream) */}
-            <div ref={cardContainerRef} className="absolute z-20 w-[95%] sm:w-[85%] lg:w-full max-w-md perspective-1000">
-              <AIAgentThoughtStream />
-            </div>
-
-            {/* Code Snippet Card (Floating behind) */}
-            <div className="absolute right-0 sm:-right-4 lg:-right-12 bottom-0 sm:bottom-12 lg:bottom-24 z-10 w-44 sm:w-64 rounded-xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200 dark:border-slate-800 p-3 sm:p-4 shadow-[0_20px_50px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] animate-float" style={{ animationDelay: '1.5s', transform: 'translateZ(-50px)' }}>
-              <div className="flex gap-1.5 mb-2 sm:mb-3">
-                <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-red-500/80" />
-                <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-yellow-500/80" />
-                <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-green-500/80" />
-              </div>
-              <div className="font-mono text-[9px] sm:text-xs leading-loose">
-                <div className="text-slate-500 dark:text-secondary">const <span className="text-slate-900 dark:text-white">project</span> = <span className="text-primary dark:text-accent">&#123;</span></div>
-                <div className="pl-3 sm:pl-4 text-primary">client: <span className="text-green-400">"Enterprise"</span>,</div>
-                <div className="pl-3 sm:pl-4 text-primary">status: <span className="text-green-400">"Deployed"</span>,</div>
-                <div className="pl-3 sm:pl-4 text-primary">performance: <span className="text-[#F59E0B]">99.9</span></div>
-                <div className="text-primary dark:text-accent">&#125;;</div>
-              </div>
-            </div>
-
-            {/* Notification Toast */}
-            <div className="absolute left-0 sm:-left-4 lg:-left-8 top-0 sm:top-12 lg:top-20 z-30 flex items-center gap-2 sm:gap-3 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200 dark:border-slate-800 rounded-full p-1.5 sm:p-2 pr-3 sm:pr-4 shadow-[0_20px_50px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] animate-float" style={{ animationDelay: '2.5s' }}>
-              <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-green-500/10 dark:bg-green-500/20 flex items-center justify-center shrink-0">
-                <svg className="w-3 h-3 sm:w-4 sm:h-4 text-green-600 dark:text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <span className="text-[10px] sm:text-xs font-semibold text-slate-900 dark:text-white whitespace-nowrap">New project started</span>
-            </div>
+          <div className="hero-visual opacity-0 lg:col-span-5 relative w-full h-[400px] sm:h-[450px] lg:h-[500px] max-w-full mt-8 lg:mt-0 pointer-events-none">
+            <AIAgentThoughtStream />
           </div>
         </div>
       </div>

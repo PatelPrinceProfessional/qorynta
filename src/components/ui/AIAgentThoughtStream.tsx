@@ -110,22 +110,18 @@ export const AIAgentThoughtStream = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-full min-h-[220px] rounded-2xl overflow-hidden glass-card bg-transparent dark:bg-transparent border border-cyan-500/10 shadow-[0_0_30px_rgba(6,182,212,0.05)]">
-      {/* Background soft glow */}
-      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-blue-500/5 dark:from-cyan-500/10 dark:to-blue-500/10" />
-      
+    <div className="absolute inset-0 z-[-1] pointer-events-none w-full h-full overflow-visible">
       {/* Canvas for particles */}
       <canvas 
         ref={canvasRef} 
-        className="absolute inset-0 w-full h-full opacity-60 mix-blend-screen"
-        style={{ pointerEvents: 'none' }}
+        className="absolute inset-0 w-full h-full mix-blend-screen opacity-80"
       />
 
       {/* Floating Code Snippets */}
       {activeSnippets.map((snippet) => (
         <div
           key={snippet.id}
-          className="absolute font-mono text-[10px] sm:text-xs text-cyan-600 dark:text-cyan-400 opacity-0 animate-fade-in-up whitespace-nowrap drop-shadow-[0_0_8px_rgba(6,182,212,0.5)]"
+          className="absolute font-mono text-[10px] sm:text-xs text-cyan-500/80 dark:text-cyan-400 opacity-0 animate-fade-in-up whitespace-nowrap drop-shadow-[0_0_8px_rgba(6,182,212,0.5)]"
           style={{
             left: `${snippet.x}%`,
             top: `${snippet.y}%`,
@@ -137,9 +133,6 @@ export const AIAgentThoughtStream = () => {
           {snippet.text}
         </div>
       ))}
-      
-      {/* Abstract scanline overlay */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'linear-gradient(transparent 50%, rgba(0, 0, 0, 1) 50%)', backgroundSize: '100% 4px' }} />
     </div>
   );
 };
