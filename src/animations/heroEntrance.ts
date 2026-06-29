@@ -39,8 +39,9 @@ export function initHeroScrollExit() {
     { filter: 'blur(0px)', opacity: 1, y: 0 },
     {
       scrollTrigger: {
-        start: 0,
-        end: () => window.innerHeight,
+        trigger: '#content-wrapper',
+        start: 'top bottom',
+        end: 'top top',
         scrub: true,
       },
       y: -50,

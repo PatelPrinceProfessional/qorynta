@@ -102,7 +102,7 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="hero-section sticky top-0 z-0 min-h-screen flex items-center justify-center overflow-hidden bg-background">
+    <section className="hero-section relative lg:sticky lg:top-0 z-0 min-h-screen flex items-center justify-center overflow-hidden bg-background">
       {/* Background Radial Glow, Dot Grid, and Stars */}
       <div className="absolute inset-0 z-0">
         <div className="stars-bg" />

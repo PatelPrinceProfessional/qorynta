@@ -29,7 +29,7 @@ const Index = () => {
         <HeroSection />
         
         {/* Content wrapper to slide over sticky Hero */}
-        <div className="relative z-10 bg-background shadow-[0_-20px_40px_rgba(0,0,0,0.1)]">
+        <div id="content-wrapper" className="relative z-10 bg-background shadow-[0_-20px_40px_rgba(0,0,0,0.1)]">
           <TrustBar />
           <ServicesSection />
           <WhyQorynta />
