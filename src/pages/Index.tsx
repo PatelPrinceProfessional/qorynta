@@ -10,6 +10,7 @@ import { TechStackSection } from '@/components/home/TechStackSection';
 import { TestimonialsSection } from '@/components/home/TestimonialsSection';
 import { BlogTeaser } from '@/components/home/BlogTeaser';
 import { CTABanner } from '@/components/home/CTABanner';
+import { AmbientGlow } from '@/components/ui/AmbientGlow';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
@@ -23,18 +24,23 @@ const Index = () => {
       </Helmet>
 
       <Navbar />
-      <main className="flex min-h-screen flex-col bg-background">
+      <AmbientGlow />
+      <main className="flex min-h-screen flex-col">
         <HeroSection />
-        <TrustBar />
-        <ServicesSection />
-        <WhyQorynta />
-        <ProcessSection />
+        
+        {/* Content wrapper to slide over sticky Hero */}
+        <div className="relative z-10 bg-background shadow-[0_-20px_40px_rgba(0,0,0,0.1)]">
+          <TrustBar />
+          <ServicesSection />
+          <WhyQorynta />
+          <ProcessSection />
 
-        <CaseStudySection />
-        <TechStackSection />
-        <TestimonialsSection />
-        <BlogTeaser />
-        <CTABanner />
+          <CaseStudySection />
+          <TechStackSection />
+          <TestimonialsSection />
+          <BlogTeaser />
+          <CTABanner />
+        </div>
       </main>
       <Footer />
       <WhatsAppButton />

@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Globe, Star, Zap } from 'lucide-react';
+import { ArrowRight, Star, Zap, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { SectionLabel } from '@/components/ui/SectionLabel';
 import { GradientText } from '@/components/ui/GradientText';
 import { GlassCard } from '@/components/ui/GlassCard';
-import { AIAgentThoughtStream } from '@/components/ui/AIAgentThoughtStream';
+import { CapabilityHub } from '@/components/ui/CapabilityHub';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { initHeroEntrance, initHeroScrollExit } from '@/animations/heroEntrance';
@@ -29,14 +29,11 @@ const CyclingText = () => {
   }, []);
 
   return (
-    <>
-      <span className="md:hidden text-foreground">Scale Businesses</span>
-      <span 
-        className={`hidden md:inline-block bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-cyan-300 dark:to-blue-500 drop-shadow-sm transition-opacity duration-500 ${fade ? 'opacity-100' : 'opacity-0'}`}
-      >
-        {words[index]}
-      </span>
-    </>
+    <span 
+      className={`inline-block bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-cyan-300 dark:to-blue-500 drop-shadow-sm transition-opacity duration-500 ${fade ? 'opacity-100' : 'opacity-0'}`}
+    >
+      {words[index]}
+    </span>
   );
 };
 
@@ -56,8 +53,8 @@ const BackgroundKeywords = () => {
       {words.map((word, i) => (
         <span 
           key={word}
-          className={`absolute left-0 text-[160px] lg:text-[220px] xl:text-[280px] font-black tracking-tighter text-foreground transition-all duration-1000 ease-in-out whitespace-nowrap ${
-            i === index ? 'opacity-15 translate-x-0' : 'opacity-0 -translate-x-12'
+          className={`absolute inset-x-0 lg:inset-x-auto lg:left-0 text-center lg:text-left text-[18vw] sm:text-[100px] md:text-[120px] lg:text-[220px] xl:text-[280px] font-black tracking-tighter text-foreground transition-all duration-1000 ease-in-out whitespace-nowrap ${
+            i === index ? 'opacity-[0.10] translate-x-0 translate-y-0' : 'opacity-0 translate-y-4 lg:translate-y-0 lg:-translate-x-12'
           }`}
           style={{ lineHeight: 0.75 }}
         >
@@ -105,7 +102,7 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="hero-section relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
+    <section className="hero-section sticky top-0 z-0 min-h-screen flex items-center justify-center overflow-hidden bg-background">
       {/* Background Radial Glow, Dot Grid, and Stars */}
       <div className="absolute inset-0 z-0">
         <div className="stars-bg" />
@@ -115,14 +112,14 @@ export const HeroSection = () => {
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 animate-pulse-slow pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-accent/20 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/3 animate-pulse-slow pointer-events-none" style={{ animationDelay: '2s' }} />
       
-      <div className="hero-content w-full container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 relative z-10">
+      <div className="hero-content w-full container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 relative z-10" style={{ willChange: 'transform, filter, opacity' }}>
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
           {/* Left Content (7 cols on lg) */}
           <div className="lg:col-span-7 flex flex-col text-center lg:text-left items-center lg:items-start relative min-w-0">
             
-            {/* Massive Background Text Animation (Desktop Only) */}
-            <div className="hidden lg:flex absolute top-[65%] left-0 -translate-y-1/2 -translate-x-4 z-[-2] pointer-events-none select-none">
+            {/* Massive Background Text Animation */}
+            <div className="flex absolute top-[38%] sm:top-[40%] md:top-[45%] lg:top-[65%] left-0 right-0 lg:right-auto -translate-y-1/2 lg:-translate-x-4 z-[-2] pointer-events-none select-none w-full lg:w-auto">
               <BackgroundKeywords />
             </div>
             <div className="hero-eyebrow opacity-0 translate-y-3">
@@ -149,12 +146,12 @@ export const HeroSection = () => {
               </span>
             </h1>
 
-            {/* Subheading */}
-            <p className="hero-subhead opacity-0 translate-y-3 text-base md:text-lg text-muted-foreground mb-8 max-w-xl leading-relaxed">
+            {/* Invisible spacer to perfectly preserve layout spacing and prevent CTAs from shifting up */}
+            <div className="invisible pointer-events-none select-none text-base md:text-lg mb-8 max-w-xl leading-relaxed" aria-hidden="true">
               From mobile apps to enterprise web platforms — Qorynta delivers 
               production-grade digital solutions for Indian and global businesses 
               at competitive rates.
-            </p>
+            </div>
 
             {/* CTAs */}
             <div className="hero-cta opacity-0 translate-y-2 flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-10">
@@ -218,7 +215,7 @@ export const HeroSection = () => {
 
           {/* Right Visual (5 cols on lg) */}
           <div className="hero-visual opacity-0 lg:col-span-5 relative w-full h-[400px] sm:h-[450px] lg:h-[500px] max-w-full mt-8 lg:mt-0 pointer-events-none">
-            <AIAgentThoughtStream />
+            <CapabilityHub />
           </div>
         </div>
       </div>

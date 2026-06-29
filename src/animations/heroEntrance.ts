@@ -35,15 +35,18 @@ export function initHeroEntrance() {
 }
 
 export function initHeroScrollExit() {
-  gsap.to('.hero-content', {
-    scrollTrigger: {
-      trigger: '.hero-section',
-      start: 'top top',
-      end: 'bottom 60%',
-      scrub: true,
-    },
-    y: -20,
-    opacity: 0,
-    ease: 'none',
-  });
+  gsap.fromTo('.hero-content', 
+    { filter: 'blur(0px)', opacity: 1, y: 0 },
+    {
+      scrollTrigger: {
+        start: 0,
+        end: () => window.innerHeight,
+        scrub: true,
+      },
+      y: -50,
+      opacity: 0.2,
+      filter: 'blur(12px)',
+      ease: 'power1.inOut',
+    }
+  );
 }

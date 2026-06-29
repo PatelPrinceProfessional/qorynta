@@ -15,11 +15,27 @@ export const Navbar = () => {
   const drawerRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
+  const [scrollProgress, setScrollProgress] = useState(0);
+
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollTop = window.scrollY;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+          
+          setScrollProgress(scrollPercent);
+          setIsScrolled(scrollTop > 50);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -49,12 +65,17 @@ export const Navbar = () => {
     <>
       <header
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+          'sticky top-0 left-0 right-0 z-50 transition-colors duration-300',
           isScrolled
-            ? 'bg-background/95 backdrop-blur-md border-b border-border shadow-sm'
+            ? 'bg-background/60 backdrop-blur-xl border-b border-border/40 shadow-sm'
             : 'bg-transparent'
         )}
       >
+        {/* Glowing Scroll Progress Bar */}
+        <div 
+          className="absolute top-0 left-0 h-[2px] bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.8)] z-50 transition-all duration-150 ease-out"
+          style={{ width: `${scrollProgress}%` }}
+        />
         <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}

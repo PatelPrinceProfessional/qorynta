@@ -30,8 +30,8 @@ export const BlogTeaser = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <ScrollReveal className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16 gap-6">
-          <div>
+        <ScrollReveal className="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 md:mb-16 gap-6 text-center md:text-left">
+          <div className="flex flex-col items-center md:items-start w-full">
             <SectionLabel text="INSIGHTS" />
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
               Latest from the Lab
