@@ -61,7 +61,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider defaultTheme="dark" storageKey="qorynta-theme" attribute="class">
+    <ThemeProvider defaultTheme="light" storageKey="qorynta-theme" attribute="class">
       <TooltipProvider>
         <Toaster />
         <Sonner />

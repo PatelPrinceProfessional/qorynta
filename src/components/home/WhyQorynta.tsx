@@ -1,6 +1,5 @@
 import { Globe2, DollarSign, Zap, Shield, Users, Trophy } from 'lucide-react';
 import { SectionLabel } from '@/components/ui/SectionLabel';
-import { GlassCard } from '@/components/ui/GlassCard';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { StaggerContainer, StaggerItem } from '@/components/ui/StaggerContainer';
 
@@ -39,9 +38,7 @@ const differentiators = [
 
 export const WhyQorynta = () => {
   return (
-    <section className="py-16 md:py-20 relative overflow-hidden bg-background">
-      {/* Background Gradient */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/5 via-background to-background" />
+    <section className="py-16 md:py-24 relative overflow-hidden bg-background">
       <div className="section-divider absolute top-0 left-0 w-full" />
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -49,7 +46,7 @@ export const WhyQorynta = () => {
         {/* Header */}
         <ScrollReveal className="text-center max-w-4xl mx-auto mb-16 md:mb-20">
           <SectionLabel text="WHY QORYNTA" />
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mt-6">
             Agency Quality. Startup Speed.<br className="hidden md:block" /> Startup-Friendly Price.
           </h2>
         </ScrollReveal>
@@ -57,19 +54,41 @@ export const WhyQorynta = () => {
         {/* Differentiators Grid */}
         <StaggerContainer staggerChildren={0.15} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {differentiators.map((item, index) => (
-            <StaggerItem key={index} direction="up">
-              <GlassCard 
-                hover 
-                className="flex flex-col h-full"
+            <StaggerItem key={index} direction="up" className="h-full">
+              <div 
+                className="relative flex flex-col h-full rounded-2xl p-6 md:p-8 group cursor-pointer transition-all duration-500 hover:-translate-y-[5px] overflow-hidden"
+                style={{
+                  backgroundColor: '#0A192F', // Deep Navy
+                  boxShadow: '0 10px 30px -15px rgba(2, 12, 27, 0.7)'
+                }}
               >
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-secondary/10 border border-secondary/20 flex items-center justify-center flex-shrink-0">
-                    <item.icon className="w-6 h-6 text-secondary drop-shadow-[0_0_8px_rgba(6,182,212,0.5)]" />
-                  </div>
-                  <h3 className="text-lg font-bold text-foreground leading-tight">{item.title}</h3>
+                {/* Blueprint Pattern Background */}
+                <div 
+                  className="absolute inset-0 pointer-events-none opacity-20"
+                  style={{
+                    backgroundImage: `linear-gradient(rgba(100, 255, 218, 0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(100, 255, 218, 0.2) 1px, transparent 1px)`,
+                    backgroundSize: '24px 24px'
+                  }}
+                />
+
+                {/* Large Background Icon (Partially visible) */}
+                <div className="absolute -top-6 -right-6 z-0 opacity-80 group-hover:scale-110 transition-transform duration-500">
+                  <item.icon size={160} strokeWidth={1.5} color="#64FFDA" className="drop-shadow-[0_0_15px_rgba(100,255,218,0.4)]" />
                 </div>
-                <p className="text-muted-foreground text-sm leading-relaxed">{item.description}</p>
-              </GlassCard>
+
+                {/* Frosted Glass Pane over top half */}
+                <div className="absolute top-0 left-0 w-full h-[55%] bg-[#0A192F]/40 backdrop-blur-[10px] group-hover:backdrop-blur-[4px] transition-all duration-500 z-10 border-b border-[#64FFDA]/10" />
+
+                {/* Card Content */}
+                <div className="relative z-20 flex flex-col h-full mt-16">
+                  <h3 className="text-xl font-bold leading-tight mb-4" style={{ color: '#E6FFFA' }}>
+                    {item.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed flex-grow" style={{ color: '#8892B0' }}>
+                    {item.description}
+                  </p>
+                </div>
+              </div>
             </StaggerItem>
           ))}
         </StaggerContainer>

@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet';
 import { HeroSection } from '@/components/home/HeroSection';
 import { TrustBar } from '@/components/home/TrustBar';
-import { ServicesSection } from '@/components/home/ServicesSection';
+import { HomeServicesSection } from '@/components/home/HomeServicesSection';
 import { WhyQorynta } from '@/components/home/WhyQorynta';
 import { ProcessSection } from '@/components/home/ProcessSection';
 
@@ -31,7 +31,7 @@ const Index = () => {
         {/* Content wrapper to slide over sticky Hero */}
         <div id="content-wrapper" className="relative z-10 bg-background shadow-[0_-20px_40px_rgba(0,0,0,0.1)]">
           <TrustBar />
-          <ServicesSection />
+          <HomeServicesSection />
           <WhyQorynta />
           <ProcessSection />
 

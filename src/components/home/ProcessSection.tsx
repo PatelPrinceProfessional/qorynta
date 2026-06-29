@@ -1,8 +1,11 @@
+import { useEffect, useRef } from 'react';
 import { Mic, ClipboardList, Settings, Rocket } from 'lucide-react';
 import { SectionLabel } from '@/components/ui/SectionLabel';
-import { cn } from '@/lib/utils';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
-import { StaggerContainer, StaggerItem } from '@/components/ui/StaggerContainer';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const steps = [
   {
@@ -28,10 +31,89 @@ const steps = [
 ];
 
 export const ProcessSection = () => {
+  const containerRef = useRef<HTMLElement>(null);
+  const pathRef = useRef<SVGPathElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      
+      // Fix for mobile Safari vanishing SVG bug: dynamically calculate the exact SVG length
+      if (pathRef.current) {
+        const length = pathRef.current.getTotalLength() || 1500;
+        
+        // Initialize path to be hidden
+        gsap.set(pathRef.current, {
+          strokeDasharray: length,
+          strokeDashoffset: length,
+        });
+
+        // 1. Liquid Path Animation
+        gsap.to(pathRef.current, {
+          strokeDashoffset: 0,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.timeline-container',
+            start: 'top 50%',
+            end: 'bottom 50%',
+            scrub: true,
+          }
+        });
+      }
+
+      // 2. Card and Node Unlocking
+      const cards = gsap.utils.toArray('.process-step-wrapper');
+      cards.forEach((card: any) => {
+        const node = card.querySelector('.process-node');
+        const content = card.querySelector('.process-content');
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 70%', // Trigger slightly earlier on mobile for better UX
+            toggleActions: 'play none none reverse',
+          }
+        });
+
+        // Content fade & scale
+        tl.fromTo(content, 
+          { opacity: 0.3, scale: 0.95 },
+          { opacity: 1, scale: 1, duration: 0.5, ease: 'power2.out' }
+        );
+
+        // Node pulse & glow
+        tl.to(node, {
+          scale: 1.2,
+          boxShadow: '0 0 20px 5px rgba(59,130,246,0.5)',
+          backgroundColor: 'rgba(59,130,246,0.2)',
+          borderColor: '#3B82F6',
+          duration: 0.4,
+          yoyo: true,
+          repeat: 1
+        }, '<');
+        
+        // Settle node state
+        tl.to(node, {
+          scale: 1,
+          backgroundColor: 'rgba(59,130,246,0.1)',
+          borderColor: '#3B82F6',
+          boxShadow: '0 0 10px 2px rgba(59,130,246,0.2)',
+          duration: 0.2
+        });
+      });
+    }, containerRef);
+
+    // Refresh ScrollTrigger to ensure correct measurements on mobile layouts
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 100);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="py-12 md:py-16 relative overflow-hidden bg-background">
+    <section ref={containerRef} className="py-16 md:py-24 relative overflow-hidden bg-background">
       {/* Premium subtle grid background */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] z-0" />
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
@@ -49,7 +131,6 @@ export const ProcessSection = () => {
                 We've refined our delivery process to eliminate surprises, ensure complete transparency, and ship high-quality products on schedule.
               </p>
               
-              {/* Decorative element to show design sense */}
               <div className="hidden lg:flex items-center gap-4">
                 <div className="relative flex h-14 w-14 items-center justify-center rounded-full border border-primary/30 bg-primary/5">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary/20 opacity-75"></span>
@@ -61,34 +142,68 @@ export const ProcessSection = () => {
           </ScrollReveal>
 
           {/* Right Column: Timeline Steps */}
-          <div className="lg:w-2/3 relative">
-            {/* The continuous vertical line */}
-            <div className="absolute top-8 bottom-0 left-[21px] md:left-[27px] w-[2px] bg-gradient-to-b from-primary via-primary/20 to-transparent" />
+          <div className="lg:w-2/3 relative timeline-container py-8">
+            {/* The SVG Infinite Path (Serpentine Motion) */}
+            <div className="absolute top-0 bottom-0 left-[20px] md:left-[24px] w-[80px] -translate-x-1/2 z-0">
+              <svg 
+                className="w-full h-full" 
+                viewBox="0 0 80 1000" 
+                preserveAspectRatio="none"
+                style={{ transform: 'translateZ(0)' }} // Force GPU layer to fix Safari bug
+              >
+                <path 
+                  d="M40,0 C80,150 0,250 40,333 C80,500 0,580 40,666 C80,830 0,910 40,1000" 
+                  stroke="rgba(255,255,255,0.05)" 
+                  strokeWidth="2" 
+                  fill="none" 
+                  vectorEffect="non-scaling-stroke" 
+                />
+                <path 
+                  ref={pathRef}
+                  className="liquid-path"
+                  d="M40,0 C80,150 0,250 40,333 C80,500 0,580 40,666 C80,830 0,910 40,1000" 
+                  stroke="url(#path-gradient)" 
+                  strokeWidth="2" 
+                  fill="none" 
+                  vectorEffect="non-scaling-stroke" 
+                  style={{ willChange: 'stroke-dashoffset' }}
+                />
+                <defs>
+                  <linearGradient id="path-gradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#3B82F6" /> {/* Deep Blue */}
+                    <stop offset="100%" stopColor="#A855F7" /> {/* Soft Purple */}
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
 
-            <StaggerContainer staggerChildren={0.2} className="space-y-6 md:space-y-8">
+            <div className="space-y-16 md:space-y-24 relative z-10">
               {steps.map((step, index) => (
-                <StaggerItem key={index} direction="up" className="relative pl-12 md:pl-16 group">
+                <div key={index} className="process-step-wrapper relative pl-16 md:pl-24">
                   
-                  {/* The Timeline Node / Glowing Dot */}
-                  <div className="absolute left-0 md:left-1 top-6 w-10 h-10 md:w-12 md:h-12 rounded-full bg-background border-[4px] border-background flex items-center justify-center z-10 group-hover:scale-110 transition-transform duration-500 shadow-[0_0_0_1px_rgba(59,130,246,0.3)] group-hover:shadow-[0_0_0_2px_rgba(59,130,246,0.6)]">
-                    <div className="w-full h-full rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-base md:text-lg">
+                  {/* The Timeline Node */}
+                  <div className="process-node absolute left-0 top-6 w-10 h-10 md:w-12 md:h-12 rounded-full bg-background border-[3px] border-muted-foreground/30 flex items-center justify-center z-10 transition-colors duration-300">
+                    <div className="w-full h-full rounded-full bg-transparent flex items-center justify-center text-foreground font-bold text-base md:text-lg">
                       0{index + 1}
                     </div>
                   </div>
 
                   {/* Content Card */}
-                  <div className="bg-card hover:bg-muted/50 border border-border/60 hover:border-primary/40 rounded-[1.5rem] p-6 md:p-8 transition-all duration-500 shadow-sm hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1">
-                    <div className="flex flex-col md:flex-row gap-5 md:gap-6 items-start">
+                  <div 
+                    className="process-content bg-card/90 backdrop-blur-md border border-border/50 rounded-3xl p-8 md:p-10 shadow-lg"
+                    style={{ opacity: 0.3, transform: 'scale(0.95)', willChange: 'transform, opacity' }}
+                  >
+                    <div className="flex flex-col md:flex-row gap-6 items-start">
                       
                       {/* Icon */}
-                      <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center shrink-0 border border-primary/10 group-hover:bg-primary group-hover:border-primary transition-all duration-500 shadow-inner">
-                        <step.icon className="w-6 h-6 md:w-7 md:h-7 text-primary group-hover:text-primary-foreground transition-colors duration-500" />
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center shrink-0 border border-primary/20 shadow-inner">
+                        <step.icon className="w-7 h-7 text-primary" />
                       </div>
 
                       {/* Text */}
                       <div className="flex-1">
-                        <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2">{step.title}</h3>
-                        <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                        <h3 className="text-2xl font-bold text-foreground mb-3">{step.title}</h3>
+                        <p className="text-base text-muted-foreground leading-relaxed">
                           {step.description}
                         </p>
                       </div>
@@ -96,9 +211,9 @@ export const ProcessSection = () => {
                     </div>
                   </div>
 
-                </StaggerItem>
+                </div>
               ))}
-            </StaggerContainer>
+            </div>
           </div>
           
         </div>
