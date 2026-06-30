@@ -34,8 +34,8 @@ const About = () => {
   return (
     <>
       <Helmet>
-        <title>About Us | Qorynta</title>
-        <meta name="description" content="Learn about Qorynta's mission, values, and the team building world-class digital products for global businesses." />
+        <title>About Us | Qorynta Services</title>
+        <meta name="description" content="Learn about Qorynta Services' mission, values, and the team building world-class digital products for global businesses." />
       </Helmet>
 
       <Navbar />
@@ -51,7 +51,7 @@ const About = () => {
               Engineering the Future of <br className="hidden md:block" /> Digital Business
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-              Qorynta was founded with a simple mission: to bridge the gap between Indian engineering talent and global business needs. We deliver Silicon Valley-grade software at accessible prices.
+              Qorynta Services was founded with a simple mission: to bridge the gap between Indian engineering talent and global business needs. We deliver Silicon Valley-grade software at accessible prices.
             </p>
           </div>
         </section>

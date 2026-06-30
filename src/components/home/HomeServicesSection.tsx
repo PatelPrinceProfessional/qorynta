@@ -50,7 +50,7 @@ export const HomeServicesSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-20 relative overflow-hidden bg-background">
+    <section ref={sectionRef} className="py-16 md:py-20 relative overflow-hidden bg-transparent">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}

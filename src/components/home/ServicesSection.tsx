@@ -10,7 +10,7 @@ import { StaggerContainer, StaggerItem } from '@/components/ui/StaggerContainer'
 export const ServicesSection = () => {
 
   return (
-    <section className="py-16 md:py-20 relative overflow-hidden bg-background">
+    <section className="py-16 md:py-20 relative overflow-hidden bg-transparent">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}

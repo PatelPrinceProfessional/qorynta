@@ -8,19 +8,19 @@ const testimonials = [
   {
     name: 'Sarah Jenkins',
     role: 'Product Director, FinTech Solutions UK',
-    content: "Qorynta rebuilt our core ML infrastructure from the ground up. Their understanding of FinTech compliance and performance optimization is unmatched. Delivered 2 weeks ahead of schedule.",
+    content: "Qorynta Services rebuilt our core ML infrastructure from the ground up. Their understanding of FinTech compliance and performance optimization is unmatched. Delivered 2 weeks ahead of schedule.",
     rating: 5,
   },
   {
     name: 'Rahul Sharma',
     role: 'Founder, RetailPro India',
-    content: "We hired Qorynta for our cross-platform mobile app. The UX is incredibly smooth, and the integration with our legacy ERP was flawless. A highly professional team.",
+    content: "We hired Qorynta Services for our cross-platform mobile app. The UX is incredibly smooth, and the integration with our legacy ERP was flawless. A highly professional team.",
     rating: 5,
   },
   {
     name: 'Marcus Chen',
     role: 'CTO, DataTech Analytics USA',
-    content: "Finding an agency that truly understands both complex backend architecture and modern frontend design is rare. Qorynta excels at both. Highly recommended for enterprise projects.",
+    content: "Finding an agency that truly understands both complex backend architecture and modern frontend design is rare. Qorynta Services excels at both. Highly recommended for enterprise projects.",
     rating: 5,
   },
 ];

@@ -19,7 +19,7 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Qorynta | Web & Mobile App Development Company India</title>
+        <title>Qorynta Services | Web & Mobile App Development Company India</title>
         <meta name="description" content="Production-grade digital solutions for Indian and global businesses. Custom web development, mobile apps, AI & Machine Learning, and Cloud DevOps." />
       </Helmet>
 
@@ -29,7 +29,7 @@ const Index = () => {
         <HeroSection />
         
         {/* Content wrapper to slide over sticky Hero */}
-        <div id="content-wrapper" className="relative z-10 bg-background shadow-[0_-20px_40px_rgba(0,0,0,0.1)]">
+        <div id="content-wrapper" className="relative z-10 bg-background shadow-[0_-20px_40px_rgba(0,0,0,0.1)] diagonal-geometric-bg flex flex-col gap-8 md:gap-16 pb-20">
           <TrustBar />
           <HomeServicesSection />
           <WhyQorynta />

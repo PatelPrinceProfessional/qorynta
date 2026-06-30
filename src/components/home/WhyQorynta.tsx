@@ -1,97 +1,127 @@
-import { Globe2, DollarSign, Zap, Shield, Users, Trophy } from 'lucide-react';
-import { SectionLabel } from '@/components/ui/SectionLabel';
+import { ArrowRight, Briefcase, Headset } from 'lucide-react';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
-import { StaggerContainer, StaggerItem } from '@/components/ui/StaggerContainer';
-
-const differentiators = [
-  {
-    icon: Globe2,
-    title: 'Global-Standard Delivery',
-    description: "We follow Western project management standards: daily standups, GitHub PRs, Slack/email comms, and structured delivery milestones. You'll never feel the time zone difference.",
-  },
-  {
-    icon: DollarSign,
-    title: 'Transparent Pricing',
-    description: 'No surprises. Fixed-scope quotes or flexible hourly engagements. Our rates start at $25/hr — delivering $150/hr quality at a fraction of agency cost.',
-  },
-  {
-    icon: Zap,
-    title: 'Fast Turnaround',
-    description: 'MVP in 2–4 weeks. Sprint-based delivery. We move at startup velocity because we know time-to-market is your competitive edge.',
-  },
-  {
-    icon: Shield,
-    title: 'IP Security & NDA First',
-    description: 'Every engagement begins with a signed NDA. Your code, designs, and data remain exclusively yours. We operate under strict confidentiality.',
-  },
-  {
-    icon: Users,
-    title: 'Dedicated Team Model',
-    description: 'You get a named project manager, lead developer, and QA engineer — not an anonymous support ticket queue.',
-  },
-  {
-    icon: Trophy,
-    title: 'End-to-End Ownership',
-    description: 'From requirement gathering to deployment and post-launch support — one team handles it all. No hand-offs, no gaps, no blame game.',
-  },
-];
 
 export const WhyQorynta = () => {
   return (
-    <section className="py-16 md:py-24 relative overflow-hidden bg-background">
-      <div className="section-divider absolute top-0 left-0 w-full" />
-      
+    <section className="py-16 md:py-24 relative overflow-hidden bg-transparent group">
+      {/* Decorative dot grid top right */}
+      <div 
+        className="absolute top-12 right-12 w-32 h-32 pointer-events-none opacity-10"
+        style={{
+          backgroundImage: 'radial-gradient(circle, #000 1.5px, transparent 1.5px)',
+          backgroundSize: '16px 16px'
+        }}
+      />
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Header */}
-        <ScrollReveal className="text-center max-w-4xl mx-auto mb-16 md:mb-20">
-          <SectionLabel text="WHY QORYNTA" />
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mt-6">
-            Agency Quality. Startup Speed.<br className="hidden md:block" /> Startup-Friendly Price.
-          </h2>
-        </ScrollReveal>
-
-        {/* Differentiators Grid */}
-        <StaggerContainer staggerChildren={0.15} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {differentiators.map((item, index) => (
-            <StaggerItem key={index} direction="up" className="h-full">
-              <div 
-                className="relative flex flex-col h-full rounded-2xl p-6 md:p-8 group cursor-pointer transition-all duration-500 hover:-translate-y-[5px] overflow-hidden"
-                style={{
-                  backgroundColor: '#0A192F', // Deep Navy
-                  boxShadow: '0 10px 30px -15px rgba(2, 12, 27, 0.7)'
-                }}
-              >
-                {/* Blueprint Pattern Background */}
-                <div 
-                  className="absolute inset-0 pointer-events-none opacity-20"
-                  style={{
-                    backgroundImage: `linear-gradient(rgba(100, 255, 218, 0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(100, 255, 218, 0.2) 1px, transparent 1px)`,
-                    backgroundSize: '24px 24px'
-                  }}
-                />
-
-                {/* Large Background Icon (Partially visible) */}
-                <div className="absolute -top-6 -right-6 z-0 opacity-80 group-hover:scale-110 transition-transform duration-500">
-                  <item.icon size={160} strokeWidth={1.5} color="#64FFDA" className="drop-shadow-[0_0_15px_rgba(100,255,218,0.4)]" />
-                </div>
-
-                {/* Frosted Glass Pane over top half */}
-                <div className="absolute top-0 left-0 w-full h-[55%] bg-[#0A192F]/40 backdrop-blur-[10px] group-hover:backdrop-blur-[4px] transition-all duration-500 z-10 border-b border-[#64FFDA]/10" />
-
-                {/* Card Content */}
-                <div className="relative z-20 flex flex-col h-full mt-16">
-                  <h3 className="text-xl font-bold leading-tight mb-4" style={{ color: '#E6FFFA' }}>
-                    {item.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed flex-grow" style={{ color: '#8892B0' }}>
-                    {item.description}
-                  </p>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center">
+          
+          {/* Left-Side Asset Cluster */}
+          <div className="relative h-[400px] sm:h-[500px] lg:h-[600px] w-full flex items-center justify-center">
+            {/* The wrapper that scales on section hover */}
+            <div 
+              className="relative w-full max-w-[400px] mx-auto group-hover:scale-[1.06]" 
+              style={{ 
+                transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)' 
+              }}
+            >
+              
+              {/* Left Secondary Phone */}
+              <div className="absolute top-1/2 -translate-y-1/2 left-0 -translate-x-8 sm:-translate-x-16 w-[160px] sm:w-[200px] h-[320px] sm:h-[400px] bg-gray-50 rounded-[2rem] border-[6px] border-gray-200 shadow-xl overflow-hidden -rotate-6 opacity-90 z-0">
+                <div className="w-full h-full bg-gradient-to-br from-blue-50 to-indigo-50 p-4">
+                  <div className="w-full h-20 bg-white/80 rounded-xl shadow-sm mb-3"></div>
+                  <div className="w-full h-12 bg-white/80 rounded-xl shadow-sm mb-3"></div>
+                  <div className="w-full h-12 bg-white/80 rounded-xl shadow-sm"></div>
                 </div>
               </div>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
+
+              {/* Right Secondary Phone */}
+              <div className="absolute top-1/2 -translate-y-1/2 right-0 translate-x-8 sm:translate-x-16 w-[160px] sm:w-[200px] h-[320px] sm:h-[400px] bg-gray-50 rounded-[2rem] border-[6px] border-gray-200 shadow-xl overflow-hidden rotate-6 opacity-90 z-0">
+                <div className="w-full h-full bg-gradient-to-br from-teal-50 to-emerald-50 p-4">
+                   <div className="w-full h-14 bg-white/80 rounded-xl shadow-sm mb-3"></div>
+                   <div className="grid grid-cols-2 gap-2 mb-3">
+                     <div className="h-16 bg-white/80 rounded-xl shadow-sm"></div>
+                     <div className="h-16 bg-white/80 rounded-xl shadow-sm"></div>
+                   </div>
+                   <div className="w-full h-14 bg-white/80 rounded-xl shadow-sm"></div>
+                </div>
+              </div>
+
+              {/* Center Primary Phone */}
+              <div className="relative mx-auto w-[220px] sm:w-[260px] h-[440px] sm:h-[520px] bg-white rounded-[2.5rem] border-[8px] border-gray-900 shadow-2xl overflow-hidden z-10">
+                {/* Notch */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-gray-900 rounded-b-2xl z-20"></div>
+                {/* Screen Content */}
+                <div className="w-full h-full bg-gradient-to-b from-gray-50 to-gray-100 pt-12 px-4 pb-4 flex flex-col gap-4 relative">
+                  <div className="absolute top-0 left-0 w-full h-32 bg-primary/10 rounded-b-3xl"></div>
+                  <div className="relative w-full h-32 bg-white rounded-2xl shadow-md flex items-center justify-center text-primary font-bold text-lg border border-gray-100">
+                    App UI
+                  </div>
+                  <div className="w-full h-14 bg-white rounded-xl shadow-sm border border-gray-50"></div>
+                  <div className="w-full h-14 bg-white rounded-xl shadow-sm border border-gray-50"></div>
+                  <div className="w-full h-24 bg-white rounded-xl shadow-sm border border-gray-50 mt-auto"></div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          {/* Right-Side Content Block */}
+          <div className="flex flex-col justify-center">
+            <ScrollReveal>
+              {/* Upper Tag */}
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm mb-6 border border-primary/20">
+                About Our Company ~
+              </div>
+
+              {/* Headline */}
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-6">
+                Choose The Best IT Service Company
+              </h2>
+
+              {/* Description */}
+              <p className="text-muted-foreground text-lg leading-relaxed mb-10">
+                Qorynta services help businesses build powerful websites, mobile apps, and custom software. We deliver quality solutions with transparent communication, on-time delivery, and reliable support to help your business grow online.
+              </p>
+
+              {/* Feature Icons & Details */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center border border-blue-100">
+                    <Briefcase className="w-6 h-6" strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-foreground text-xl mb-2">Business Solution</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">We provide tailored strategies and robust software to solve complex business challenges.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center border border-orange-100">
+                    <Headset className="w-6 h-6" strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-foreground text-xl mb-2">Technical Support</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">24/7 dedicated support to ensure your systems run smoothly without any downtime.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Row */}
+              <div className="flex flex-col sm:flex-row items-center gap-6">
+                <button className="w-full sm:w-auto px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-colors flex items-center justify-center gap-2 group/btn">
+                  Contact Us!
+                  <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
+                </button>
+                <div className="flex items-center gap-2 text-foreground font-semibold text-lg">
+                  <span className="text-muted-foreground font-normal">Call for help:</span>
+                  +91 70799-30300
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+
+        </div>
       </div>
     </section>
   );

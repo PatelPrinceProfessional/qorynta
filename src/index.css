@@ -8,7 +8,7 @@
 @layer base {
   :root {
     /* Backgrounds */
-    --background: 0 20% 97%; /* #F9F7F7 */
+    --background: 210 20% 98%; /* #F9FAFB */
     --foreground: 212 64% 19%; /* #112D4E */
 
     --card: 0 0% 100%; /* #FFFFFF */
@@ -403,5 +403,34 @@
 
   .dark .section-divider {
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  }
+
+  /* Diagonal Geometric Background for White Mode */
+  .diagonal-geometric-bg {
+    background-image: 
+      /* Light blue nodes */
+      radial-gradient(circle at 15% 25%, rgba(147, 197, 253, 0.15) 0%, transparent 40%),
+      radial-gradient(circle at 85% 65%, rgba(147, 197, 253, 0.15) 0%, transparent 40%),
+      radial-gradient(circle at 50% 95%, rgba(147, 197, 253, 0.15) 0%, transparent 50%),
+      /* Diagonal bands (#E5E7EB) */
+      repeating-linear-gradient(
+        -45deg,
+        rgba(229, 231, 235, 0.5) 0px,
+        rgba(229, 231, 235, 0.5) 80px,
+        transparent 80px,
+        transparent 320px
+      ),
+      repeating-linear-gradient(
+        45deg,
+        rgba(229, 231, 235, 0.4) 0px,
+        rgba(229, 231, 235, 0.4) 60px,
+        transparent 60px,
+        transparent 300px
+      );
+    background-attachment: fixed;
+  }
+  
+  .dark .diagonal-geometric-bg {
+    background-image: none;
   }
 }

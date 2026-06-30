@@ -26,7 +26,7 @@ const posts = [
 
 export const BlogTeaser = () => {
   return (
-    <section className="py-16 md:py-20 bg-background relative border-t border-border/50">
+    <section className="py-16 md:py-20 bg-transparent relative border-t border-border/50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}

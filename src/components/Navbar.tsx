@@ -80,9 +80,9 @@ export const Navbar = () => {
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 group z-50" onClick={() => setIsMobileMenuOpen(false)}>
-              <img src="/logo.jpg" alt="Qorynta Logo" className="h-10 w-auto object-contain rounded-md" />
-              <span className="text-xl font-bold tracking-tight hidden sm:block">
-                <span className="gradient-text">Qorynta</span>
+              <img src="/logo.jpg" alt="Qorynta Services Logo" className="h-10 w-auto object-contain rounded-md" />
+              <span className="text-lg sm:text-xl font-bold tracking-tight block">
+                <span className="gradient-text">Qorynta Services</span>
               </span>
             </Link>
 

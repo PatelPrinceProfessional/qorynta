@@ -142,7 +142,7 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
 
 export const CaseStudySection = () => {
   return (
-    <section className="py-16 md:py-24 relative overflow-hidden bg-background">
+    <section className="py-16 md:py-24 relative overflow-hidden bg-transparent">
       {/* Inject custom animation for the border aura */}
       <style>{`
         @keyframes aura-border {

@@ -10,7 +10,7 @@ const Services = () => {
   return (
     <>
       <Helmet>
-        <title>Our Services | Qorynta - Web & Mobile App Development</title>
+        <title>Our Services | Qorynta Services - Web & Mobile App Development</title>
         <meta name="description" content="Explore our full range of digital services including web development, mobile apps, UI/UX design, AI solutions, and Cloud DevOps." />
       </Helmet>
 

@@ -46,7 +46,7 @@ const CaseStudies = () => {
   return (
     <>
       <Helmet>
-        <title>Portfolio & Case Studies | Qorynta</title>
+        <title>Portfolio & Case Studies | Qorynta Services</title>
         <meta name="description" content="Explore our portfolio of successful web, mobile, and AI projects delivered for clients across the globe." />
       </Helmet>
 

@@ -5,7 +5,7 @@ import { services } from '@/data/services';
 
 export const Footer = () => {
   return (
-    <footer className="bg-background border-t border-border/50 pt-20 pb-10">
+    <footer className="bg-transparent border-t border-border/50 pt-20 pb-10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
@@ -13,8 +13,8 @@ export const Footer = () => {
           {/* Column 1: Brand & About */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center gap-2 group">
-              <img src="/logo.jpg" alt="Qorynta Logo" className="h-8 w-auto object-contain rounded-md" />
-              <span className="text-xl font-bold tracking-tight">Qorynta</span>
+              <img src="/logo.jpg" alt="Qorynta Services Logo" className="h-8 w-auto object-contain rounded-md" />
+              <span className="text-xl font-bold tracking-tight">Qorynta Services</span>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Full-stack digital agency delivering production-grade web, mobile, and AI solutions for startups and enterprises worldwide.
@@ -93,7 +93,7 @@ export const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-border/50 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground text-center md:text-left">
-            &copy; {new Date().getFullYear()} Qorynta. All rights reserved.
+            &copy; {new Date().getFullYear()} Qorynta Services. All rights reserved.
           </p>
         </div>
 

@@ -58,6 +58,7 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => (
 );
 
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { WebGLBackground } from "@/components/ui/WebGLBackground";
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -66,6 +67,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <WebGLBackground />
           <ScrollToTop />
           <Suspense fallback={<PageLoader />}>
             <AnimatedRoutes />

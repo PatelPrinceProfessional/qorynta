@@ -98,8 +98,8 @@ const Contact = () => {
   return (
     <>
       <Helmet>
-        <title>Contact Us | Qorynta</title>
-        <meta name="description" content="Get in touch with Qorynta to discuss your web, mobile, or AI project. Free scoping call and proposal within 24 hours." />
+        <title>Contact Us | Qorynta Services</title>
+        <meta name="description" content="Get in touch with Qorynta Services to discuss your web, mobile, or AI project. Free scoping call and proposal within 24 hours." />
       </Helmet>
 
       <Navbar />

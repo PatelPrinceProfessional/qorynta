@@ -102,15 +102,15 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="hero-section relative lg:sticky lg:top-0 z-0 min-h-screen flex items-center justify-center overflow-hidden bg-background">
+    <section className="hero-section relative lg:sticky lg:top-0 z-0 min-h-screen flex items-center justify-center overflow-hidden bg-transparent">
       {/* Background Radial Glow, Dot Grid, and Stars */}
       <div className="absolute inset-0 z-0">
         <div className="stars-bg" />
         <ParticleNetwork />
       </div>
-      <div className={`absolute inset-0 dot-grid opacity-[0.04] ${styles.heroBackground}`} />
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 animate-pulse-slow pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-accent/20 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/3 animate-pulse-slow pointer-events-none" style={{ animationDelay: '2s' }} />
+      <div className={`absolute inset-0 dot-grid opacity-[0.04] sm:opacity-[0.04] ${styles.heroBackground}`} />
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] sm:w-[800px] sm:h-[800px] bg-primary/10 sm:bg-primary/20 rounded-full blur-[80px] sm:blur-[120px] -translate-y-1/2 translate-x-1/3 animate-pulse-slow pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] sm:w-[600px] sm:h-[600px] bg-accent/10 sm:bg-accent/20 rounded-full blur-[60px] sm:blur-[100px] translate-y-1/3 -translate-x-1/3 animate-pulse-slow pointer-events-none" style={{ animationDelay: '2s' }} />
       
       <div className="hero-content w-full container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 relative z-10" style={{ willChange: 'transform, filter, opacity' }}>
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -125,12 +125,12 @@ export const HeroSection = () => {
             <div className="hero-eyebrow opacity-0 translate-y-3">
               {/* Mobile text */}
               <div className="md:hidden">
-                <SectionLabel text="QORYNTA — BUILD. SCALE. DOMINATE." />
+                <SectionLabel text="QORYNTA SERVICES — BUILD. SCALE. DOMINATE." />
               </div>
               {/* Desktop text */}
               <div className="hidden md:flex items-center gap-2.5 mb-4">
                 <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                <span className="text-sm font-semibold tracking-wider text-muted-foreground uppercase">QORYNTA — BUILD. SCALE. DOMINATE.</span>
+                <span className="text-sm font-semibold tracking-wider text-muted-foreground uppercase">QORYNTA SERVICES — BUILD. SCALE. DOMINATE.</span>
               </div>
             </div>
 
@@ -148,7 +148,7 @@ export const HeroSection = () => {
 
             {/* Invisible spacer to perfectly preserve layout spacing and prevent CTAs from shifting up */}
             <div className="invisible pointer-events-none select-none text-base md:text-lg mb-8 max-w-xl leading-relaxed" aria-hidden="true">
-              From mobile apps to enterprise web platforms — Qorynta delivers 
+              From mobile apps to enterprise web platforms — Qorynta services deliver 
               production-grade digital solutions for Indian and global businesses 
               at competitive rates.
             </div>
@@ -185,11 +185,11 @@ export const HeroSection = () => {
                   <div key={groupIdx} className="flex items-center justify-start min-w-max gap-4 md:gap-8 px-4 md:px-8 text-xs sm:text-sm font-medium text-muted-foreground">
                     <div className="flex items-center gap-1.5 md:gap-2">
                       <div className="flex text-[#F59E0B]">
-                        {[...Array(5)].map((_, i) => (
+                        {[...Array(4)].map((_, i) => (
                           <Star key={i} className="w-3 h-3 md:w-4 md:h-4 fill-current" />
                         ))}
                       </div>
-                      <span>Rated 5.0 by 40+ clients</span>
+                      <span>Rated 4.0 by 40+ clients</span>
                     </div>
                     
                     <div className="w-px h-4 md:h-5 bg-border/50" />
@@ -202,7 +202,7 @@ export const HeroSection = () => {
                     <div className="w-px h-4 md:h-5 bg-border/50" />
                     
                     <div className="flex items-center gap-1.5 md:gap-2">
-                      <Zap className="w-3 h-3 md:w-4 md:h-4 text-secondary" />
+                      
                       <span>48hr Kickoff</span>
                     </div>
 
