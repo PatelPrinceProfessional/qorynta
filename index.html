@@ -79,5 +79,22 @@
     </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Auto-Recovery Script for Stale Cache / Blank Screens -->
+    <script>
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          var root = document.getElementById('root');
+          // If root is still empty after 2.5 seconds, React failed to load (usually a 404 on stale cached JS)
+          if (root && root.innerHTML.trim() === '') {
+            if (window.location.search.indexOf('cache-cleared=true') === -1) {
+              var url = window.location.href;
+              var separator = url.indexOf('?') === -1 ? '?' : '&';
+              window.location.replace(url + separator + 'cache-cleared=true');
+            }
+          }
+        }, 2500);
+      });
+    </script>
   </body>
 </html>
