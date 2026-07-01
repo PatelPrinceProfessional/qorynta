@@ -7,8 +7,6 @@ import { ProcessSection } from '@/components/home/ProcessSection';
 
 import { CaseStudySection } from '@/components/home/CaseStudySection';
 import { TechStackSection } from '@/components/home/TechStackSection';
-import { TestimonialsSection } from '@/components/home/TestimonialsSection';
-import { BlogTeaser } from '@/components/home/BlogTeaser';
 import { CTABanner } from '@/components/home/CTABanner';
 import { AmbientGlow } from '@/components/ui/AmbientGlow';
 import { Navbar } from '@/components/Navbar';
@@ -37,8 +35,6 @@ const Index = () => {
 
           <CaseStudySection />
           <TechStackSection />
-          <TestimonialsSection />
-          <BlogTeaser />
           <CTABanner />
         </div>
       </main>
