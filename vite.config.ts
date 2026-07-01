@@ -19,7 +19,7 @@ export default defineConfig(({ mode }) => ({
   build: {
     target: 'esnext', // Modern target for smaller bundles
     cssCodeSplit: true,
-    chunkSizeWarningLimit: 500,
+    chunkSizeWarningLimit: 1500,
     rollupOptions: {
       output: {
         manualChunks: {

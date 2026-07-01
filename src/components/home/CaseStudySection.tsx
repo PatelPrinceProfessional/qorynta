@@ -109,7 +109,7 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
             
             {/* Slide-up Entrance Content */}
             <div className="overflow-hidden">
-              <div className="flex flex-col gap-4 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]" style={{ willChange: 'transform, opacity' }}>
+              <div className="flex flex-col gap-4 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-in-out" style={{ willChange: 'transform, opacity' }}>
                 
                 {/* Result Highlight */}
                 <div className="inline-block px-3 py-1 bg-secondary/10 border border-secondary/20 rounded-md w-fit">
