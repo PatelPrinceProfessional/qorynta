@@ -20,7 +20,7 @@ export const Footer = () => {
               Full-stack digital agency delivering production-grade web, mobile, and AI solutions for startups and enterprises worldwide.
             </p>
             <div className="flex gap-4">
-              <a href="https://www.linkedin.com/in/qorynta-services-72067b419/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="https://www.linkedin.com/company/130374811/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                 <Linkedin className="w-5 h-5" />
               </a>
               <a href="https://github.com/rishvmiyani" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
