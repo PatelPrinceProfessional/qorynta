@@ -206,7 +206,7 @@ export const Navbar = () => {
           
           {/* Social Icons Bottom */}
           <div className="pt-8 mt-8 border-t border-border flex justify-center gap-6">
-            <a href="https://www.linkedin.com/company/130374811/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
               <Linkedin className="w-6 h-6" />
             </a>
             <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
