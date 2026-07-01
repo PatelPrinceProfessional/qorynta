@@ -18,16 +18,6 @@ export default defineConfig(({ mode }) => ({
     target: 'esnext', // Modern target for smaller bundles
     cssCodeSplit: true,
     chunkSizeWarningLimit: 1500,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'ui-vendor': ['@radix-ui/react-accordion', '@radix-ui/react-dialog', 'framer-motion', 'lucide-react'],
-          'animation-vendor': ['gsap', 'three'],
-          'utils-vendor': ['@tanstack/react-query', 'zod', 'date-fns']
-        }
-      }
-    }
   },
   plugins: [
     react(),
