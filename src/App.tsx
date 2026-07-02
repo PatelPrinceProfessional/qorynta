@@ -66,8 +66,6 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => (
   </motion.div>
 );
 
-import { ThemeProvider } from "@/components/ThemeProvider";
-import { WebGLBackground } from "@/components/ui/WebGLBackground";
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
