@@ -76,6 +76,8 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
             <img 
               src={project.image} 
               alt={project.title}
+              width="800"
+              height="600"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               style={{ filter: 'grayscale(80%) blur(2px)', willChange: 'filter, transform' }}
             />
@@ -83,6 +85,8 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
             <img 
               src={project.image} 
               alt={project.title}
+              width="800"
+              height="600"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 z-10"
               style={{
                 clipPath: `circle(${isHovered ? '150%' : '0%'} at ${mousePos.x}% ${mousePos.y}%)`,

@@ -80,6 +80,8 @@ const CaseStudies = () => {
                     <img 
                       src={project.image} 
                       alt={project.title}
+                      width="1200"
+                      height="800"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       loading="lazy"
                     />

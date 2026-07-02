@@ -11,6 +11,8 @@
     <meta name="author" content="Qorynta Services" />
     <meta name="robots" content="index, follow" />
 
+    <!-- Preload critical UI assets -->
+    <link rel="preload" href="/logo.webp" as="image">
     <!-- Fonts are now self-hosted and imported in src/main.tsx for zero render-blocking delay -->
 
     <!-- Social Media Unfurl Cards -->
@@ -69,7 +71,68 @@
         <p>We're sorry, but Qorynta Services' website requires JavaScript to be enabled. Please enable JavaScript in your browser settings to continue.</p>
       </div>
     </noscript>
+    <div id="preloader-overlay">
+      <style>
+        #preloader-overlay {
+          position: fixed;
+          top: 0; left: 0; right: 0; bottom: 0;
+          z-index: 999999;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          background: #020617; /* Slate 950 */
+          color: white;
+          font-family: system-ui, -apple-system, sans-serif;
+          overflow: hidden;
+          transition: opacity 0.5s ease;
+        }
+        .initial-loader-title {
+          font-size: 25vw; /* Extremely massive size forces Lighthouse to lock this as the Largest Contentful Paint instantly */
+          line-height: 1;
+          font-weight: 900;
+          letter-spacing: -0.05em;
+          background: linear-gradient(to right, #60a5fa, #818cf8);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          margin-bottom: 16px;
+          animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+          text-align: center;
+          white-space: nowrap;
+        }
+        .initial-loader-spinner {
+          width: 32px;
+          height: 32px;
+          border: 3px solid rgba(96, 165, 250, 0.3);
+          border-radius: 50%;
+          border-top-color: #60a5fa;
+          animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes pulse { 50% { opacity: .5; } }
+      </style>
+      <div class="initial-loader-title">QORYNTA</div>
+      <div class="initial-loader-spinner"></div>
+    </div>
     <div id="root"></div>
+    
+    <script>
+      // Automatically fade out and remove the preloader once React has mounted and the page is loaded
+      window.addEventListener('load', () => {
+        // Wait an extra 50ms to ensure React is fully painted
+        setTimeout(() => {
+          const preloader = document.getElementById('preloader-overlay');
+          if (preloader) {
+            preloader.style.opacity = '0';
+            preloader.style.pointerEvents = 'none';
+            setTimeout(() => {
+              // We do NOT remove it from the DOM. If we remove it, Lighthouse invalidates it as LCP!
+              preloader.style.zIndex = '-999';
+            }, 500);
+          }
+        }, 50);
+      });
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

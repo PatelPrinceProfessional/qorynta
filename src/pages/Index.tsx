@@ -1,17 +1,19 @@
 import { Helmet } from 'react-helmet';
 import { HeroSection } from '@/components/home/HeroSection';
-import { TrustBar } from '@/components/home/TrustBar';
-import { HomeServicesSection } from '@/components/home/HomeServicesSection';
 import { WhyQorynta } from '@/components/home/WhyQorynta';
-import { ProcessSection } from '@/components/home/ProcessSection';
+import React, { Suspense } from 'react';
 
-import { CaseStudySection } from '@/components/home/CaseStudySection';
-import { TechStackSection } from '@/components/home/TechStackSection';
-import { CTABanner } from '@/components/home/CTABanner';
+const TrustBar = React.lazy(() => import('@/components/home/TrustBar').then(m => ({ default: m.TrustBar })));
+const HomeServicesSection = React.lazy(() => import('@/components/home/HomeServicesSection').then(m => ({ default: m.HomeServicesSection })));
+const ProcessSection = React.lazy(() => import('@/components/home/ProcessSection').then(m => ({ default: m.ProcessSection })));
+const CaseStudySection = React.lazy(() => import('@/components/home/CaseStudySection').then(m => ({ default: m.CaseStudySection })));
+const TechStackSection = React.lazy(() => import('@/components/home/TechStackSection').then(m => ({ default: m.TechStackSection })));
+const CTABanner = React.lazy(() => import('@/components/home/CTABanner').then(m => ({ default: m.CTABanner })));
+const Footer = React.lazy(() => import('@/components/Footer').then(m => ({ default: m.Footer })));
+const WhatsAppButton = React.lazy(() => import('@/components/WhatsAppButton').then(m => ({ default: m.WhatsAppButton })));
+
 import { AmbientGlow } from '@/components/ui/AmbientGlow';
 import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
-import { WhatsAppButton } from '@/components/WhatsAppButton';
 
 const Index = () => {
   return (
@@ -28,18 +30,23 @@ const Index = () => {
         
         {/* Content wrapper to slide over sticky Hero */}
         <div id="content-wrapper" className="relative z-10 bg-background shadow-[0_-20px_40px_rgba(0,0,0,0.1)] diagonal-geometric-bg flex flex-col gap-8 md:gap-16 pb-20">
-          <TrustBar />
-          <HomeServicesSection />
+          <Suspense fallback={<div className="h-40 w-full flex items-center justify-center"><div className="w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin"></div></div>}>
+            <TrustBar />
+            <HomeServicesSection />
+          </Suspense>
           <WhyQorynta />
-          <ProcessSection />
-
-          <CaseStudySection />
-          <TechStackSection />
-          <CTABanner />
+          <Suspense fallback={<div className="h-40 w-full flex items-center justify-center"><div className="w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin"></div></div>}>
+            <ProcessSection />
+            <CaseStudySection />
+            <TechStackSection />
+            <CTABanner />
+          </Suspense>
         </div>
       </main>
-      <Footer />
-      <WhatsAppButton />
+      <Suspense fallback={null}>
+        <Footer />
+        <WhatsAppButton />
+      </Suspense>
     </>
   );
 };

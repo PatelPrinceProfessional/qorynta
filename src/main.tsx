@@ -3,7 +3,7 @@ import App from "./App.tsx";
 import "./index.css";
 
 // Self-Hosted Fonts for zero render-blocking delay
-import "@fontsource/inter/300.css";
+
 import "@fontsource/inter/400.css";
 import "@fontsource/inter/500.css";
 import "@fontsource/inter/600.css";

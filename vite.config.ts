@@ -1,4 +1,4 @@
-import { defineConfig } from "vite";
+import { defineConfig, splitVendorChunkPlugin } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
@@ -17,22 +17,12 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
-    target: 'esnext', // Modern target for smaller bundles
+    target: 'es2019',
     cssCodeSplit: true,
-    chunkSizeWarningLimit: 1500,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'ui-vendor': ['@radix-ui/react-accordion', '@radix-ui/react-dialog', 'framer-motion', 'lucide-react'],
-          'animation-vendor': ['gsap', 'three'],
-          'utils-vendor': ['@tanstack/react-query', 'zod', 'date-fns']
-        }
-      }
-    }
   },
   plugins: [
     react(),
+    splitVendorChunkPlugin(),
     mode === "development" && componentTagger(),
     mode === "production" && viteCompression({ algorithm: "brotliCompress" }),
     mode === "production" && viteCompression({ algorithm: "gzip" }),

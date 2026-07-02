@@ -7,7 +7,14 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import { WebGLBackground } from "@/components/ui/WebGLBackground";
+const WebGLBackground = React.lazy(() => {
+  return new Promise<{ default: React.ComponentType<any> }>((resolve) => {
+    // Delay fetching the 500KB Three.js bundle until after the page is fully loaded and painted
+    setTimeout(() => {
+      resolve(import("@/components/ui/WebGLBackground").then(m => ({ default: m.WebGLBackground })));
+    }, 2500);
+  });
+});
 
 // Lazy loading pages for better performance (Code Splitting)
 const Index = React.lazy(() => import("./pages/Index"));
@@ -84,7 +91,9 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <WebGLBackground />
+          <Suspense fallback={null}>
+            <WebGLBackground />
+          </Suspense>
           <ScrollToTop />
           <Suspense fallback={<PageLoader />}>
             <AnimatedRoutes />
