@@ -1,6 +1,17 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Zombie Service Worker Kill Switch -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+          for(let registration of registrations) {
+            registration.unregister();
+            console.log('ServiceWorker unregistered');
+          }
+        });
+      }
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
@@ -10,6 +21,11 @@
     <meta name="description" content="Qorynta Services is a custom software development and artificial intelligence agency based in Ahmedabad. We build AI architectures, machine learning models, and SaaS platforms." />
     <meta name="author" content="Qorynta Services" />
     <meta name="robots" content="index, follow" />
+    
+    <!-- Anti-Caching Headers to force fresh loading -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
 
     <!-- Preload critical UI assets -->
     <link rel="preload" href="/logo.webp" as="image">
@@ -134,5 +150,22 @@
       });
     </script>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Auto-Recovery Script for Stale Cache / Blank Screens -->
+    <script>
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          var root = document.getElementById('root');
+          // If root is still empty after 2.5 seconds, React failed to load (usually a 404 on stale cached JS)
+          if (root && root.innerHTML.trim() === '') {
+            if (window.location.search.indexOf('cache-cleared=true') === -1) {
+              var url = window.location.href;
+              var separator = url.indexOf('?') === -1 ? '?' : '&';
+              window.location.replace(url + separator + 'cache-cleared=true');
+            }
+          }
+        }, 2500);
+      });
+    </script>
   </body>
 </html>

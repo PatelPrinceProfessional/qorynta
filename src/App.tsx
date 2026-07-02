@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import React, { Suspense, useTransition, useState, useEffect } from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { ScrollToTop } from "./components/ScrollToTop";
@@ -16,7 +16,7 @@ const WebGLBackground = React.lazy(() => {
   });
 });
 
-// Lazy loading pages for better performance (Code Splitting)
+// Lazy loading pages for better performance
 const Index = React.lazy(() => import("./pages/Index"));
 const Services = React.lazy(() => import("./pages/Services"));
 const ServiceDetail = React.lazy(() => import("./pages/ServiceDetail"));
@@ -25,50 +25,32 @@ const About = React.lazy(() => import("./pages/About"));
 const Contact = React.lazy(() => import("./pages/Contact"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 60 * 1000, // 1 minute stale-while-revalidate config
-      refetchOnWindowFocus: false,
-    }
-  }
-});
+const queryClient = new QueryClient();
 
-// A lightweight loading fallback (crucial for LCP)
+// A simple loading fallback
 const PageLoader = () => (
   <div className="min-h-screen flex items-center justify-center bg-background">
     <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
   </div>
 );
 
-// Wrapper for animated routes utilizing Concurrent Mode
+// Wrapper for animated routes
 const AnimatedRoutes = () => {
   const location = useLocation();
-  const [isPending, startTransition] = useTransition();
-  const [currentLocation, setCurrentLocation] = useState(location);
-
-  useEffect(() => {
-    // Yield to the main thread before rendering the new route
-    // This breaks up long tasks and drastically reduces TBT
-    startTransition(() => {
-      setCurrentLocation(location);
-    });
-  }, [location]);
-
+  
   return (
-    <div style={{ opacity: isPending ? 0.7 : 1, transition: 'opacity 0.2s' }}>
-      <AnimatePresence mode="wait">
-        <Routes location={currentLocation} key={currentLocation.pathname}>
-          <Route path="/" element={<PageWrapper><Index /></PageWrapper>} />
-          <Route path="/services" element={<PageWrapper><Services /></PageWrapper>} />
-          <Route path="/services/:slug" element={<PageWrapper><ServiceDetail /></PageWrapper>} />
-          <Route path="/case-studies" element={<PageWrapper><CaseStudies /></PageWrapper>} />
-          <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
-          <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
-          <Route path="*" element={<PageWrapper><NotFound /></PageWrapper>} />
-        </Routes>
-      </AnimatePresence>
-    </div>
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<PageWrapper><Index /></PageWrapper>} />
+        <Route path="/services" element={<PageWrapper><Services /></PageWrapper>} />
+        <Route path="/services/:slug" element={<PageWrapper><ServiceDetail /></PageWrapper>} />
+        <Route path="/case-studies" element={<PageWrapper><CaseStudies /></PageWrapper>} />
+        <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
+        <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
+        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+        <Route path="*" element={<PageWrapper><NotFound /></PageWrapper>} />
+      </Routes>
+    </AnimatePresence>
   );
 };
 
@@ -83,6 +65,9 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => (
     {children}
   </motion.div>
 );
+
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { WebGLBackground } from "@/components/ui/WebGLBackground";
 
 const App = () => (
   <QueryClientProvider client={queryClient}>

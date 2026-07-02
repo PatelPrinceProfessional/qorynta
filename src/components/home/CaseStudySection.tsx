@@ -48,10 +48,10 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
       >
         {/* Animated Gradient-Border Aura */}
         <div 
-          className="absolute top-[-50%] left-[-50%] w-[200%] h-[200%] bg-[linear-gradient(90deg,#3B82F6,#A855F7,#3B82F6)] z-0"
+          className="absolute inset-0 bg-[linear-gradient(90deg,#3B82F6,#A855F7,#3B82F6)] bg-[length:200%_100%] z-0"
           style={{
             animation: `aura-border ${isHovered ? '2s' : '4s'} linear infinite`,
-            willChange: 'transform'
+            willChange: 'background-position'
           }}
         />
         
@@ -147,11 +147,12 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
 export const CaseStudySection = () => {
   return (
     <section className="py-16 md:py-24 relative overflow-hidden bg-transparent">
-      {/* Inject custom animation for the border aura (GPU Accelerated) */}
+      {/* Inject custom animation for the border aura */}
       <style>{`
         @keyframes aura-border {
-          0% { transform: scale(1) translateX(0) rotate(0deg); }
-          100% { transform: scale(1) translateX(0) rotate(360deg); }
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
         }
       `}</style>
       
