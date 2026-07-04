@@ -15,10 +15,10 @@ const Services = () => {
       </Helmet>
 
       <Navbar />
-      <main className="flex min-h-screen flex-col bg-background pt-20">
+      <main className="flex min-h-screen flex-col bg-background">
         
         {/* Page Header */}
-        <section className="py-20 bg-gradient-to-b from-muted to-background text-center px-4">
+        <section className="pt-32 pb-20 bg-gradient-to-b from-muted to-background text-center px-4">
           <div className="container mx-auto max-w-4xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-6">
               Engineering Excellence <br className="hidden md:block" /> Across the Stack

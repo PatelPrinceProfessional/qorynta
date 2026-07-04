@@ -174,8 +174,8 @@ export const CapabilityHub = () => {
         <div className="absolute inset-0 rounded-full bg-cyan-500/5 blur-[80px] -z-10" />
         
         {/* Decorative Orbit Rings */}
-        <div className="absolute w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] rounded-full border border-cyan-500/10" />
-        <div className="absolute w-[240px] h-[240px] sm:w-[360px] sm:h-[360px] rounded-full border border-blue-500/10 border-dashed" />
+        <div className="absolute w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] rounded-full border border-cyan-500/40 dark:border-cyan-500/30" />
+        <div className="absolute w-[240px] h-[240px] sm:w-[360px] sm:h-[360px] rounded-full border border-blue-500/40 dark:border-blue-500/30 border-dashed" />
 
         {/* Central Core */}
         <motion.div 

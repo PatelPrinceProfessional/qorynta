@@ -31,7 +31,7 @@ const businessValueCards = [
 ];
 
 const PushPin = ({ color, isHovered }: { color: string, isHovered: boolean }) => (
-  <div 
+  <div
     className="absolute -top-7 left-1/2 -translate-x-1/2 w-10 h-12 z-30 pointer-events-none transition-all duration-500 ease-out"
     style={{
       transform: isHovered ? 'translateY(-6px) scale(1.1) rotate(5deg)' : 'translateY(0) scale(1) rotate(0deg)',
@@ -39,7 +39,7 @@ const PushPin = ({ color, isHovered }: { color: string, isHovered: boolean }) =>
     }}
   >
     {/* The "Lightbulb" Glow Effect emitted from the pin */}
-    <div 
+    <div
       className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none transition-all duration-500"
       style={{
         width: isHovered ? '150px' : '0px',
@@ -113,7 +113,7 @@ const PinnedValueCard = ({ card, index }: { card: typeof businessValueCards[0], 
   const pinColor = pinColors[index % pinColors.length];
 
   // Alternating stagger for dynamic "door standability" grid layout
-  const staggerClass = index % 2 === 1 ? 'lg:translate-y-16' : '';
+  const staggerClass = index % 2 === 1 ? 'lg:translate-y-6' : '';
 
   // Glare position for 3D realism
   const glareX = isHovered ? (mousePos.x + 0.5) * 100 : 50;
@@ -126,19 +126,19 @@ const PinnedValueCard = ({ card, index }: { card: typeof businessValueCards[0], 
         onMouseMove={handleMouseMove}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="relative h-full bg-[#f8fafc] dark:bg-slate-900/90 rounded-2xl p-8 pt-12 flex flex-col justify-between transition-all duration-400 ease-out z-10"
+        className="relative h-full bg-[#f8fafc] dark:bg-slate-900/90 rounded-2xl p-5 pt-8 flex flex-col justify-between transition-all duration-400 ease-out z-10"
         style={{
           transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${isHovered ? 1.05 : 1})`,
           transformStyle: 'preserve-3d',
           willChange: 'transform',
           border: `1px solid ${isHovered ? pinColor : 'rgba(203, 213, 225, 0.2)'}`,
-          boxShadow: isHovered 
+          boxShadow: isHovered
             ? `0 40px 80px -20px rgba(0, 0, 0, 0.4), 0 0 40px -10px ${pinColor}40, inset 0 2px 20px ${pinColor}15`
             : '0 20px 40px -15px rgba(0, 0, 0, 0.2)',
         }}
       >
         {/* Dynamic 3D Glare overlay */}
-        <div 
+        <div
           className="absolute inset-0 rounded-2xl pointer-events-none transition-opacity duration-300"
           style={{
             background: `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(255,255,255,0.8) 0%, transparent 60%)`,
@@ -150,20 +150,20 @@ const PinnedValueCard = ({ card, index }: { card: typeof businessValueCards[0], 
         <PushPin color={pinColor} isHovered={isHovered} />
 
         <div className="relative z-10 transform-style-3d">
-          <h3 
-            className="text-2xl lg:text-3xl font-sans font-black mb-4 text-[#0f172a] dark:text-white leading-tight tracking-tight drop-shadow-sm"
-            style={{ 
-              transform: isHovered ? 'translateZ(40px)' : 'translateZ(0)', 
+          <h3
+            className="text-xl lg:text-2xl font-sans font-black mb-3 text-[#0f172a] dark:text-white leading-tight tracking-tight drop-shadow-sm"
+            style={{
+              transform: isHovered ? 'translateZ(40px)' : 'translateZ(0)',
               transition: 'transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1)',
               textShadow: isHovered ? '0 10px 20px rgba(0,0,0,0.2)' : 'none'
             }}
           >
             {card.category}
           </h3>
-          <p 
-            className="text-base lg:text-lg font-bold leading-relaxed text-[#334155] dark:text-slate-300"
-            style={{ 
-              transform: isHovered ? 'translateZ(25px)' : 'translateZ(0)', 
+          <p
+            className="text-sm lg:text-base font-bold leading-relaxed text-[#334155] dark:text-slate-300"
+            style={{
+              transform: isHovered ? 'translateZ(25px)' : 'translateZ(0)',
               transition: 'transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1)',
               textShadow: isHovered ? '0 5px 10px rgba(0,0,0,0.15)' : 'none'
             }}
@@ -173,10 +173,10 @@ const PinnedValueCard = ({ card, index }: { card: typeof businessValueCards[0], 
         </div>
 
         {/* ROI-Meter Bottom Section with extreme depth */}
-        <div 
-          className="relative z-10 mt-10 pt-6 border-t border-slate-300/60 dark:border-slate-700/60 bg-white/50 dark:bg-slate-900/50 -mx-8 -mb-8 p-8 rounded-b-2xl backdrop-blur-sm"
-          style={{ 
-            transform: isHovered ? 'translateZ(30px)' : 'translateZ(0)', 
+        <div
+          className="relative z-10 mt-6 pt-4 border-t border-slate-300/60 dark:border-slate-700/60 bg-white/50 dark:bg-slate-900/50 -mx-5 -mb-5 p-5 rounded-b-2xl backdrop-blur-sm"
+          style={{
+            transform: isHovered ? 'translateZ(30px)' : 'translateZ(0)',
             transition: 'transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1)',
             boxShadow: isHovered ? '0 -10px 20px -10px rgba(0,0,0,0.1)' : 'none'
           }}
@@ -187,9 +187,9 @@ const PinnedValueCard = ({ card, index }: { card: typeof businessValueCards[0], 
           </div>
           {/* Progress Bar Container */}
           <div className="w-full h-2.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden shadow-inner">
-            <div 
+            <div
               className="h-full rounded-full transition-all duration-1000 ease-out origin-left shadow-[inset_0_-2px_4px_rgba(0,0,0,0.3)]"
-              style={{ 
+              style={{
                 width: `${card.progress}%`,
                 transform: isHovered ? 'scaleX(1)' : 'scaleX(0.85)',
                 backgroundColor: pinColor
@@ -202,45 +202,76 @@ const PinnedValueCard = ({ card, index }: { card: typeof businessValueCards[0], 
   );
 };
 
+const AbstractNodes = () => (
+  <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-10">
+    <div className="absolute top-[10%] left-[15%] w-1 h-1 bg-slate-900 dark:bg-white rounded-full blur-[0.5px]"></div>
+    <div className="absolute top-[25%] left-[80%] w-1 h-1 bg-slate-900 dark:bg-white rounded-sm blur-[1px]"></div>
+    <div className="absolute top-[50%] left-[5%] w-0.5 h-0.5 bg-slate-900 dark:bg-white rounded-full"></div>
+    <div className="absolute top-[75%] left-[20%] w-[3px] h-[3px] bg-slate-900 dark:bg-white rounded-sm"></div>
+    <div className="absolute top-[30%] left-[45%] w-[2px] h-[2px] bg-slate-900 dark:bg-white rounded-full blur-[0.5px]"></div>
+    <div className="absolute top-[85%] left-[85%] w-1 h-1 bg-slate-900 dark:bg-white rounded-full"></div>
+    <div className="absolute top-[60%] left-[70%] w-[5px] h-[5px] bg-slate-900 dark:bg-white rounded-sm blur-[1.5px]"></div>
+    <div className="absolute top-[15%] left-[90%] w-[2px] h-[2px] bg-slate-900 dark:bg-white rounded-full"></div>
+    <div className="absolute top-[90%] left-[35%] w-[4px] h-[4px] bg-slate-900 dark:bg-white rounded-full blur-[1px]"></div>
+    <div className="absolute top-[40%] left-[95%] w-1 h-1 bg-slate-900 dark:bg-white rounded-sm"></div>
+    <div className="absolute top-[5%] left-[50%] w-[3px] h-[3px] bg-slate-900 dark:bg-white rounded-full blur-[0.5px]"></div>
+  </div>
+);
+
+const GlassOrbs = () => (
+  <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+    <div 
+      className="absolute -top-[20%] -right-[10%] w-[500px] h-[500px] rounded-full bg-[#dbeafe]/60 dark:bg-blue-900/20 mix-blend-multiply dark:mix-blend-screen"
+      style={{ filter: 'blur(120px)' }}
+    />
+    <div 
+      className="absolute -bottom-[20%] -left-[10%] w-[600px] h-[600px] rounded-full bg-[#e0e7ff]/60 dark:bg-indigo-900/20 mix-blend-multiply dark:mix-blend-screen"
+      style={{ filter: 'blur(120px)' }}
+    />
+  </div>
+);
+
 export const TechStackSection = () => {
   return (
-    <section className="py-20 md:py-32 relative bg-gradient-to-b from-slate-50 to-slate-100 dark:from-background dark:to-background overflow-hidden">
+    <section className="py-10 md:py-16 relative bg-white dark:bg-slate-950 overflow-hidden">
+      
+      {/* 1. Structural Foundation: Dot-Matrix Grid */}
+      <div 
+        className="absolute inset-0 z-0 pointer-events-none dark:hidden opacity-[0.05]"
+        style={{
+          backgroundImage: 'radial-gradient(circle at 1px 1px, #0f172a 1px, transparent 0)',
+          backgroundSize: '40px 40px'
+        }}
+      />
+      <div 
+        className="absolute inset-0 z-0 pointer-events-none hidden dark:block opacity-[0.05]"
+        style={{
+          backgroundImage: 'radial-gradient(circle at 1px 1px, #ffffff 1px, transparent 0)',
+          backgroundSize: '40px 40px'
+        }}
+      />
+
+      {/* 2. Ambient Intelligence: Abstract Data-Node field */}
+      <AbstractNodes />
+
+      {/* 3. Premium Atmospheric Depth: Glass Orbs */}
+      <GlassOrbs />
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <ScrollReveal className="text-center max-w-4xl mx-auto mb-24">
+        <ScrollReveal className="text-center max-w-4xl mx-auto mb-10 lg:mb-14 relative z-20">
           <SectionLabel text="BUSINESS OUTCOMES" />
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-sans font-black text-[#0f172a] dark:text-white mb-8 tracking-tighter drop-shadow-md">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-sans font-black text-[#0f172a] dark:text-white mb-6 tracking-tighter drop-shadow-md">
             Engineered for <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#293681] to-[#3b82f6] dark:from-[#60a5fa] dark:to-[#3b82f6]">Enterprise Growth</span>
           </h2>
-          <p className="text-xl md:text-2xl text-[#334155] dark:text-slate-300 font-bold leading-relaxed">
+          <p className="text-lg md:text-xl text-[#334155] dark:text-slate-300 font-bold leading-relaxed">
             We don't just write code. We build scalable digital assets designed to maximize your return on investment and secure your market position.
           </p>
         </ScrollReveal>
 
-        {/* 3D Flowing Dashed Guide Line Background (Desktop Only) */}
-        <div className="absolute top-1/2 left-0 w-full h-full -z-0 hidden lg:block pointer-events-none opacity-30 drop-shadow-lg">
-          <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 1000 200">
-            <path 
-              d="M-100,100 Q150,-80 350,100 T850,50 T1200,100" 
-              fill="none" 
-              stroke="url(#line-gradient)" 
-              strokeWidth="4" 
-              strokeDasharray="12 12" 
-              strokeLinecap="round"
-            />
-            <defs>
-              <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#3b82f6" />
-                <stop offset="50%" stopColor="#ef4444" />
-                <stop offset="100%" stopColor="#10b981" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
-
         {/* 3D Pinned Card Grid */}
-        <StaggerContainer staggerChildren={0.15} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 relative z-10 pt-8 pb-20">
+        <StaggerContainer staggerChildren={0.15} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-20 pt-2 pb-10">
           {businessValueCards.map((card, index) => (
             <StaggerItem key={index} direction="up" className="h-full flex">
               <PinnedValueCard card={card} index={index} />

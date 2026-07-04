@@ -145,8 +145,8 @@ export const WebGLBackground = () => {
     const timer = setTimeout(initWebGL, 2000);
 
     const animate = () => {
-      // Pause animation if tab is hidden OR if user scrolled past 1500px (background covered)
-      if (!isVisible || scrollY > 1500) {
+      // Pause animation if tab is hidden
+      if (!isVisible) {
         animationFrameId = requestAnimationFrame(animate);
         return;
       }
