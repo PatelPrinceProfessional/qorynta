@@ -1,128 +1,161 @@
-import { useEffect, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
-import { ArrowRight } from 'lucide-react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import { SectionLabel } from '@/components/ui/SectionLabel';
-import { GlassCard } from '@/components/ui/GlassCard';
 import { services } from '@/data/services';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
-import { StaggerContainer, StaggerItem } from '@/components/ui/StaggerContainer';
+import { ArrowRight } from 'lucide-react';
 
-const getServiceImage = (slug: string) => {
-  const images: Record<string, string> = {
-    'custom-web-development': 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80',
-    'mobile-app-development': 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80',
-    'ui-ux-design': 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=800&q=80',
-    'ai-machine-learning': 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=800&q=80',
-    'cloud-devops': 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80',
-    'e-commerce-solutions': 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80',
-    'saas-development': 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
-    'api-integration': 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80',
-    'it-consulting': 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80',
-  };
-  return images[slug] || images['custom-web-development'];
+const categories = ['All Services', 'Web & App', 'AI & Data', 'Design & Strategy', 'Cloud & DevOps'];
+
+const categoryMapping: Record<string, string> = {
+  'custom-web-development': 'Web & App',
+  'mobile-app-development': 'Web & App',
+  'saas-development': 'Web & App',
+  'e-commerce-solutions': 'Web & App',
+  'ai-machine-learning': 'AI & Data',
+  'ui-ux-design': 'Design & Strategy',
+  'it-consulting': 'Design & Strategy',
+  'cloud-devops': 'Cloud & DevOps',
+  'api-integration': 'Cloud & DevOps',
+};
+
+// Premium Consulting Style Card (Dark Mode Ready)
+const ArchitecturalCard = ({ service, index, onClick }: any) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ 
+        duration: 0.4, 
+        ease: "easeInOut",
+        delay: index * 0.1
+      }}
+      className="h-full"
+    >
+      <div
+        onClick={onClick}
+        className="group relative cursor-pointer h-full flex flex-col p-8 md:p-10 bg-[#FAFAFA] dark:bg-slate-900/40 hover:bg-white dark:hover:bg-slate-800/80 transition-colors duration-500 overflow-hidden"
+      >
+        {/* Base Static Border */}
+        <div className="absolute inset-0 border border-[#E2E8F0] dark:border-slate-800 pointer-events-none" />
+
+        {/* The 'Reveal-Border' Effect */}
+        <div className="absolute top-0 left-0 h-[1.5px] w-0 bg-[#0F172A] dark:bg-blue-500 transition-all duration-[250ms] ease-out group-hover:w-full" />
+        <div className="absolute top-0 right-0 w-[1.5px] h-0 bg-[#0F172A] dark:bg-blue-500 transition-all duration-[250ms] ease-out delay-[100ms] group-hover:h-full" />
+        <div className="absolute bottom-0 right-0 h-[1.5px] w-0 bg-[#0F172A] dark:bg-blue-500 transition-all duration-[250ms] ease-out delay-[200ms] group-hover:w-full" />
+        <div className="absolute bottom-0 left-0 w-[1.5px] h-0 bg-[#0F172A] dark:bg-blue-500 transition-all duration-[250ms] ease-out delay-[300ms] group-hover:h-full" />
+
+        {/* Content Wrapper */}
+        <div className="relative z-10 flex flex-col h-full transform transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:-translate-y-[5px]">
+          
+          {/* Monochromatic Icon */}
+          <div className="mb-8 relative inline-block">
+            <service.icon 
+              className="w-10 h-10 text-slate-800 dark:text-slate-300 transition-all duration-500 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:drop-shadow-[0_0_12px_rgba(0,87,255,0.4)] dark:group-hover:drop-shadow-[0_0_15px_rgba(59,130,246,0.6)]" 
+              strokeWidth={1.5} 
+            />
+          </div>
+          
+          {/* High-Contrast Typography */}
+          <h3 className="text-xl md:text-2xl font-black text-[#0F172A] dark:text-slate-100 leading-tight mb-4 tracking-tight">
+            {service.title}
+          </h3>
+          
+          {/* Body Text */}
+          <p className="text-sm text-[#64748B] dark:text-slate-400 font-medium leading-[1.6] flex-grow">
+            {service.description}
+          </p>
+          
+          {/* Action Anchor */}
+          <div className="mt-8 self-start inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-blue-600 dark:border-blue-500 text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-widest transition-all duration-400 group-hover:bg-blue-600 group-hover:text-white dark:group-hover:bg-blue-600 dark:group-hover:text-white group-hover:shadow-[0_4px_14px_0_rgba(0,87,255,0.39)] dark:group-hover:shadow-[0_4px_20px_0_rgba(59,130,246,0.25)]">
+            Learn More
+            <div className="bg-white/0 rounded-full flex items-center justify-center ml-2 transition-all duration-400">
+              <ArrowRight className="w-4 h-4 transition-transform duration-400 group-hover:translate-x-[5px]" strokeWidth={2.5} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
 };
 
 export const HomeServicesSection = () => {
   const navigate = useNavigate();
-  const sectionRef = useRef<HTMLElement>(null);
+  const [activeTab, setActiveTab] = useState('All Services');
 
-  useEffect(() => {
-    let ctx = gsap.context(() => {
-      const images = gsap.utils.toArray('.parallax-image') as HTMLElement[];
-      images.forEach((img) => {
-        gsap.to(img, {
-          yPercent: 20,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: img.parentElement,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: true,
-          }
-        });
-      });
-    }, sectionRef);
-    return () => ctx.revert();
-  }, []);
+  const filteredServices = activeTab === 'All Services' 
+    ? services 
+    : services.filter(service => categoryMapping[service.slug] === activeTab);
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-20 relative overflow-hidden bg-transparent">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section className="py-24 md:py-32 relative bg-white dark:bg-slate-950 transition-colors duration-500">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-7xl">
         
-        {/* Header */}
-        <ScrollReveal className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
-          <SectionLabel text="WHAT WE BUILD" />
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            End-to-End Digital Services
+        {/* Header - Vibrant gradient heading adapts well to dark mode */}
+        <ScrollReveal className="max-w-3xl mb-12 md:mb-24">
+          <SectionLabel text="OUR EXPERTISE" />
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tighter leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#0057FF] to-[#8b5cf6]">
+            End-to-End Solutions
           </h2>
-          <p className="text-lg text-muted-foreground">
-            From concept to deployment — everything your business needs to dominate online.
+          <p className="text-lg md:text-xl text-[#64748B] dark:text-slate-400 font-medium max-w-2xl leading-[1.6]">
+            Strategic architecture and robust engineering, designed to scale with your enterprise.
           </p>
         </ScrollReveal>
 
-        {/* Services Grid */}
-        <StaggerContainer staggerChildren={0.1} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16">
-          {services.map((service, index) => (
-            <StaggerItem key={index} direction="up" className="h-full">
-              <div onClick={() => navigate(`/services/${service.slug}`)} className="h-full">
-                <GlassCard 
-                  hover 
-                  className="flex flex-col group h-full rounded-[20px] overflow-hidden p-0 md:p-0"
+        {/* Minimalist Filter Bar - Sticky on Mobile with Horizontal Scroll */}
+        <div className="sticky top-[72px] z-[60] bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl pt-4 pb-2 -mx-4 px-4 md:relative md:top-auto md:bg-transparent md:dark:bg-transparent md:backdrop-blur-none md:p-0 md:mx-0 mb-10 md:mb-20 border-b border-slate-100 dark:border-slate-800 md:border-none shadow-sm md:shadow-none">
+          <ScrollReveal delay={0.1} className="flex flex-row md:flex-wrap overflow-x-auto no-scrollbar gap-6 md:gap-8 pb-2">
+            {categories.map((category) => {
+              const isActive = activeTab === category;
+              
+              // Mobile Reordering: Move Cloud & DevOps up, Web & App down
+              let orderClass = '';
+              if (category === 'All Services') orderClass = 'order-1';
+              if (category === 'Cloud & DevOps') orderClass = 'order-2 md:order-5';
+              if (category === 'AI & Data') orderClass = 'order-3';
+              if (category === 'Design & Strategy') orderClass = 'order-4';
+              if (category === 'Web & App') orderClass = 'order-5 md:order-2';
+              
+              return (
+                <button
+                  key={category}
+                  onClick={() => setActiveTab(category)}
+                  className={`group relative pb-2 text-sm md:text-base font-black uppercase tracking-wider transition-all duration-300 whitespace-nowrap flex-shrink-0 ${orderClass} ${
+                    isActive
+                      ? 'text-transparent bg-clip-text bg-gradient-to-r from-[#0057FF] to-[#8b5cf6] drop-shadow-sm'
+                      : 'text-[#64748B] dark:text-slate-500 hover:text-[#0057FF] dark:hover:text-blue-400'
+                  }`}
                 >
-                  {/* Image Header */}
-                  <div className="relative w-full h-48 md:h-56 overflow-hidden rounded-t-[20px]">
-                    <div className="w-full h-full transition-transform duration-500 group-hover:scale-105">
-                      <img 
-                        src={getServiceImage(service.slug)}
-                        alt={service.title}
-                        loading="lazy"
-                        className="parallax-image absolute -top-[10%] left-0 right-0 w-full h-[120%] object-cover"
-                      />
-                    </div>
-                    {/* Brand Color Dodge Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-tr from-blue-500 to-purple-500 opacity-20 mix-blend-color-dodge pointer-events-none transition-opacity duration-300 group-hover:opacity-30"></div>
-                  </div>
+                  {category}
+                  {/* Animated Gradient Underline Indicator */}
+                  <div 
+                    className={`absolute bottom-0 left-0 h-[3px] rounded-full bg-gradient-to-r from-[#0057FF] to-[#8b5cf6] transition-all duration-300 ease-out ${
+                      isActive ? 'w-full' : 'w-0 group-hover:w-1/2'
+                    }`} 
+                  />
+                </button>
+              );
+            })}
+          </ScrollReveal>
+        </div>
 
-                {/* Card Content - Matching Original Layout */}
-                <div className="p-6 md:p-8 flex flex-col flex-grow">
-                  <h3 className="text-xl font-bold text-foreground mb-3">{service.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-grow">{service.description}</p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {service.tags.map(tag => (
-                      <span key={tag} className="text-xs px-2 py-1 bg-muted border border-border rounded-md text-muted-foreground">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  <Link 
-                    to={`/services/${service.slug}`}
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-secondary transition-colors mt-auto group/link"
-                  >
-                    Learn More
-                    <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                  </Link>
-                </div>
-              </GlassCard>
-            </div>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
-
-        {/* Bottom CTA */}
-        <ScrollReveal delay={0.4} direction="up" className="text-center">
-          <Link 
-            to="/contact" 
-            className="inline-flex items-center gap-2 text-base font-semibold text-muted-foreground hover:text-foreground transition-colors px-6 py-3 rounded-full border border-border hover:border-primary/50 bg-card hover:bg-muted"
-          >
-            Need something specific? <span className="text-primary group-hover:text-secondary ml-1">Let's Talk <ArrowRight className="inline-block w-4 h-4 ml-1" /></span>
-          </Link>
-        </ScrollReveal>
+        {/* Filtered Grid */}
+        <div className="min-h-[400px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-10">
+            <AnimatePresence mode="wait">
+              {filteredServices.map((service, index) => (
+                <ArchitecturalCard
+                  key={service.slug}
+                  service={service}
+                  index={index}
+                  onClick={() => navigate(`/services/${service.slug}`)}
+                />
+              ))}
+            </AnimatePresence>
+          </div>
+        </div>
 
       </div>
     </section>

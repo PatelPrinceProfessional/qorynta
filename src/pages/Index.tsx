@@ -39,7 +39,6 @@ const Index = () => {
             <ProcessSection />
             <CaseStudySection />
             <TechStackSection />
-            <CTABanner />
           </Suspense>
         </div>
       </main>

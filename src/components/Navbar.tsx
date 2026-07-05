@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { Menu, X, ChevronDown, Github, Linkedin, Twitter, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -11,6 +12,7 @@ export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const location = useLocation();
   const drawerRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
@@ -87,18 +89,23 @@ export const Navbar = () => {
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-2 lg:gap-4">
-              <Link to="/" className={cn("px-3 py-2 text-sm font-medium transition-colors animated-underline", location.pathname === '/' ? 'text-primary border-b-2 border-primary' : 'text-muted-foreground hover:text-foreground')}>Home</Link>
+            <div className="hidden md:flex items-center gap-1 lg:gap-2" onMouseLeave={() => setHoveredItem(null)}>
+              
+              <div className="relative" onMouseEnter={() => setHoveredItem('home')}>
+                {hoveredItem === 'home' && <motion.div layoutId="nav-pill" className="absolute inset-0 bg-blue-500/10 dark:bg-blue-500/20 rounded-md z-0" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
+                <Link to="/" className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-colors block", location.pathname === '/' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}>Home</Link>
+              </div>
               
               {/* Services Dropdown */}
               <div 
                 className="relative group"
-                onMouseEnter={() => setIsServicesOpen(true)}
+                onMouseEnter={() => { setIsServicesOpen(true); setHoveredItem('services'); }}
                 onMouseLeave={() => setIsServicesOpen(false)}
               >
+                {hoveredItem === 'services' && <motion.div layoutId="nav-pill" className="absolute inset-0 bg-blue-500/10 dark:bg-blue-500/20 rounded-md z-0" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
                 <Link 
                   to="/services" 
-                  className={cn("px-3 py-2 text-sm font-medium transition-colors flex items-center gap-1", location.pathname === '/services' ? 'text-primary border-b-2 border-primary' : 'text-muted-foreground hover:text-foreground')}
+                  className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-colors flex items-center gap-1", location.pathname === '/services' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}
                 >
                   Services
                   <ChevronDown className="w-4 h-4" />
@@ -106,7 +113,7 @@ export const Navbar = () => {
                 
                 {/* Dropdown Menu */}
                 <div className={cn(
-                  "absolute top-full left-0 w-64 pt-2 transition-all duration-200 origin-top-left",
+                  "absolute top-full left-0 w-64 pt-2 transition-all duration-200 origin-top-left z-50",
                   isServicesOpen ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none"
                 )}>
                   <div className="bg-card border border-border rounded-xl shadow-xl overflow-hidden glass-card p-2">
@@ -124,9 +131,20 @@ export const Navbar = () => {
                 </div>
               </div>
 
-              <Link to="/about" className={cn("px-3 py-2 text-sm font-medium transition-colors animated-underline", location.pathname === '/about' ? 'text-primary border-b-2 border-primary' : 'text-muted-foreground hover:text-foreground')}>About</Link>
-              <Link to="/case-studies" className={cn("px-3 py-2 text-sm font-medium transition-colors animated-underline", location.pathname === '/case-studies' ? 'text-primary border-b-2 border-primary' : 'text-muted-foreground hover:text-foreground')}>Portfolio</Link>
-              <Link to="/contact" className={cn("px-3 py-2 text-sm font-medium transition-colors animated-underline", location.pathname === '/contact' ? 'text-primary border-b-2 border-primary' : 'text-muted-foreground hover:text-foreground')}>Contact</Link>
+              <div className="relative" onMouseEnter={() => setHoveredItem('about')}>
+                {hoveredItem === 'about' && <motion.div layoutId="nav-pill" className="absolute inset-0 bg-blue-500/10 dark:bg-blue-500/20 rounded-md z-0" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
+                <Link to="/about" className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-colors block", location.pathname === '/about' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}>About</Link>
+              </div>
+              
+              <div className="relative" onMouseEnter={() => setHoveredItem('portfolio')}>
+                {hoveredItem === 'portfolio' && <motion.div layoutId="nav-pill" className="absolute inset-0 bg-blue-500/10 dark:bg-blue-500/20 rounded-md z-0" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
+                <Link to="/case-studies" className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-colors block", location.pathname === '/case-studies' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}>Portfolio</Link>
+              </div>
+
+              <div className="relative" onMouseEnter={() => setHoveredItem('contact')}>
+                {hoveredItem === 'contact' && <motion.div layoutId="nav-pill" className="absolute inset-0 bg-blue-500/10 dark:bg-blue-500/20 rounded-md z-0" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
+                <Link to="/contact" className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-colors block", location.pathname === '/contact' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}>Contact</Link>
+              </div>
             </div>
 
             {/* CTA Button & Theme Toggle (Desktop) */}

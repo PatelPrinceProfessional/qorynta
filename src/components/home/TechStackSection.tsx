@@ -131,10 +131,10 @@ const PinnedValueCard = ({ card, index }: { card: typeof businessValueCards[0], 
           transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${isHovered ? 1.05 : 1})`,
           transformStyle: 'preserve-3d',
           willChange: 'transform',
-          border: `1px solid ${isHovered ? pinColor : 'rgba(203, 213, 225, 0.2)'}`,
+          border: `1px solid ${isHovered ? pinColor : 'rgba(203, 213, 225, 0.5)'}`,
           boxShadow: isHovered
-            ? `0 40px 80px -20px rgba(0, 0, 0, 0.4), 0 0 40px -10px ${pinColor}40, inset 0 2px 20px ${pinColor}15`
-            : '0 20px 40px -15px rgba(0, 0, 0, 0.2)',
+            ? `0 40px 80px -20px rgba(0, 0, 0, 0.45), 0 0 40px -10px ${pinColor}40, inset 0 2px 20px ${pinColor}15`
+            : '0 20px 40px -15px rgba(0, 0, 0, 0.25)',
         }}
       >
         {/* Dynamic 3D Glare overlay */}
