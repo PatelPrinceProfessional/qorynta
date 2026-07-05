@@ -151,17 +151,17 @@ const PinnedValueCard = ({ card, index }: { card: typeof businessValueCards[0], 
 
         <div className="relative z-10 transform-style-3d">
           <h3
-            className="text-xl lg:text-2xl font-sans font-black mb-3 text-[#0f172a] dark:text-white leading-tight tracking-tight drop-shadow-sm"
+            className="text-xl lg:text-[1.35rem] font-extrabold mb-4 text-[#0F172A] dark:text-white leading-[1.1] tracking-tighter drop-shadow-sm"
             style={{
               transform: isHovered ? 'translateZ(40px)' : 'translateZ(0)',
               transition: 'transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1)',
-              textShadow: isHovered ? '0 10px 20px rgba(0,0,0,0.2)' : 'none'
+              textShadow: isHovered ? '0 10px 20px rgba(0,0,0,0.15)' : 'none'
             }}
           >
             {card.category}
           </h3>
           <p
-            className="text-sm lg:text-base font-bold leading-relaxed text-[#334155] dark:text-slate-300"
+            className="text-[13px] lg:text-[15px] font-medium leading-[1.7] text-[#475569] dark:text-[#9CA3AF]"
             style={{
               transform: isHovered ? 'translateZ(25px)' : 'translateZ(0)',
               transition: 'transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1)',
@@ -181,9 +181,9 @@ const PinnedValueCard = ({ card, index }: { card: typeof businessValueCards[0], 
             boxShadow: isHovered ? '0 -10px 20px -10px rgba(0,0,0,0.1)' : 'none'
           }}
         >
-          <div className="flex justify-between items-end mb-3">
-            <span className="text-xs font-black uppercase tracking-widest text-[#475569] dark:text-slate-400">Impact Metric</span>
-            <span className="text-sm font-black text-[#0f172a] dark:text-white bg-white dark:bg-slate-800 px-3 py-1 rounded-full shadow-sm border border-slate-100 dark:border-slate-700">{card.metric}</span>
+          <div className="flex justify-between items-end mb-4">
+            <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#64748B] dark:text-[#6B7280]">Impact Metric</span>
+            <span className="text-[13px] font-black tracking-tight text-[#0F172A] dark:text-white bg-white/80 dark:bg-slate-800/80 px-3.5 py-1.5 rounded-full shadow-sm border border-slate-200/50 dark:border-slate-700/50 backdrop-blur-sm">{card.metric}</span>
           </div>
           {/* Progress Bar Container */}
           <div className="w-full h-2.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden shadow-inner">
@@ -220,11 +220,11 @@ const AbstractNodes = () => (
 
 const GlassOrbs = () => (
   <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-    <div 
+    <div
       className="absolute -top-[20%] -right-[10%] w-[500px] h-[500px] rounded-full bg-[#dbeafe]/60 dark:bg-blue-900/20 mix-blend-multiply dark:mix-blend-screen"
       style={{ filter: 'blur(120px)' }}
     />
-    <div 
+    <div
       className="absolute -bottom-[20%] -left-[10%] w-[600px] h-[600px] rounded-full bg-[#e0e7ff]/60 dark:bg-indigo-900/20 mix-blend-multiply dark:mix-blend-screen"
       style={{ filter: 'blur(120px)' }}
     />
@@ -234,16 +234,16 @@ const GlassOrbs = () => (
 export const TechStackSection = () => {
   return (
     <section className="py-10 md:py-16 relative bg-white dark:bg-slate-950 overflow-hidden">
-      
+
       {/* 1. Structural Foundation: Dot-Matrix Grid */}
-      <div 
+      <div
         className="absolute inset-0 z-0 pointer-events-none dark:hidden opacity-[0.05]"
         style={{
           backgroundImage: 'radial-gradient(circle at 1px 1px, #0f172a 1px, transparent 0)',
           backgroundSize: '40px 40px'
         }}
       />
-      <div 
+      <div
         className="absolute inset-0 z-0 pointer-events-none hidden dark:block opacity-[0.05]"
         style={{
           backgroundImage: 'radial-gradient(circle at 1px 1px, #ffffff 1px, transparent 0)',
@@ -258,7 +258,7 @@ export const TechStackSection = () => {
       <GlassOrbs />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Header */}
         <ScrollReveal className="text-center max-w-4xl mx-auto mb-10 lg:mb-14 relative z-20">
           <SectionLabel text="BUSINESS OUTCOMES" />

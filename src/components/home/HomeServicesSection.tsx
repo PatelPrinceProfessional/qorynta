@@ -85,8 +85,9 @@ export const HomeServicesSection = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('All Services');
 
+  // Only hide api-integration when viewing 'All Services'. Show it when specifically clicking 'Cloud & DevOps'.
   const filteredServices = activeTab === 'All Services' 
-    ? services 
+    ? services.filter(service => service.slug !== 'api-integration') 
     : services.filter(service => categoryMapping[service.slug] === activeTab);
 
   return (

@@ -58,7 +58,7 @@ const BackgroundKeywords = () => {
         <span 
           key={word}
           className={`absolute inset-0 flex items-center justify-center lg:justify-start font-black tracking-tighter text-foreground transition-all duration-1000 ease-in-out whitespace-nowrap ${
-            i === index ? 'opacity-[0.05] dark:opacity-[0.10] translate-y-0 scale-100' : 'opacity-0 translate-y-4 scale-95'
+            i === index ? 'opacity-[0.15] dark:opacity-[0.25] translate-y-0 scale-100' : 'opacity-0 translate-y-4 scale-95'
           }`}
           style={{ fontSize: 'clamp(2.5rem, 14vw, 10rem)', lineHeight: 0.8 }}
         >
