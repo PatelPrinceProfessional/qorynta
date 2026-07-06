@@ -21,6 +21,7 @@ const Index = React.lazy(() => import("./pages/Index"));
 const Services = React.lazy(() => import("./pages/Services"));
 const ServiceDetail = React.lazy(() => import("./pages/ServiceDetail"));
 const CaseStudies = React.lazy(() => import("./pages/CaseStudies"));
+const CaseStudyDetail = React.lazy(() => import("./pages/CaseStudyDetail"));
 const About = React.lazy(() => import("./pages/About"));
 const Contact = React.lazy(() => import("./pages/Contact"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
@@ -45,6 +46,7 @@ const AnimatedRoutes = () => {
         <Route path="/services" element={<PageWrapper><Services /></PageWrapper>} />
         <Route path="/services/:slug" element={<PageWrapper><ServiceDetail /></PageWrapper>} />
         <Route path="/case-studies" element={<PageWrapper><CaseStudies /></PageWrapper>} />
+        <Route path="/case-studies/:slug" element={<PageWrapper><CaseStudyDetail /></PageWrapper>} />
         <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
         <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

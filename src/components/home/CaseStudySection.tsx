@@ -1,104 +1,96 @@
-import { ArrowDownRight } from 'lucide-react';
-import { SectionLabel } from '@/components/ui/SectionLabel';
-import { ScrollReveal } from '@/components/ui/ScrollReveal';
-import { StaggerContainer, StaggerItem } from '@/components/ui/StaggerContainer';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import React, { useEffect, useRef } from 'react';
+import { ArrowRight, ExternalLink } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { allProjects } from '@/data/projects';
+import { ProjectCard } from '@/components/ui/ProjectCard';
+import { MobileInfiniteCarousel } from '@/components/ui/MobileInfiniteCarousel';
 
-const projects = [
-  {
-    title: 'Cafe Dashboard',
-    image: '/portfolio/cafe-dashboard.webp',
-  },
-  {
-    title: 'Salon Professional Website',
-    image: '/portfolio/salon-professional.webp',
-  },
-  {
-    title: 'CRM Solution Project',
-    image: '/portfolio/crm-solution.webp',
-  },
-  {
-    title: 'E-Commerce Store Website',
-    image: '/portfolio/e-commerce-store.webp',
-  },
-  {
-    title: 'ML End-to-End Project',
-    image: '/portfolio/ml-end-to-end.webp',
-  },
-  {
-    title: 'SaaS Based Complete Product',
-    image: '/portfolio/saas-product.webp',
-  }
-];
+gsap.registerPlugin(ScrollTrigger);
 
-const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
-  return (
-    <div 
-      className="group relative h-full flex flex-col bg-white rounded-3xl overflow-hidden transition-all duration-[600ms] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] cursor-pointer border border-gray-100"
-      style={{ 
-        willChange: 'transform',
-        transitionTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)'
-      }}
-    >
-      {/* Header Section (Title + Icon) */}
-      <div className="flex items-start justify-between p-6 sm:p-8 z-10 bg-white">
-        <h3 className="text-xl md:text-2xl font-bold text-[#1e293b] leading-tight max-w-[80%]">{project.title}</h3>
-        
-        {/* Arrow Icon */}
-        <div className="text-[#3b82f6] transition-transform duration-[600ms] group-hover:rotate-[-45deg]" style={{ transitionTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)' }}>
-           <ArrowDownRight className="w-6 h-6 stroke-[2.5px]" />
-        </div>
-      </div>
 
-      {/* Image Section */}
-      <div className="relative flex-1 min-h-[240px] md:min-h-[280px] w-full mt-2 mx-auto mb-4 w-[90%] rounded-2xl overflow-hidden self-center bg-transparent">
-          <img 
-            src={project.image} 
-            alt={project.title}
-            className="absolute inset-0 w-full h-full object-contain transition-transform duration-[800ms] group-hover:scale-105"
-          />
-      </div>
-    </div>
-  );
-};
 
 export const CaseStudySection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    const ctx = gsap.context(() => {
+      // Header Animation
+      gsap.fromTo(headerRef.current, 
+        { y: 30, opacity: 0 },
+        { 
+          y: 0, opacity: 1, 
+          duration: 1, 
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+          }
+        }
+      );
+
+      // Grid Stagger Entrance
+      gsap.fromTo(".project-card-item", 
+        { y: 40, opacity: 0 },
+        {
+          y: 0, 
+          opacity: 1,
+          duration: 0.4,
+          stagger: 0.05,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: gridRef.current,
+            start: "top 85%",
+          }
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="py-16 md:py-24 relative overflow-hidden bg-gray-50/50">
+    <section ref={sectionRef} className="py-20 md:py-32 relative bg-gray-50/50 border-t border-border/50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <ScrollReveal className="flex flex-col items-center justify-center text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-[#1e293b] mt-4 leading-tight">
-              Explore Our <br className="hidden sm:block"/>
-              <span className="text-[#38bdf8]">Recent Projects</span>
+        <div ref={headerRef} className="flex flex-col items-center justify-center text-center mb-16 opacity-0">
+            <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-sm font-bold tracking-wider uppercase mb-4">
+              Featured Work
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4 leading-tight max-w-3xl">
+              Engineered Experiences for <span className="text-primary">Enterprise Scale</span>
             </h2>
-        </ScrollReveal>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Explore our deep-dive case studies showcasing how we solve complex technical challenges and deliver measurable business value.
+            </p>
+        </div>
 
-        {/* Carousel Grid */}
-        <StaggerContainer staggerChildren={0.15}>
-          <StaggerItem direction="up">
-            <Carousel
-              opts={{
-                align: "start",
-                loop: true,
-              }}
-              className="w-full"
-            >
-              <CarouselContent className="-ml-4 md:-ml-6 lg:-ml-8">
-                {projects.map((project, index) => (
-                  <CarouselItem key={index} className="pl-4 md:pl-6 lg:pl-8 md:basis-1/2 lg:basis-1/3">
-                    <ProjectCard project={project} />
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <div className="flex justify-center gap-4 mt-12">
-                <CarouselPrevious className="position-static transform-none static w-12 h-12 bg-white border-gray-200 hover:bg-gray-50 hover:text-primary shadow-sm" />
-                <CarouselNext className="position-static transform-none static w-12 h-12 bg-white border-gray-200 hover:bg-gray-50 hover:text-primary shadow-sm" />
-              </div>
-            </Carousel>
-          </StaggerItem>
-        </StaggerContainer>
+        {/* Mobile: Infinite Auto-Scroll Carousel */}
+        <div className="block md:hidden -mx-4">
+          <MobileInfiniteCarousel projects={allProjects} />
+        </div>
+
+        {/* Desktop: 3x2 Grid */}
+        <div ref={gridRef} className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+          {allProjects.map((project, index) => (
+            <div key={index} className="h-full">
+              <ProjectCard project={project} />
+            </div>
+          ))}
+        </div>
+        
+        <div className="mt-16 text-center">
+          <Link to="/case-studies" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+            View All Projects
+            <ExternalLink className="w-4 h-4" />
+          </Link>
+        </div>
 
       </div>
     </section>
