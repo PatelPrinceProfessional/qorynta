@@ -58,23 +58,26 @@ const CaseStudies = () => {
       </Helmet>
 
       <Navbar />
-      <main className="min-h-screen bg-background pt-20">
+      <main className="min-h-screen bg-[#F8FAFC] dark:bg-[#0A192F] pt-20 transition-colors duration-500">
         
         {/* Header Section */}
-        <section className="py-20 md:py-32 relative overflow-hidden bg-muted">
+        <section className="py-20 md:py-32 relative overflow-hidden bg-white dark:bg-[#061122] transition-colors duration-500 border-b border-slate-100 dark:border-transparent">
+          {/* Ambient Glowing Effect for Dark Mode */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/5 dark:bg-blue-600/10 rounded-full blur-[150px] pointer-events-none transition-colors duration-500" />
+          
           <div ref={headerRef} className="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl relative z-10 opacity-0">
             <SectionLabel text="OUR PORTFOLIO" />
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-6 mt-4 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#0F172A] dark:text-white mb-6 mt-4 leading-tight transition-colors duration-500">
               We Ship Impact. <br className="hidden md:block" /> See For Yourself.
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl mx-auto transition-colors duration-500">
               Explore how we've helped startups and enterprises solve complex technical challenges and scale their operations.
             </p>
           </div>
         </section>
 
         {/* Portfolio Grid */}
-        <section className="py-20 md:py-32 bg-background">
+        <section className="py-20 md:py-32 bg-[#F8FAFC] dark:bg-[#0A192F] transition-colors duration-500">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
               {allProjects.map((project, index) => (
