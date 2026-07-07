@@ -8,6 +8,7 @@ import {
   Package, 
   Link as LinkIcon, 
   Target,
+  Shield,
   LucideIcon
 } from 'lucide-react';
 
@@ -219,6 +220,28 @@ export const services: ServiceData[] = [
       'Align your technology roadmap with business objectives',
       'Accelerate development velocity with optimized processes',
       'Gain executive-level tech leadership without the full-time cost'
+    ]
+  },
+  {
+    slug: 'cybersecurity-solutions',
+    icon: Shield,
+    title: 'Cybersecurity Solutions',
+    description: 'Enterprise-grade security audits, penetration testing, compliance implementation (SOC2/GDPR), and threat mitigation.',
+    longDescription: 'Protect your digital assets with our comprehensive cybersecurity services. We conduct rigorous penetration testing, vulnerability assessments, and implement robust security protocols to safeguard your infrastructure. From ensuring SOC2 and GDPR compliance to real-time threat monitoring and mitigation, we provide the peace of mind you need to scale securely.',
+    tags: ['Pen Testing', 'Compliance', 'Audits'],
+    features: [
+      'Comprehensive Vulnerability Assessments',
+      'Advanced Penetration Testing (Web & API)',
+      'SOC2, HIPAA, & GDPR Compliance Readiness',
+      'Zero-Trust Architecture Implementation',
+      'Real-Time Threat Monitoring & SIEM',
+      'Incident Response & Disaster Recovery Planning'
+    ],
+    benefits: [
+      'Mitigate financial and reputational risks of data breaches',
+      'Build trust with enterprise clients through proven compliance',
+      'Identify and patch vulnerabilities before they are exploited',
+      'Ensure rapid recovery in the event of an incident'
     ]
   }
 ];

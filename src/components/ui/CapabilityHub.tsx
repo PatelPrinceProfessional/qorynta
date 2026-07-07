@@ -3,46 +3,46 @@ import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from
 import { Cloud, Smartphone, Database, BrainCircuit, Globe, ArrowUpRight } from 'lucide-react';
 
 const CAPABILITIES = [
-  { 
-    id: 'web', 
-    label: 'Enterprise Web', 
-    icon: Globe, 
+  {
+    id: 'web',
+    label: 'Enterprise Web',
+    icon: Globe,
     roiMetric: '+150% Scale',
     outcome: 'Handling millions of requests seamlessly for global users.',
     chartType: 'up-trend',
     depth: 1.5,
   },
-  { 
-    id: 'ai', 
-    label: 'Predictive AI', 
-    icon: BrainCircuit, 
+  {
+    id: 'ai',
+    label: 'Predictive AI',
+    icon: BrainCircuit,
     roiMetric: '30% Efficiency',
     outcome: 'Automated workflows saving thousands of manual hours.',
     chartType: 'pulse',
     depth: 0.8,
   },
-  { 
-    id: 'cloud', 
-    label: 'Cloud Architecture', 
-    icon: Cloud, 
+  {
+    id: 'cloud',
+    label: 'Cloud Architecture',
+    icon: Cloud,
     roiMetric: '99.99% Uptime',
     outcome: 'Rock-solid infrastructure with virtually zero downtime.',
     chartType: 'bar',
     depth: 1.2,
   },
-  { 
-    id: 'mobile', 
-    label: 'Mobile Experiences', 
-    icon: Smartphone, 
+  {
+    id: 'mobile',
+    label: 'Mobile Experiences',
+    icon: Smartphone,
     roiMetric: '4.8+ Rating',
     outcome: 'Top-tier user retention across iOS and Android.',
     chartType: 'curve',
     depth: 0.5,
   },
-  { 
-    id: 'data', 
-    label: 'Data Engineering', 
-    icon: Database, 
+  {
+    id: 'data',
+    label: 'Data Engineering',
+    icon: Database,
     roiMetric: 'PB-Scale Data',
     outcome: 'Unlocking actionable insights from massive datasets.',
     chartType: 'up-trend',
@@ -57,8 +57,8 @@ const Sparkline = ({ type, isActive }: { type: string, isActive: boolean }) => {
         {type === 'up-trend' && (
           <motion.path
             d="M 5,35 L 25,25 L 45,30 L 70,10 L 95,5"
-            fill="none" 
-            stroke="currentColor" 
+            fill="none"
+            stroke="currentColor"
             strokeWidth="3"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -70,8 +70,8 @@ const Sparkline = ({ type, isActive }: { type: string, isActive: boolean }) => {
         {type === 'pulse' && (
           <motion.path
             d="M 0,20 L 20,20 L 30,5 L 45,35 L 55,20 L 100,20"
-            fill="none" 
-            stroke="currentColor" 
+            fill="none"
+            stroke="currentColor"
             strokeWidth="3"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -100,8 +100,8 @@ const Sparkline = ({ type, isActive }: { type: string, isActive: boolean }) => {
         {type === 'curve' && (
           <motion.path
             d="M 5,35 C 30,35 40,10 60,20 C 70,25 80,5 95,5"
-            fill="none" 
-            stroke="currentColor" 
+            fill="none"
+            stroke="currentColor"
             strokeWidth="3"
             strokeLinecap="round"
             initial={{ pathLength: 0, opacity: 0 }}
@@ -166,19 +166,19 @@ export const CapabilityHub = () => {
 
   return (
     <div className="relative w-full h-full flex flex-col items-center justify-start sm:justify-center min-h-[550px] sm:min-h-[400px] lg:min-h-[500px] pointer-events-auto group pt-8 sm:pt-0">
-      
+
       {/* --- 3D ORBIT (VISIBLE ON BOTH DESKTOP AND MOBILE) --- */}
       <div className="relative w-[280px] h-[280px] sm:w-[400px] sm:h-[400px] flex items-center justify-center shrink-0">
-        
+
         {/* Core Glow Effects */}
         <div className="absolute inset-0 rounded-full bg-cyan-500/5 blur-[80px] -z-10" />
-        
+
         {/* Decorative Orbit Rings */}
-        <div className="absolute w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] rounded-full border border-cyan-500/40 dark:border-cyan-500/30" />
-        <div className="absolute w-[240px] h-[240px] sm:w-[360px] sm:h-[360px] rounded-full border border-blue-500/40 dark:border-blue-500/30 border-dashed" />
+        <div className="absolute w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] rounded-full border border-cyan-500/10 dark:border-cyan-500/5" />
+        <div className="absolute w-[240px] h-[240px] sm:w-[360px] sm:h-[360px] rounded-full border border-blue-500/10 dark:border-blue-500/5 border-dashed" />
 
         {/* Central Core */}
-        <motion.div 
+        <motion.div
           className="absolute z-20 flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-background/90 border border-cyan-500/30 shadow-[0_0_30px_rgba(6,182,212,0.2)] backdrop-blur-md cursor-pointer group/core"
           style={{
             x: useTransform(smoothX, [-1, 1], [-10, 10]),
@@ -196,7 +196,7 @@ export const CapabilityHub = () => {
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
         >
           <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 dark:from-slate-900 dark:to-slate-900 border border-transparent dark:border-cyan-700 flex items-center justify-center transition-all duration-300 group-hover/core:shadow-[0_0_30px_rgba(6,182,212,0.6)] group-hover/core:scale-110">
-              <span className="font-bold text-white dark:text-cyan-400 text-xs sm:text-sm tracking-widest z-10 transition-transform duration-300 group-hover/core:scale-110">CORE</span>
+            <span className="font-bold text-white dark:text-cyan-400 text-xs sm:text-sm tracking-widest z-10 transition-transform duration-300 group-hover/core:scale-110">CORE</span>
           </div>
         </motion.div>
 
@@ -205,17 +205,17 @@ export const CapabilityHub = () => {
           {CAPABILITIES.map((cap, i) => {
             // Calculate positions around the circle
             const angle = (i / CAPABILITIES.length) * Math.PI * 2;
-            const radius = '42%'; 
-            
+            const radius = '42%';
+
             const top = `calc(50% + ${Math.sin(angle)} * ${radius})`;
             const left = `calc(50% + ${Math.cos(angle)} * ${radius})`;
             const isLeft = Math.cos(angle) < 0;
-            
+
             const Icon = cap.icon;
             const isActive = activeNode === i;
 
             return (
-              <div 
+              <div
                 key={cap.id}
                 className="absolute w-12 h-12 sm:w-14 sm:h-14 -ml-6 -mt-6 sm:-ml-7 sm:-mt-7"
                 style={{ top, left }}
@@ -225,7 +225,7 @@ export const CapabilityHub = () => {
               >
                 {/* Counter-rotation to keep items upright */}
                 <div className="w-full h-full animate-[spin_40s_linear_infinite_reverse] group-hover:[animation-play-state:paused] relative flex items-center justify-center">
-                  
+
                   {/* Parallax Wrapper for Node */}
                   <motion.div
                     style={{
@@ -235,10 +235,10 @@ export const CapabilityHub = () => {
                     className="relative z-40"
                   >
                     {/* Node Base Button */}
-                    <motion.div 
-                      className={`relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full cursor-pointer transition-all duration-300 bg-white dark:bg-slate-800 shadow-xl border border-blue-100 dark:border-slate-700 z-50 ${isActive ? 'scale-110 shadow-[0_0_20px_rgba(59,130,246,0.6)] ring-2 ring-blue-400' : 'hover:scale-110 shadow-[0_0_15px_rgba(59,130,246,0.3)]'}`}
+                    <motion.div
+                      className={`relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full cursor-pointer transition-all duration-300 bg-white dark:bg-slate-800 shadow-[0_8px_30px_rgba(0,0,0,0.15)] border-2 border-blue-200 dark:border-blue-500/30 z-50 opacity-100 ${isActive ? 'scale-110 shadow-[0_0_25px_rgba(59,130,246,0.8)] ring-4 ring-blue-400' : 'hover:scale-110 shadow-[0_0_20px_rgba(59,130,246,0.5)]'}`}
                     >
-                      <Icon className="w-5 h-5 text-blue-600 dark:text-cyan-400" />
+                      <Icon className="w-7 h-7 text-blue-700 dark:text-cyan-400 opacity-100 font-extrabold drop-shadow-md" />
                     </motion.div>
 
                     {/* Expandable Insight Card (Desktop Only - Spawns to the side) */}
