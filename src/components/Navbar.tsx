@@ -188,14 +188,23 @@ export const Navbar = () => {
       <div
         ref={drawerRef}
         className={cn(
-          "fixed top-0 right-0 bottom-0 w-[80%] max-w-sm bg-background z-50 md:hidden flex flex-col border-l border-border transition-transform duration-300 ease-out",
+          "fixed top-0 right-0 bottom-0 w-[80%] max-w-sm bg-background z-[60] md:hidden flex flex-col border-l border-border transition-transform duration-300 ease-out",
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
         )}
         role="dialog"
         aria-modal="true"
         aria-label="Mobile navigation menu"
       >
-        <div className="flex-1 overflow-y-auto pt-24 pb-8 px-6 flex flex-col">
+        {/* Close Button Inside Drawer */}
+        <button
+          onClick={() => setIsMobileMenuOpen(false)}
+          className="absolute top-6 right-6 p-2 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors z-50 rounded-full"
+          aria-label="Close menu"
+        >
+          <X className="w-6 h-6" />
+        </button>
+
+        <div className="flex-1 overflow-y-auto pt-20 pb-8 px-6 flex flex-col">
           <div className="flex flex-col space-y-6 flex-1">
             <Link to="/" className="text-xl font-medium text-foreground hover:text-primary transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
             
