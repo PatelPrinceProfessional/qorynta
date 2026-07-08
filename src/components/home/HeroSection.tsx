@@ -29,7 +29,7 @@ const CyclingText = () => {
   }, []);
 
   return (
-    <span 
+    <span
       className={`inline-block bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-cyan-300 dark:to-blue-500 drop-shadow-sm transition-opacity duration-500 ${fade ? 'opacity-100' : 'opacity-0'}`}
     >
       {words[index]}
@@ -55,11 +55,10 @@ const BackgroundKeywords = () => {
         DOMINATE
       </span>
       {words.map((word, i) => (
-        <span 
+        <span
           key={word}
-          className={`absolute inset-0 flex items-center justify-center lg:justify-start font-black tracking-tighter text-foreground transition-all duration-1000 ease-in-out whitespace-nowrap ${
-            i === index ? 'opacity-[0.15] dark:opacity-[0.25] translate-y-0 scale-100' : 'opacity-0 translate-y-4 scale-95'
-          }`}
+          className={`absolute inset-0 flex items-center justify-center lg:justify-start font-black tracking-tighter text-foreground transition-all duration-1000 ease-in-out whitespace-nowrap ${i === index ? 'opacity-[0.15] dark:opacity-[0.25] translate-y-0 scale-100' : 'opacity-0 translate-y-4 scale-95'
+            }`}
           style={{ fontSize: 'clamp(2.5rem, 14vw, 10rem)', lineHeight: 0.8 }}
         >
           {word}
@@ -86,11 +85,11 @@ export const HeroSection = () => {
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (window.innerWidth < 1024 || !cardContainerRef.current) return;
-      
+
       const { clientX, clientY } = e;
-      const x = (clientX / window.innerWidth - 0.5) * 30; 
+      const x = (clientX / window.innerWidth - 0.5) * 30;
       const y = (clientY / window.innerHeight - 0.5) * 30;
-      
+
       gsap.to(cardContainerRef.current, {
         x: x,
         y: y,
@@ -100,13 +99,13 @@ export const HeroSection = () => {
         ease: 'power2.out',
       });
     };
-    
+
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   return (
-    <section className="hero-section relative lg:sticky lg:top-0 z-0 min-h-screen flex items-center justify-center overflow-hidden bg-transparent">
+    <section className="hero-section relative z-0 min-h-screen flex items-center justify-center overflow-hidden bg-transparent">
       {/* Background Radial Glow, Dot Grid, and Stars */}
       <div className="absolute inset-0 z-0">
         <div className="stars-bg" />
@@ -115,13 +114,13 @@ export const HeroSection = () => {
       <div className={`absolute inset-0 dot-grid opacity-[0.04] sm:opacity-[0.04] ${styles.heroBackground}`} />
       <div className="absolute top-0 right-0 w-[400px] h-[400px] sm:w-[800px] sm:h-[800px] bg-primary/10 sm:bg-primary/20 rounded-full blur-[80px] sm:blur-[120px] -translate-y-1/2 translate-x-1/3 animate-pulse-slow pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[300px] h-[300px] sm:w-[600px] sm:h-[600px] bg-accent/10 sm:bg-accent/20 rounded-full blur-[60px] sm:blur-[100px] translate-y-1/3 -translate-x-1/3 animate-pulse-slow pointer-events-none" style={{ animationDelay: '2s' }} />
-      
+
       <div className="hero-content w-full container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 relative z-10" style={{ willChange: 'transform, filter, opacity' }}>
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          
+
           {/* Left Content (7 cols on lg) */}
           <div className="lg:col-span-7 flex flex-col text-center lg:text-left items-center lg:items-start relative min-w-0">
-            
+
             {/* Massive Background Text Animation */}
             <div className="flex absolute top-[38%] sm:top-[40%] md:top-[45%] lg:top-[65%] left-0 right-0 lg:right-auto -translate-y-1/2 lg:-translate-x-4 z-[-2] pointer-events-none select-none w-full lg:w-auto">
               <BackgroundKeywords />
@@ -152,8 +151,8 @@ export const HeroSection = () => {
 
             {/* Invisible spacer to perfectly preserve layout spacing and prevent CTAs from shifting up */}
             <div className="invisible pointer-events-none select-none text-base md:text-lg mb-8 max-w-xl leading-relaxed" aria-hidden="true">
-              From mobile apps to enterprise web platforms — Qorynta services deliver 
-              production-grade digital solutions for Indian and global businesses 
+              From mobile apps to enterprise web platforms — Qorynta services deliver
+              production-grade digital solutions for Indian and global businesses
               at competitive rates.
             </div>
 
@@ -183,7 +182,7 @@ export const HeroSection = () => {
             <div className="hero-cta opacity-0 w-full min-w-0 overflow-hidden border-t border-border/50 pt-6 mt-4 relative flex items-center h-12">
               <div className="absolute left-0 top-6 bottom-0 w-8 md:w-16 bg-gradient-to-r from-background to-transparent z-10" />
               <div className="absolute right-0 top-6 bottom-0 w-8 md:w-16 bg-gradient-to-l from-background to-transparent z-10" />
-              
+
               <div className="flex animate-marquee whitespace-nowrap">
                 {[...Array(2)].map((_, groupIdx) => (
                   <div key={groupIdx} className="flex items-center justify-start min-w-max gap-4 md:gap-8 px-4 md:px-8 text-xs sm:text-sm font-medium text-muted-foreground">
@@ -195,18 +194,18 @@ export const HeroSection = () => {
                       </div>
                       <span>Rated 4.0 by 40+ clients</span>
                     </div>
-                    
+
                     <div className="w-px h-4 md:h-5 bg-border/50" />
-                    
+
                     <div className="flex items-center gap-1.5 md:gap-2">
                       <Globe className="w-3 h-3 md:w-4 md:h-4 text-primary" />
                       <span>Clients in 8+ Countries</span>
                     </div>
-                    
+
                     <div className="w-px h-4 md:h-5 bg-border/50" />
-                    
+
                     <div className="flex items-center gap-1.5 md:gap-2">
-                      
+
                       <span>48hr Kickoff</span>
                     </div>
 

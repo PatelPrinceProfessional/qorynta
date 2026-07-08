@@ -35,24 +35,5 @@ export function initHeroEntrance() {
 }
 
 export function initHeroScrollExit() {
-  const mm = gsap.matchMedia();
-
-  // Only apply scroll exit animation on desktop (lg breakpoint and up)
-  mm.add("(min-width: 1024px)", () => {
-    gsap.fromTo('.hero-content', 
-      { filter: 'blur(0px)', opacity: 1, y: 0 },
-      {
-        scrollTrigger: {
-          trigger: '#content-wrapper',
-          start: 'top bottom',
-          end: 'top top',
-          scrub: true,
-        },
-        y: -50,
-        opacity: 0.2,
-        filter: 'blur(12px)',
-        ease: 'power1.inOut',
-      }
-    );
-  });
+  // Scroll exit animation (blur and fade) removed based on user request.
 }

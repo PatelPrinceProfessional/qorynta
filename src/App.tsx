@@ -76,9 +76,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <Suspense fallback={null}>
-            <WebGLBackground />
-          </Suspense>
+
           <ScrollToTop />
           <Suspense fallback={<PageLoader />}>
             <AnimatedRoutes />

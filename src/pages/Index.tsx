@@ -24,12 +24,12 @@ const Index = () => {
       </Helmet>
 
       <Navbar />
-      <AmbientGlow />
+
       <main className="flex min-h-screen flex-col">
         <HeroSection />
         
-        {/* Content wrapper to slide over sticky Hero */}
-        <div id="content-wrapper" className="relative z-10 bg-background shadow-[0_-20px_40px_rgba(0,0,0,0.1)] diagonal-geometric-bg flex flex-col gap-8 md:gap-16 pb-20">
+        {/* Main content wrapper */}
+        <div id="content-wrapper" className="relative z-10 bg-background diagonal-geometric-bg flex flex-col gap-8 md:gap-16 pb-20">
           <Suspense fallback={<div className="h-40 w-full flex items-center justify-center"><div className="w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin"></div></div>}>
             <TrustBar />
             <HomeServicesSection />
