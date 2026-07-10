@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, Suspense } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Star, Zap, Globe } from 'lucide-react';
+import { ArrowRight, Star, Zap, Globe, Calculator } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { SectionLabel } from '@/components/ui/SectionLabel';
 import { GradientText } from '@/components/ui/GradientText';

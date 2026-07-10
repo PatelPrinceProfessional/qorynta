@@ -4,9 +4,6 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SectionLabel } from '@/components/ui/SectionLabel';
 import { CTABanner } from '@/components/home/CTABanner';
-import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
-import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { allProjects } from '@/data/projects';
 import { ProjectCard } from '@/components/ui/ProjectCard';
 
@@ -57,8 +54,7 @@ const CaseStudies = () => {
         <meta name="description" content="Explore our portfolio of successful web, mobile, and AI projects delivered for clients across the globe." />
       </Helmet>
 
-      <Navbar />
-      <main className="min-h-screen bg-[#F8FAFC] dark:bg-[#0A192F] pt-20 transition-colors duration-500">
+            <main className="min-h-screen bg-[#F8FAFC] dark:bg-[#0A192F] pt-20 transition-colors duration-500">
         
         {/* Header Section */}
         <section className="py-20 md:py-32 relative overflow-hidden bg-white dark:bg-[#061122] transition-colors duration-500 border-b border-slate-100 dark:border-transparent">
@@ -92,9 +88,7 @@ const CaseStudies = () => {
         <CTABanner />
 
       </main>
-      <Footer />
-      <WhatsAppButton />
-    </>
+                </>
   );
 };
 

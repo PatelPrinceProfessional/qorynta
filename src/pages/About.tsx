@@ -1,34 +1,72 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { Target, Lightbulb, Users, Globe2 } from 'lucide-react';
+import { Target, Lightbulb, Users, Globe2, Code2, Rocket, Workflow, BrainCircuit } from 'lucide-react';
 import { motion, useInView, useSpring, useTransform, useMotionValue } from 'framer-motion';
-import { SectionLabel } from '@/components/ui/SectionLabel';
 import { CTABanner } from '@/components/home/CTABanner';
-import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
-import { WhatsAppButton } from '@/components/WhatsAppButton';
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
 
 const values = [
   {
     icon: Target,
     title: 'Precision Execution',
-    description: 'We do not believe in "good enough". Our code is clean, our architectures scale, and our products work flawlessly.',
+    description: 'We do not believe in "good enough". Our code is clean, our architectures scale, and our products work flawlessly under pressure.',
   },
   {
     icon: Lightbulb,
     title: 'Radical Transparency',
-    description: 'No hidden fees, no black-box development. You have full visibility into our process, sprints, and codebases.',
+    description: 'No hidden fees, no black-box development. You have full visibility into our process, sprints, and codebases from day one.',
   },
   {
     icon: Users,
     title: 'True Partnership',
-    description: 'We act as your extended tech team. Your success is our success. We push back if we see a better way to achieve your goals.',
+    description: 'We act as your extended tech team. Your success is our success. We proactively push back if we see a better way to achieve your goals.',
   },
   {
     icon: Globe2,
     title: 'Global Perspective',
-    description: 'Building for the world. We combine Indian engineering excellence with Western design sensibilities and project management.',
+    description: 'Building for the world. We combine Indian engineering excellence with Western design sensibilities and rigorous project management.',
   },
+];
+
+const culturePoints = [
+  {
+    icon: Code2,
+    title: 'Top 1% Engineering Talent',
+    description: 'We hire rigorously. Our engineers aren\'t just coders; they are problem solvers who understand business logic and system architecture.'
+  },
+  {
+    icon: Workflow,
+    title: 'Agile & Remote-First',
+    description: 'Our asynchronous workflows and daily stand-ups ensure that geography is never a bottleneck. We ship features fast, continuously, and securely.'
+  },
+  {
+    icon: BrainCircuit,
+    title: 'AI-Assisted Development',
+    description: 'We leverage modern AI tools (Copilot, internal RAG systems) to write boilerplate faster, allowing our senior engineers to focus entirely on complex architectural problems.'
+  },
+  {
+    icon: Rocket,
+    title: 'Continuous R&D',
+    description: 'Technology moves fast. We dedicate 15% of our time to internal R&D, ensuring we are always masters of the latest frameworks (Next.js, LangChain, etc) before our clients need them.'
+  }
+];
+
+const pipelineSteps = [
+  {
+    icon: Target,
+    title: '1. Strategic Discovery',
+    description: 'We align on architecture, tech stack, and business goals before writing a single line of code. No guesswork.'
+  },
+  {
+    icon: Code2,
+    title: '2. High-Velocity Engineering',
+    description: 'Agile sprints, daily stand-ups, and extreme code quality checks ensure rapid, bug-free delivery.'
+  },
+  {
+    icon: Rocket,
+    title: '3. Scale & Support',
+    description: 'We deploy to highly scalable cloud infrastructure and provide ongoing monitoring and feature expansion.'
+  }
 ];
 
 // --- 3D Unfold Reveal Component ---
@@ -116,12 +154,12 @@ const TiltStatCard = ({ value, label, delay }: any) => {
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         style={{ rotateX, rotateY, transformStyle: "preserve-3d", willChange: "transform" }}
-        className="group relative h-full flex flex-col items-center justify-center p-8 rounded-2xl bg-white/80 dark:bg-white/[0.03] backdrop-blur-xl border border-slate-200 dark:border-white/[0.05] shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:shadow-[0_0_40px_rgba(0,0,0,0.5)] transition-shadow duration-500 hover:shadow-[0_15px_40px_rgba(59,130,246,0.15)] dark:hover:shadow-[0_0_60px_rgba(59,130,246,0.15)]"
+        className="group relative h-full flex flex-col items-center justify-center p-8 rounded-3xl bg-card/50 backdrop-blur-xl border border-border/50 shadow-sm transition-all duration-500 hover:shadow-xl hover:border-primary/40"
       >
-        <motion.div style={{ translateZ: 50 }} className="text-4xl md:text-5xl font-extrabold text-[#0F172A] dark:text-white mb-2 font-['Playfair_Display']">
+        <motion.div style={{ translateZ: 50 }} className="text-4xl md:text-5xl font-black text-foreground mb-2">
           {value}
         </motion.div>
-        <motion.div style={{ translateZ: 30 }} className="text-sm md:text-base text-blue-600 dark:text-blue-400 uppercase tracking-[0.2em] font-bold">
+        <motion.div style={{ translateZ: 30 }} className="text-sm md:text-base text-primary uppercase tracking-wider font-bold">
           {label}
         </motion.div>
       </motion.div>
@@ -133,118 +171,170 @@ const About = () => {
   return (
     <>
       <Helmet>
-        <title>About Us | Qorynta Services</title>
-        <meta name="description" content="Learn about Qorynta Services' mission, values, and the team building world-class digital products for global businesses." />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
+        <title>About Qorynta Services | Elite Engineering Partner</title>
+        <meta name="description" content="We are the digital backbone for industry leaders. Learn about our elite engineering culture, agile workflows, and global reach." />
       </Helmet>
 
-      <Navbar />
-      
-      <main className="min-h-screen bg-[#F8FAFC] dark:bg-[#0A192F] text-slate-700 dark:text-slate-300 pt-20 overflow-hidden relative font-sans transition-colors duration-500">
+            
+      <main className="min-h-screen bg-background pt-20 overflow-hidden relative">
         
-        {/* Global Ambient Depth Gradient */}
-        <div className="absolute top-0 left-0 w-full h-[800px] bg-gradient-to-b from-blue-500/10 dark:from-[#0F2344] to-transparent pointer-events-none opacity-50 transition-colors duration-500" />
+        {/* Ambient Top Glow */}
+        <div className="absolute top-0 left-0 w-full h-[800px] bg-gradient-to-b from-primary/10 to-transparent pointer-events-none opacity-50" />
 
-        {/* Header Section */}
-        <section className="py-24 md:py-40 relative z-10">
+        {/* Hero Section */}
+        <section className="py-24 md:py-32 relative z-10">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-5xl">
             <UnfoldReveal delay={0}>
               <div className="inline-block mb-6">
-                <span className="text-sm font-bold tracking-[0.2em] text-blue-600 dark:text-blue-400 uppercase border border-blue-500/30 rounded-full px-6 py-2 bg-blue-500/5 dark:bg-blue-500/10 backdrop-blur-sm transition-colors duration-500">
-                  Our Story
+                <span className="text-sm font-black tracking-widest text-primary uppercase border border-primary/30 rounded-full px-6 py-2 bg-primary/5 backdrop-blur-sm shadow-sm">
+                  The Agency
                 </span>
               </div>
             </UnfoldReveal>
             
             <UnfoldReveal delay={0.2}>
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-[#0F172A] dark:text-white mb-8 tracking-tight font-['Playfair_Display'] leading-[1.1] transition-colors duration-500">
-                Engineering the Future <br className="hidden md:block" /> of Digital Business.
+              <h1 className="text-4xl md:text-6xl lg:text-8xl font-black text-foreground mb-8 tracking-tight leading-[1.1]">
+                We Build the Digital Backbone of <span className="text-primary">Industry Leaders.</span>
               </h1>
             </UnfoldReveal>
 
             <UnfoldReveal delay={0.4}>
-              <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl mx-auto font-light transition-colors duration-500">
-                Qorynta Services was founded with a simple mission: to bridge the gap between world-class engineering talent and global enterprise needs. We deliver Silicon Valley-grade software architectures at a global scale.
+              <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-3xl mx-auto font-medium">
+                Qorynta Services is not just another dev shop. We are an elite engineering task force that partners with ambitious startups and massive enterprises to ship high-impact software at scale.
               </p>
             </UnfoldReveal>
           </div>
         </section>
 
-        {/* Glass-morphism 2.0 Core Values */}
-        <section className="py-24 relative z-10">
-          {/* Subtle background pulse for this section */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-[600px] bg-blue-500/10 dark:bg-blue-600/10 rounded-full blur-[120px] animate-pulse-slow pointer-events-none transition-colors duration-500" />
-          
+        {/* Core Values / DNA Grid */}
+        <section className="py-24 relative z-10 bg-muted/30 border-y border-border/40">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <UnfoldReveal delay={0} className="text-center max-w-3xl mx-auto mb-20">
-              <h2 className="text-4xl md:text-5xl font-bold text-[#0F172A] dark:text-white mb-6 font-['Playfair_Display'] transition-colors duration-500">
-                How We Operate
+            <ScrollReveal className="text-center max-w-3xl mx-auto mb-20">
+              <h2 className="text-3xl md:text-5xl font-black text-foreground mb-6">
+                Our Engineering DNA
               </h2>
-              <p className="text-lg text-blue-600 dark:text-blue-400 tracking-[0.1em] uppercase font-bold transition-colors duration-500">
-                The principles that drive our engineering
+              <p className="text-lg text-primary tracking-widest uppercase font-black">
+                Zero Compromise. High Velocity.
               </p>
-            </UnfoldReveal>
+            </ScrollReveal>
 
-            <div className="grid md:grid-cols-2 gap-6 lg:gap-10">
+            <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
               {values.map((value, idx) => (
-                <UnfoldReveal key={idx} delay={0.1 * idx}>
-                  <div className="group relative p-[2px] rounded-[2rem] overflow-hidden">
-                    {/* Animated Pulsing Border Gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 dark:from-blue-600 dark:via-indigo-500 dark:to-purple-600 opacity-30 dark:opacity-50 group-hover:opacity-100 transition-opacity duration-1000 animate-[spin_4s_linear_infinite]" />
+                <ScrollReveal key={idx} delay={0.1 * idx}>
+                  <div className="group relative p-[2px] rounded-3xl overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/40 via-secondary/40 to-primary/40 opacity-20 group-hover:opacity-100 transition-opacity duration-700 animate-[spin_4s_linear_infinite]" />
                     
-                    {/* Deep Blur Glass Card */}
-                    <div className="relative flex flex-col sm:flex-row gap-6 p-8 md:p-10 rounded-[2rem] bg-white/80 dark:bg-[#0A192F]/90 backdrop-blur-[25px] h-full items-start transition-colors duration-500">
-                      <div className="w-16 h-16 rounded-2xl bg-blue-50 dark:bg-white/5 border border-blue-100 dark:border-white/10 flex items-center justify-center shrink-0 shadow-lg dark:shadow-[0_0_30px_rgba(0,0,0,0.3)] group-hover:bg-blue-100 dark:group-hover:bg-blue-500/20 transition-colors duration-500">
-                        <value.icon className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+                    <div className="relative flex flex-col sm:flex-row gap-6 p-8 md:p-10 rounded-3xl bg-card border border-border/50 h-full items-start transition-all duration-500 group-hover:bg-card/90">
+                      <div className="w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 shadow-lg group-hover:bg-primary group-hover:border-transparent transition-all duration-500">
+                        <value.icon className="w-8 h-8 text-primary group-hover:text-primary-foreground transition-colors" />
                       </div>
                       <div>
-                        <h3 className="text-2xl font-bold text-[#0F172A] dark:text-white mb-3 font-['Playfair_Display'] tracking-wide transition-colors duration-500">{value.title}</h3>
-                        <p className="text-slate-600 dark:text-slate-400 leading-relaxed font-light text-lg transition-colors duration-500">{value.description}</p>
+                        <h3 className="text-2xl font-black text-foreground mb-3 tracking-wide">{value.title}</h3>
+                        <p className="text-muted-foreground leading-relaxed font-medium text-lg">{value.description}</p>
                       </div>
                     </div>
                   </div>
-                </UnfoldReveal>
+                </ScrollReveal>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Global Reach - 3D Parallax Stats */}
-        <section className="py-32 relative overflow-hidden z-10 bg-white dark:bg-[#061122] transition-colors duration-500 border-t border-slate-100 dark:border-transparent">
-          {/* Faint Pulse Light Source behind stats */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-500/5 dark:bg-indigo-600/10 rounded-full blur-[150px] pointer-events-none transition-colors duration-500" />
+        {/* 3-Step Pipeline */}
+        <section className="py-24 md:py-32 relative z-10 bg-muted/30 border-t border-border/40">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col lg:flex-row gap-16 lg:gap-20 items-center">
+              
+              <div className="lg:w-1/2">
+                <ScrollReveal>
+                  <span className="inline-block py-1 px-3 rounded-full bg-secondary/10 text-secondary text-sm font-black tracking-wider uppercase mb-6">
+                    Delivery Engine
+                  </span>
+                  <h2 className="text-3xl md:text-5xl font-black text-foreground mb-8 leading-tight">
+                    How We Ship <br/> At High Velocity.
+                  </h2>
+                  <p className="text-lg text-muted-foreground mb-8 leading-relaxed font-medium">
+                    We've replaced traditional bloated agency overhead with a lean, ruthless 3-step pipeline. We operate as an elite extension of your own company.
+                  </p>
+                </ScrollReveal>
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <UnfoldReveal delay={0} className="text-center max-w-4xl mx-auto mb-20">
-              <h2 className="text-4xl md:text-6xl font-bold text-[#0F172A] dark:text-white mb-6 font-['Playfair_Display'] leading-tight transition-colors duration-500">
-                Headquartered in India, <br className="hidden sm:block" /> Built for the World
-              </h2>
-              <p className="text-xl text-slate-600 dark:text-slate-400 font-light max-w-2xl mx-auto transition-colors duration-500">
-                We've optimized our async communication and agile sprints to ensure geography is never a barrier to shipping exceptional software.
-              </p>
-            </UnfoldReveal>
-            
-            {/* Mobile: 2x2 grid, Desktop: 4 cols. High margin padding to let cards pop */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 max-w-6xl mx-auto">
-              <TiltStatCard delay={0.1} label="Clients" value={<AnimatedCounter from={0} to={40} suffix="+" />} />
-              <TiltStatCard delay={0.2} label="Countries" value={<AnimatedCounter from={0} to={8} suffix="+" />} />
-              <TiltStatCard delay={0.3} label="Projects" value={<AnimatedCounter from={0} to={120} suffix="+" />} />
-              <TiltStatCard delay={0.4} label="In-House" value={<AnimatedCounter from={0} to={100} suffix="%" />} />
+                <div className="space-y-8 mt-12 relative before:absolute before:inset-0 before:ml-6 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-border before:to-transparent hidden md:block">
+                  {/* We will hide the timeline line on mobile for simplicity, but use a grid */}
+                </div>
+
+                <div className="grid gap-8 mt-8">
+                  {pipelineSteps.map((step, idx) => (
+                    <ScrollReveal key={idx} delay={0.1 * idx}>
+                      <div className="flex gap-6 items-start bg-card p-6 rounded-2xl border border-border/50 shadow-sm hover:shadow-md transition-shadow">
+                        <div className="w-12 h-12 shrink-0 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center">
+                          <step.icon className="w-6 h-6 text-primary" />
+                        </div>
+                        <div>
+                          <h4 className="text-xl font-bold text-foreground mb-2">{step.title}</h4>
+                          <p className="text-muted-foreground font-medium leading-relaxed">
+                            {step.description}
+                          </p>
+                        </div>
+                      </div>
+                    </ScrollReveal>
+                  ))}
+                </div>
+              </div>
+
+              <div className="lg:w-1/2 w-full h-[500px] lg:h-[700px] relative rounded-3xl overflow-hidden border border-border/50 shadow-2xl group">
+                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center group-hover:scale-105 transition-transform duration-1000" />
+                <div className="absolute inset-0 bg-foreground/70 backdrop-blur-[4px]" />
+                
+                {/* Abstract overlay to represent network/engine */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="relative w-full max-w-md aspect-square rounded-full border border-white/20 flex items-center justify-center p-8 animate-[spin_30s_linear_infinite]">
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/30 via-transparent to-transparent opacity-80 rounded-full" />
+                    <div className="w-full h-full rounded-full border border-white/10 border-dashed animate-[spin_20s_linear_infinite_reverse]" />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-white mix-blend-overlay">
+                      <Workflow className="w-20 h-20 opacity-80" />
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="absolute bottom-10 left-10 right-10">
+                  <div className="bg-background/90 backdrop-blur-md p-6 rounded-2xl border border-white/10 shadow-xl">
+                    <p className="text-foreground font-bold italic">
+                      "We treat every client's codebase as if it were our own flagship product. Quality is never negotiated."
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Force CTA Banner to adapt to dark theme visually */}
-        <div className="relative z-10">
-          <CTABanner />
-        </div>
+        {/* Global Reach - 3D Parallax Stats */}
+        <section className="py-32 relative overflow-hidden z-10 bg-muted border-t border-border/50">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[150px] pointer-events-none" />
+
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <UnfoldReveal delay={0} className="text-center max-w-4xl mx-auto mb-20">
+              <h2 className="text-4xl md:text-6xl font-black text-foreground mb-6 leading-tight">
+                Headquartered in India, <br className="hidden sm:block" /> Built for the World
+              </h2>
+              <p className="text-xl text-muted-foreground font-medium max-w-2xl mx-auto">
+                We've optimized our async communication and agile sprints to ensure geography is never a barrier to shipping exceptional software.
+              </p>
+            </UnfoldReveal>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 max-w-6xl mx-auto">
+              <TiltStatCard delay={0.1} label="Enterprise Clients" value={<AnimatedCounter from={0} to={40} suffix="+" />} />
+              <TiltStatCard delay={0.2} label="Countries Served" value={<AnimatedCounter from={0} to={8} suffix="+" />} />
+              <TiltStatCard delay={0.3} label="Projects Shipped" value={<AnimatedCounter from={0} to={120} suffix="+" />} />
+              <TiltStatCard delay={0.4} label="Client Retention" value={<AnimatedCounter from={0} to={98} suffix="%" />} />
+            </div>
+          </div>
+        </section>
+
+        <CTABanner />
 
       </main>
-      <Footer />
-      <WhatsAppButton />
-    </>
+                </>
   );
 };
 

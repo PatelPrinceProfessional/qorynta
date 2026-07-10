@@ -1,4 +1,4 @@
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, TrendingUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Project } from '@/data/projects';
 
@@ -16,14 +16,29 @@ export const ProjectCard = ({ project }: { project: Project }) => {
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.05] will-change-transform"
         />
         {/* Overlay gradient for premium feel */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 dark:from-[#0A192F]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 dark:from-[#0A192F]/90 to-transparent opacity-100 transition-opacity duration-500" />
+        
+        {/* Highlight Metric Overlay */}
+        {project.metrics && project.metrics.length > 0 && (
+          <div className="absolute bottom-4 left-4 right-4 z-20">
+            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-3 shadow-lg transform transition-transform duration-500 group-hover:-translate-y-1">
+              <div className="bg-primary/20 text-primary p-1.5 rounded-lg shrink-0">
+                <TrendingUp className="w-5 h-5 text-white" />
+              </div>
+              <div>
+                <p className="text-white font-extrabold text-lg leading-none">{project.metrics[0].value}</p>
+                <p className="text-white/80 text-xs font-semibold uppercase tracking-wider mt-0.5">{project.metrics[0].label}</p>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Content Section */}
       <div className="flex flex-col flex-1 p-6 md:p-8 relative z-10 transition-colors duration-500">
         
         {/* Tags */}
-        <div className="flex flex-wrap gap-2 mb-4">
+        <div className="flex flex-wrap gap-2 mb-4 items-center">
           <span className="px-3 py-1 bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs font-semibold rounded-full uppercase tracking-wide transition-colors">
             {project.category}
           </span>
@@ -33,16 +48,16 @@ export const ProjectCard = ({ project }: { project: Project }) => {
         </div>
 
         {/* Title */}
-        <h3 className="text-xl md:text-2xl font-bold text-[#0F172A] dark:text-white mb-4 leading-tight line-clamp-2 transition-colors duration-500">
+        <h3 className="text-xl md:text-2xl font-bold text-[#0F172A] dark:text-white mb-3 leading-tight line-clamp-2 transition-colors duration-500 group-hover:text-blue-600 dark:group-hover:text-blue-400">
           {project.title}
         </h3>
         
         {/* Short description */}
-        <p className="text-slate-600 dark:text-slate-400 text-sm line-clamp-2 mb-6 flex-1 transition-colors duration-500">
+        <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed line-clamp-2 mb-6 flex-1 transition-colors duration-500">
           {project.overview}
         </p>
 
-        {/* CTA */}
+        {/* Metrics Footer */}
         <div className="mt-auto flex items-center justify-between border-t border-slate-100 dark:border-white/10 pt-4 transition-colors duration-500">
           <span className="text-sm font-semibold text-blue-600 dark:text-blue-400 inline-flex items-center group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors">
             Read Case Study

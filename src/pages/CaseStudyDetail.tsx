@@ -1,10 +1,9 @@
 import { useParams, Navigate, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { ArrowLeft, CheckCircle2, ChevronRight, Terminal } from 'lucide-react';
-import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
+import { ArrowLeft, CheckCircle2, ChevronRight, Terminal, ArrowRight, Building2 } from 'lucide-react';
 import { allProjects } from '@/data/projects';
 import { CTABanner } from '@/components/home/CTABanner';
+import { ProjectCard } from '@/components/ui/ProjectCard';
 import { motion } from 'framer-motion';
 
 const CaseStudyDetail = () => {
@@ -15,6 +14,9 @@ const CaseStudyDetail = () => {
     return <Navigate to="/case-studies" replace />;
   }
 
+  // Get 3 random/other projects for "Related Case Studies"
+  const relatedProjects = allProjects.filter(p => p.slug !== slug).slice(0, 3);
+
   return (
     <>
       <Helmet>
@@ -22,15 +24,14 @@ const CaseStudyDetail = () => {
         <meta name="description" content={project.overview} />
       </Helmet>
 
-      <Navbar />
-      
+            
       <main className="min-h-screen bg-background pt-24 pb-20">
         
         {/* Breadcrumb & Back */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-          <Link to="/case-studies" className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors">
+          <Link to="/case-studies" className="inline-flex items-center text-sm font-semibold text-muted-foreground hover:text-primary transition-colors">
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Portfolio
+            Back to Case Studies
           </Link>
           <div className="flex items-center gap-2 text-sm text-muted-foreground mt-4">
             <Link to="/" className="hover:text-primary">Home</Link>
@@ -44,13 +45,23 @@ const CaseStudyDetail = () => {
         {/* Hero Section */}
         <section className="container mx-auto px-4 sm:px-6 lg:px-8 mb-16">
           <div className="max-w-4xl">
-            <div className="inline-block px-3 py-1 bg-primary/10 text-primary font-semibold text-sm rounded-full mb-6">
-              {project.category}
+            <div className="flex items-center gap-3 mb-6">
+              <div className="px-3 py-1 bg-primary/10 text-primary font-bold text-sm rounded-full tracking-wider uppercase">
+                {project.category}
+              </div>
+              {project.client && (
+                <div className="flex items-center gap-1.5 text-sm font-semibold text-muted-foreground">
+                  <Building2 className="w-4 h-4" />
+                  {project.client}
+                </div>
+              )}
             </div>
+            
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-6 leading-tight">
               {project.title}
             </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed mb-10">
+            
+            <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-10 max-w-3xl font-medium">
               {project.overview}
             </p>
           </div>
@@ -68,6 +79,32 @@ const CaseStudyDetail = () => {
             />
           </motion.div>
         </section>
+
+        {/* Metrics Ribbon */}
+        {project.metrics && project.metrics.length > 0 && (
+          <section className="container mx-auto px-4 sm:px-6 lg:px-8 mb-16 relative z-10 -mt-20 md:-mt-32">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+              className="bg-card/80 backdrop-blur-xl border border-border/50 shadow-xl rounded-3xl p-8 md:p-12"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-border/50">
+                {project.metrics.map((metric, idx) => (
+                  <div key={idx} className="flex flex-col items-center justify-center text-center pt-6 md:pt-0 first:pt-0">
+                    <div className="text-4xl md:text-5xl font-extrabold text-primary mb-2">
+                      {metric.value}
+                    </div>
+                    <div className="text-sm md:text-base font-medium text-muted-foreground uppercase tracking-wider">
+                      {metric.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </section>
+        )}
 
         {/* Deep Dive Content */}
         <section className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -163,13 +200,37 @@ const CaseStudyDetail = () => {
           </div>
         </section>
 
+        {/* Related Case Studies Section */}
+        {relatedProjects.length > 0 && (
+          <section className="container mx-auto px-4 sm:px-6 lg:px-8 mt-24 pt-16 border-t border-border/50">
+            <div className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+              <div>
+                <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">Related Case Studies</h2>
+                <p className="text-lg text-muted-foreground max-w-2xl">
+                  Explore other technical solutions we've delivered.
+                </p>
+              </div>
+              <Link to="/case-studies" className="inline-flex items-center gap-2 font-semibold text-primary hover:text-primary/80 transition-colors">
+                View All Projects <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {relatedProjects.map((p, idx) => (
+                <div key={idx} className="h-full">
+                  <ProjectCard project={p} />
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
         <div className="mt-24">
           <CTABanner />
         </div>
       </main>
       
-      <Footer />
-    </>
+          </>
   );
 };
 

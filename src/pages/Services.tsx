@@ -2,9 +2,6 @@ import { Helmet } from 'react-helmet';
 import { ServicesSection } from '@/components/home/ServicesSection';
 import { TechStackSection } from '@/components/home/TechStackSection';
 import { CTABanner } from '@/components/home/CTABanner';
-import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
-import { WhatsAppButton } from '@/components/WhatsAppButton';
 
 const Services = () => {
   return (
@@ -14,8 +11,7 @@ const Services = () => {
         <meta name="description" content="Explore our full range of digital services including web development, mobile apps, UI/UX design, AI solutions, and Cloud DevOps." />
       </Helmet>
 
-      <Navbar />
-      <main className="flex min-h-screen flex-col bg-background">
+            <main className="flex min-h-screen flex-col bg-background">
         
         {/* Page Header */}
         <section className="pt-32 pb-20 bg-gradient-to-b from-muted to-background text-center px-4">
@@ -39,9 +35,7 @@ const Services = () => {
         <CTABanner />
 
       </main>
-      <Footer />
-      <WhatsAppButton />
-    </>
+                </>
   );
 };
 

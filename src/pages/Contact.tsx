@@ -7,9 +7,6 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { SectionLabel } from '@/components/ui/SectionLabel';
 import emailjs from '@emailjs/browser';
-import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
-import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
 const contactInfo = [
@@ -154,8 +151,7 @@ const Contact = () => {
         <meta name="description" content="Get in touch with Qorynta Services to discuss your web, mobile, or AI project. Free scoping call and proposal within 24 hours." />
       </Helmet>
 
-      <Navbar />
-      <main className="min-h-screen bg-[#F8FAFC] dark:bg-slate-950 pt-20 relative overflow-hidden transition-colors duration-500">
+            <main className="min-h-screen bg-[#F8FAFC] dark:bg-slate-950 pt-20 relative overflow-hidden transition-colors duration-500">
         
         {/* Ambient Pulsing Background */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] md:w-[1000px] h-[600px] md:h-[1000px] bg-blue-500/10 dark:bg-blue-600/15 rounded-full blur-[100px] md:blur-[180px] animate-pulse-slow pointer-events-none z-0" />
@@ -342,9 +338,7 @@ const Contact = () => {
           </div>
         </section>
       </main>
-      <Footer />
-      <WhatsAppButton />
-    </>
+                </>
   );
 };
 

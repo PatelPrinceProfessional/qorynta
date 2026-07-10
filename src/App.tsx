@@ -7,6 +7,9 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
+import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 const WebGLBackground = React.lazy(() => {
   return new Promise<{ default: React.ComponentType<any> }>((resolve) => {
     // Delay fetching the 500KB Three.js bundle until after the page is fully loaded and painted
@@ -20,10 +23,20 @@ const WebGLBackground = React.lazy(() => {
 const Index = React.lazy(() => import("./pages/Index"));
 const Services = React.lazy(() => import("./pages/Services"));
 const ServiceDetail = React.lazy(() => import("./pages/ServiceDetail"));
+const Engagement = React.lazy(() => import("./pages/Engagement"));
+const Careers = React.lazy(() => import("./pages/Careers"));
+const PrivacyPolicy = React.lazy(() => import("./pages/PrivacyPolicy"));
+const TermsOfService = React.lazy(() => import("./pages/TermsOfService"));
 const CaseStudies = React.lazy(() => import("./pages/CaseStudies"));
 const CaseStudyDetail = React.lazy(() => import("./pages/CaseStudyDetail"));
 const About = React.lazy(() => import("./pages/About"));
 const Contact = React.lazy(() => import("./pages/Contact"));
+const IndustryDetail = React.lazy(() => import("./pages/IndustryDetail"));
+const Hire = React.lazy(() => import("./pages/Hire"));
+const HireDetail = React.lazy(() => import("./pages/HireDetail"));
+const Industries = React.lazy(() => import("./pages/Industries"));
+const Insights = React.lazy(() => import("./pages/Insights"));
+const InsightDetail = React.lazy(() => import("./pages/InsightDetail"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -38,7 +51,7 @@ const PageLoader = () => (
 // Wrapper for animated routes
 const AnimatedRoutes = () => {
   const location = useLocation();
-  
+
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
@@ -49,6 +62,16 @@ const AnimatedRoutes = () => {
         <Route path="/case-studies/:slug" element={<PageWrapper><CaseStudyDetail /></PageWrapper>} />
         <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
         <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
+        <Route path="/industries/:slug" element={<PageWrapper><IndustryDetail /></PageWrapper>} />
+        <Route path="/industries" element={<PageWrapper><Industries /></PageWrapper>} />
+        <Route path="/hire" element={<PageWrapper><Hire /></PageWrapper>} />
+        <Route path="/hire/:slug" element={<PageWrapper><HireDetail /></PageWrapper>} />
+        <Route path="/insights" element={<PageWrapper><Insights /></PageWrapper>} />
+        <Route path="/insights/:slug" element={<PageWrapper><InsightDetail /></PageWrapper>} />
+        <Route path="/engagement" element={<PageWrapper><Engagement /></PageWrapper>} />
+        <Route path="/careers" element={<PageWrapper><Careers /></PageWrapper>} />
+        <Route path="/privacy-policy" element={<PageWrapper><PrivacyPolicy /></PageWrapper>} />
+        <Route path="/terms-of-service" element={<PageWrapper><TermsOfService /></PageWrapper>} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<PageWrapper><NotFound /></PageWrapper>} />
       </Routes>
@@ -69,22 +92,27 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => (
 );
 
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <ThemeProvider defaultTheme="light" storageKey="qorynta-theme" attribute="class">
-      <TooltipProvider>
-        <Toaster />
+const App = () => {
+  useSmoothScroll();
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider defaultTheme="light" storageKey="qorynta-theme" attribute="class">
+        <TooltipProvider>
+          <Toaster />
         <Sonner />
         <BrowserRouter>
-
+          <Navbar />
           <ScrollToTop />
           <Suspense fallback={<PageLoader />}>
             <AnimatedRoutes />
           </Suspense>
+          <Footer />
         </BrowserRouter>
       </TooltipProvider>
     </ThemeProvider>
   </QueryClientProvider>
-);
+  );
+};
 
 export default App;

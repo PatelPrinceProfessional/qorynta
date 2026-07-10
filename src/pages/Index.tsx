@@ -9,11 +9,14 @@ const ProcessSection = React.lazy(() => import('@/components/home/ProcessSection
 const CaseStudySection = React.lazy(() => import('@/components/home/CaseStudySection').then(m => ({ default: m.CaseStudySection })));
 const TechStackSection = React.lazy(() => import('@/components/home/TechStackSection').then(m => ({ default: m.TechStackSection })));
 const CTABanner = React.lazy(() => import('@/components/home/CTABanner').then(m => ({ default: m.CTABanner })));
-const Footer = React.lazy(() => import('@/components/Footer').then(m => ({ default: m.Footer })));
-const WhatsAppButton = React.lazy(() => import('@/components/WhatsAppButton').then(m => ({ default: m.WhatsAppButton })));
+
+// New Phase 1 Sections
+const IndustriesSection = React.lazy(() => import('@/components/home/IndustriesSection').then(m => ({ default: m.IndustriesSection })));
+const CertificationsSection = React.lazy(() => import('@/components/home/CertificationsSection').then(m => ({ default: m.CertificationsSection })));
+const FAQSection = React.lazy(() => import('@/components/home/FAQSection').then(m => ({ default: m.FAQSection })));
+const BlogPreviewSection = React.lazy(() => import('@/components/home/BlogPreviewSection').then(m => ({ default: m.BlogPreviewSection })));
 
 import { AmbientGlow } from '@/components/ui/AmbientGlow';
-import { Navbar } from '@/components/Navbar';
 
 const Index = () => {
   return (
@@ -23,30 +26,31 @@ const Index = () => {
         <meta name="description" content="Production-grade digital solutions for Indian and global businesses. Custom web development, mobile apps, AI & Machine Learning, and Cloud DevOps." />
       </Helmet>
 
-      <Navbar />
-
+      
       <main className="flex min-h-screen flex-col">
         <HeroSection />
         
         {/* Main content wrapper */}
-        <div id="content-wrapper" className="relative z-10 bg-background diagonal-geometric-bg flex flex-col gap-8 md:gap-16 pb-20">
+        <div id="content-wrapper" className="relative z-10 bg-background diagonal-geometric-bg flex flex-col gap-0 pb-0">
           <Suspense fallback={<div className="h-40 w-full flex items-center justify-center"><div className="w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin"></div></div>}>
             <TrustBar />
             <HomeServicesSection />
           </Suspense>
+          
           <WhyQorynta />
+          
           <Suspense fallback={<div className="h-40 w-full flex items-center justify-center"><div className="w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin"></div></div>}>
             <ProcessSection />
+            <IndustriesSection />
             <CaseStudySection />
             <TechStackSection />
+            <CertificationsSection />
+            <FAQSection />
+            <BlogPreviewSection />
           </Suspense>
         </div>
       </main>
-      <Suspense fallback={null}>
-        <Footer />
-        <WhatsAppButton />
-      </Suspense>
-    </>
+          </>
   );
 };
 
