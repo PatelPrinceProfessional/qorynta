@@ -134,7 +134,7 @@ export const HeroSection = () => {
               {/* Desktop text */}
               <div className="hidden md:flex items-center gap-2.5 mb-4">
                 <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                <span className="text-sm font-semibold tracking-wider text-muted-foreground uppercase">QORYNTA SERVICES — BUILD. SCALE. DOMINATE.</span>
+                <span className="text-sm font-semibold tracking-wider text-muted-foreground">Qorynta Services — BUILD. SCALE. DOMINATE.</span>
               </div>
             </div>
 

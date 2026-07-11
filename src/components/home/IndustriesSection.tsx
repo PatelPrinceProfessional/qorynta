@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 const techCategories = [
   'Front-end',
@@ -218,7 +219,7 @@ export const IndustriesSection = () => {
           </div>
           <div className="md:w-1/3">
             <p className="text-lg text-slate-500 dark:text-slate-400 font-medium leading-relaxed pb-2 transition-colors duration-500">
-              Leveraging modern cloud tech, we deliver scalable, enterprise-grade applications designed for peak performance.
+              Explore our recent case studies in our <Link to="/portfolio" className="font-bold text-blue-600 dark:text-blue-400 hover:underline">Portfolio</Link> to see how we build enterprise software, or <Link to="/contact" className="font-bold text-blue-600 dark:text-blue-400 hover:underline">Contact Us</Link> to get a free technical scoping call.
             </p>
           </div>
         </div>
