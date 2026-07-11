@@ -229,11 +229,13 @@ export const IndustriesSection = () => {
             
             {/* The Liquid Shift Pill Background */}
             <div 
-              className="absolute top-1 bottom-1 bg-blue-600 rounded-full shadow-md shadow-blue-600/20"
+              className="absolute top-1 bottom-1 bg-blue-600 rounded-full shadow-md shadow-blue-600/20 will-change-transform"
               style={{
-                left: `${tabBounds.left}px`,
-                width: `${tabBounds.width}px`,
-                transition: 'all 0.4s cubic-bezier(0.25, 1, 0.5, 1)'
+                left: 0,
+                width: '1px',
+                transform: `translateX(${tabBounds.left}px) scaleX(${tabBounds.width})`,
+                transformOrigin: 'left center',
+                transition: 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)'
               }}
             />
 

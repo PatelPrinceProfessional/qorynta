@@ -103,7 +103,7 @@ export const Navbar = () => {
               : "h-16 md:h-20 bg-transparent border-b border-transparent px-4 sm:px-6 lg:px-8 md:px-0 lg:px-0"
           )}>
             <Link to="/" className="flex items-center gap-2 group z-50 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]" onClick={() => setIsMobileMenuOpen(false)}>
-              <img src="/logo.webp" alt="Qorynta Services Logo" className={cn("w-auto object-contain rounded-md transition-all duration-500", isScrolled ? "h-8" : "h-10")} />
+              <img src="/logo.webp" alt="Qorynta Services Logo" width={140} height={40} className={cn("w-auto object-contain rounded-md transition-all duration-500", isScrolled ? "h-8" : "h-10")} />
               <span className={cn("font-bold tracking-tight block transition-all duration-500", isScrolled ? "text-base sm:text-lg" : "text-lg sm:text-xl")}>
                 <span className="gradient-text">Qorynta Services</span>
               </span>

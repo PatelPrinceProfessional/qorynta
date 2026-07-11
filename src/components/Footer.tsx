@@ -63,7 +63,7 @@ export const Footer = () => {
           {/* Brand & Description */}
           <div className="lg:col-span-4 space-y-6 pr-4">
             <Link to="/" className="flex items-center gap-2 group mb-4">
-              <img src="/logo.webp" alt="Qorynta Services Logo" className="h-8 w-auto object-contain rounded-md" />
+              <img src="/logo.webp" alt="Qorynta Services Logo" width={140} height={40} className="h-8 w-auto object-contain rounded-md" />
               <span className="text-xl font-bold tracking-tight text-white">Qorynta Services</span>
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed font-medium max-w-sm">
