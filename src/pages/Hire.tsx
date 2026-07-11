@@ -15,6 +15,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { RevealContent } from '@/components/ui/RevealContent';
 
 const engagementModels = [
   {
@@ -77,8 +78,10 @@ export const Hire = () => {
                 Bypass the painful hiring cycle. Instantly inject world-class architects, senior developers, and product engineers directly into your most critical initiatives.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Button asChild size="lg" className="rounded-full px-8 h-14 text-lg bg-primary hover:bg-primary/90 shadow-[0_0_24px_rgba(59,130,246,0.35)] hover:scale-105 transition-all">
-                  <Link to="/contact">Build Your Team Today</Link>
+                <Button asChild size="lg" className="rounded-full px-8 h-14 text-lg bg-primary hover:bg-primary/90 shadow-[0_0_24px_rgba(59,130,246,0.35)] hover:scale-105 transition-all overflow-hidden group">
+                  <Link to="/contact">
+                    <RevealContent>Build Your Team Today</RevealContent>
+                  </Link>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="rounded-full px-8 h-14 text-lg border-border hover:bg-muted transition-all">
                   <a href="#models">Explore Engagement Models</a>

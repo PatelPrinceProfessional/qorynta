@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, CalendarCheck } from 'lucide-react';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { Button } from '@/components/ui/button';
+import { RevealContent } from '@/components/ui/RevealContent';
 
 export const CTABanner = () => {
   return (
@@ -22,11 +23,13 @@ export const CTABanner = () => {
             <Button
               asChild
               size="lg"
-              className="w-full sm:w-auto bg-primary text-primary-foreground shadow-[0_0_24px_rgba(59,130,246,0.5)] hover:shadow-[0_0_36px_rgba(59,130,246,0.7)] transition-all duration-300 text-base font-bold px-8 h-14 group rounded-full"
+              className="w-full sm:w-auto bg-primary text-primary-foreground shadow-[0_0_24px_rgba(59,130,246,0.5)] hover:shadow-[0_0_36px_rgba(59,130,246,0.7)] transition-all duration-300 text-base font-bold px-8 h-14 group rounded-full overflow-hidden"
             >
-              <Link to="/contact" className="flex items-center gap-2">
-                Get a Proposal
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <Link to="/contact" className="flex items-center justify-center">
+                <RevealContent>
+                  Get a Proposal
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </RevealContent>
               </Link>
             </Button>
             

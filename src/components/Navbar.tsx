@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { services } from '@/data/services';
+import { RevealContent } from '@/components/ui/RevealContent';
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -113,7 +114,7 @@ export const Navbar = () => {
 
               <div className="relative" onMouseEnter={() => setHoveredItem('home')}>
                 {hoveredItem === 'home' && <motion.div layoutId="nav-pill" className="absolute inset-0 bg-blue-500/10 dark:bg-blue-500/20 rounded-full z-0" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
-                <Link to="/" className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-colors block", location.pathname === '/' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}>Home</Link>
+                <Link to="/" className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-all duration-300 hover:tracking-widest block", location.pathname === '/' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}>Home</Link>
               </div>
 
               {/* Services Dropdown */}
@@ -125,7 +126,7 @@ export const Navbar = () => {
                 {hoveredItem === 'services' && <motion.div layoutId="nav-pill" className="absolute inset-0 bg-blue-500/10 dark:bg-blue-500/20 rounded-full z-0" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
                 <Link
                   to="/services"
-                  className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-colors flex items-center gap-1", location.pathname === '/services' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}
+                  className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-all duration-300 hover:tracking-widest flex items-center gap-1", location.pathname === '/services' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}
                 >
                   Services
                   <ChevronDown className="w-4 h-4" />
@@ -180,7 +181,7 @@ export const Navbar = () => {
                 {hoveredItem === 'industries' && <motion.div layoutId="nav-pill" className="absolute inset-0 bg-blue-500/10 dark:bg-blue-500/20 rounded-full z-0" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
                 <Link
                   to="/industries"
-                  className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-colors flex items-center gap-1", location.pathname === '/industries' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}
+                  className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-all duration-300 hover:tracking-widest flex items-center gap-1", location.pathname === '/industries' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}
                 >
                   Industries
                   <ChevronDown className="w-4 h-4" />
@@ -199,7 +200,7 @@ export const Navbar = () => {
                 {hoveredItem === 'hire' && <motion.div layoutId="nav-pill" className="absolute inset-0 bg-blue-500/10 dark:bg-blue-500/20 rounded-full z-0" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
                 <Link
                   to="/hire"
-                  className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-colors flex items-center gap-1", location.pathname === '/hire' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}
+                  className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-all duration-300 hover:tracking-widest flex items-center gap-1", location.pathname === '/hire' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}
                 >
                   Hire
                   <ChevronDown className="w-4 h-4" />
@@ -215,32 +216,32 @@ export const Navbar = () => {
 
               <div className="relative" onMouseEnter={() => setHoveredItem('about')}>
                 {hoveredItem === 'about' && <motion.div layoutId="nav-pill" className="absolute inset-0 bg-blue-500/10 dark:bg-blue-500/20 rounded-full z-0" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
-                <Link to="/about" className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-colors block", location.pathname === '/about' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}>About</Link>
+                <Link to="/about" className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-all duration-300 hover:tracking-widest block", location.pathname === '/about' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}>About</Link>
               </div>
 
               <div className="relative" onMouseEnter={() => setHoveredItem('portfolio')}>
                 {hoveredItem === 'portfolio' && <motion.div layoutId="nav-pill" className="absolute inset-0 bg-blue-500/10 dark:bg-blue-500/20 rounded-full z-0" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
-                <Link to="/case-studies" className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-colors block", location.pathname === '/case-studies' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}>Portfolio</Link>
+                <Link to="/case-studies" className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-all duration-300 hover:tracking-widest block", location.pathname === '/case-studies' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}>Portfolio</Link>
               </div>
 
               <div className="relative" onMouseEnter={() => setHoveredItem('insights')}>
                 {hoveredItem === 'insights' && <motion.div layoutId="nav-pill" className="absolute inset-0 bg-blue-500/10 dark:bg-blue-500/20 rounded-full z-0" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
-                <Link to="/insights" className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-colors block", location.pathname === '/insights' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}>Insights</Link>
+                <Link to="/insights" className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-all duration-300 hover:tracking-widest block", location.pathname === '/insights' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}>Insights</Link>
               </div>
 
               <div className="relative" onMouseEnter={() => setHoveredItem('engagement')}>
                 {hoveredItem === 'engagement' && <motion.div layoutId="nav-pill" className="absolute inset-0 bg-blue-500/10 dark:bg-blue-500/20 rounded-full z-0" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
-                <Link to="/engagement" className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-colors block", location.pathname === '/engagement' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}>Pricing</Link>
+                <Link to="/engagement" className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-all duration-300 hover:tracking-widest block", location.pathname === '/engagement' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}>Pricing</Link>
               </div>
 
               <div className="relative" onMouseEnter={() => setHoveredItem('careers')}>
                 {hoveredItem === 'careers' && <motion.div layoutId="nav-pill" className="absolute inset-0 bg-blue-500/10 dark:bg-blue-500/20 rounded-full z-0" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
-                <Link to="/careers" className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-colors block", location.pathname === '/careers' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}>Careers</Link>
+                <Link to="/careers" className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-all duration-300 hover:tracking-widest block", location.pathname === '/careers' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}>Careers</Link>
               </div>
 
               <div className="relative" onMouseEnter={() => setHoveredItem('contact')}>
                 {hoveredItem === 'contact' && <motion.div layoutId="nav-pill" className="absolute inset-0 bg-blue-500/10 dark:bg-blue-500/20 rounded-full z-0" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
-                <Link to="/contact" className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-colors block", location.pathname === '/contact' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}>Contact</Link>
+                <Link to="/contact" className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-all duration-300 hover:tracking-widest block", location.pathname === '/contact' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}>Contact</Link>
               </div>
             </div>
 
@@ -251,9 +252,11 @@ export const Navbar = () => {
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full blur opacity-50 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse" />
                 <Button
                   asChild
-                  className="relative bg-primary text-primary-foreground transition-all duration-300 rounded-full px-6 hover:scale-[1.02] shadow-sm"
+                  className="relative bg-primary text-primary-foreground transition-all duration-300 rounded-full px-6 hover:scale-[1.02] shadow-sm overflow-hidden group"
                 >
-                  <Link to="/contact">Get Free Consultation</Link>
+                  <Link to="/contact" className="flex items-center justify-center">
+                    <RevealContent>Get Free Consultation</RevealContent>
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -339,8 +342,10 @@ export const Navbar = () => {
             <Link to="/contact" className="text-xl font-medium text-foreground hover:text-primary transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Contact</Link>
 
             <div className="pt-6 mt-auto">
-              <Button asChild className="w-full bg-primary text-primary-foreground shadow-[0_0_24px_rgba(59,130,246,0.35)] rounded-full h-12 text-lg">
-                <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>Get Free Consultation</Link>
+              <Button asChild className="w-full bg-primary text-primary-foreground shadow-[0_0_24px_rgba(59,130,246,0.35)] rounded-full h-12 text-lg overflow-hidden group">
+                <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center justify-center">
+                  <RevealContent>Get Free Consultation</RevealContent>
+                </Link>
               </Button>
             </div>
           </div>

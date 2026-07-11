@@ -6,6 +6,7 @@ import { SectionLabel } from '@/components/ui/SectionLabel';
 import { GradientText } from '@/components/ui/GradientText';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { CapabilityHub } from '@/components/ui/CapabilityHub';
+import { RevealContent } from '@/components/ui/RevealContent';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { initHeroEntrance, initHeroScrollExit } from '@/animations/heroEntrance';
@@ -161,11 +162,13 @@ export const HeroSection = () => {
               <Button
                 asChild
                 size="lg"
-                className={`w-full sm:w-auto bg-primary text-primary-foreground shadow-[0_0_24px_rgba(59,130,246,0.35)] hover:shadow-[0_0_32px_rgba(59,130,246,0.5)] transition-all duration-300 text-base font-semibold px-8 h-14 group rounded-full ${styles.heroCTAPrimary}`}
+                className={`w-full sm:w-auto bg-primary text-primary-foreground shadow-[0_0_24px_rgba(59,130,246,0.35)] hover:shadow-[0_0_32px_rgba(59,130,246,0.5)] transition-all duration-300 text-base font-semibold px-8 h-14 group rounded-full overflow-hidden ${styles.heroCTAPrimary}`}
               >
-                <Link to="/contact" className="flex items-center justify-center gap-2">
-                  Start Your Project
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <Link to="/contact" className="flex items-center justify-center">
+                  <RevealContent>
+                    Start Your Project
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </RevealContent>
                 </Link>
               </Button>
               <Button

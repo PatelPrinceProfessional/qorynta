@@ -5,6 +5,7 @@ import { CTABanner } from '@/components/home/CTABanner';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { ArrowRight, ShieldCheck, Zap, BarChart3, Lock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { RevealContent } from '@/components/ui/RevealContent';
 
 export const IndustryDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -47,8 +48,12 @@ export const IndustryDetail = () => {
               <p className="text-xl text-muted-foreground leading-relaxed mb-10">
                 We partner with leading {industryName} enterprises to build scalable, secure, and highly compliant digital products that drive market dominance.
               </p>
-              <Button asChild size="lg" className="rounded-full shadow-[0_0_20px_rgba(59,130,246,0.4)] px-8 h-14 text-base">
-                <Link to="/contact">Discuss Your {industryName} Project <ArrowRight className="w-5 h-5 ml-2" /></Link>
+              <Button asChild size="lg" className="rounded-full shadow-[0_0_20px_rgba(59,130,246,0.4)] px-8 h-14 text-base overflow-hidden group">
+                <Link to="/contact">
+                  <RevealContent>
+                    Discuss Your {industryName} Project <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </RevealContent>
+                </Link>
               </Button>
             </ScrollReveal>
           </div>

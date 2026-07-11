@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { CTABanner } from '@/components/home/CTABanner';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { insights } from '@/data/insights';
 
 export const InsightDetail = () => {
@@ -31,12 +31,20 @@ export const InsightDetail = () => {
         
         {/* Back Link */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-8 max-w-4xl">
-          <Link 
-            to="/insights" 
-            className="inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-primary transition-colors mb-12"
-          >
-            <ArrowLeft className="w-4 h-4" /> Back to Insights
-          </Link>
+          <div className="flex items-center justify-between mb-12">
+            <Link 
+              to="/insights" 
+              className="inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-primary transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4" /> Back to Insights
+            </Link>
+            <Link 
+              to="/" 
+              className="inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-primary transition-colors"
+            >
+              Go to Home
+            </Link>
+          </div>
           
           {/* Header */}
           <div className="mb-12">
@@ -87,6 +95,35 @@ export const InsightDetail = () => {
           </article>
 
         </div>
+
+        {/* See More Insights */}
+        <section className="py-24 bg-muted border-y border-border/50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+            <h2 className="text-3xl font-bold mb-10 text-center">See More Insights</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {insights.filter(p => p.slug !== post.slug).slice(0, 3).map((insight) => (
+                <Link key={insight.slug} to={`/insights/${insight.slug}`} className="group block bg-card rounded-2xl overflow-hidden border border-border/50 shadow-sm hover:shadow-md transition-all">
+                  <div className="aspect-video overflow-hidden">
+                    <img src={insight.image} alt={insight.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  </div>
+                  <div className="p-6">
+                    <span className="text-xs font-bold text-primary tracking-widest uppercase mb-2 block">{insight.category}</span>
+                    <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors line-clamp-2">{insight.title}</h3>
+                    <p className="text-muted-foreground text-sm line-clamp-2 mb-4">{insight.excerpt}</p>
+                    <span className="text-sm font-medium text-primary flex items-center gap-2">
+                      Read Article <ArrowRight className="w-4 h-4" />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+            <div className="text-center mt-12">
+              <Link to="/insights" className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 transition-colors">
+                View All Articles <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        </section>
 
         <CTABanner />
       </main>

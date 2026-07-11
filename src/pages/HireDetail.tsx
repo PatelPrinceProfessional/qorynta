@@ -5,6 +5,7 @@ import { CTABanner } from '@/components/home/CTABanner';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { ArrowRight, CheckCircle2, Users, Code2, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { RevealContent } from '@/components/ui/RevealContent';
 
 export const HireDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -52,8 +53,12 @@ export const HireDetail = () => {
                   Scale your engineering capacity instantly. We provide senior-level {roleName} who integrate seamlessly into your agile workflows and ship code from day one.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Button asChild size="lg" className="rounded-full shadow-[0_0_20px_rgba(59,130,246,0.4)] px-8 h-14 text-base">
-                    <Link to="/contact">Request Profiles <ArrowRight className="w-5 h-5 ml-2" /></Link>
+                  <Button asChild size="lg" className="rounded-full shadow-[0_0_20px_rgba(59,130,246,0.4)] px-8 h-14 text-base overflow-hidden group">
+                    <Link to="/contact">
+                      <RevealContent>
+                        Request Profiles <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                      </RevealContent>
+                    </Link>
                   </Button>
                 </div>
               </ScrollReveal>

@@ -12,6 +12,7 @@ import {
 import { CTABanner } from '@/components/home/CTABanner';
 import { SectionLabel } from '@/components/ui/SectionLabel';
 import { services, ServiceData } from '@/data/services';
+import { RevealContent } from '@/components/ui/RevealContent';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import {
   Accordion,
@@ -67,12 +68,20 @@ const ServiceDetail = () => {
         
         {/* Breadcrumb / Back Link */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-          <Link 
-            to="/services" 
-            className="inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-primary transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" /> Back to Services
-          </Link>
+          <div className="flex items-center justify-between">
+            <Link 
+              to="/services" 
+              className="inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-primary transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4" /> Back to Services
+            </Link>
+            <Link 
+              to="/" 
+              className="inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-primary transition-colors"
+            >
+              Go to Home
+            </Link>
+          </div>
         </div>
 
         {/* Hero Section */}
@@ -98,9 +107,11 @@ const ServiceDetail = () => {
                   ))}
                 </div>
                 
-                <Button size="lg" className="rounded-full shadow-lg h-14 px-8 text-base" asChild>
+                <Button size="lg" className="rounded-full shadow-lg h-14 px-8 text-base overflow-hidden group" asChild>
                   <Link to="/contact">
-                    Discuss Your Project <ArrowRight className="w-5 h-5 ml-2" />
+                    <RevealContent>
+                      Discuss Your Project <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </RevealContent>
                   </Link>
                 </Button>
               </ScrollReveal>
@@ -225,6 +236,32 @@ const ServiceDetail = () => {
                 </AccordionItem>
               ))}
             </Accordion>
+          </div>
+        </section>
+
+        {/* See More Services */}
+        <section className="py-24 bg-muted/50 border-t border-border/50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+            <h2 className="text-3xl font-bold mb-10 text-center">Explore Other Services</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {services.filter(s => s.slug !== service.slug).slice(0, 3).map((s) => (
+                <Link key={s.slug} to={`/services/${s.slug}`} className="group block bg-card rounded-2xl p-8 border border-border/50 shadow-sm hover:shadow-md transition-all hover:border-primary/30">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+                    <s.icon className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{s.title}</h3>
+                  <p className="text-muted-foreground text-sm line-clamp-3 mb-6">{s.description}</p>
+                  <span className="text-sm font-medium text-primary flex items-center gap-2">
+                    Learn More <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </Link>
+              ))}
+            </div>
+            <div className="text-center mt-12">
+              <Link to="/services" className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 transition-colors">
+                View All Services <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
           </div>
         </section>
 

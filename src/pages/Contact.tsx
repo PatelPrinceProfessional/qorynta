@@ -8,6 +8,8 @@ import { useToast } from '@/hooks/use-toast';
 import { SectionLabel } from '@/components/ui/SectionLabel';
 import emailjs from '@emailjs/browser';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
 
 const contactInfo = [
   {
@@ -96,6 +98,7 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     company: '',
     budget: '',
     message: '',
@@ -115,6 +118,7 @@ const Contact = () => {
         to_email: 'qorynta@gmail.com',
         from_name: formData.name,
         from_email: formData.email,
+        phone_number: formData.phone || 'Not provided',
         company: formData.company || 'Not provided',
         budget: formData.budget || 'Not provided',
         message: formData.message,
@@ -128,6 +132,7 @@ const Contact = () => {
       setFormData({
         name: '',
         email: '',
+        phone: '',
         company: '',
         budget: '',
         message: '',
@@ -282,6 +287,15 @@ const Contact = () => {
 
                     <div className="grid sm:grid-cols-2 gap-6">
                       <div className="space-y-2">
+                        <label className="text-sm font-bold text-[#0F172A] dark:text-slate-300">Contact Number <span className="text-blue-600">*</span></label>
+                        <PhoneInput
+                          international
+                          defaultCountry="IN"
+                          value={formData.phone}
+                          onChange={(value) => setFormData({ ...formData, phone: value || '' })}
+                        />
+                      </div>
+                      <div className="space-y-2">
                         <label className="text-sm font-bold text-[#0F172A] dark:text-slate-300">Company Name</label>
                         <Input
                           value={formData.company}
@@ -290,6 +304,9 @@ const Contact = () => {
                           className="bg-black/5 dark:bg-white/5 border-black/10 dark:border-white/10 h-14 rounded-xl focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:border-transparent transition-all font-medium placeholder:text-slate-400"
                         />
                       </div>
+                    </div>
+
+                    <div className="grid sm:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <label className="text-sm font-bold text-[#0F172A] dark:text-slate-300">Project Budget</label>
                         <select

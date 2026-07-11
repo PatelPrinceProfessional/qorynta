@@ -4,6 +4,7 @@ import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { Briefcase, MapPin, Code2, Globe2, Coffee, Laptop, Heart, Rocket, ArrowRight } from 'lucide-react';
+import { RevealContent } from '@/components/ui/RevealContent';
 
 const perks = [
   {
@@ -99,8 +100,10 @@ export const Careers = () => {
               <p className="text-xl text-muted-foreground leading-relaxed font-medium max-w-2xl mx-auto mb-10">
                 We are an elite engineering task force. We tackle complex architectural problems, ship at high velocity, and maintain a culture of radical transparency.
               </p>
-              <Button asChild size="lg" className="rounded-full font-bold px-8">
-                <a href="#open-roles">View Open Roles</a>
+              <Button asChild size="lg" className="rounded-full font-bold px-8 overflow-hidden group">
+                <a href="#open-roles">
+                  <RevealContent>View Open Roles</RevealContent>
+                </a>
               </Button>
             </ScrollReveal>
           </div>

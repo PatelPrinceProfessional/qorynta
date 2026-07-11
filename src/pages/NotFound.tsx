@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Home } from 'lucide-react';
+import { RevealContent } from '@/components/ui/RevealContent';
 
 export const NotFound = () => {
   return (
@@ -28,9 +29,11 @@ export const NotFound = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button asChild size="lg" className="rounded-full px-8 h-14 w-full sm:w-auto font-bold text-base bg-primary hover:bg-primary/90 text-primary-foreground transition-all shadow-lg hover:shadow-primary/25 hover:-translate-y-1">
+            <Button asChild size="lg" className="rounded-full px-8 h-14 w-full sm:w-auto font-bold text-base bg-primary hover:bg-primary/90 text-primary-foreground transition-all shadow-lg hover:shadow-primary/25 hover:-translate-y-1 overflow-hidden group">
               <Link to="/">
-                <Home className="w-5 h-5 mr-2" /> Back to Homepage
+                <RevealContent>
+                  <Home className="w-5 h-5 group-hover:-translate-y-1 transition-transform" /> Back to Homepage
+                </RevealContent>
               </Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="rounded-full px-8 h-14 w-full sm:w-auto font-bold text-base transition-all hover:bg-muted">
