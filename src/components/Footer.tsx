@@ -1,19 +1,22 @@
 import { Link } from 'react-router-dom';
 import { ArrowUpRight, Network, Sparkles, Code2, Cpu, Linkedin, Github, Instagram } from 'lucide-react';
 import { services } from '@/data/services';
+import { motion } from 'framer-motion';
 
 export const Footer = () => {
   return (
     <footer className="bg-[#0A192F] pt-12 pb-8 relative z-20 rounded-t-[2.5rem] mt-10 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] border-t border-white/10 overflow-hidden">
-      
+
       {/* Background Ambient Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
 
+
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 max-w-7xl relative z-10">
-        
+
         {/* Pre-Footer CTA (Glass-morphic) */}
         <div className="bg-white/5 backdrop-blur-[30px] rounded-3xl p-8 lg:p-12 mb-20 shadow-2xl border border-white/10 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-10">
-          
+
           {/* CTA Content */}
           <div className="relative z-10 max-w-xl">
             <div className="flex items-center gap-2 mb-4">
@@ -21,7 +24,7 @@ export const Footer = () => {
               <span className="text-sm font-bold uppercase tracking-wider text-slate-300">Transform your business</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4 tracking-tight">
-              Ready to scale? <br/> Let's build something together.
+              Ready to scale? <br /> Let's build something together.
             </h2>
             <p className="text-base text-slate-300 mb-8 font-medium">
               Get a custom roadmap for your digital product. We respond within 24 hours with a free technical scoping call.
@@ -58,15 +61,28 @@ export const Footer = () => {
         </div>
 
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16 relative">
           
+          {/* Massive Background Text spanning the entire width */}
+          <div className="absolute inset-0 top-[150px] left-0 w-full flex justify-center items-center pointer-events-none select-none z-0 overflow-hidden">
+            <motion.span 
+              initial={{ opacity: 0, scale: 1.4 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+              viewport={{ once: true, margin: "-50px" }}
+              className="w-full text-center text-[20vw] md:text-[16vw] lg:text-[13.5vw] font-black text-white/[0.08] leading-none tracking-tighter mix-blend-overlay uppercase"
+            >
+              QORYNTA
+            </motion.span>
+          </div>
+
           {/* Brand & Description */}
           <div className="lg:col-span-4 space-y-6 pr-4">
             <Link to="/" className="flex items-center gap-2 group mb-4">
               <img src="/logo.webp" alt="Qorynta Services Logo" width={140} height={40} className="h-8 w-auto object-contain rounded-md" />
               <span className="text-xl font-bold tracking-tight text-white">Qorynta Services</span>
             </Link>
-            <p className="text-sm text-slate-400 leading-relaxed font-medium max-w-sm">
+            <p className="text-sm text-slate-400 leading-relaxed font-medium max-w-sm relative z-10">
               We engineer high-performance digital ecosystems. From robust enterprise software to intuitive mobile applications, we transform complex challenges into seamless, scalable solutions that drive tangible business growth.
             </p>
           </div>
