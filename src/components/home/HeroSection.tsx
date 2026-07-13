@@ -72,6 +72,18 @@ const BackgroundKeywords = () => {
 export const HeroSection = () => {
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const cardContainerRef = useRef<HTMLDivElement>(null);
+  const [activeCapId, setActiveCapId] = React.useState<string | null>(null);
+
+  const getGlowColor = () => {
+    switch (activeCapId) {
+      case 'ai': return "bg-purple-600/20 sm:bg-purple-600/30";
+      case 'web': return "bg-blue-600/20 sm:bg-blue-600/30";
+      case 'data': return "bg-cyan-500/20 sm:bg-cyan-500/30";
+      case 'cloud': return "bg-sky-400/20 sm:bg-sky-400/30";
+      case 'mobile': return "bg-pink-500/20 sm:bg-pink-500/30";
+      default: return "bg-primary/10 sm:bg-primary/20";
+    }
+  };
 
   useEffect(() => {
     initHeroEntrance();
@@ -113,7 +125,7 @@ export const HeroSection = () => {
         <ParticleNetwork />
       </div>
       <div className={`absolute inset-0 dot-grid opacity-[0.04] sm:opacity-[0.04] ${styles.heroBackground}`} />
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] sm:w-[800px] sm:h-[800px] bg-primary/10 sm:bg-primary/20 rounded-full blur-[80px] sm:blur-[120px] -translate-y-1/2 translate-x-1/3 animate-pulse-slow pointer-events-none" />
+      <div className={`absolute top-0 right-0 w-[400px] h-[400px] sm:w-[800px] sm:h-[800px] rounded-full blur-[80px] sm:blur-[120px] -translate-y-1/2 translate-x-1/3 animate-pulse-slow pointer-events-none transition-colors duration-1000 ease-in-out ${getGlowColor()}`} />
       <div className="absolute bottom-0 left-0 w-[300px] h-[300px] sm:w-[600px] sm:h-[600px] bg-accent/10 sm:bg-accent/20 rounded-full blur-[60px] sm:blur-[100px] translate-y-1/3 -translate-x-1/3 animate-pulse-slow pointer-events-none" style={{ animationDelay: '2s' }} />
 
       <div className="hero-content w-full container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 relative z-10" style={{ willChange: 'transform, filter, opacity' }}>
@@ -221,7 +233,7 @@ export const HeroSection = () => {
 
           {/* Right Visual (5 cols on lg) */}
           <div className="hero-visual opacity-0 lg:col-span-5 relative w-full h-[400px] sm:h-[450px] lg:h-[500px] max-w-full mt-8 lg:mt-0 pointer-events-none">
-            <CapabilityHub />
+            <CapabilityHub onNodeHover={setActiveCapId} />
           </div>
         </div>
       </div>

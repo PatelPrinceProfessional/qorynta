@@ -114,8 +114,18 @@ const Sparkline = ({ type, isActive }: { type: string, isActive: boolean }) => {
   );
 };
 
-export const CapabilityHub = () => {
+export const CapabilityHub = ({ onNodeHover }: { onNodeHover?: (id: string | null) => void } = {}) => {
   const [activeNode, setActiveNode] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (onNodeHover) {
+      if (activeNode !== null) {
+        onNodeHover(CAPABILITIES[activeNode].id);
+      } else {
+        onNodeHover(null);
+      }
+    }
+  }, [activeNode, onNodeHover]);
 
   // Mouse tracking for parallax
   const mouseX = useMotionValue(0);
