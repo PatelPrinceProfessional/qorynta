@@ -105,6 +105,7 @@ const App = () => {
           <Navbar />
           <ScrollToTop />
           <Suspense fallback={<PageLoader />}>
+            <WebGLBackground />
             <AnimatedRoutes />
           </Suspense>
           <Footer />

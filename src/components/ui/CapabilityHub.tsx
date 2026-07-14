@@ -177,6 +177,27 @@ export const CapabilityHub = ({ onNodeHover }: { onNodeHover?: (id: string | nul
   return (
     <div className="relative w-full h-full flex flex-col items-center justify-start sm:justify-center min-h-[550px] sm:min-h-[400px] lg:min-h-[500px] pointer-events-auto group pt-8 sm:pt-0">
 
+      {/* Ambient Depth Background for SaaS Dashboard Feel */}
+      <div className="absolute inset-0 -z-20 overflow-hidden rounded-[2.5rem] pointer-events-none">
+        {/* Faint Dot Grid */}
+        <div className="absolute inset-0 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.03] dark:opacity-[0.06]" />
+
+        {/* Slowly-Drifting Mesh Gradient Blobs */}
+        <motion.div
+          animate={{ x: [-30, 30, -30], y: [-30, 30, -30], scale: [1, 1.1, 1] }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-blue-500/10 dark:bg-blue-600/10 blur-[80px] rounded-full"
+        />
+        <motion.div
+          animate={{ x: [30, -30, 30], y: [30, -30, 30], scale: [1.1, 1, 1.1] }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-indigo-500/10 dark:bg-indigo-600/10 blur-[80px] rounded-full"
+        />
+
+        {/* Dashboard Glass Frame */}
+        <div className="absolute inset-0 border border-slate-200/20 dark:border-slate-800/50 rounded-[2.5rem] bg-gradient-to-br from-slate-100/[0.02] to-transparent dark:from-slate-800/[0.02]" />
+      </div>
+
       {/* --- 3D ORBIT (VISIBLE ON BOTH DESKTOP AND MOBILE) --- */}
       <div className="relative w-[280px] h-[280px] sm:w-[400px] sm:h-[400px] flex items-center justify-center shrink-0">
 
