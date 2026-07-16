@@ -195,7 +195,7 @@ export const CapabilityHub = ({ onNodeHover }: { onNodeHover?: (id: string | nul
         />
 
         {/* Dashboard Glass Frame */}
-        <div className="absolute inset-0 border border-slate-200/20 dark:border-slate-800/50 rounded-[2.5rem] bg-gradient-to-br from-slate-100/[0.02] to-transparent dark:from-slate-800/[0.02]" />
+        <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-slate-100/[0.02] to-transparent dark:from-slate-800/[0.02]" />
       </div>
 
       {/* --- 3D ORBIT (VISIBLE ON BOTH DESKTOP AND MOBILE) --- */}

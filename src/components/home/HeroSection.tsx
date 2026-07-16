@@ -31,7 +31,7 @@ const CyclingText = () => {
 
   return (
     <span
-      className={`inline-block bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-cyan-300 dark:to-blue-500 drop-shadow-sm transition-opacity duration-500 ${fade ? 'opacity-100' : 'opacity-0'}`}
+      className={`inline-block pr-2 pb-1 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-cyan-300 dark:to-blue-500 drop-shadow-sm transition-opacity duration-500 ${fade ? 'opacity-100' : 'opacity-0'}`}
     >
       {words[index]}
     </span>
@@ -146,40 +146,48 @@ export const HeroSection = () => {
               {/* Desktop text */}
               <div className="hidden md:flex items-center gap-2.5 mb-4">
                 <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                <span className="text-sm font-semibold tracking-wider text-muted-foreground">Qorynta Services — BUILD. SCALE. DOMINATE.</span>
+                <span className="text-sm md:text-base font-semibold tracking-wider text-muted-foreground">Qorynta Services — BUILD. SCALE. DOMINATE.</span>
               </div>
             </div>
 
             {/* Headline */}
-            <h1 ref={headlineRef} className="hero-headline w-full max-w-full text-4xl md:text-5xl lg:text-[64px] xl:text-[72px] font-extrabold lg:leading-[1.15] mb-6">
-              <span className="word inline-block opacity-0 translate-y-4 gradient-headline">Build</span>{" "}
-              <span className="word inline-block opacity-0 translate-y-4 gradient-headline">Digital</span>{" "}
-              <span className="word inline-block opacity-0 translate-y-4 gradient-headline">Products</span>
+            <h1 ref={headlineRef} className="hero-headline w-full max-w-full text-[42px] md:text-[54px] lg:text-[72px] xl:text-[86px] font-display font-bold lg:leading-[1.05] tracking-tighter mb-8">
+              <span className="word inline-block pr-2 pb-1 opacity-0 translate-y-4 bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-blue-900 dark:from-white dark:to-blue-300">Build</span>{" "}
+              <span className="word inline-block opacity-0 translate-y-4 text-foreground/90 font-serif italic text-primary/80">Digital</span>&nbsp;{" "}
+              <span className="word inline-block pr-2 pb-1 opacity-0 translate-y-4 bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-blue-900 dark:from-white dark:to-blue-300">Products</span>
               <br className="hidden md:block" />
-              <span className="word inline-block opacity-0 translate-y-4 text-foreground">That</span>{" "}
-              <span className="word inline-block opacity-0 translate-y-4">
-                <CyclingText />
+              <span className="whitespace-nowrap">
+                <span className="word inline-block pr-2 pb-1 opacity-0 translate-y-4 bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-blue-900 dark:from-white dark:to-blue-300">That</span>{" "}
+                <span className="word inline-block opacity-0 translate-y-4">
+                  <CyclingText />
+                </span>
               </span>
             </h1>
 
             {/* Invisible spacer to perfectly preserve layout spacing and prevent CTAs from shifting up */}
-            <div className="invisible pointer-events-none select-none text-base md:text-lg mb-8 max-w-xl leading-relaxed" aria-hidden="true">
+            <div className="invisible pointer-events-none select-none text-lg md:text-xl font-light mb-10 max-w-xl leading-relaxed font-mono" aria-hidden="true">
               From mobile apps to enterprise web platforms — Qorynta services deliver
               production-grade digital solutions for Indian and global businesses
               at competitive rates.
             </div>
 
+            <p className="hero-description absolute top-[65%] sm:top-[70%] text-lg md:text-xl font-light mb-10 max-w-xl leading-relaxed text-muted-foreground opacity-0">
+              From mobile apps to enterprise web platforms — Qorynta services deliver
+              production-grade digital solutions for Indian and global businesses
+              at competitive rates.
+            </p>
+
             {/* CTAs */}
-            <div className="hero-cta opacity-0 translate-y-2 flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-10">
+            <div className="hero-cta opacity-0 translate-y-2 flex flex-col sm:flex-row items-center gap-6 w-full sm:w-auto mb-12">
               <Button
                 asChild
                 size="lg"
-                className={`w-full sm:w-auto bg-primary text-primary-foreground shadow-[0_0_24px_rgba(59,130,246,0.35)] hover:shadow-[0_0_32px_rgba(59,130,246,0.5)] transition-all duration-300 text-base font-semibold px-8 h-14 group rounded-full overflow-hidden ${styles.heroCTAPrimary}`}
+                className={`w-full sm:w-auto bg-foreground text-background hover:bg-foreground/90 hover:scale-105 shadow-[0_0_40px_rgba(255,255,255,0.1)] transition-all duration-500 ease-out text-base font-semibold px-10 h-16 group rounded-full overflow-hidden ${styles.heroCTAPrimary}`}
               >
                 <Link to="/contact" className="flex items-center justify-center">
                   <RevealContent>
                     Start Your Project
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform duration-500" />
                   </RevealContent>
                 </Link>
               </Button>
@@ -187,7 +195,7 @@ export const HeroSection = () => {
                 asChild
                 size="lg"
                 variant="outline"
-                className={`w-full sm:w-auto border-primary/50 text-foreground hover:bg-primary/10 hover:border-primary transition-all duration-300 text-base font-semibold px-8 h-14 rounded-full bg-transparent ${styles.heroCTASecondary}`}
+                className={`w-full sm:w-auto border-2 border-blue-600/50 dark:border-blue-400/50 text-blue-700 dark:text-blue-300 hover:bg-blue-600/10 hover:border-blue-600 dark:hover:bg-blue-400/10 dark:hover:border-blue-400 transition-all duration-500 text-base font-medium px-10 h-16 rounded-full bg-transparent backdrop-blur-md shadow-[0_0_20px_rgba(37,99,235,0.15)] dark:shadow-[0_0_20px_rgba(96,165,250,0.15)] hover:shadow-[0_0_30px_rgba(37,99,235,0.3)] dark:hover:shadow-[0_0_30px_rgba(96,165,250,0.3)] ${styles.heroCTASecondary}`}
               >
                 <Link to="/case-studies">View Our Work</Link>
               </Button>

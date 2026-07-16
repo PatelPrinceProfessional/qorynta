@@ -97,7 +97,7 @@ const App = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider defaultTheme="light" storageKey="qorynta-theme" attribute="class">
+      <ThemeProvider defaultTheme="dark" storageKey="qorynta-theme" attribute="class">
         <TooltipProvider>
           <Toaster />
         <Sonner />

@@ -55,20 +55,20 @@ export const CaseStudySection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-20 md:py-32 relative bg-[#F8FAFC] dark:bg-[#0A192F] transition-colors duration-500 border-t border-slate-100 dark:border-transparent">
+    <section ref={sectionRef} className="py-24 md:py-32 relative bg-background transition-colors duration-500 border-t border-white/5">
       {/* Optional faint glowing pulse for dark mode to match other sections */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/5 dark:bg-blue-600/10 rounded-full blur-[150px] pointer-events-none transition-colors duration-500" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[150px] pointer-events-none transition-colors duration-500" />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div ref={headerRef} className="flex flex-col items-center justify-center text-center mb-16 opacity-0">
-            <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-sm font-bold tracking-wider uppercase mb-4">
+        <div ref={headerRef} className="flex flex-col items-center justify-center text-center mb-20 opacity-0">
+            <span className="inline-block py-1 px-4 rounded-full bg-white/5 border border-white/10 text-primary text-sm font-semibold tracking-[0.2em] uppercase mb-6 backdrop-blur-md">
               Featured Work
             </span>
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4 leading-tight max-w-3xl">
-              Engineered Experiences for <span className="text-primary">Enterprise Scale</span>
+            <h2 className="text-4xl md:text-5xl lg:text-7xl font-display font-bold text-foreground mb-6 leading-tight max-w-4xl tracking-tighter">
+              Engineered Experiences for <span className="font-serif italic font-light text-primary/80">Enterprise Scale</span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto font-light leading-relaxed">
               Explore our deep-dive case studies showcasing how we solve complex technical challenges and deliver measurable business value.
             </p>
         </div>

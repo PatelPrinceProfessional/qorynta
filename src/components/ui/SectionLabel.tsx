@@ -8,7 +8,7 @@ interface SectionLabelProps {
 export const SectionLabel = ({ text, className }: SectionLabelProps) => {
   return (
     <div className={cn("inline-block mb-4", className)}>
-      <span className="text-[13px] font-medium tracking-[0.05em] uppercase text-secondary">
+      <span className="text-[13px] md:text-sm font-medium tracking-[0.05em] uppercase text-secondary">
         {text}
       </span>
     </div>

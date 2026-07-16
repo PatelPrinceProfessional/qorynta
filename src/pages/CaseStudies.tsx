@@ -54,28 +54,28 @@ const CaseStudies = () => {
         <meta name="description" content="Explore our portfolio of successful web, mobile, and AI projects delivered for clients across the globe." />
       </Helmet>
 
-            <main className="min-h-screen bg-[#F8FAFC] dark:bg-[#0A192F] pt-20 transition-colors duration-500">
+            <main className="min-h-screen bg-background pt-24 transition-colors duration-500">
         
         {/* Header Section */}
-        <section className="py-20 md:py-32 relative overflow-hidden bg-white dark:bg-[#061122] transition-colors duration-500 border-b border-slate-100 dark:border-transparent">
+        <section className="py-24 md:py-32 relative overflow-hidden bg-background transition-colors duration-500 border-b border-white/5">
           {/* Ambient Glowing Effect for Dark Mode */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/5 dark:bg-blue-600/10 rounded-full blur-[150px] pointer-events-none transition-colors duration-500" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[150px] pointer-events-none transition-colors duration-500" />
           
-          <div ref={headerRef} className="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl relative z-10 opacity-0">
+          <div ref={headerRef} className="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-5xl relative z-10 opacity-0">
             <SectionLabel text="OUR PORTFOLIO" />
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#0F172A] dark:text-white mb-6 mt-4 leading-tight transition-colors duration-500">
-              We Ship Impact. <br className="hidden md:block" /> See For Yourself.
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-foreground mb-8 mt-6 leading-none tracking-tighter">
+              We Ship <span className="font-serif italic font-light text-primary/80">Impact.</span> <br className="hidden md:block" /> See For Yourself.
             </h1>
-            <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl mx-auto transition-colors duration-500">
+            <p className="text-xl md:text-2xl text-muted-foreground font-light leading-relaxed max-w-3xl mx-auto">
               Explore how we've helped startups and enterprises solve complex technical challenges and scale their operations.
             </p>
           </div>
         </section>
 
         {/* Portfolio Grid */}
-        <section className="py-20 md:py-32 bg-[#F8FAFC] dark:bg-[#0A192F] transition-colors duration-500">
+        <section className="py-24 md:py-32 bg-background transition-colors duration-500">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+            <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12">
               {allProjects.map((project, index) => (
                 <div key={index} className="h-full">
                   <ProjectCard project={project} />

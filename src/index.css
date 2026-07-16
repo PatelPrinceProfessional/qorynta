@@ -72,43 +72,45 @@
   }
 
   .dark {
-    --background: 212 64% 12%;
-    /* Darker blue background */
-    --foreground: 0 20% 97%;
-    /* Light text */
+    --background: 240 10% 4%;
+    /* Very deep black-slate */
+    --foreground: 0 0% 98%;
+    /* Pure off-white */
 
-    --card: 212 64% 16%;
-    --card-foreground: 0 20% 97%;
+    --card: 240 10% 6%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 212 64% 16%;
-    --popover-foreground: 0 20% 97%;
+    --popover: 240 10% 6%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 213 47% 47%;
-    /* Keep primary blue */
-    --primary-foreground: 0 0% 100%;
+    --primary: 0 0% 98%;
+    /* White for primary in dark mode gives a premium feel */
+    --primary-foreground: 240 5.9% 10%;
 
-    --secondary: 219 41% 90%;
-    --secondary-foreground: 212 64% 19%;
+    --secondary: 240 4% 16%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 212 64% 24%;
-    --muted-foreground: 219 41% 70%;
+    --muted: 240 4% 16%;
+    --muted-foreground: 240 5% 65%;
 
-    --accent: 212 64% 24%;
-    --accent-foreground: 0 20% 97%;
+    --accent: 240 4% 16%;
+    --accent-foreground: 0 0% 98%;
 
-    --border: 212 64% 24%;
-    --input: 212 64% 24%;
-    --ring: 213 47% 47%;
+    --border: 240 4% 16%;
+    --input: 240 4% 16%;
+    --ring: 240 5% 65%;
 
-    --glow-primary: 213 47% 47%;
-    --glow-secondary: 219 41% 90%;
-    --glow-accent: 212 64% 19%;
+    --glow-primary: 210 100% 50%;
+    /* Deep blue glow */
+    --glow-secondary: 280 100% 50%;
+    /* Purple glow */
+    --glow-accent: 0 0% 100%;
 
-    --gradient-dark: linear-gradient(135deg, #112D4E 0%, #1e3a5f 100%);
-    --gradient-card: linear-gradient(145deg, #1e3a5f 0%, #112D4E 100%);
+    --gradient-dark: linear-gradient(135deg, hsl(240 10% 4%) 0%, hsl(240 10% 8%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(240 10% 6%) 0%, hsl(240 10% 4%) 100%);
     --gradient-primary: linear-gradient(135deg, #3F72AF 0%, #DBE2EF 100%);
     --gradient-secondary: linear-gradient(135deg, #DBE2EF 0%, #3F72AF 100%);
-    --gradient-hero: linear-gradient(180deg, #0f2441 0%, #1e3a5f 50%, #0f2441 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(240 10% 4%) 0%, hsl(240 10% 8%) 50%, hsl(240 10% 4%) 100%);
   }
 }
 
@@ -119,12 +121,14 @@
 
   html {
     scroll-behavior: smooth;
-    @apply overflow-x-hidden;
+    @apply overflow-x-hidden dark;
+    /* Enforce dark class on html */
   }
 
   body {
     @apply bg-background text-foreground font-sans antialiased overflow-x-hidden;
     font-family: 'Inter', system-ui, sans-serif;
+    letter-spacing: -0.01em;
   }
 
   h1,
@@ -133,13 +137,18 @@
   h4,
   h5,
   h6 {
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-    @apply font-bold tracking-tight;
+    font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif;
+    @apply font-semibold tracking-tight;
+    letter-spacing: -0.03em;
+  }
+
+  .font-serif {
+    font-family: 'Playfair Display', serif;
   }
 
   code,
   pre {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Space Grotesk', 'JetBrains Mono', monospace;
   }
 }
 
@@ -502,7 +511,8 @@
 }
 
 /* Lenis Smooth Scrolling Base Styles */
-html.lenis, html.lenis body {
+html.lenis,
+html.lenis body {
   height: auto;
 }
 
@@ -557,4 +567,4 @@ html.lenis, html.lenis body {
 
 .PhoneInputCountrySelectArrow {
   @apply block w-[0.3em] h-[0.3em] ml-2 border-b-2 border-r-2 border-slate-500 dark:border-slate-400 transform rotate-45;
-}
+}
