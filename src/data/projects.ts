@@ -127,5 +127,61 @@ export const allProjects: Project[] = [
       'Automated complex international shipping calculations using third-party API integration.'
     ],
     businessValue: 'The brand successfully executed their largest marketing campaign in company history without technical hitches, resulting in record-breaking monthly revenue and cementing their position in a highly competitive market.'
+  },
+  {
+    slug: 'brewcore-analytics-dashboard',
+    title: 'Multi-Location Restaurant Dashboard',
+    client: 'BrewCore Franchise',
+    category: 'Web Application',
+    tags: ['React', 'D3.js', 'Node.js', 'Firebase'],
+    image: '/portfolio/cafe-dashboard.webp',
+    result: 'Centralized reporting and real-time inventory tracking',
+    metrics: [
+      { label: 'Inventory Waste Reduced', value: '45%' },
+      { label: 'Reporting Speed', value: '10x Faster' },
+      { label: 'Locations Managed', value: '120+' }
+    ],
+    overview: 'A rapidly expanding national cafe franchise needed a centralized management dashboard to gain real-time visibility into inventory, staffing, and sales across more than 120 regional locations.',
+    challenge: [
+      'Franchise owners relied on delayed, manual EOD reports from disparate point-of-sale systems.',
+      'Significant inventory waste due to predictive ordering inaccuracies.',
+      'Lack of a unified system to visualize regional performance metrics.'
+    ],
+    solution: 'We engineered a centralized, real-time analytics dashboard using React and D3.js. By building custom API connectors to their existing POS hardware, we aggregated sales and inventory data into a unified Firebase backend, enabling instant, rich data visualization and predictive ordering alerts.',
+    techStack: ['React', 'D3.js', 'Firebase', 'Node.js', 'Tailwind CSS'],
+    featuresAndResults: [
+      'Aggregated data from 120+ unique POS endpoints with zero data loss.',
+      'Implemented real-time alerts for low inventory thresholds, reducing waste by 45%.',
+      'Created custom, interactive D3.js charts for regional managers to track performance instantly.'
+    ],
+    businessValue: 'The executive team achieved total operational visibility, empowering them to optimize supply chain logistics globally. Franchisees saved an average of 15 hours a week previously spent on manual reporting.'
+  },
+  {
+    slug: 'ledgerflow-b2b-saas',
+    title: 'B2B SaaS Financial Platform',
+    client: 'LedgerFlow Inc.',
+    category: 'Enterprise SaaS',
+    tags: ['Vue.js', 'Django', 'PostgreSQL', 'AWS'],
+    image: '/portfolio/saas-product.webp',
+    result: 'Launched scalable MVP in 3 months, securing Series A funding',
+    metrics: [
+      { label: 'Time to Market', value: '3 Months' },
+      { label: 'User Retention', value: '92%' },
+      { label: 'API Uptime', value: '99.99%' }
+    ],
+    overview: 'A fintech startup required a highly secure, scalable MVP to demonstrate their automated ledger reconciliation concept to prospective clients and seed investors within an aggressive timeline.',
+    challenge: [
+      'Strict regulatory and compliance requirements for handling sensitive financial data.',
+      'Aggressive 3-month go-to-market deadline to secure investor funding.',
+      'Need for a robust, multi-tenant architecture from day one to support rapid scaling.'
+    ],
+    solution: 'We architected a secure, multi-tenant SaaS application using Django and Vue.js. We prioritized a rock-solid, HIPAA and SOC2 compliant PostgreSQL database schema, while deploying the infrastructure on AWS using automated CI/CD pipelines to ensure rapid iteration and flawless deployments.',
+    techStack: ['Vue.js', 'Django', 'PostgreSQL', 'Docker', 'AWS ECS', 'Stripe'],
+    featuresAndResults: [
+      'Successfully launched a fully functional, secure MVP in exactly 12 weeks.',
+      'Implemented robust multi-tenant data isolation and role-based access control.',
+      'Integrated Stripe for automated subscription billing and tiered access management.'
+    ],
+    businessValue: 'The polished, high-performance platform allowed the founders to successfully onboard 5 enterprise beta clients and secure a $4M Series A funding round within 6 months of the initial launch.'
   }
 ];

@@ -130,7 +130,7 @@ const TechCard = ({ tech, index }: { tech: TechItem; index: number }) => {
         className="tech-card group h-full w-full bg-slate-50 dark:bg-slate-900/40 border border-slate-300 dark:border-slate-700/60 shadow-sm hover:bg-white dark:hover:bg-slate-800 rounded-xl p-8 flex flex-col items-center justify-center cursor-default will-change-transform"
         style={style as React.CSSProperties}
       >
-        <img src={tech.icon} alt={tech.name} className="w-10 h-10 mb-4 object-contain pointer-events-none drop-shadow-sm" />
+        <img src={tech.icon} alt="" aria-hidden="true" loading="lazy" className="w-10 h-10 mb-4 object-contain pointer-events-none drop-shadow-sm" />
         <span className="text-sm font-semibold text-slate-700 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-slate-100 transition-colors duration-300 text-center pointer-events-none">
           {tech.name}
         </span>

@@ -68,7 +68,7 @@ export const InsightDetail = () => {
         {/* Hero Image */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl mb-16">
           <div className="w-full h-[400px] md:h-[600px] rounded-3xl overflow-hidden border border-border/50 shadow-2xl relative">
-            <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
+            <img src={post.image} alt={`Illustration for ${post.title}`} className="w-full h-full object-cover" />
           </div>
         </div>
 
@@ -104,7 +104,7 @@ export const InsightDetail = () => {
               {insights.filter(p => p.slug !== post.slug).slice(0, 3).map((insight) => (
                 <Link key={insight.slug} to={`/insights/${insight.slug}`} className="group block bg-card rounded-2xl overflow-hidden border border-border/50 shadow-sm hover:shadow-md transition-all">
                   <div className="aspect-video overflow-hidden">
-                    <img src={insight.image} alt={insight.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <img src={insight.image} alt="" aria-hidden="true" loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   </div>
                   <div className="p-6">
                     <span className="text-xs font-bold text-primary tracking-widest uppercase mb-2 block">{insight.category}</span>

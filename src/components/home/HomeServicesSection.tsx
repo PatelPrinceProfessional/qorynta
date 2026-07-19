@@ -80,6 +80,14 @@ const CompactServiceCard = ({ service, index, onClick }: any) => {
         onPointerDown={handleMouseMove}
         onPointerUp={handleMouseLeave}
         onClick={onClick}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            onClick?.(e as any);
+          }
+        }}
         // 2) Hover Lift & Shadow Expansion (Antigravity)
         whileHover={{ scale: 1.02, z: 20 }}
         style={{

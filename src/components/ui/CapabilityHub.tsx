@@ -248,11 +248,22 @@ export const CapabilityHub = ({ onNodeHover }: { onNodeHover?: (id: string | nul
             return (
               <div
                 key={cap.id}
+                role="button"
+                tabIndex={0}
+                aria-expanded={isActive}
                 className="absolute w-12 h-12 sm:w-14 sm:h-14 -ml-6 -mt-6 sm:-ml-7 sm:-mt-7"
                 style={{ top, left }}
                 onMouseEnter={() => { if (window.innerWidth >= 640) setActiveNode(i); }}
                 onMouseLeave={() => { if (window.innerWidth >= 640) setActiveNode(null); }}
+                onFocus={() => setActiveNode(i)}
+                onBlur={() => setActiveNode(null)}
                 onClick={() => { if (window.innerWidth < 640) setActiveNode(isActive ? null : i); }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setActiveNode(isActive ? null : i);
+                  }
+                }}
               >
                 {/* Counter-rotation to keep items upright */}
                 <div className="w-full h-full animate-[spin_40s_linear_infinite_reverse] group-hover:[animation-play-state:paused] relative flex items-center justify-center">

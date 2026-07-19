@@ -44,12 +44,41 @@ export const Navbar = () => {
       if (e.key === 'Escape' && isMobileMenuOpen) {
         setIsMobileMenuOpen(false);
         menuButtonRef.current?.focus();
+        return;
+      }
+
+      if (isMobileMenuOpen && e.key === 'Tab') {
+        const focusableElements = drawerRef.current?.querySelectorAll(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusableElements && focusableElements.length > 0) {
+          const firstElement = focusableElements[0] as HTMLElement;
+          const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+
+          if (e.shiftKey && document.activeElement === firstElement) {
+            e.preventDefault();
+            lastElement?.focus();
+          } else if (!e.shiftKey && document.activeElement === lastElement) {
+            e.preventDefault();
+            firstElement?.focus();
+          }
+        }
       }
     };
 
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
       document.addEventListener('keydown', handleKeyDown);
+      
+      // Focus first element on open
+      setTimeout(() => {
+        const focusableElements = drawerRef.current?.querySelectorAll(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusableElements && focusableElements.length > 0) {
+          (focusableElements[0] as HTMLElement).focus();
+        }
+      }, 50);
     } else {
       document.body.style.overflow = '';
     }
@@ -106,7 +135,7 @@ export const Navbar = () => {
             : "h-16 bg-transparent px-4"
         )}>
           <Link to="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
-            <img src="/logo.webp" alt="Qorynta Services Logo" width={140} height={40} className={cn("w-auto object-contain transition-all duration-500", isScrolled ? "h-8" : "h-10")} />
+            <img src="/logo.webp" alt="Qorynta Services" width={140} height={40} className={cn("w-auto object-contain transition-all duration-500", isScrolled ? "h-8" : "h-10")} />
           </Link>
           <div className="flex items-center gap-2">
             <ThemeToggle />
@@ -128,7 +157,7 @@ export const Navbar = () => {
             to="/" 
             className="absolute top-6 left-8 flex items-center gap-2 group pointer-events-auto transition-transform hover:scale-105 duration-300"
           >
-            <img src="/logo.webp" alt="Qorynta Services Logo" className="h-10 w-auto object-contain" />
+            <img src="/logo.webp" alt="Qorynta Services" className="h-10 w-auto object-contain" />
           </Link>
 
           {/* Floating Navigation Dock (Right) */}
@@ -157,6 +186,12 @@ export const Navbar = () => {
                 className="relative"
                 onMouseEnter={() => { setIsServicesOpen(true); setHoveredItem('services'); }}
                 onMouseLeave={() => setIsServicesOpen(false)}
+                onFocus={() => { setIsServicesOpen(true); setHoveredItem('services'); }}
+                onBlur={(e) => {
+                  if (!e.currentTarget.contains(e.relatedTarget)) {
+                    setIsServicesOpen(false);
+                  }
+                }}
               >
                 {hoveredItem === 'services' && <motion.div layoutId="nav-pill" className="absolute inset-0 bg-slate-100/80 rounded-full z-0" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
                 <Link
@@ -266,6 +301,7 @@ export const Navbar = () => {
         )}
         onClick={() => setIsMobileMenuOpen(false)}
         aria-hidden="true"
+        tabIndex={-1}
       />
 
       <div

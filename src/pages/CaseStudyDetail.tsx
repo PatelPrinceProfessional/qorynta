@@ -74,7 +74,7 @@ const CaseStudyDetail = () => {
           >
             <img 
               src={project.image} 
-              alt={project.title} 
+              alt={`Screenshot of ${project.title} project`} 
               className="w-full h-full object-cover object-center"
             />
           </motion.div>

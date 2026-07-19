@@ -42,7 +42,7 @@ export const Insights = () => {
               <Link to={`/insights/${featured.slug}`} className="group block relative rounded-3xl overflow-hidden border border-border/50 bg-card shadow-lg hover:shadow-2xl transition-all duration-500">
                 <div className="flex flex-col lg:flex-row h-full">
                   <div className="lg:w-3/5 relative overflow-hidden h-72 lg:h-[500px]">
-                    <img src={featured.image} alt={featured.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
+                    <img src={featured.image} alt="" aria-hidden="true" loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
                     <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-background/20 lg:to-background" />
                   </div>
                   <div className="lg:w-2/5 p-8 md:p-12 flex flex-col justify-center">
@@ -74,7 +74,7 @@ export const Insights = () => {
                 <ScrollReveal key={idx} delay={0.1 * idx}>
                   <Link to={`/insights/${post.slug}`} className="group flex flex-col h-full bg-card rounded-3xl overflow-hidden border border-border/50 shadow-sm hover:shadow-xl hover:border-primary/30 transition-all duration-500">
                     <div className="relative h-64 overflow-hidden">
-                      <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                      <img src={post.image} alt="" aria-hidden="true" loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                     </div>
                     <div className="p-8 flex flex-col flex-1">
                       <span className="text-xs font-bold text-primary tracking-widest uppercase mb-4">{post.category}</span>
