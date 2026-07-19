@@ -71,19 +71,19 @@ export const Hire = () => {
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary font-semibold text-sm mb-8">
                 <Target className="w-4 h-4" /> Top 1% Global Talent
               </div>
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-foreground mb-8 tracking-tight leading-[1.1]">
+              <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-foreground mb-6 sm:mb-8 tracking-tight leading-tight sm:leading-[1.1]">
                 Scale Your Engineering Capacity with <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-400">Elite Talent.</span>
               </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed font-medium max-w-3xl mx-auto mb-12">
+              <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground leading-relaxed font-medium max-w-3xl mx-auto mb-10 sm:mb-12">
                 Bypass the painful hiring cycle. Instantly inject world-class architects, senior developers, and product engineers directly into your most critical initiatives.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Button asChild size="lg" className="rounded-full px-8 h-14 text-lg bg-primary hover:bg-primary/90 shadow-[0_0_24px_rgba(59,130,246,0.35)] hover:scale-105 transition-all overflow-hidden group">
+                <Button asChild size="lg" className="w-full sm:w-auto rounded-full px-8 h-14 text-lg bg-primary hover:bg-primary/90 shadow-[0_0_24px_rgba(59,130,246,0.35)] hover:scale-105 transition-all overflow-hidden group">
                   <Link to="/contact">
                     <RevealContent>Build Your Team Today</RevealContent>
                   </Link>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="rounded-full px-8 h-14 text-lg border-border hover:bg-muted transition-all">
+                <Button asChild size="lg" variant="outline" className="w-full sm:w-auto rounded-full px-8 h-14 text-lg border-border hover:bg-muted transition-all">
                   <a href="#models">Explore Engagement Models</a>
                 </Button>
               </div>

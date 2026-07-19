@@ -135,10 +135,10 @@ export const HeroSection = () => {
           <div className="lg:col-span-7 flex flex-col text-center lg:text-left items-center lg:items-start relative min-w-0">
 
             {/* Massive Background Text Animation */}
-            <div className="flex absolute top-[38%] sm:top-[40%] md:top-[45%] lg:top-[65%] left-0 right-0 lg:right-auto -translate-y-1/2 lg:-translate-x-4 z-[-2] pointer-events-none select-none w-full lg:w-auto">
+            <div className="flex absolute top-[38%] sm:top-[40%] md:top-[45%] lg:top-[65%] left-0 right-0 lg:right-auto -translate-y-1/2 lg:-translate-x-4 z-[-2] pointer-events-none select-none w-full lg:w-auto overflow-hidden sm:overflow-visible justify-center lg:justify-start">
               <BackgroundKeywords />
             </div>
-            <div className="hero-eyebrow opacity-0 translate-y-3">
+            <div className="hero-eyebrow opacity-0 translate-y-3 w-full sm:w-auto">
               {/* Mobile text */}
               <div className="md:hidden">
                 <SectionLabel text="QORYNTA SERVICES — BUILD. SCALE. DOMINATE." />
@@ -151,8 +151,8 @@ export const HeroSection = () => {
             </div>
 
             {/* Headline */}
-            <h1 ref={headlineRef} className="hero-headline w-full max-w-full text-[42px] md:text-[54px] lg:text-[72px] xl:text-[86px] font-display font-bold lg:leading-[1.05] tracking-tighter mb-8">
-              <span className="word inline-block pr-2 pb-1 opacity-0 translate-y-4 bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-blue-900 dark:from-white dark:to-blue-300">Build</span>{" "}
+            <h1 ref={headlineRef} className="hero-headline w-full max-w-full text-4xl sm:text-[42px] md:text-[54px] lg:text-[72px] xl:text-[86px] font-display font-bold leading-tight lg:leading-[1.05] tracking-tighter mb-6 sm:mb-8 break-words">
+              <span className="word inline-block pr-1 sm:pr-2 pb-1 opacity-0 translate-y-4 bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-blue-900 dark:from-white dark:to-blue-300">Build</span>{" "}
               <span className="word inline-block opacity-0 translate-y-4 text-foreground/90 font-serif italic text-primary/80">Digital</span>&nbsp;{" "}
               <span className="word inline-block pr-2 pb-1 opacity-0 translate-y-4 bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-blue-900 dark:from-white dark:to-blue-300">Products</span>
               <br className="hidden md:block" />

@@ -1,10 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Menu, X, ChevronDown, Github, Linkedin, Twitter, Instagram } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { services } from '@/data/services';
 import { RevealContent } from '@/components/ui/RevealContent';
@@ -22,14 +21,12 @@ export const Navbar = () => {
 
   useEffect(() => {
     let ticking = false;
-
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const scrollTop = window.scrollY;
           const docHeight = document.documentElement.scrollHeight - window.innerHeight;
           const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-
           setScrollProgress(scrollPercent);
           setIsScrolled(scrollTop > 50);
           ticking = false;
@@ -37,7 +34,6 @@ export const Navbar = () => {
         ticking = true;
       }
     };
-
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -64,9 +60,21 @@ export const Navbar = () => {
     };
   }, [isMobileMenuOpen]);
 
+  const navLinks = [
+    { name: 'Home', path: '/' },
+    { name: 'Industries', path: '/industries' },
+    { name: 'Hire', path: '/hire' },
+    { name: 'About', path: '/about' },
+    { name: 'Portfolio', path: '/case-studies' },
+    { name: 'Insights', path: '/insights' },
+    { name: 'Pricing', path: '/engagement' },
+    { name: 'Careers', path: '/careers' },
+    { name: 'Contact', path: '/contact' },
+  ];
+
   return (
     <>
-      {/* Top Utility Bar */}
+      {/* Top Utility Bar (Hidden when scrolled or dock active) */}
       <div className={cn("bg-primary/5 border-b border-border/40 py-1.5 px-4 sm:px-6 lg:px-8 hidden md:flex justify-end items-center gap-6 text-xs font-medium text-muted-foreground z-50 relative transition-all duration-500", isScrolled ? "h-0 opacity-0 overflow-hidden py-0 border-0" : "opacity-100")}>
         <div className="flex items-center gap-4">
           <a href="tel:+919316157949" className="hover:text-primary transition-colors flex items-center gap-1.5">
@@ -80,12 +88,7 @@ export const Navbar = () => {
         </div>
       </div>
 
-      <header
-        className={cn(
-          'fixed z-50 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] left-0 right-0',
-          isScrolled ? 'top-0 md:top-4' : 'top-0 md:top-[34px]'
-        )}
-      >
+      <header className="fixed z-50 left-0 right-0 top-0 pointer-events-none">
         {/* Glowing Scroll Progress Bar */}
         <div
           className={cn(
@@ -95,56 +98,104 @@ export const Navbar = () => {
           style={{ width: `${scrollProgress}%` }}
         />
         
-        <div className="w-full md:container md:mx-auto px-0 md:px-6 lg:px-8">
-          <nav className={cn(
-            "w-full flex items-center justify-between transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
-            isScrolled 
-              ? "h-14 md:h-16 bg-background/80 backdrop-blur-xl border-b md:border border-border/40 shadow-sm md:shadow-[0_8px_30px_rgb(0,0,0,0.12)] md:rounded-full px-4 sm:px-6 lg:px-8" 
-              : "h-16 md:h-20 bg-transparent border-b border-transparent px-4 sm:px-6 lg:px-8 md:px-0 lg:px-0"
-          )}>
-            <Link to="/" className="flex items-center gap-2 group z-50 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]" onClick={() => setIsMobileMenuOpen(false)}>
-              <img src="/logo.webp" alt="Qorynta Services Logo" width={140} height={40} className={cn("w-auto object-contain rounded-md transition-all duration-500", isScrolled ? "h-8" : "h-10")} />
-              <span className={cn("font-bold tracking-tight block transition-all duration-500", isScrolled ? "text-base sm:text-lg" : "text-lg sm:text-xl")}>
-                <span className="gradient-text">Qorynta Services</span>
-              </span>
-            </Link>
+        {/* Mobile Header Layout (Fallback for < lg) */}
+        <div className={cn(
+          "lg:hidden w-full flex items-center justify-between transition-all duration-500 pointer-events-auto",
+          isScrolled 
+            ? "h-14 bg-background/80 backdrop-blur-xl border-b shadow-sm px-4" 
+            : "h-16 bg-transparent px-4"
+        )}>
+          <Link to="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
+            <img src="/logo.webp" alt="Qorynta Services Logo" width={140} height={40} className={cn("w-auto object-contain transition-all duration-500", isScrolled ? "h-8" : "h-10")} />
+          </Link>
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              ref={menuButtonRef}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 rounded-lg text-foreground hover:bg-muted transition-colors"
+            >
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
+        </div>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-1 lg:gap-2" onMouseLeave={() => setHoveredItem(null)}>
+        {/* Asymmetric Crystal Dock (Desktop >= lg) */}
+        <div className="hidden lg:block pointer-events-none h-0">
+          
+          {/* Decoupled Logo Anchor */}
+          <Link 
+            to="/" 
+            className="absolute top-6 left-8 flex items-center gap-2 group pointer-events-auto transition-transform hover:scale-105 duration-300"
+          >
+            <img src="/logo.webp" alt="Qorynta Services Logo" className="h-10 w-auto object-contain" />
+          </Link>
 
+          {/* Floating Navigation Dock (Right) */}
+          <nav 
+            className="absolute top-6 right-8 flex items-center pointer-events-auto"
+            style={{
+              backdropFilter: "blur(24px)",
+              background: "rgba(255, 255, 255, 0.75)",
+              border: "1px solid rgba(226, 232, 240, 0.7)",
+              borderRadius: "9999px",
+              padding: "0.5rem 0.5rem 0.5rem 1.5rem", // py-2, pr-2, pl-6
+              boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)"
+            }}
+            onMouseLeave={() => setHoveredItem(null)}
+          >
+            <div className="flex items-center gap-1 mr-4">
+              
+              {/* Home */}
               <div className="relative" onMouseEnter={() => setHoveredItem('home')}>
-                {hoveredItem === 'home' && <motion.div layoutId="nav-pill" className="absolute inset-0 bg-blue-500/10 dark:bg-blue-500/20 rounded-full z-0" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
-                <Link to="/" className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-all duration-300 hover:tracking-widest block", location.pathname === '/' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}>Home</Link>
+                {hoveredItem === 'home' && <motion.div layoutId="nav-pill" className="absolute inset-0 bg-slate-100/80 rounded-full z-0" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
+                <Link to="/" className={cn("relative z-10 px-3 py-1.5 text-[13px] font-medium transition-colors duration-200 block", location.pathname === '/' ? 'text-slate-900 font-semibold' : 'text-slate-600 hover:text-slate-900')}>Home</Link>
               </div>
 
               {/* Services Dropdown */}
               <div
-                className="relative group"
+                className="relative"
                 onMouseEnter={() => { setIsServicesOpen(true); setHoveredItem('services'); }}
                 onMouseLeave={() => setIsServicesOpen(false)}
               >
-                {hoveredItem === 'services' && <motion.div layoutId="nav-pill" className="absolute inset-0 bg-blue-500/10 dark:bg-blue-500/20 rounded-full z-0" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
+                {hoveredItem === 'services' && <motion.div layoutId="nav-pill" className="absolute inset-0 bg-slate-100/80 rounded-full z-0" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
                 <Link
                   to="/services"
-                  className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-all duration-300 hover:tracking-widest flex items-center gap-1", location.pathname === '/services' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}
+                  className={cn("relative z-10 px-3 py-1.5 text-[13px] font-medium transition-colors duration-200 flex items-center gap-1", location.pathname === '/services' ? 'text-slate-900 font-semibold' : 'text-slate-600 hover:text-slate-900')}
                 >
                   Services
-                  <ChevronDown className="w-4 h-4" />
+                  <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-300", isServicesOpen && "rotate-180")} />
                 </Link>
 
-                <div className={cn(
-                  "absolute top-full left-0 w-[400px] pt-2 transition-all duration-200 origin-top-left z-50",
-                  isServicesOpen ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none"
-                )}>
-                  <div className="bg-card border border-border rounded-xl shadow-xl overflow-hidden glass-card p-4 flex gap-6">
+                <div 
+                  className={cn(
+                    "absolute top-full pt-4 left-1/2 -translate-x-1/2 w-[480px] z-50",
+                    isServicesOpen ? "pointer-events-auto" : "pointer-events-none"
+                  )}
+                  style={{
+                    transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1)",
+                    opacity: isServicesOpen ? 1 : 0,
+                    transform: isServicesOpen ? "translate(-50%, 0) scale(1)" : "translate(-50%, -10px) scale(0.95)"
+                  }}
+                >
+                  <div 
+                    className="overflow-hidden p-6 flex gap-6"
+                    style={{
+                      backdropFilter: "blur(30px)",
+                      background: "rgba(255, 255, 255, 0.92)",
+                      border: "1px solid rgba(226, 232, 240, 0.9)",
+                      borderRadius: "1rem",
+                      boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)"
+                    }}
+                  >
                     <div className="flex-1">
-                      <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2 px-2">Core Services</h4>
+                      <h4 className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-4 px-2">Core Services</h4>
                       <div className="space-y-1">
                         {services.filter(s => s.category === 'Core').slice(0, 5).map((service, idx) => (
                           <Link
                             key={idx}
                             to={`/services/${service.slug}`}
-                            className="block px-2 py-1.5 text-sm text-foreground hover:text-primary hover:bg-muted/50 rounded-lg transition-colors"
+                            className="block px-3 py-2.5 text-[13px] font-medium text-slate-900 hover:text-blue-600 hover:bg-blue-50/50 rounded-lg transition-all duration-200"
                             onClick={() => setIsServicesOpen(false)}
                           >
                             {service.title}
@@ -152,8 +203,8 @@ export const Navbar = () => {
                         ))}
                       </div>
                     </div>
-                    <div className="flex-1 border-l border-border/50 pl-6">
-                      <h4 className="text-xs font-bold text-[#F59E0B] uppercase tracking-wider mb-2 px-2 flex items-center gap-1">
+                    <div className="flex-1 border-l border-slate-200 pl-6">
+                      <h4 className="text-[11px] font-bold text-amber-600 uppercase tracking-wider mb-4 px-2 flex items-center gap-1">
                         AI Services
                       </h4>
                       <div className="space-y-1">
@@ -161,127 +212,56 @@ export const Navbar = () => {
                           <Link
                             key={idx}
                             to={`/services/${service.slug}`}
-                            className="block px-2 py-1.5 text-sm text-foreground hover:text-[#F59E0B] hover:bg-muted/50 rounded-lg transition-colors"
+                            className="block px-3 py-2.5 text-[13px] font-medium text-slate-900 hover:text-amber-600 hover:bg-amber-50/50 rounded-lg transition-all duration-200 hover:translate-x-1"
                             onClick={() => setIsServicesOpen(false)}
                           >
                             {service.title}
                           </Link>
                         ))}
                       </div>
-                      <Link to="/services" className="block mt-4 px-2 py-1.5 text-xs font-bold text-primary hover:underline" onClick={() => setIsServicesOpen(false)}>
-                        View All Services &rarr;
+                      <Link 
+                        to="/services" 
+                        className="inline-block mt-4 ml-2 px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-900 rounded-md text-[11px] font-bold transition-colors" 
+                        onClick={() => setIsServicesOpen(false)}
+                      >
+                        View All
                       </Link>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Industries Dropdown (Phase 1 Stub) */}
-              <div className="relative group" onMouseEnter={() => setHoveredItem('industries')}>
-                {hoveredItem === 'industries' && <motion.div layoutId="nav-pill" className="absolute inset-0 bg-blue-500/10 dark:bg-blue-500/20 rounded-full z-0" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
-                <Link
-                  to="/industries"
-                  className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-all duration-300 hover:tracking-widest flex items-center gap-1", location.pathname === '/industries' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}
-                >
-                  Industries
-                  <ChevronDown className="w-4 h-4" />
-                </Link>
-                <div className="absolute top-full left-0 w-48 pt-2 opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-200 origin-top-left z-50">
-                  <div className="bg-card border border-border rounded-xl shadow-xl overflow-hidden glass-card p-2">
-                    {['FinTech', 'Healthcare', 'E-Commerce', 'SaaS', 'Real Estate'].map((ind) => (
-                      <Link key={ind} to={`/industries/${ind.toLowerCase()}`} className="block px-4 py-2 text-sm text-muted-foreground hover:text-primary hover:bg-muted/50 rounded-lg transition-colors">{ind}</Link>
-                    ))}
-                  </div>
+              {navLinks.slice(1).map((link) => (
+                <div key={link.name} className="relative" onMouseEnter={() => setHoveredItem(link.name.toLowerCase())}>
+                  {hoveredItem === link.name.toLowerCase() && <motion.div layoutId="nav-pill" className="absolute inset-0 bg-slate-100/80 rounded-full z-0" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
+                  <Link to={link.path} className={cn("relative z-10 px-3 py-1.5 text-[13px] font-medium transition-colors duration-200 block", location.pathname === link.path ? 'text-slate-900 font-semibold' : 'text-slate-600 hover:text-slate-900')}>{link.name}</Link>
                 </div>
-              </div>
-
-              {/* Hire Dropdown (Phase 1 Stub) */}
-              <div className="relative group" onMouseEnter={() => setHoveredItem('hire')}>
-                {hoveredItem === 'hire' && <motion.div layoutId="nav-pill" className="absolute inset-0 bg-blue-500/10 dark:bg-blue-500/20 rounded-full z-0" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
-                <Link
-                  to="/hire"
-                  className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-all duration-300 hover:tracking-widest flex items-center gap-1", location.pathname === '/hire' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}
-                >
-                  Hire
-                  <ChevronDown className="w-4 h-4" />
-                </Link>
-                <div className="absolute top-full left-0 w-48 pt-2 opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-200 origin-top-left z-50">
-                  <div className="bg-card border border-border rounded-xl shadow-xl overflow-hidden glass-card p-2">
-                    {['React Developers', 'Python Engineers', 'AI/ML Experts', 'Node.js Devs'].map((role) => (
-                      <Link key={role} to={`/hire/${role.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} className="block px-4 py-2 text-sm text-muted-foreground hover:text-primary hover:bg-muted/50 rounded-lg transition-colors">{role}</Link>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <div className="relative" onMouseEnter={() => setHoveredItem('about')}>
-                {hoveredItem === 'about' && <motion.div layoutId="nav-pill" className="absolute inset-0 bg-blue-500/10 dark:bg-blue-500/20 rounded-full z-0" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
-                <Link to="/about" className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-all duration-300 hover:tracking-widest block", location.pathname === '/about' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}>About</Link>
-              </div>
-
-              <div className="relative" onMouseEnter={() => setHoveredItem('portfolio')}>
-                {hoveredItem === 'portfolio' && <motion.div layoutId="nav-pill" className="absolute inset-0 bg-blue-500/10 dark:bg-blue-500/20 rounded-full z-0" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
-                <Link to="/case-studies" className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-all duration-300 hover:tracking-widest block", location.pathname === '/case-studies' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}>Portfolio</Link>
-              </div>
-
-              <div className="relative" onMouseEnter={() => setHoveredItem('insights')}>
-                {hoveredItem === 'insights' && <motion.div layoutId="nav-pill" className="absolute inset-0 bg-blue-500/10 dark:bg-blue-500/20 rounded-full z-0" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
-                <Link to="/insights" className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-all duration-300 hover:tracking-widest block", location.pathname === '/insights' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}>Insights</Link>
-              </div>
-
-              <div className="relative" onMouseEnter={() => setHoveredItem('engagement')}>
-                {hoveredItem === 'engagement' && <motion.div layoutId="nav-pill" className="absolute inset-0 bg-blue-500/10 dark:bg-blue-500/20 rounded-full z-0" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
-                <Link to="/engagement" className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-all duration-300 hover:tracking-widest block", location.pathname === '/engagement' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}>Pricing</Link>
-              </div>
-
-              <div className="relative" onMouseEnter={() => setHoveredItem('careers')}>
-                {hoveredItem === 'careers' && <motion.div layoutId="nav-pill" className="absolute inset-0 bg-blue-500/10 dark:bg-blue-500/20 rounded-full z-0" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
-                <Link to="/careers" className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-all duration-300 hover:tracking-widest block", location.pathname === '/careers' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}>Careers</Link>
-              </div>
-
-              <div className="relative" onMouseEnter={() => setHoveredItem('contact')}>
-                {hoveredItem === 'contact' && <motion.div layoutId="nav-pill" className="absolute inset-0 bg-blue-500/10 dark:bg-blue-500/20 rounded-full z-0" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
-                <Link to="/contact" className={cn("relative z-10 px-3 py-2 text-sm font-medium transition-all duration-300 hover:tracking-widest block", location.pathname === '/contact' ? 'text-primary font-semibold' : 'text-muted-foreground hover:text-foreground')}>Contact</Link>
-              </div>
+              ))}
             </div>
 
-            {/* CTA Button & Theme Toggle (Desktop) */}
-            <div className="hidden md:flex items-center gap-4">
-              <ThemeToggle />
-              <div className="relative group">
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full blur opacity-50 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse" />
-                <Button
-                  asChild
-                  className="relative bg-primary text-primary-foreground transition-all duration-300 rounded-full px-6 hover:scale-[1.02] shadow-sm overflow-hidden group"
-                >
-                  <Link to="/contact" className="flex items-center justify-center">
-                    <RevealContent>Get Free Consultation</RevealContent>
-                  </Link>
-                </Button>
-              </div>
-            </div>
+            {/* Separator */}
+            <div className="w-[1px] h-6 bg-slate-200 mr-4" />
 
-            {/* Mobile Actions */}
-            <div className="flex md:hidden items-center gap-2">
+            {/* Dock Right Side */}
+            <div className="flex items-center gap-3">
               <ThemeToggle />
-              {/* Mobile Menu Button */}
-              <button
-                ref={menuButtonRef}
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="p-2 rounded-lg text-foreground hover:bg-muted transition-colors z-50 relative"
-                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-                aria-expanded={isMobileMenuOpen}
+              <Button
+                asChild
+                className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white transition-all duration-300 rounded-full px-5 h-9 text-[13px] font-semibold hover:shadow-lg hover:shadow-blue-500/25"
               >
-                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              </button>
+                <Link to="/contact">
+                  <RevealContent>Get Free Consultation</RevealContent>
+                </Link>
+              </Button>
             </div>
           </nav>
         </div>
       </header>
 
+      {/* Mobile Drawer (Unchanged behavior) */}
       <div
         className={cn(
-          "fixed inset-0 bg-foreground/20 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300",
+          "fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-40 lg:hidden transition-opacity duration-300",
           isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         )}
         onClick={() => setIsMobileMenuOpen(false)}
@@ -291,79 +271,29 @@ export const Navbar = () => {
       <div
         ref={drawerRef}
         className={cn(
-          "fixed top-0 right-0 bottom-0 w-[80%] max-w-sm bg-background z-[60] md:hidden flex flex-col border-l border-border transition-transform duration-300 ease-out",
+          "fixed top-0 right-0 bottom-0 w-[80%] max-w-sm bg-white dark:bg-slate-950 z-[60] lg:hidden flex flex-col border-l border-slate-200 dark:border-slate-800 transition-transform duration-300 ease-out",
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
         )}
-        role="dialog"
-        aria-modal="true"
-        aria-label="Mobile navigation menu"
       >
-        {/* Close Button Inside Drawer */}
         <button
           onClick={() => setIsMobileMenuOpen(false)}
-          className="absolute top-6 right-6 p-2 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors z-50 rounded-full"
-          aria-label="Close menu"
+          className="absolute top-6 right-6 p-2 text-slate-500 hover:text-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors z-50"
         >
           <X className="w-6 h-6" />
         </button>
 
         <div className="flex-1 overflow-y-auto pt-20 pb-8 px-6 flex flex-col">
           <div className="flex flex-col space-y-6 flex-1">
-            <Link to="/" className="text-xl font-medium text-foreground hover:text-primary transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
-
-            <div className="space-y-4">
-              <Link to="/services" className="text-xl font-medium text-foreground hover:text-primary transition-colors block" onClick={() => setIsMobileMenuOpen(false)}>Services</Link>
-              <div className="pl-4 border-l border-border/50 space-y-3 flex flex-col">
-                <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider pt-2">Core Services</span>
-                {services.filter(s => s.category === 'Core').slice(0, 3).map((service, idx) => (
-                  <Link key={idx} to={`/services/${service.slug}`} className="text-sm text-muted-foreground hover:text-primary transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-                    {service.title}
-                  </Link>
-                ))}
-
-                <span className="text-xs font-bold text-[#F59E0B] uppercase tracking-wider pt-2">AI Services</span>
-                {services.filter(s => s.category === 'AI').slice(0, 2).map((service, idx) => (
-                  <Link key={idx} to={`/services/${service.slug}`} className="text-sm text-muted-foreground hover:text-[#F59E0B] transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-                    {service.title}
-                  </Link>
-                ))}
-
-                <Link to="/services" className="text-sm text-primary font-medium pt-2" onClick={() => setIsMobileMenuOpen(false)}>View All Services →</Link>
-              </div>
-            </div>
-
-            <Link to="/about" className="text-xl font-medium text-foreground hover:text-primary transition-colors" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
-            <Link to="/case-studies" className="text-xl font-medium text-foreground hover:text-primary transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Portfolio</Link>
-            <Link to="/industries" className="text-xl font-medium text-foreground hover:text-primary transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Industries</Link>
-            <Link to="/hire" className="text-xl font-medium text-foreground hover:text-primary transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Hire</Link>
-            <Link to="/insights" className="text-xl font-medium text-foreground hover:text-primary transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Insights</Link>
-            <Link to="/engagement" className="text-xl font-medium text-foreground hover:text-primary transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Pricing</Link>
-            <Link to="/careers" className="text-xl font-medium text-foreground hover:text-primary transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Careers</Link>
-            <Link to="/contact" className="text-xl font-medium text-foreground hover:text-primary transition-colors" onClick={() => setIsMobileMenuOpen(false)}>Contact</Link>
-
-            <div className="pt-6 mt-auto">
-              <Button asChild className="w-full bg-primary text-primary-foreground shadow-[0_0_24px_rgba(59,130,246,0.35)] rounded-full h-12 text-lg overflow-hidden group">
-                <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center justify-center">
-                  <RevealContent>Get Free Consultation</RevealContent>
-                </Link>
-              </Button>
-            </div>
-          </div>
-
-          {/* Social Icons Bottom */}
-          <div className="pt-8 mt-8 border-t border-border flex justify-center gap-6">
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-              <Linkedin className="w-6 h-6" />
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-              <Github className="w-6 h-6" />
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-              <Twitter className="w-6 h-6" />
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-              <Instagram className="w-6 h-6" />
-            </a>
+            {navLinks.map((link) => (
+              <Link 
+                key={link.name}
+                to={link.path} 
+                className="text-xl font-medium text-slate-900 dark:text-white hover:text-blue-600 transition-colors" 
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {link.name}
+              </Link>
+            ))}
           </div>
         </div>
       </div>

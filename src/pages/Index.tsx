@@ -26,19 +26,19 @@ const Index = () => {
         <meta name="description" content="Production-grade digital solutions for Indian and global businesses. Custom web development, mobile apps, AI & Machine Learning, and Cloud DevOps." />
       </Helmet>
 
-      
+
       <main className="flex min-h-screen flex-col">
         <HeroSection />
-        
+
         {/* Main content wrapper */}
         <div id="content-wrapper" className="relative z-10 bg-background diagonal-geometric-bg flex flex-col gap-0 pb-0">
           <Suspense fallback={<div className="h-40 w-full flex items-center justify-center"><div className="w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin"></div></div>}>
             <TrustBar />
             <HomeServicesSection />
           </Suspense>
-          
+
           <WhyQorynta />
-          
+
           <Suspense fallback={<div className="h-40 w-full flex items-center justify-center"><div className="w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin"></div></div>}>
             <ProcessSection />
             <IndustriesSection />
@@ -50,7 +50,7 @@ const Index = () => {
           </Suspense>
         </div>
       </main>
-          </>
+    </>
   );
 };
 

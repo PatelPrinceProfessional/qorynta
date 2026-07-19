@@ -93,10 +93,10 @@ export const Industries = () => {
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary font-semibold text-sm mb-8">
                 <Globe2 className="w-4 h-4" /> Global Impact
               </div>
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-foreground mb-8 tracking-tight leading-[1.1]">
+              <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-foreground mb-6 sm:mb-8 tracking-tight leading-tight sm:leading-[1.1]">
                 Engineering the Future of <span className="text-primary">Every Industry.</span>
               </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed font-medium">
+              <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground leading-relaxed font-medium">
                 We don't just write code. We build domain-specific, high-performance digital ecosystems that solve the most complex challenges in your sector.
               </p>
             </ScrollReveal>
