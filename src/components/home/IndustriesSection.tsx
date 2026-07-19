@@ -209,7 +209,7 @@ export const IndustriesSection = () => {
           <div className="md:w-1/2">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
-              <span className="text-sm font-semibold tracking-wider text-blue-600 uppercase">
+              <span className="text-sm font-semibold tracking-wider text-blue-700 dark:text-blue-500 uppercase">
                 Our Tech Stack
               </span>
             </div>
@@ -219,7 +219,7 @@ export const IndustriesSection = () => {
           </div>
           <div className="md:w-1/3">
             <p className="text-lg text-slate-500 dark:text-slate-400 font-medium leading-relaxed pb-2 transition-colors duration-500">
-              Explore our recent case studies in our <Link to="/portfolio" className="font-bold text-blue-600 dark:text-blue-400 hover:underline">Portfolio</Link> to see how we build enterprise software, or <Link to="/contact" className="font-bold text-blue-600 dark:text-blue-400 hover:underline">Contact Us</Link> to get a free technical scoping call.
+              Explore our recent case studies in our <Link to="/case-studies" className="font-bold text-blue-600 dark:text-blue-400 hover:underline">Portfolio</Link> to see how we build enterprise software, or <Link to="/contact" className="font-bold text-blue-600 dark:text-blue-400 hover:underline">Contact Us</Link> to get a free technical scoping call.
             </p>
           </div>
         </div>

@@ -27,11 +27,11 @@ export const CertificationsSection = () => {
           </div>
           
           <div className="flex items-center font-bold text-lg text-foreground">
-            ISO 9001:2015 <span className="font-normal text-sm ml-2 text-muted-foreground">Certified</span>
+            ISO 9001:2015 <span className="font-normal text-sm ml-2 text-slate-600 dark:text-slate-400">Certified</span>
           </div>
           
           <div className="flex items-center gap-2 font-bold text-foreground">
-            <div className="w-8 h-8 rounded-full bg-[#F2A900] flex items-center justify-center text-white text-xs">AWS</div>
+            <div className="w-8 h-8 rounded-full bg-[#F2A900] flex items-center justify-center text-slate-900 text-xs">AWS</div>
             Partner Network
           </div>
         </div>

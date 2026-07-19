@@ -79,7 +79,7 @@ export const Footer = () => {
           {/* Brand & Description */}
           <div className="lg:col-span-4 space-y-6 pr-4">
             <Link to="/" className="flex items-center gap-2 group mb-4">
-              <img src="/logo.webp" alt="Qorynta Services" loading="lazy" width={140} height={40} className="h-8 w-auto object-contain rounded-md" />
+              <img src="/logo.webp" alt="" aria-hidden="true" loading="lazy" width={140} height={40} className="h-8 w-auto object-contain rounded-md" />
               <span className="text-xl font-bold tracking-tight text-white">Qorynta Services</span>
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed font-medium max-w-sm relative z-10">
@@ -89,7 +89,7 @@ export const Footer = () => {
 
           {/* Company Links */}
           <div className="lg:col-span-2">
-            <h4 className="text-sm font-bold text-white mb-6 uppercase tracking-wider">Company</h4>
+            <h3 className="text-sm font-bold text-white mb-6 uppercase tracking-wider">Company</h3>
             <ul className="space-y-4">
               <li><Link to="/about" className="text-sm font-medium text-slate-400 hover:text-white transition-colors">About Us</Link></li>
               <li><Link to="/careers" className="text-sm font-medium text-slate-400 hover:text-white transition-colors">Careers</Link></li>
@@ -103,7 +103,7 @@ export const Footer = () => {
 
           {/* Socials */}
           <div className="lg:col-span-2">
-            <h4 className="text-sm font-bold text-white mb-6 uppercase tracking-wider">Socials</h4>
+            <h3 className="text-sm font-bold text-white mb-6 uppercase tracking-wider">Socials</h3>
             <ul className="space-y-4">
               <li>
                 <a href="https://www.linkedin.com/in/qorynta-services-72067b419/" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-slate-400 hover:text-white transition-colors flex items-center gap-2 group">
@@ -125,7 +125,7 @@ export const Footer = () => {
 
           {/* Services */}
           <div className="lg:col-span-4 lg:pl-6">
-            <h4 className="text-sm font-bold text-white mb-6 uppercase tracking-wider">Our Services</h4>
+            <h3 className="text-sm font-bold text-white mb-6 uppercase tracking-wider">Our Services</h3>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-4">
               {services.map((service, idx) => (
                 <li key={idx}>
@@ -141,10 +141,10 @@ export const Footer = () => {
         </div>
 
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 border-t border-white/10">
-          <p className="text-sm font-medium text-slate-500 text-center md:text-left">
+          <p className="text-sm font-medium text-slate-400 text-center md:text-left">
             &copy; {new Date().getFullYear()} Qorynta Services. All rights reserved.
           </p>
-          <div className="flex gap-6 text-sm font-medium text-slate-500">
+          <div className="flex gap-6 text-sm font-medium text-slate-400">
             <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link to="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link>
           </div>

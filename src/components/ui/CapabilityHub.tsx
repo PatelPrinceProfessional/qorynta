@@ -251,6 +251,7 @@ export const CapabilityHub = ({ onNodeHover }: { onNodeHover?: (id: string | nul
                 role="button"
                 tabIndex={0}
                 aria-expanded={isActive}
+                aria-label={`View details for ${cap.title}`}
                 className="absolute w-12 h-12 sm:w-14 sm:h-14 -ml-6 -mt-6 sm:-ml-7 sm:-mt-7"
                 style={{ top, left }}
                 onMouseEnter={() => { if (window.innerWidth >= 640) setActiveNode(i); }}
