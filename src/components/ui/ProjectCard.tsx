@@ -15,6 +15,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
           alt="" 
           aria-hidden="true"
           loading="lazy"
+          decoding="async"
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.05] will-change-transform"
         />
         {/* Overlay gradient for premium feel */}

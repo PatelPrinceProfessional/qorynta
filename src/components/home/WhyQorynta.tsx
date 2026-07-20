@@ -31,7 +31,7 @@ export const WhyQorynta = () => {
               <ScrollReveal direction="right" delay={0.2} className="absolute inset-0">
                 <div className="absolute top-1/2 -translate-y-1/2 left-0 -translate-x-6 sm:-translate-x-12 w-[160px] sm:w-[220px] h-[340px] sm:h-[460px] bg-black rounded-[2rem] sm:rounded-[2.5rem] border-[6px] sm:border-[8px] border-black shadow-xl overflow-hidden -rotate-[10deg] opacity-95 z-0 transition-transform hover:-rotate-[12deg] hover:scale-105 duration-500">
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[40%] h-5 sm:h-6 bg-black rounded-b-xl sm:rounded-b-2xl z-20"></div>
-                  <img src="/smarthome-app.webp" alt="Smart Home App UI" loading="lazy" width="220" height="460" className="w-full h-full object-cover relative z-10 rounded-[1.5rem] sm:rounded-[2rem]" />
+                  <img src="/smarthome-app.webp" alt="Smart Home App UI" loading="lazy" decoding="async" width="220" height="460" className="w-full h-full object-cover relative z-10 rounded-[1.5rem] sm:rounded-[2rem]" />
                 </div>
               </ScrollReveal>
 
@@ -39,7 +39,7 @@ export const WhyQorynta = () => {
               <ScrollReveal direction="left" delay={0.3} className="absolute inset-0">
                 <div className="absolute top-1/2 -translate-y-1/2 right-0 translate-x-6 sm:translate-x-12 w-[160px] sm:w-[220px] h-[340px] sm:h-[460px] bg-black rounded-[2rem] sm:rounded-[2.5rem] border-[6px] sm:border-[8px] border-black shadow-xl overflow-hidden rotate-[10deg] opacity-95 z-0 transition-transform hover:rotate-[12deg] hover:scale-105 duration-500">
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[40%] h-5 sm:h-6 bg-black rounded-b-xl sm:rounded-b-2xl z-20"></div>
-                  <img src="/grocery-app.webp" alt="Grocery App UI" loading="lazy" width="259" height="576" className="w-full h-full object-cover relative z-10 rounded-[1.5rem] sm:rounded-[2rem]" />
+                  <img src="/grocery-app.webp" alt="Grocery App UI" loading="lazy" decoding="async" width="259" height="576" className="w-full h-full object-cover relative z-10 rounded-[1.5rem] sm:rounded-[2rem]" />
                 </div>
               </ScrollReveal>
 
@@ -49,7 +49,7 @@ export const WhyQorynta = () => {
                   {/* Notch */}
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[40%] h-6 sm:h-7 bg-black rounded-b-2xl sm:rounded-b-3xl z-20"></div>
                   {/* Screen Content Image */}
-                  <img src="/fintech-app.webp" alt="Fintech App UI" loading="lazy" width="260" height="540" className="w-full h-full object-cover relative z-10 rounded-[2rem] sm:rounded-[2.5rem]" />
+                  <img src="/fintech-app.webp" alt="Fintech App UI" loading="lazy" decoding="async" width="260" height="540" className="w-full h-full object-cover relative z-10 rounded-[2rem] sm:rounded-[2.5rem]" />
                 </div>
               </ScrollReveal>
 

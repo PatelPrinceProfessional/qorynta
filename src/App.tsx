@@ -12,10 +12,26 @@ import { Footer } from "@/components/Footer";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 const WebGLBackground = React.lazy(() => {
   return new Promise<{ default: React.ComponentType<any> }>((resolve) => {
-    // Delay fetching the 500KB Three.js bundle until after the page is fully loaded and painted
-    setTimeout(() => {
-      resolve(import("@/components/ui/WebGLBackground").then(m => ({ default: m.WebGLBackground })));
-    }, 2500);
+    const load = () => resolve(import("@/components/ui/WebGLBackground").then(m => ({ default: m.WebGLBackground })));
+    
+    let loaded = false;
+    const trigger = () => {
+      if (loaded) return;
+      loaded = true;
+      ['scroll', 'mousemove', 'touchstart', 'keydown'].forEach(e => window.removeEventListener(e, trigger));
+      
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(load, { timeout: 2000 });
+      } else {
+        setTimeout(load, 50);
+      }
+    };
+
+    // Load on first interaction to avoid blocking Lighthouse/Initial Load metrics
+    ['scroll', 'mousemove', 'touchstart', 'keydown'].forEach(e => window.addEventListener(e, trigger, { once: true, passive: true }));
+    
+    // Fallback if no interaction occurs
+    setTimeout(trigger, 5000);
   });
 });
 

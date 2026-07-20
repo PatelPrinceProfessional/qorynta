@@ -86,10 +86,14 @@ export const HeroSection = () => {
   };
 
   useEffect(() => {
-    initHeroEntrance();
-    initHeroScrollExit();
+    // Defer GSAP initialization to avoid forced reflows during initial React paint
+    const timer = setTimeout(() => {
+      initHeroEntrance();
+      initHeroScrollExit();
+    }, 100);
 
     return () => {
+      clearTimeout(timer);
       gsap.killTweensOf('.hero-section *');
       ScrollTrigger.getAll().forEach(t => t.kill());
     };

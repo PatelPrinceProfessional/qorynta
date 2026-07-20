@@ -135,7 +135,7 @@ export const Navbar = () => {
             : "h-16 bg-transparent px-4"
         )}>
           <Link to="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
-            <img src="/logo.webp" alt="Qorynta Services" width={140} height={40} className={cn("w-auto object-contain transition-all duration-500", isScrolled ? "h-8" : "h-10")} />
+            <img src="/logo.webp" alt="Qorynta Services" width={140} height={40} fetchPriority="high" className={cn("w-auto object-contain transition-all duration-500", isScrolled ? "h-8" : "h-10")} />
           </Link>
           <div className="flex items-center gap-2">
             <ThemeToggle />
