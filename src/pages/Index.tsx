@@ -1,8 +1,8 @@
 import { Helmet } from 'react-helmet';
 import { HeroSection } from '@/components/home/HeroSection';
-import { WhyQorynta } from '@/components/home/WhyQorynta';
 import React, { Suspense } from 'react';
 
+const WhyQorynta = React.lazy(() => import('@/components/home/WhyQorynta').then(m => ({ default: m.WhyQorynta })));
 const TrustBar = React.lazy(() => import('@/components/home/TrustBar').then(m => ({ default: m.TrustBar })));
 const HomeServicesSection = React.lazy(() => import('@/components/home/HomeServicesSection').then(m => ({ default: m.HomeServicesSection })));
 const ProcessSection = React.lazy(() => import('@/components/home/ProcessSection').then(m => ({ default: m.ProcessSection })));
@@ -37,10 +37,9 @@ const Index = () => {
             <HomeServicesSection />
           </Suspense>
 
-          <WhyQorynta />
-
           <Suspense fallback={<div className="h-40 w-full flex items-center justify-center"><div className="w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin"></div></div>}>
             <ProcessSection />
+            <WhyQorynta />
             <IndustriesSection />
             <CaseStudySection />
             <TechStackSection />
