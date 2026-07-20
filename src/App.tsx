@@ -4,6 +4,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React, { Suspense } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
+import GlobalSchema from "@/components/GlobalSchema";
 import { AnimatePresence, motion } from "framer-motion";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { ThemeProvider } from "@/components/ThemeProvider";
@@ -112,23 +114,26 @@ const App = () => {
   useSmoothScroll();
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider defaultTheme="dark" storageKey="qorynta-theme" attribute="class">
-        <TooltipProvider>
-          <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Navbar />
-          <ScrollToTop />
-          <Suspense fallback={<PageLoader />}>
-            <WebGLBackground />
-            <AnimatedRoutes />
-          </Suspense>
-          <Footer />
-        </BrowserRouter>
-      </TooltipProvider>
-    </ThemeProvider>
-  </QueryClientProvider>
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider defaultTheme="dark" storageKey="qorynta-theme" attribute="class">
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <GlobalSchema />
+              <Navbar />
+              <ScrollToTop />
+              <Suspense fallback={<PageLoader />}>
+                <WebGLBackground />
+                <AnimatedRoutes />
+              </Suspense>
+              <Footer />
+            </BrowserRouter>
+          </TooltipProvider>
+        </ThemeProvider>
+      </QueryClientProvider>
+    </HelmetProvider>
   );
 };
 

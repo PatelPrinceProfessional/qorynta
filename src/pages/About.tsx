@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet';
+import SEO from '@/components/SEO';
 import { Target, Lightbulb, Users, Globe2, Code2, Rocket, Workflow, BrainCircuit } from 'lucide-react';
 import { motion, useInView, useSpring, useTransform, useMotionValue } from 'framer-motion';
 import { CTABanner } from '@/components/home/CTABanner';
@@ -170,10 +170,11 @@ const TiltStatCard = ({ value, label, delay }: any) => {
 const About = () => {
   return (
     <>
-      <Helmet>
-        <title>About Qorynta Services | Elite Engineering Partner</title>
-        <meta name="description" content="We are the digital backbone for industry leaders. Learn about our elite engineering culture, agile workflows, and global reach." />
-      </Helmet>
+      <SEO
+        title="About Qorynta – AI & Software Engineering Team"
+        description="Learn about Qorynta’s mission, engineering culture, and how we build scalable digital products for global clients."
+        canonical="https://www.qorynta.in/about"
+      />
 
             
       <main className="min-h-screen bg-background pt-20 overflow-hidden relative">
@@ -328,6 +329,18 @@ const About = () => {
               <TiltStatCard delay={0.3} label="Projects Shipped" value={<AnimatedCounter from={0} to={120} suffix="+" />} />
               <TiltStatCard delay={0.4} label="Client Retention" value={<AnimatedCounter from={0} to={98} suffix="%" />} />
             </div>
+          </div>
+        </section>
+
+        {/* Local SEO Section */}
+        <section className="py-20 bg-muted/30 px-4">
+          <div className="container mx-auto max-w-4xl text-center">
+            <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-foreground">
+              AI & Software Development Company in Ahmedabad
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              Qorynta Services is based in Ahmedabad, Gujarat, and partners with startups and enterprises across the US, UK, UAE, and India to build AI-powered web, mobile, and SaaS products.
+            </p>
           </div>
         </section>
 

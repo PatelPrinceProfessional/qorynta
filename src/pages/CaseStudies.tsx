@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Helmet } from 'react-helmet';
+import SEO from '@/components/SEO';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SectionLabel } from '@/components/ui/SectionLabel';
@@ -49,10 +49,11 @@ const CaseStudies = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Portfolio & Case Studies | Qorynta Services</title>
-        <meta name="description" content="Explore our portfolio of successful web, mobile, and AI projects delivered for clients across the globe." />
-      </Helmet>
+      <SEO
+        title="Case Studies – AI & Software Projects"
+        description="Explore real-world projects where Qorynta delivered AI, web, and mobile solutions that drove measurable business impact."
+        canonical="https://www.qorynta.in/case-studies"
+      />
 
             <main className="min-h-screen bg-background pt-24 transition-colors duration-500">
         

@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet';
+import SEO from '@/components/SEO';
 import { CTABanner } from '@/components/home/CTABanner';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { Button } from '@/components/ui/button';
@@ -77,10 +77,11 @@ const jobs = [
 export const Careers = () => {
   return (
     <>
-      <Helmet>
-        <title>Careers at Qorynta Services | Join the Elite Team</title>
-        <meta name="description" content="Join Qorynta Services. We are hiring the top 1% of software engineers, designers, and product managers to build the future of digital products." />
-      </Helmet>
+      <SEO
+        title="Careers at Qorynta – Software & AI Roles"
+        description="Join Qorynta’s engineering team. Open roles in full-stack, AI/ML, DevOps, and product design. Remote-friendly, Ahmedabad-based."
+        canonical="https://www.qorynta.in/careers"
+      />
 
       
       <main className="min-h-screen bg-background pt-20">

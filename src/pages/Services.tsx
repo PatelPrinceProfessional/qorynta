@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet';
+import SEO from '@/components/SEO';
 import { ServicesSection } from '@/components/home/ServicesSection';
 import { TechStackSection } from '@/components/home/TechStackSection';
 import { CTABanner } from '@/components/home/CTABanner';
@@ -6,10 +6,11 @@ import { CTABanner } from '@/components/home/CTABanner';
 const Services = () => {
   return (
     <>
-      <Helmet>
-        <title>Our Services | Qorynta Services - Web & Mobile App Development</title>
-        <meta name="description" content="Explore our full range of digital services including web development, mobile apps, UI/UX design, AI solutions, and Cloud DevOps." />
-      </Helmet>
+      <SEO
+        title="Web, Mobile & AI Development Services"
+        description="Custom web development, mobile apps, and AI/ML solutions from Qorynta. End-to-end product engineering for startups and enterprises."
+        canonical="https://www.qorynta.in/services"
+      />
 
             <main className="flex min-h-screen flex-col bg-background">
         

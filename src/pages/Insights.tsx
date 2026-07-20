@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
+import SEO from '@/components/SEO';
 import { CTABanner } from '@/components/home/CTABanner';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
@@ -12,10 +12,11 @@ export const Insights = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Engineering Insights & Blog | Qorynta Services</title>
-        <meta name="description" content="Technical deep dives, architecture patterns, and engineering insights from the Qorynta team." />
-      </Helmet>
+      <SEO
+        title="Insights – AI, Web & Mobile Engineering"
+        description="Technical articles on AI, machine learning, web/mobile development, and product engineering from the Qorynta team."
+        canonical="https://www.qorynta.in/insights"
+      />
 
       
       <main className="min-h-screen bg-background pt-20">

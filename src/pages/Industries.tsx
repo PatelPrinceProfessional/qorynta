@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet';
+import SEO from '@/components/SEO';
 import { Link } from 'react-router-dom';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { CTABanner } from '@/components/home/CTABanner';
@@ -75,10 +75,11 @@ const industries = [
 export const Industries = () => {
   return (
     <>
-      <Helmet>
-        <title>Industries We Serve | Qorynta Services</title>
-        <meta name="description" content="Discover how Qorynta engineers specialized digital solutions across FinTech, Healthcare, E-Commerce, SaaS, and more." />
-      </Helmet>
+      <SEO
+        title="Industries We Serve – AI & Software Solutions"
+        description="See how Qorynta delivers custom software and AI solutions for fintech, healthcare, e‑commerce, logistics, and more."
+        canonical="https://www.qorynta.in/industries"
+      />
 
       <main className="min-h-screen bg-background pt-20 overflow-hidden">
 

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Helmet } from 'react-helmet';
+import SEO from '@/components/SEO';
 import { Mail, Phone, MapPin, Send, MessageSquare, Clock, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -151,10 +151,11 @@ const Contact = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Contact Us | Qorynta Services</title>
-        <meta name="description" content="Get in touch with Qorynta Services to discuss your web, mobile, or AI project. Free scoping call and proposal within 24 hours." />
-      </Helmet>
+      <SEO
+        title="Contact Qorynta – Free Consultation"
+        description="Get a free consultation for your next AI, web, or mobile project. Tell us about your goals and timeline."
+        canonical="https://www.qorynta.in/contact"
+      />
 
             <main className="min-h-screen bg-[#F8FAFC] dark:bg-slate-950 pt-20 relative overflow-hidden transition-colors duration-500">
         

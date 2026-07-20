@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet';
+import SEO from '@/components/SEO';
 import { HeroSection } from '@/components/home/HeroSection';
 import React, { Suspense } from 'react';
 
@@ -21,10 +21,11 @@ import { AmbientGlow } from '@/components/ui/AmbientGlow';
 const Index = () => {
   return (
     <>
-      <Helmet>
-        <title>Qorynta Services | Web & Mobile App Development Company India</title>
-        <meta name="description" content="Production-grade digital solutions for Indian and global businesses. Custom web development, mobile apps, AI & Machine Learning, and Cloud DevOps." />
-      </Helmet>
+      <SEO
+        title="AI & Software Development Agency"
+        description="Qorynta Services builds AI-powered web, mobile, and SaaS products for startups and enterprises. Based in Ahmedabad, serving US, UK, UAE, India."
+        canonical="https://www.qorynta.in/"
+      />
 
 
       <main className="flex min-h-screen flex-col">
