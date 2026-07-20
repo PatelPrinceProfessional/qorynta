@@ -121,12 +121,12 @@
 
   html {
     scroll-behavior: smooth;
-    @apply overflow-x-hidden dark;
+    @apply overflow-x-clip dark;
     /* Enforce dark class on html */
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased overflow-x-hidden;
+    @apply bg-background text-foreground font-sans antialiased overflow-x-clip;
     font-family: 'Inter', system-ui, sans-serif;
     letter-spacing: -0.01em;
   }
