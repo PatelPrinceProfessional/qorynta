@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -163,27 +163,29 @@ export const Navbar = () => {
 
           {/* Floating Navigation Dock (Right) */}
           <nav 
-            className="absolute top-6 right-8 flex items-center pointer-events-auto"
+            className="absolute top-6 right-8 flex items-center pointer-events-auto bg-white/80 dark:bg-slate-950/85 hover:bg-slate-50/95 dark:hover:bg-slate-900/95 backdrop-blur-md shadow-[0_15px_40px_rgba(0,0,0,0.3)] dark:shadow-[0_15px_40px_rgba(0,0,0,0.8)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] dark:hover:shadow-[0_20px_50px_rgba(0,0,0,1)] active:shadow-[0_5px_20px_rgba(0,0,0,0.4)] active:scale-[0.99] border border-slate-200/60 dark:border-slate-800/80 hover:border-blue-500/50 rounded-full transition-all duration-300"
             style={{
-              backdropFilter: "blur(24px)",
-              background: "rgba(255, 255, 255, 0.75)",
-              border: "1px solid rgba(226, 232, 240, 0.7)",
-              borderRadius: "9999px",
               padding: "0.5rem 0.5rem 0.5rem 1.5rem", // py-2, pr-2, pl-6
-              boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)"
             }}
             onMouseLeave={() => setHoveredItem(null)}
           >
+            {/* Radial Color Grading Mask */}
+            <div className="absolute inset-0 rounded-full pointer-events-none bg-radial from-blue-500/5 to-transparent z-[-1]" style={{ background: 'radial-gradient(circle at center, rgba(59,130,246,0.05) 0%, transparent 70%)' }} />
+
             <div className="flex items-center gap-1 mr-4">
               
               {/* Home */}
-              <div className="relative" onMouseEnter={() => setHoveredItem('home')}>
-                {hoveredItem === 'home' && <motion.div layoutId="nav-pill" className="absolute inset-0 bg-slate-100/80 rounded-full z-0" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
-                <Link to="/" className={cn("relative z-10 px-3 py-1.5 text-[13px] font-medium transition-colors duration-200 block", location.pathname === '/' ? 'text-slate-900 font-semibold' : 'text-slate-600 hover:text-slate-900')}>Home</Link>
-              </div>
+              <motion.div 
+                className="relative" 
+                onMouseEnter={() => setHoveredItem('home')}
+                whileTap={{ scale: 0.95, y: 1 }}
+              >
+                {hoveredItem === 'home' && <motion.div layoutId="activeNavPill" className="absolute inset-0 bg-blue-50/80 dark:bg-blue-500/10 rounded-full z-0" transition={{ type: "spring", stiffness: 400, damping: 28, mass: 0.8 }} />}
+                <Link to="/" className={cn("relative z-10 px-3 py-1.5 text-[13px] font-medium transition-colors duration-200 block", location.pathname === '/' ? 'text-slate-900 dark:text-white font-semibold' : 'text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400')}>Home</Link>
+              </motion.div>
 
               {/* Services Dropdown */}
-              <div
+              <motion.div
                 className="relative"
                 onMouseEnter={() => { setIsServicesOpen(true); setHoveredItem('services'); }}
                 onMouseLeave={() => setIsServicesOpen(false)}
@@ -193,85 +195,85 @@ export const Navbar = () => {
                     setIsServicesOpen(false);
                   }
                 }}
+                whileTap={{ scale: 0.95, y: 1 }}
               >
-                {hoveredItem === 'services' && <motion.div layoutId="nav-pill" className="absolute inset-0 bg-slate-100/80 rounded-full z-0" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
+                {hoveredItem === 'services' && <motion.div layoutId="activeNavPill" className="absolute inset-0 bg-blue-50/80 dark:bg-blue-500/10 rounded-full z-0" transition={{ type: "spring", stiffness: 400, damping: 28, mass: 0.8 }} />}
                 <Link
                   to="/services"
-                  className={cn("relative z-10 px-3 py-1.5 text-[13px] font-medium transition-colors duration-200 flex items-center gap-1", location.pathname === '/services' ? 'text-slate-900 font-semibold' : 'text-slate-600 hover:text-slate-900')}
+                  className={cn("relative z-10 px-3 py-1.5 text-[13px] font-medium transition-colors duration-200 flex items-center gap-1", location.pathname === '/services' ? 'text-slate-900 dark:text-white font-semibold' : 'text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400')}
                 >
                   Services
                   <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-300", isServicesOpen && "rotate-180")} />
                 </Link>
 
-                <div 
-                  className={cn(
-                    "absolute top-full pt-4 left-1/2 -translate-x-1/2 w-[480px] z-50",
-                    isServicesOpen ? "pointer-events-auto" : "pointer-events-none"
-                  )}
-                  style={{
-                    transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1)",
-                    opacity: isServicesOpen ? 1 : 0,
-                    transform: isServicesOpen ? "translate(-50%, 0) scale(1)" : "translate(-50%, -10px) scale(0.95)"
-                  }}
-                >
-                  <div 
-                    className="overflow-hidden p-6 flex gap-6"
-                    style={{
-                      backdropFilter: "blur(30px)",
-                      background: "rgba(255, 255, 255, 0.92)",
-                      border: "1px solid rgba(226, 232, 240, 0.9)",
-                      borderRadius: "1rem",
-                      boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)"
-                    }}
-                  >
-                    <div className="flex-1">
-                      <h4 className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-4 px-2">Core Services</h4>
-                      <div className="space-y-1">
-                        {services.filter(s => s.category === 'Core').slice(0, 5).map((service, idx) => (
-                          <Link
-                            key={idx}
-                            to={`/services/${service.slug}`}
-                            className="block px-3 py-2.5 text-[13px] font-medium text-slate-900 hover:text-blue-600 hover:bg-blue-50/50 rounded-lg transition-all duration-200"
-                            onClick={() => setIsServicesOpen(false)}
-                          >
-                            {service.title}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="flex-1 border-l border-slate-200 pl-6">
-                      <h4 className="text-[11px] font-bold text-amber-600 uppercase tracking-wider mb-4 px-2 flex items-center gap-1">
-                        AI Services
-                      </h4>
-                      <div className="space-y-1">
-                        {services.filter(s => s.category === 'AI').map((service, idx) => (
-                          <Link
-                            key={idx}
-                            to={`/services/${service.slug}`}
-                            className="block px-3 py-2.5 text-[13px] font-medium text-slate-900 hover:text-amber-600 hover:bg-amber-50/50 rounded-lg transition-all duration-200 hover:translate-x-1"
-                            onClick={() => setIsServicesOpen(false)}
-                          >
-                            {service.title}
-                          </Link>
-                        ))}
-                      </div>
-                      <Link 
-                        to="/services" 
-                        className="inline-block mt-4 ml-2 px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-900 rounded-md text-[11px] font-bold transition-colors" 
-                        onClick={() => setIsServicesOpen(false)}
+                <AnimatePresence>
+                  {isServicesOpen && (
+                    <motion.div 
+                      className="absolute top-full pt-4 left-1/2 -translate-x-1/2 w-[480px] z-50 pointer-events-auto"
+                      initial={{ opacity: 0, y: 12, scale: 0.97, rotateX: -4 }}
+                      animate={{ opacity: 1, y: 0, scale: 1, rotateX: 0 }}
+                      exit={{ opacity: 0, y: 8, scale: 0.98 }}
+                      transition={{ type: "spring", stiffness: 350, damping: 26 }}
+                      style={{ perspective: "1000px" }}
+                    >
+                      <div 
+                        className="overflow-hidden p-6 flex gap-6 bg-gradient-to-b from-white via-white/95 to-slate-50/90 dark:from-slate-950 dark:via-slate-950/98 dark:to-slate-900/95 shadow-[0_40px_80px_-15px_rgba(0,0,0,0.2)] dark:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.75)] border border-slate-200/60 dark:border-slate-800/80 hover:border-blue-500/40 transition-colors duration-300 rounded-[1rem] backdrop-blur-xl"
                       >
-                        View All
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                        <div className="flex-1">
+                          <h4 className="font-mono text-[10px] font-extrabold tracking-[0.15em] text-slate-500 dark:text-slate-400 mb-4 block px-2">CORE SERVICES</h4>
+                          <div className="space-y-1">
+                            {services.filter(s => s.category === 'Core').slice(0, 5).map((service, idx) => (
+                              <motion.div key={idx} whileHover={{ x: 6, color: "#3b82f6" }} transition={{ type: "spring", stiffness: 400, damping: 30 }}>
+                                <Link
+                                  to={`/services/${service.slug}`}
+                                  className="block px-3 py-2.5 text-[13px] font-medium text-slate-900 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50/50 dark:hover:bg-blue-500/10 rounded-lg transition-colors duration-200"
+                                  onClick={() => setIsServicesOpen(false)}
+                                >
+                                  {service.title}
+                                </Link>
+                              </motion.div>
+                            ))}
+                          </div>
+                        </div>
+                        <div className="flex-1 border-l border-slate-200/60 dark:border-slate-800/80 pl-6">
+                          <h4 className="font-mono text-[10px] font-extrabold tracking-[0.15em] text-slate-500 dark:text-slate-400 mb-4 block px-2">AI SERVICES</h4>
+                          <div className="space-y-1">
+                            {services.filter(s => s.category === 'AI').map((service, idx) => (
+                              <motion.div key={idx} whileHover={{ x: 6, color: "#d97706" }} transition={{ type: "spring", stiffness: 400, damping: 30 }}>
+                                <Link
+                                  to={`/services/${service.slug}`}
+                                  className="block px-3 py-2.5 text-[13px] font-medium text-slate-900 dark:text-slate-200 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-amber-50/50 dark:hover:bg-amber-500/10 rounded-lg transition-colors duration-200"
+                                  onClick={() => setIsServicesOpen(false)}
+                                >
+                                  {service.title}
+                                </Link>
+                              </motion.div>
+                            ))}
+                          </div>
+                          <Link 
+                            to="/services" 
+                            className="inline-block mt-4 ml-2 px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white rounded-md text-[11px] font-bold transition-colors" 
+                            onClick={() => setIsServicesOpen(false)}
+                          >
+                            View All
+                          </Link>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
 
               {navLinks.slice(1).map((link) => (
-                <div key={link.name} className="relative" onMouseEnter={() => setHoveredItem(link.name.toLowerCase())}>
-                  {hoveredItem === link.name.toLowerCase() && <motion.div layoutId="nav-pill" className="absolute inset-0 bg-slate-100/80 rounded-full z-0" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />}
-                  <Link to={link.path} className={cn("relative z-10 px-3 py-1.5 text-[13px] font-medium transition-colors duration-200 block", location.pathname === link.path ? 'text-slate-900 font-semibold' : 'text-slate-600 hover:text-slate-900')}>{link.name}</Link>
-                </div>
+                <motion.div 
+                  key={link.name} 
+                  className="relative" 
+                  onMouseEnter={() => setHoveredItem(link.name.toLowerCase())}
+                  whileTap={{ scale: 0.95, y: 1 }}
+                >
+                  {hoveredItem === link.name.toLowerCase() && <motion.div layoutId="activeNavPill" className="absolute inset-0 bg-blue-50/80 dark:bg-blue-500/10 rounded-full z-0" transition={{ type: "spring", stiffness: 400, damping: 28, mass: 0.8 }} />}
+                  <Link to={link.path} className={cn("relative z-10 px-3 py-1.5 text-[13px] font-medium transition-colors duration-200 block", location.pathname === link.path ? 'text-slate-900 dark:text-white font-semibold' : 'text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400')}>{link.name}</Link>
+                </motion.div>
               ))}
             </div>
 
