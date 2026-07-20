@@ -175,7 +175,7 @@ export const CapabilityHub = ({ onNodeHover }: { onNodeHover?: (id: string | nul
   );
 
   return (
-    <div className="relative w-full h-full flex flex-col items-center justify-start sm:justify-center min-h-[550px] sm:min-h-[400px] lg:min-h-[500px] pointer-events-auto group pt-8 sm:pt-0">
+    <div className="relative w-full h-full flex flex-col items-center justify-start sm:justify-center min-h-[400px] sm:min-h-[400px] lg:min-h-[500px] pointer-events-auto group pt-10 sm:pt-0">
 
       {/* Ambient Depth Background for SaaS Dashboard Feel */}
       <div className="absolute inset-0 -z-20 overflow-hidden rounded-[2.5rem] pointer-events-none">
@@ -199,14 +199,14 @@ export const CapabilityHub = ({ onNodeHover }: { onNodeHover?: (id: string | nul
       </div>
 
       {/* --- 3D ORBIT (VISIBLE ON BOTH DESKTOP AND MOBILE) --- */}
-      <div className="relative w-[280px] h-[280px] sm:w-[400px] sm:h-[400px] flex items-center justify-center shrink-0">
+      <div className="relative w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] flex items-center justify-center shrink-0">
 
         {/* Core Glow Effects */}
         <div className="absolute inset-0 rounded-full bg-cyan-500/5 blur-[80px] -z-10" />
 
         {/* Decorative Orbit Rings */}
-        <div className="absolute w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] rounded-full border border-cyan-500/10 dark:border-cyan-500/5" />
-        <div className="absolute w-[240px] h-[240px] sm:w-[360px] sm:h-[360px] rounded-full border border-blue-500/10 dark:border-blue-500/5 border-dashed" />
+        <div className="absolute w-[200px] h-[200px] sm:w-[280px] sm:h-[280px] rounded-full border border-cyan-500/10 dark:border-cyan-500/5" />
+        <div className="absolute w-[280px] h-[280px] sm:w-[360px] sm:h-[360px] rounded-full border border-blue-500/10 dark:border-blue-500/5 border-dashed" />
 
         {/* Central Core */}
         <motion.div
@@ -251,14 +251,21 @@ export const CapabilityHub = ({ onNodeHover }: { onNodeHover?: (id: string | nul
                 role="button"
                 tabIndex={0}
                 aria-expanded={isActive}
-                aria-label={`View details for ${cap.title}`}
+                aria-label={`View details for ${cap.label}`}
                 className="absolute w-12 h-12 sm:w-14 sm:h-14 -ml-6 -mt-6 sm:-ml-7 sm:-mt-7"
                 style={{ top, left }}
                 onMouseEnter={() => { if (window.innerWidth >= 640) setActiveNode(i); }}
                 onMouseLeave={() => { if (window.innerWidth >= 640) setActiveNode(null); }}
-                onFocus={() => setActiveNode(i)}
-                onBlur={() => setActiveNode(null)}
-                onClick={() => { if (window.innerWidth < 640) setActiveNode(isActive ? null : i); }}
+                onFocus={() => { if (window.innerWidth >= 640) setActiveNode(i); }}
+                onBlur={() => { if (window.innerWidth >= 640) setActiveNode(null); }}
+                onClick={(e) => {
+                  if (window.innerWidth < 640) {
+                    e.preventDefault();
+                    // On mobile, clicking sets this node as active.
+                    // If it is already active, clicking it again will close it.
+                    setActiveNode(isActive ? null : i);
+                  }
+                }}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
@@ -307,35 +314,45 @@ export const CapabilityHub = ({ onNodeHover }: { onNodeHover?: (id: string | nul
         </div>
       </div>
 
-      {/* --- MOBILE VIEW: DEDICATED STATS PANEL BELOW ORBIT --- */}
-      <div className="sm:hidden w-full max-w-[320px] mt-6 relative z-40 h-[190px]">
-        <AnimatePresence mode="wait">
-          {activeNode !== null ? (
+      {/* --- MOBILE VIEW: NEW BOTTOM SHEET INSTEAD OF PANEL --- */}
+      <AnimatePresence>
+        {activeNode !== null && (
+          <div className="sm:hidden fixed inset-0 z-[100] pointer-events-none flex flex-col justify-end">
+            {/* Backdrop */}
             <motion.div
-              key={CAPABILITIES[activeNode].id}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.3 }}
-              className="w-full h-full p-5 rounded-2xl bg-gradient-to-br from-indigo-900/95 to-violet-800/95 backdrop-blur-xl shadow-[0_15px_30px_-10px_rgba(49,46,129,0.4)] border border-indigo-400/30 overflow-hidden relative"
-            >
-              {renderCardContent(CAPABILITIES[activeNode], true, CAPABILITIES[activeNode].icon)}
-            </motion.div>
-          ) : (
-            <motion.div
-              key="empty-state"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="w-full h-full flex flex-col items-center justify-center border-2 border-dashed border-border/80 rounded-2xl bg-background/95 backdrop-blur-xl cursor-pointer shadow-lg"
+              transition={{ duration: 0.2 }}
+              className="absolute inset-0 bg-background/40 backdrop-blur-sm pointer-events-auto"
+              onClick={() => setActiveNode(null)}
+            />
+            
+            {/* Bottom Sheet Card */}
+            <motion.div
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="relative w-full rounded-t-3xl bg-gradient-to-br from-indigo-900 to-violet-900 p-6 pb-10 border-t border-indigo-400/30 shadow-[0_-15px_40px_rgba(0,0,0,0.3)] pointer-events-auto"
+              onClick={(e) => e.stopPropagation()}
             >
-              <div className="text-4xl animate-bounce mb-3 drop-shadow-md">👆</div>
-              <p className="text-base font-bold text-foreground text-center px-6">
-                Tap any orbiting icon to reveal impact statistics
-              </p>
+              {/* Drag Handle (Visual only) */}
+              <div 
+                className="w-12 h-1.5 bg-white/20 rounded-full mx-auto mb-6 cursor-pointer hover:bg-white/40 transition-colors"
+                onClick={() => setActiveNode(null)}
+              />
+              
+              {renderCardContent(CAPABILITIES[activeNode], true, CAPABILITIES[activeNode].icon)}
             </motion.div>
-          )}
-        </AnimatePresence>
+          </div>
+        )}
+      </AnimatePresence>
+
+      <div className="sm:hidden absolute top-8 text-center px-6 w-full z-10 pointer-events-none">
+        <p className="text-sm font-semibold text-muted-foreground/80 tracking-wide bg-background/50 backdrop-blur-md inline-block px-4 py-2 rounded-full border border-border/50 animate-pulse">
+          Tap any icon to reveal impact
+        </p>
       </div>
 
       {/* Desktop Instruction Text */}
