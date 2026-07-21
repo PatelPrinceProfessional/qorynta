@@ -123,7 +123,7 @@ export const ProcessSection = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="py-20 md:py-32 relative overflow-hidden bg-slate-50 dark:bg-[#0A1526] transition-colors duration-500">
+    <section ref={containerRef} className="py-20 md:py-32 relative overflow-hidden bg-slate-50 dark:bg-background transition-colors duration-500">
       {/* Custom Styles for Antigravity Workspace */}
       <style>{`
         @keyframes antigravity-float {
@@ -150,13 +150,13 @@ export const ProcessSection = () => {
       `}</style>
 
       {/* Decorative gradient overlay matching logo light blue */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#2D6A9F]/5 dark:from-[#2D6A9F]/10 to-transparent z-0 transition-colors duration-500" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#2D6A9F]/5 dark:from-primary/5 to-transparent z-0 transition-colors duration-500" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Header */}
         <ScrollReveal className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white mb-6 leading-tight transition-colors duration-500">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-foreground mb-6 leading-tight transition-colors duration-500">
             How can we help you?
           </h2>
         </ScrollReveal>
@@ -168,7 +168,7 @@ export const ProcessSection = () => {
           <div className="hidden lg:flex justify-between items-stretch min-h-[750px] relative w-full" style={{ perspective: '1200px' }}>
 
             {/* Atmospheric Lighting (Light Pool behind Hub) */}
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-400/20 dark:bg-[#2D6A9F]/20 blur-[80px] rounded-full z-0 pointer-events-none transition-colors duration-500"></div>
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-400/20 dark:bg-primary/10 blur-[80px] rounded-full z-0 pointer-events-none transition-colors duration-500"></div>
 
             {/* SVG Connections Overlay */}
             <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -181,10 +181,10 @@ export const ProcessSection = () => {
                     {/* Base Static Line */}
                     <path
                       d={pathStr}
-                      className="connection-line transition-all duration-500 stroke-blue-300 dark:stroke-slate-600"
+                      className="connection-line transition-all duration-500 stroke-blue-300 dark:stroke-border"
                       fill="none"
                       style={{
-                        stroke: isHovered ? '#3b82f6' : undefined,
+                        stroke: isHovered ? 'hsl(199, 89%, 48%)' : undefined,
                         strokeWidth: isHovered ? 1.2 : 0.8
                       }}
                       strokeDasharray="1.5 1"
@@ -195,7 +195,7 @@ export const ProcessSection = () => {
                       d={pathStr}
                       pathLength="100"
                       fill="none"
-                      className="animate-pulse-path-left stroke-blue-600 dark:stroke-blue-400"
+                      className="animate-pulse-path-left stroke-blue-600 dark:stroke-primary"
                       strokeWidth="2"
                       strokeDasharray="2 100"
                       vectorEffect="non-scaling-stroke"
@@ -215,10 +215,10 @@ export const ProcessSection = () => {
                     {/* Base Static Line */}
                     <path
                       d={pathStr}
-                      className="connection-line transition-all duration-500 stroke-blue-300 dark:stroke-slate-600"
+                      className="connection-line transition-all duration-500 stroke-blue-300 dark:stroke-border"
                       fill="none"
                       style={{
-                        stroke: isHovered ? '#3b82f6' : undefined,
+                        stroke: isHovered ? 'hsl(199, 89%, 48%)' : undefined,
                         strokeWidth: isHovered ? 1.2 : 0.8
                       }}
                       strokeDasharray="1.5 1"
@@ -229,7 +229,7 @@ export const ProcessSection = () => {
                       d={pathStr}
                       pathLength="100"
                       fill="none"
-                      className="animate-pulse-path-right stroke-blue-600 dark:stroke-blue-400"
+                      className="animate-pulse-path-right stroke-blue-600 dark:stroke-primary"
                       strokeWidth="2"
                       strokeDasharray="2 100"
                       vectorEffect="non-scaling-stroke"
@@ -250,7 +250,7 @@ export const ProcessSection = () => {
                 return (
                   <div key={index} className={`service-hub-card-wrapper ${floatClass}`}>
                     <div
-                      className="flex items-center bg-white dark:bg-[#111827]/90 rounded-2xl p-4 md:p-5 shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.3)] border border-slate-400 dark:border-slate-600 hover:border-blue-500 dark:hover:border-blue-400 hover:shadow-[0_15px_40px_rgba(59,130,246,0.15)] dark:hover:shadow-[0_15px_40px_rgba(59,130,246,0.3)] transition-all duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] cursor-pointer"
+                      className="flex items-center bg-white dark:bg-card rounded-2xl p-4 md:p-5 shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.5)] border border-slate-400 dark:border-border hover:border-blue-500 dark:hover:border-primary hover:shadow-[0_15px_40px_rgba(59,130,246,0.15)] dark:hover:shadow-[0_15px_40px_rgba(59,130,246,0.3)] transition-all duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] cursor-pointer"
                       style={{
                         transform: isHovered ? 'rotateY(0deg) scale(1.05)' : 'rotateY(5deg) scale(1)',
                         opacity: isHovered ? 1 : (isOtherHovered ? 0.4 : 1),
@@ -261,14 +261,14 @@ export const ProcessSection = () => {
                       onMouseEnter={() => setHoveredIndex(index)}
                       onMouseLeave={() => setHoveredIndex(null)}
                     >
-                      <div className="w-14 h-14 rounded-full bg-blue-50 dark:bg-blue-950/40 flex items-center justify-center shrink-0 border border-blue-100 dark:border-blue-900/50">
+                      <div className="w-14 h-14 rounded-full bg-blue-50 dark:bg-primary/10 flex items-center justify-center shrink-0 border border-blue-100 dark:border-primary/20">
                         <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#0ea5e9] to-[#3b82f6] flex items-center justify-center text-white shadow-sm">
                           <service.icon className="w-5 h-5" />
                         </div>
                       </div>
                       <div className="ml-5">
-                        <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 leading-tight mb-1">{service.title}</h3>
-                        <p className="text-sm text-slate-500 dark:text-slate-400 leading-snug">{service.description}</p>
+                        <h3 className="text-base font-bold text-slate-900 dark:text-foreground leading-tight mb-1">{service.title}</h3>
+                        <p className="text-sm text-slate-500 dark:text-muted-foreground leading-snug">{service.description}</p>
                       </div>
                     </div>
                   </div>
@@ -283,14 +283,14 @@ export const ProcessSection = () => {
 
               <div
                 ref={hubRef}
-                className={`w-32 h-32 md:w-36 md:h-36 rounded-[2rem] rotate-45 bg-white dark:bg-slate-900 border-4 flex flex-col items-center justify-center relative transition-all duration-[800ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] ${hoveredIndex !== null ? 'border-[#3b82f6] shadow-[0_0_50px_rgba(59,130,246,0.3)] dark:shadow-[0_0_50px_rgba(59,130,246,0.5)] scale-105' : 'border-slate-100 dark:border-slate-800 shadow-2xl scale-100'}`}
+                className={`w-32 h-32 md:w-36 md:h-36 rounded-[2rem] rotate-45 bg-white dark:bg-card border-4 flex flex-col items-center justify-center relative transition-all duration-[800ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] ${hoveredIndex !== null ? 'border-[#3b82f6] shadow-[0_0_50px_rgba(59,130,246,0.3)] dark:border-primary dark:shadow-[0_0_50px_rgba(14,165,233,0.3)] scale-105' : 'border-slate-100 dark:border-border shadow-2xl scale-100'}`}
               >
                 {/* Un-rotate the content inside the diamond shape, add gyro pulse on hover */}
                 <div
                   className="absolute flex flex-col items-center justify-center transition-transform duration-[1500ms] ease-out"
                   style={{ transform: `rotate(-45deg) ${hoveredIndex !== null ? 'rotateY(360deg)' : 'rotateY(0deg)'}` }}
                 >
-                  <Network className={`w-14 h-14 transition-colors duration-500 ${hoveredIndex !== null ? 'text-[#3b82f6]' : 'text-[#0ea5e9]'}`} />
+                  <Network className={`w-14 h-14 transition-colors duration-500 ${hoveredIndex !== null ? 'text-[#3b82f6]' : 'text-primary'}`} />
                 </div>
               </div>
             </div>
@@ -306,7 +306,7 @@ export const ProcessSection = () => {
                 return (
                   <div key={index} className={`service-hub-card-wrapper ${floatClass}`}>
                     <div
-                      className="flex items-center bg-white dark:bg-[#111827]/90 rounded-2xl p-4 md:p-5 shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.3)] border border-slate-400 dark:border-slate-600 hover:border-blue-500 dark:hover:border-blue-400 hover:shadow-[0_15px_40px_rgba(59,130,246,0.15)] dark:hover:shadow-[0_15px_40px_rgba(59,130,246,0.3)] transition-all duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] cursor-pointer"
+                      className="flex items-center bg-white dark:bg-card rounded-2xl p-4 md:p-5 shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.5)] border border-slate-400 dark:border-border hover:border-blue-500 dark:hover:border-primary hover:shadow-[0_15px_40px_rgba(59,130,246,0.15)] dark:hover:shadow-[0_15px_40px_rgba(59,130,246,0.3)] transition-all duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] cursor-pointer"
                       style={{
                         transform: isHovered ? 'rotateY(0deg) scale(1.05)' : 'rotateY(-5deg) scale(1)',
                         opacity: isHovered ? 1 : (isOtherHovered ? 0.4 : 1),
@@ -317,14 +317,14 @@ export const ProcessSection = () => {
                       onMouseEnter={() => setHoveredIndex(index)}
                       onMouseLeave={() => setHoveredIndex(null)}
                     >
-                      <div className="w-14 h-14 rounded-full bg-blue-50 dark:bg-blue-950/40 flex items-center justify-center shrink-0 border border-blue-100 dark:border-blue-900/50">
+                      <div className="w-14 h-14 rounded-full bg-blue-50 dark:bg-primary/10 flex items-center justify-center shrink-0 border border-blue-100 dark:border-primary/20">
                         <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#0ea5e9] to-[#3b82f6] flex items-center justify-center text-white shadow-sm">
                           <service.icon className="w-5 h-5" />
                         </div>
                       </div>
                       <div className="ml-5">
-                        <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 leading-tight mb-1">{service.title}</h3>
-                        <p className="text-sm text-slate-500 dark:text-slate-400 leading-snug">{service.description}</p>
+                        <h3 className="text-base font-bold text-slate-900 dark:text-foreground leading-tight mb-1">{service.title}</h3>
+                        <p className="text-sm text-slate-500 dark:text-muted-foreground leading-snug">{service.description}</p>
                       </div>
                     </div>
                   </div>
@@ -338,9 +338,9 @@ export const ProcessSection = () => {
           <div className="lg:hidden flex flex-col gap-5 relative z-10">
             {/* Mobile Hub Icon Header */}
             <div className="flex justify-center mb-6">
-              <div className="w-24 h-24 rounded-[1.5rem] rotate-45 bg-white dark:bg-slate-900 shadow-[0_0_40px_rgba(59,130,246,0.2)] dark:shadow-[0_0_40px_rgba(59,130,246,0.4)] flex flex-col items-center justify-center border-4 border-slate-100 dark:border-slate-800 transition-colors duration-500">
+              <div className="w-24 h-24 rounded-[1.5rem] rotate-45 bg-white dark:bg-card shadow-[0_0_40px_rgba(59,130,246,0.2)] dark:shadow-[0_0_40px_rgba(59,130,246,0.4)] flex flex-col items-center justify-center border-4 border-slate-100 dark:border-border transition-colors duration-500">
                 <div className="-rotate-45 flex items-center justify-center">
-                  <Network className="w-10 h-10 text-[#0ea5e9]" />
+                  <Network className="w-10 h-10 text-primary" />
                 </div>
               </div>
             </div>
@@ -348,16 +348,16 @@ export const ProcessSection = () => {
             {hubServices.map((service, index) => (
               <div
                 key={index}
-                className="service-hub-card-wrapper flex items-center bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl p-5 shadow-lg border border-slate-200/50 dark:border-slate-700/50 transition-transform active:scale-95"
+                className="service-hub-card-wrapper flex items-center bg-white/90 dark:bg-card/90 backdrop-blur-md rounded-2xl p-5 shadow-lg border border-slate-200/50 dark:border-border/80/50 transition-transform active:scale-95"
               >
-                <div className="w-14 h-14 rounded-full bg-blue-50 dark:bg-blue-950/40 flex items-center justify-center shrink-0 border border-blue-100 dark:border-blue-900/50">
+                <div className="w-14 h-14 rounded-full bg-blue-50 dark:bg-primary/10 flex items-center justify-center shrink-0 border border-blue-100 dark:border-primary/20">
                   <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#0ea5e9] to-[#3b82f6] flex items-center justify-center text-white shadow-sm">
                     <service.icon className="w-5 h-5" />
                   </div>
                 </div>
                 <div className="ml-5">
-                  <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 leading-tight mb-1">{service.title}</h3>
-                  <p className="text-sm text-slate-500 dark:text-slate-400 leading-snug">{service.description}</p>
+                  <h3 className="text-base font-bold text-slate-900 dark:text-foreground leading-tight mb-1">{service.title}</h3>
+                  <p className="text-sm text-slate-500 dark:text-muted-foreground leading-snug">{service.description}</p>
                 </div>
               </div>
             ))}

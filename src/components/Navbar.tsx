@@ -163,7 +163,7 @@ export const Navbar = () => {
 
           {/* Floating Navigation Dock (Right) */}
           <nav 
-            className="absolute top-6 right-8 flex items-center pointer-events-auto bg-white/80 dark:bg-slate-950/85 hover:bg-slate-50/95 dark:hover:bg-slate-900/95 backdrop-blur-md shadow-[0_15px_40px_rgba(0,0,0,0.3)] dark:shadow-[0_15px_40px_rgba(0,0,0,0.8)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] dark:hover:shadow-[0_20px_50px_rgba(0,0,0,1)] active:shadow-[0_5px_20px_rgba(0,0,0,0.4)] active:scale-[0.99] border border-slate-200/60 dark:border-slate-800/80 hover:border-blue-500/50 rounded-full transition-all duration-300"
+            className="absolute top-6 right-8 flex items-center pointer-events-auto bg-white/80 dark:bg-background/85 hover:bg-slate-50/95 dark:hover:bg-slate-900/95 backdrop-blur-md shadow-[0_15px_40px_rgba(0,0,0,0.3)] dark:shadow-[0_15px_40px_rgba(0,0,0,0.8)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] dark:hover:shadow-[0_20px_50px_rgba(0,0,0,1)] active:shadow-[0_5px_20px_rgba(0,0,0,0.4)] active:scale-[0.99] border border-slate-200/60 dark:border-border/80 hover:border-blue-500/50 rounded-full transition-all duration-300"
             style={{
               padding: "0.5rem 0.5rem 0.5rem 1.5rem", // py-2, pr-2, pl-6
             }}
@@ -181,7 +181,7 @@ export const Navbar = () => {
                 whileTap={{ scale: 0.95, y: 1 }}
               >
                 {hoveredItem === 'home' && <motion.div layoutId="activeNavPill" className="absolute inset-0 bg-blue-50/80 dark:bg-blue-500/10 rounded-full z-0" transition={{ type: "spring", stiffness: 400, damping: 28, mass: 0.8 }} />}
-                <Link to="/" className={cn("relative z-10 px-3 py-1.5 text-[13px] font-medium transition-colors duration-200 block", location.pathname === '/' ? 'text-slate-900 dark:text-white font-semibold' : 'text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400')}>Home</Link>
+                <Link to="/" className={cn("relative z-10 px-3 py-1.5 text-[13px] font-medium transition-colors duration-200 block", location.pathname === '/' ? 'text-slate-900 dark:text-foreground font-semibold' : 'text-slate-600 dark:text-foreground/90 hover:text-blue-600 dark:hover:text-blue-400')}>Home</Link>
               </motion.div>
 
               {/* Services Dropdown */}
@@ -200,7 +200,7 @@ export const Navbar = () => {
                 {hoveredItem === 'services' && <motion.div layoutId="activeNavPill" className="absolute inset-0 bg-blue-50/80 dark:bg-blue-500/10 rounded-full z-0" transition={{ type: "spring", stiffness: 400, damping: 28, mass: 0.8 }} />}
                 <Link
                   to="/services"
-                  className={cn("relative z-10 px-3 py-1.5 text-[13px] font-medium transition-colors duration-200 flex items-center gap-1", location.pathname === '/services' ? 'text-slate-900 dark:text-white font-semibold' : 'text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400')}
+                  className={cn("relative z-10 px-3 py-1.5 text-[13px] font-medium transition-colors duration-200 flex items-center gap-1", location.pathname === '/services' ? 'text-slate-900 dark:text-foreground font-semibold' : 'text-slate-600 dark:text-foreground/90 hover:text-blue-600 dark:hover:text-blue-400')}
                 >
                   Services
                   <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-300", isServicesOpen && "rotate-180")} />
@@ -217,16 +217,16 @@ export const Navbar = () => {
                       style={{ perspective: "1000px" }}
                     >
                       <div 
-                        className="overflow-hidden p-6 flex gap-6 bg-gradient-to-b from-white via-white/95 to-slate-50/90 dark:from-slate-950 dark:via-slate-950/98 dark:to-slate-900/95 shadow-[0_40px_80px_-15px_rgba(0,0,0,0.2)] dark:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.75)] border border-slate-200/60 dark:border-slate-800/80 hover:border-blue-500/40 transition-colors duration-300 rounded-[1rem] backdrop-blur-xl"
+                        className="overflow-hidden p-6 flex gap-6 bg-gradient-to-b from-white via-white/95 to-slate-50/90 dark:from-slate-950 dark:via-slate-950/98 dark:to-slate-900/95 shadow-[0_40px_80px_-15px_rgba(0,0,0,0.2)] dark:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.75)] border border-slate-200/60 dark:border-border/80 hover:border-blue-500/40 transition-colors duration-300 rounded-[1rem] backdrop-blur-xl"
                       >
                         <div className="flex-1">
-                          <h4 className="font-mono text-[10px] font-extrabold tracking-[0.15em] text-slate-500 dark:text-slate-400 mb-4 block px-2">CORE SERVICES</h4>
+                          <h4 className="font-mono text-[10px] font-extrabold tracking-[0.15em] text-slate-500 dark:text-muted-foreground mb-4 block px-2">CORE SERVICES</h4>
                           <div className="space-y-1">
                             {services.filter(s => s.category === 'Core').slice(0, 5).map((service, idx) => (
                               <motion.div key={idx} whileHover={{ x: 6, color: "#3b82f6" }} transition={{ type: "spring", stiffness: 400, damping: 30 }}>
                                 <Link
                                   to={`/services/${service.slug}`}
-                                  className="block px-3 py-2.5 text-[13px] font-medium text-slate-900 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50/50 dark:hover:bg-blue-500/10 rounded-lg transition-colors duration-200"
+                                  className="block px-3 py-2.5 text-[13px] font-medium text-slate-900 dark:text-foreground hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50/50 dark:hover:bg-blue-500/10 rounded-lg transition-colors duration-200"
                                   onClick={() => setIsServicesOpen(false)}
                                 >
                                   {service.title}
@@ -235,14 +235,14 @@ export const Navbar = () => {
                             ))}
                           </div>
                         </div>
-                        <div className="flex-1 border-l border-slate-200/60 dark:border-slate-800/80 pl-6">
-                          <h4 className="font-mono text-[10px] font-extrabold tracking-[0.15em] text-slate-500 dark:text-slate-400 mb-4 block px-2">AI SERVICES</h4>
+                        <div className="flex-1 border-l border-slate-200/60 dark:border-border/80 pl-6">
+                          <h4 className="font-mono text-[10px] font-extrabold tracking-[0.15em] text-slate-500 dark:text-muted-foreground mb-4 block px-2">AI SERVICES</h4>
                           <div className="space-y-1">
                             {services.filter(s => s.category === 'AI').map((service, idx) => (
                               <motion.div key={idx} whileHover={{ x: 6, color: "#d97706" }} transition={{ type: "spring", stiffness: 400, damping: 30 }}>
                                 <Link
                                   to={`/services/${service.slug}`}
-                                  className="block px-3 py-2.5 text-[13px] font-medium text-slate-900 dark:text-slate-200 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-amber-50/50 dark:hover:bg-amber-500/10 rounded-lg transition-colors duration-200"
+                                  className="block px-3 py-2.5 text-[13px] font-medium text-slate-900 dark:text-foreground hover:text-amber-600 dark:hover:text-amber-400 hover:bg-amber-50/50 dark:hover:bg-amber-500/10 rounded-lg transition-colors duration-200"
                                   onClick={() => setIsServicesOpen(false)}
                                 >
                                   {service.title}
@@ -252,7 +252,7 @@ export const Navbar = () => {
                           </div>
                           <Link 
                             to="/services" 
-                            className="inline-block mt-4 ml-2 px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white rounded-md text-[11px] font-bold transition-colors" 
+                            className="inline-block mt-4 ml-2 px-3 py-1.5 bg-slate-100 dark:bg-muted hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-foreground rounded-md text-[11px] font-bold transition-colors" 
                             onClick={() => setIsServicesOpen(false)}
                           >
                             View All
@@ -272,7 +272,7 @@ export const Navbar = () => {
                   whileTap={{ scale: 0.95, y: 1 }}
                 >
                   {hoveredItem === link.name.toLowerCase() && <motion.div layoutId="activeNavPill" className="absolute inset-0 bg-blue-50/80 dark:bg-blue-500/10 rounded-full z-0" transition={{ type: "spring", stiffness: 400, damping: 28, mass: 0.8 }} />}
-                  <Link to={link.path} className={cn("relative z-10 px-3 py-1.5 text-[13px] font-medium transition-colors duration-200 block", location.pathname === link.path ? 'text-slate-900 dark:text-white font-semibold' : 'text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400')}>{link.name}</Link>
+                  <Link to={link.path} className={cn("relative z-10 px-3 py-1.5 text-[13px] font-medium transition-colors duration-200 block", location.pathname === link.path ? 'text-slate-900 dark:text-foreground font-semibold' : 'text-slate-600 dark:text-foreground/90 hover:text-blue-600 dark:hover:text-blue-400')}>{link.name}</Link>
                 </motion.div>
               ))}
             </div>
@@ -310,7 +310,7 @@ export const Navbar = () => {
       <div
         ref={drawerRef}
         className={cn(
-          "fixed top-0 right-0 bottom-0 w-[80%] max-w-sm bg-white dark:bg-slate-950 z-[60] lg:hidden flex flex-col border-l border-slate-200 dark:border-slate-800 transition-transform duration-300 ease-out",
+          "fixed top-0 right-0 bottom-0 w-[80%] max-w-sm bg-white dark:bg-background z-[60] lg:hidden flex flex-col border-l border-slate-200 dark:border-border transition-transform duration-300 ease-out",
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
         )}
       >
@@ -328,7 +328,7 @@ export const Navbar = () => {
               <Link 
                 key={link.name}
                 to={link.path} 
-                className="text-xl font-medium text-slate-900 dark:text-white hover:text-blue-600 transition-colors" 
+                className="text-xl font-medium text-slate-900 dark:text-foreground hover:text-blue-600 transition-colors" 
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.name}

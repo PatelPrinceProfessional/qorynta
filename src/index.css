@@ -72,45 +72,46 @@
   }
 
   .dark {
-    --background: 240 10% 4%;
-    /* Very deep black-slate */
-    --foreground: 0 0% 98%;
-    /* Pure off-white */
+    /* Pitch Black background to match WebGL Home Page */
+    --background: 0 0% 0%; 
+    --foreground: 0 0% 100%;
 
-    --card: 240 10% 6%;
-    --card-foreground: 0 0% 98%;
+    /* Very dark cards that blend into space */
+    --card: 220 20% 4%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 240 10% 6%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 220 20% 4%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 0 0% 98%;
-    /* White for primary in dark mode gives a premium feel */
-    --primary-foreground: 240 5.9% 10%;
+    /* Vibrant Cyan / Sky Blue matching 'Win Markets' */
+    --primary: 199 89% 48%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 4% 16%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 220 20% 8%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 240 4% 16%;
-    --muted-foreground: 240 5% 65%;
+    --muted: 220 20% 8%;
+    /* Bright crisp text for readability */
+    --muted-foreground: 210 20% 75%;
 
-    --accent: 240 4% 16%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 220 20% 12%;
+    --accent-foreground: 0 0% 100%;
 
-    --border: 240 4% 16%;
-    --input: 240 4% 16%;
-    --ring: 240 5% 65%;
+    /* Subtle borders */
+    --border: 220 20% 12%;
+    --input: 220 20% 12%;
+    --ring: 199 89% 48%;
 
-    --glow-primary: 210 100% 50%;
-    /* Deep blue glow */
+    --glow-primary: 199 89% 48%;
     --glow-secondary: 280 100% 50%;
-    /* Purple glow */
     --glow-accent: 0 0% 100%;
 
-    --gradient-dark: linear-gradient(135deg, hsl(240 10% 4%) 0%, hsl(240 10% 8%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(240 10% 6%) 0%, hsl(240 10% 4%) 100%);
-    --gradient-primary: linear-gradient(135deg, #3F72AF 0%, #DBE2EF 100%);
-    --gradient-secondary: linear-gradient(135deg, #DBE2EF 0%, #3F72AF 100%);
-    --gradient-hero: linear-gradient(180deg, hsl(240 10% 4%) 0%, hsl(240 10% 8%) 50%, hsl(240 10% 4%) 100%);
+    /* Premium Dark Gradients matching Deep Space */
+    --gradient-dark: linear-gradient(135deg, hsl(0 0% 0%) 0%, hsl(220 20% 4%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(220 20% 6%) 0%, hsl(220 20% 2%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(199 89% 48%) 0%, hsl(199 89% 30%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(280 100% 50%) 0%, hsl(199 89% 48%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(0 0% 0%) 0%, hsl(220 20% 4%) 50%, hsl(0 0% 0%) 100%);
   }
 }
 

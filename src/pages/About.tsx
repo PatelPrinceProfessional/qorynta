@@ -284,7 +284,7 @@ const About = () => {
 
               <div className="lg:w-1/2 w-full h-[500px] lg:h-[700px] relative rounded-3xl overflow-hidden border border-border/50 shadow-2xl group">
                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center group-hover:scale-105 transition-transform duration-1000" />
-                <div className="absolute inset-0 bg-foreground/70 backdrop-blur-[4px]" />
+                <div className="absolute inset-0 bg-slate-900/70 dark:bg-background/70 backdrop-blur-[4px]" />
                 
                 {/* Abstract overlay to represent network/engine */}
                 <div className="absolute inset-0 flex items-center justify-center">

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
+import SEO from '@/components/SEO';
 import { 
   ArrowLeft, 
   CheckCircle2, 
@@ -12,6 +12,7 @@ import {
 import { CTABanner } from '@/components/home/CTABanner';
 import { SectionLabel } from '@/components/ui/SectionLabel';
 import { services, ServiceData } from '@/data/services';
+import { insights } from '@/data/insights';
 import { RevealContent } from '@/components/ui/RevealContent';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import {
@@ -37,6 +38,16 @@ const ServiceDetail = () => {
 
   if (!service) return null;
 
+  // Find related insights (pillars or clusters that match this service's domain)
+  // For simplicity, we search for keyword matches in the pillarTopic or category
+  const relatedInsights = insights.filter(i => 
+    i.published !== false &&
+    (i.pillarTopic.includes(service.category) || i.category.includes(service.category) || service.title.includes(i.category))
+  ).slice(0, 3);
+  
+  // Fallback if strict mapping yields nothing
+  const displayInsights = relatedInsights.length > 0 ? relatedInsights : insights.filter(i => i.published !== false).slice(0, 3);
+
   // Generate Service Schema JSON-LD
   const schema = {
     "@context": "https://schema.org/",
@@ -55,13 +66,15 @@ const ServiceDetail = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{service.title} | Qorynta Services</title>
-        <meta name="description" content={service.description} />
+      <SEO
+        title={service.title}
+        description={service.description}
+        canonical={`https://www.qorynta.in/services/${service.slug}`}
+      >
         <script type="application/ld+json">
           {JSON.stringify(schema)}
         </script>
-      </Helmet>
+      </SEO>
 
             
       <main className="min-h-screen bg-background pt-20">
@@ -264,6 +277,32 @@ const ServiceDetail = () => {
             </div>
           </div>
         </section>
+
+        {/* Related Insights */}
+        {displayInsights.length > 0 && (
+          <section className="py-24 bg-background">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+              <h2 className="text-3xl font-bold mb-10 text-center">Related Insights & Guides</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {displayInsights.map((insight) => (
+                  <Link key={insight.slug} to={`/insights/${insight.slug}`} className="group block bg-card rounded-2xl overflow-hidden border border-border/50 shadow-sm hover:shadow-md transition-all">
+                    <div className="aspect-video overflow-hidden">
+                      <img src={insight.featuredImage} alt="" aria-hidden="true" loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    </div>
+                    <div className="p-6">
+                      <span className="text-xs font-bold text-primary tracking-widest uppercase mb-2 block">{insight.category}</span>
+                      <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors line-clamp-2">{insight.title}</h3>
+                      <p className="text-muted-foreground text-sm line-clamp-2 mb-4">{insight.description}</p>
+                      <span className="text-sm font-medium text-primary flex items-center gap-2">
+                        Read Guide <ArrowRight className="w-4 h-4" />
+                      </span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* CTA */}
         <CTABanner />

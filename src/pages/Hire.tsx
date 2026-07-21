@@ -146,7 +146,7 @@ export const Hire = () => {
         </section>
 
         {/* The Vetting Process */}
-        <section className="py-24 bg-foreground text-background relative overflow-hidden">
+        <section className="py-24 bg-foreground dark:bg-card text-background dark:text-foreground relative overflow-hidden border-y dark:border-border/50 border-transparent">
           <div className="absolute inset-0 opacity-10 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-primary via-background to-background" />
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center max-w-3xl mx-auto mb-20">
@@ -154,7 +154,7 @@ export const Hire = () => {
                 <h2 className="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">
                   The Qorynta <span className="text-primary">Standard.</span>
                 </h2>
-                <p className="text-lg text-slate-300">
+                <p className="text-lg text-slate-300 dark:text-muted-foreground">
                   We don't forward resumes. We provide battle-tested engineers who have survived one of the most rigorous technical vetting processes in the industry.
                 </p>
               </ScrollReveal>
@@ -168,13 +168,13 @@ export const Hire = () => {
                 { step: '04', title: 'Continuous Upskilling', desc: 'Once hired, our engineers participate in mandatory internal hackathons and bleeding-edge tech workshops.' }
               ].map((item, idx) => (
                 <ScrollReveal key={idx} delay={idx * 0.1}>
-                  <div className="relative p-6 rounded-2xl bg-slate-900 border border-slate-800 hover:border-primary/50 transition-colors h-full">
-                    <div className="text-6xl font-black text-slate-800 absolute top-4 right-4 pointer-events-none select-none">
+                  <div className="relative p-6 rounded-2xl bg-slate-900 dark:bg-background border border-slate-800 dark:border-border hover:border-primary/50 dark:hover:border-primary/50 transition-colors h-full">
+                    <div className="text-6xl font-black text-slate-800 dark:text-border absolute top-4 right-4 pointer-events-none select-none">
                       {item.step}
                     </div>
                     <div className="relative z-10 pt-8">
-                      <h4 className="text-xl font-bold text-white mb-4">{item.title}</h4>
-                      <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+                      <h4 className="text-xl font-bold text-white dark:text-foreground mb-4">{item.title}</h4>
+                      <p className="text-slate-400 dark:text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
                     </div>
                   </div>
                 </ScrollReveal>

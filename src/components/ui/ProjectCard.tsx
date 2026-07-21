@@ -45,18 +45,18 @@ export const ProjectCard = ({ project }: { project: Project }) => {
           <span className="px-3 py-1 bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs font-semibold rounded-full uppercase tracking-wide transition-colors">
             {project.category}
           </span>
-          <span className="px-3 py-1 bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300 border border-transparent dark:border-white/10 text-xs font-semibold rounded-full transition-colors">
+          <span className="px-3 py-1 bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-foreground/90 border border-transparent dark:border-white/10 text-xs font-semibold rounded-full transition-colors">
             {project.tags[0]}
           </span>
         </div>
 
         {/* Title */}
-        <h3 className="text-xl md:text-2xl font-bold text-[#0F172A] dark:text-white mb-3 leading-tight line-clamp-2 transition-colors duration-500 group-hover:text-blue-600 dark:group-hover:text-blue-400">
+        <h3 className="text-xl md:text-2xl font-bold text-[#0F172A] dark:text-foreground mb-3 leading-tight line-clamp-2 transition-colors duration-500 group-hover:text-blue-600 dark:group-hover:text-blue-400">
           {project.title}
         </h3>
         
         {/* Short description */}
-        <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed line-clamp-2 mb-6 flex-1 transition-colors duration-500">
+        <p className="text-slate-600 dark:text-muted-foreground text-sm leading-relaxed line-clamp-2 mb-6 flex-1 transition-colors duration-500">
           {project.overview}
         </p>
 

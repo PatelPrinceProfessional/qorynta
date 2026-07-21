@@ -37,8 +37,8 @@ export const BlogPreviewSection = () => {
               <Link to={`/insights/${post.slug}`} className="group block h-full">
                 <div className="h-full p-6 rounded-3xl bg-card border border-border/50 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col">
                   <div className="mb-6 flex gap-4 text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                    <span className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5" />{post.publishDate}</span>
-                    <span className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5" />{post.readTime}</span>
+                    <span className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5" />{post.date}</span>
+                    <span className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5" />{post.readingTime}</span>
                   </div>
                   
                   <div className="mb-4">
@@ -51,7 +51,7 @@ export const BlogPreviewSection = () => {
                   </div>
                   
                   <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-grow">
-                    {post.excerpt}
+                    {post.description}
                   </p>
                   
                   <div className="mt-auto flex items-center text-primary font-semibold text-sm">

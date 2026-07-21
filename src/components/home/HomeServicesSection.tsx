@@ -96,7 +96,7 @@ const CompactServiceCard = ({ service, index, onClick }: any) => {
           transformStyle: "preserve-3d",
           willChange: "transform"
         }}
-        className="group cursor-pointer flex flex-col items-center text-center p-6 md:p-8 bg-white dark:bg-slate-900 rounded-3xl border-2 border-slate-200 dark:border-slate-700 shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.15)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.4)] dark:hover:shadow-[0_30px_60px_rgba(255,255,255,0.05)] transition-shadow duration-300 h-full"
+        className="group cursor-pointer flex flex-col items-center text-center p-6 md:p-8 bg-white dark:bg-card rounded-3xl border-2 border-slate-200 dark:border-border/80 shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.15)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.4)] dark:hover:shadow-[0_30px_60px_rgba(255,255,255,0.05)] transition-shadow duration-300 h-full"
       >
         {/* Colorful Icon Container (Moves slightly forward on Z-axis to enhance 3D feel) */}
         <motion.div 
@@ -109,7 +109,7 @@ const CompactServiceCard = ({ service, index, onClick }: any) => {
         {/* Bold Blue Title */}
         <motion.h3 
           style={{ translateZ: 20 }}
-          className="text-lg font-bold text-[#0F172A] dark:text-slate-100 leading-tight mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"
+          className="text-lg font-bold text-[#0F172A] dark:text-foreground leading-tight mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"
         >
           {service.title}
         </motion.h3>
@@ -117,7 +117,7 @@ const CompactServiceCard = ({ service, index, onClick }: any) => {
         {/* Single-sentence succinct description */}
         <motion.p 
           style={{ translateZ: 10 }}
-          className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium leading-relaxed line-clamp-2"
+          className="text-xs sm:text-sm text-slate-500 dark:text-muted-foreground font-medium leading-relaxed line-clamp-2"
         >
           {service.description}
         </motion.p>
@@ -130,7 +130,7 @@ export const HomeServicesSection = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="py-24 md:py-32 relative bg-[#F8FAFC] dark:bg-slate-950 transition-colors duration-500 overflow-hidden">
+    <section className="py-24 md:py-32 relative bg-[#F8FAFC] dark:bg-background transition-colors duration-500 overflow-hidden">
       
       {/* 3) Ambient 'Breathing' Background Graphic */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] sm:w-[1200px] sm:h-[1200px] bg-blue-500/5 dark:bg-blue-500/10 rounded-full blur-[100px] sm:blur-[150px] animate-pulse-slow pointer-events-none z-0" />
@@ -139,10 +139,10 @@ export const HomeServicesSection = () => {
         
         {/* Header */}
         <ScrollReveal className="flex flex-col items-center text-center mb-16 md:mb-20">
-          <span className="text-sm md:text-base font-bold tracking-widest text-slate-500 dark:text-slate-400 uppercase mb-4">
+          <span className="text-sm md:text-base font-bold tracking-widest text-slate-500 dark:text-muted-foreground uppercase mb-4">
             — We Offer —
           </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-8 tracking-tight text-[#0F172A] dark:text-white uppercase">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-8 tracking-tight text-[#0F172A] dark:text-foreground uppercase">
             All <span className="text-blue-600 dark:text-blue-500">Tech</span> Services
           </h2>
           

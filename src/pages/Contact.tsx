@@ -157,7 +157,7 @@ const Contact = () => {
         canonical="https://www.qorynta.in/contact"
       />
 
-            <main className="min-h-screen bg-[#F8FAFC] dark:bg-slate-950 pt-20 relative overflow-hidden transition-colors duration-500">
+            <main className="min-h-screen bg-[#F8FAFC] dark:bg-background pt-20 relative overflow-hidden transition-colors duration-500">
         
         {/* Ambient Pulsing Background */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] md:w-[1000px] h-[600px] md:h-[1000px] bg-blue-500/10 dark:bg-blue-600/15 rounded-full blur-[100px] md:blur-[180px] animate-pulse-slow pointer-events-none z-0" />
@@ -169,10 +169,10 @@ const Contact = () => {
             className="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl"
           >
             <SectionLabel text="GET IN TOUCH" />
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#0F172A] dark:text-white mb-6 tracking-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#0F172A] dark:text-foreground mb-6 tracking-tight">
               Let's Build Something <br className="hidden md:block" /> Extraordinary Together
             </h1>
-            <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 font-medium">
+            <p className="text-lg md:text-xl text-slate-600 dark:text-muted-foreground font-medium">
               Have a project in mind? We'd love to hear about it. Drop us a message and we'll get back to you within 24 hours.
             </p>
           </motion.div>
@@ -189,10 +189,10 @@ const Contact = () => {
                 className="lg:col-span-5 space-y-8"
               >
                 {/* Glass-morphic Info Container */}
-                <div className="p-8 md:p-10 rounded-[2rem] bg-white/70 dark:bg-slate-900/60 backdrop-blur-2xl border border-white/50 dark:border-slate-700/50 shadow-2xl relative overflow-hidden group/container">
+                <div className="p-8 md:p-10 rounded-[2rem] bg-white/70 dark:bg-card/60 backdrop-blur-2xl border border-white/50 dark:border-border/80/50 shadow-2xl relative overflow-hidden group/container">
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent pointer-events-none" />
                   
-                  <h2 className="text-2xl font-black text-[#0F172A] dark:text-white mb-8 relative z-10">Contact Information</h2>
+                  <h2 className="text-2xl font-black text-[#0F172A] dark:text-foreground mb-8 relative z-10">Contact Information</h2>
                   
                   <div className="space-y-6 relative z-10">
                     {contactInfo.map((item, idx) => (
@@ -201,13 +201,13 @@ const Contact = () => {
                           <item.icon className="w-6 h-6 text-blue-600 dark:text-blue-400 group-hover:text-white transition-colors duration-300" />
                         </div>
                         <div className="pt-1">
-                          <p className="text-sm text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider mb-1">{item.title}</p>
+                          <p className="text-sm text-slate-500 dark:text-muted-foreground font-bold uppercase tracking-wider mb-1">{item.title}</p>
                           {item.href ? (
-                            <a href={item.href} className="text-base text-[#0F172A] dark:text-white font-bold hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            <a href={item.href} className="text-base text-[#0F172A] dark:text-foreground font-bold hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                               {item.value}
                             </a>
                           ) : (
-                            <p className="text-base text-[#0F172A] dark:text-white font-bold">{item.value}</p>
+                            <p className="text-base text-[#0F172A] dark:text-foreground font-bold">{item.value}</p>
                           )}
                         </div>
                       </div>
@@ -217,15 +217,15 @@ const Contact = () => {
 
                 {/* What Happens Next - Trust Container */}
                 <div className="p-8 md:p-10 rounded-[2rem] bg-[#f0f7ff]/90 dark:bg-blue-950/40 backdrop-blur-xl border border-blue-100 dark:border-blue-900/50 shadow-xl">
-                  <h3 className="text-xl font-black text-[#0F172A] dark:text-white mb-6">What happens next?</h3>
+                  <h3 className="text-xl font-black text-[#0F172A] dark:text-foreground mb-6">What happens next?</h3>
                   <ul className="space-y-6">
                     <li className="flex items-start gap-4">
                       <div className="w-8 h-8 rounded-full bg-blue-200 dark:bg-blue-800/50 flex items-center justify-center shrink-0 mt-1">
                         <Clock className="w-4 h-4 text-blue-700 dark:text-blue-300" />
                       </div>
                       <div>
-                        <h4 className="font-bold text-[#0F172A] dark:text-white mb-1">24-Hour Response</h4>
-                        <p className="text-sm text-slate-600 dark:text-slate-400 font-medium">We'll review your requirements and respond promptly.</p>
+                        <h4 className="font-bold text-[#0F172A] dark:text-foreground mb-1">24-Hour Response</h4>
+                        <p className="text-sm text-slate-600 dark:text-muted-foreground font-medium">We'll review your requirements and respond promptly.</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-4">
@@ -233,8 +233,8 @@ const Contact = () => {
                         <MessageSquare className="w-4 h-4 text-blue-700 dark:text-blue-300" />
                       </div>
                       <div>
-                        <h4 className="font-bold text-[#0F172A] dark:text-white mb-1">Discovery Call</h4>
-                        <p className="text-sm text-slate-600 dark:text-slate-400 font-medium">A 30-minute free consultation to discuss tech stack and scope.</p>
+                        <h4 className="font-bold text-[#0F172A] dark:text-foreground mb-1">Discovery Call</h4>
+                        <p className="text-sm text-slate-600 dark:text-muted-foreground font-medium">A 30-minute free consultation to discuss tech stack and scope.</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-4">
@@ -242,8 +242,8 @@ const Contact = () => {
                         <Globe className="w-4 h-4 text-blue-700 dark:text-blue-300" />
                       </div>
                       <div>
-                        <h4 className="font-bold text-[#0F172A] dark:text-white mb-1">Detailed Proposal</h4>
-                        <p className="text-sm text-slate-600 dark:text-slate-400 font-medium">You'll receive a comprehensive timeline, architecture plan, and quote.</p>
+                        <h4 className="font-bold text-[#0F172A] dark:text-foreground mb-1">Detailed Proposal</h4>
+                        <p className="text-sm text-slate-600 dark:text-muted-foreground font-medium">You'll receive a comprehensive timeline, architecture plan, and quote.</p>
                       </div>
                     </li>
                   </ul>
@@ -256,15 +256,15 @@ const Contact = () => {
                 className="lg:col-span-7"
               >
                 {/* Glass-morphic Form Container */}
-                <div className="bg-white/70 dark:bg-slate-900/60 backdrop-blur-2xl rounded-[2rem] p-8 md:p-12 border border-white/50 dark:border-slate-700/50 shadow-2xl relative overflow-hidden">
+                <div className="bg-white/70 dark:bg-card/60 backdrop-blur-2xl rounded-[2rem] p-8 md:p-12 border border-white/50 dark:border-border/80/50 shadow-2xl relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-[80px] pointer-events-none" />
 
-                  <h2 className="text-3xl font-black text-[#0F172A] dark:text-white mb-8 relative z-10">Send us a Message</h2>
+                  <h2 className="text-3xl font-black text-[#0F172A] dark:text-foreground mb-8 relative z-10">Send us a Message</h2>
 
                   <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
                     <div className="grid sm:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <label className="text-sm font-bold text-[#0F172A] dark:text-slate-300">Full Name <span className="text-blue-600">*</span></label>
+                        <label className="text-sm font-bold text-[#0F172A] dark:text-foreground/90">Full Name <span className="text-blue-600">*</span></label>
                         <Input
                           required
                           value={formData.name}
@@ -274,7 +274,7 @@ const Contact = () => {
                         />
                       </div>
                       <div className="space-y-2">
-                        <label className="text-sm font-bold text-[#0F172A] dark:text-slate-300">Email Address <span className="text-blue-600">*</span></label>
+                        <label className="text-sm font-bold text-[#0F172A] dark:text-foreground/90">Email Address <span className="text-blue-600">*</span></label>
                         <Input
                           required
                           type="email"
@@ -288,7 +288,7 @@ const Contact = () => {
 
                     <div className="grid sm:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <label className="text-sm font-bold text-[#0F172A] dark:text-slate-300">Contact Number <span className="text-blue-600">*</span></label>
+                        <label className="text-sm font-bold text-[#0F172A] dark:text-foreground/90">Contact Number <span className="text-blue-600">*</span></label>
                         <PhoneInput
                           international
                           defaultCountry="IN"
@@ -297,7 +297,7 @@ const Contact = () => {
                         />
                       </div>
                       <div className="space-y-2">
-                        <label className="text-sm font-bold text-[#0F172A] dark:text-slate-300">Company Name</label>
+                        <label className="text-sm font-bold text-[#0F172A] dark:text-foreground/90">Company Name</label>
                         <Input
                           value={formData.company}
                           onChange={(e) => setFormData({ ...formData, company: e.target.value })}
@@ -309,11 +309,11 @@ const Contact = () => {
 
                     <div className="grid sm:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <label className="text-sm font-bold text-[#0F172A] dark:text-slate-300">Project Budget</label>
+                        <label className="text-sm font-bold text-[#0F172A] dark:text-foreground/90">Project Budget</label>
                         <select
                           value={formData.budget}
                           onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                          className="w-full h-14 px-4 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-700 dark:text-slate-300 font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all appearance-none"
+                          className="w-full h-14 px-4 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-700 dark:text-foreground/90 font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all appearance-none"
                         >
                           <option value="" disabled className="text-slate-400">Select a range</option>
                           {budgetOptions.map((option) => (
@@ -324,7 +324,7 @@ const Contact = () => {
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-sm font-bold text-[#0F172A] dark:text-slate-300">Project Details <span className="text-blue-600">*</span></label>
+                      <label className="text-sm font-bold text-[#0F172A] dark:text-foreground/90">Project Details <span className="text-blue-600">*</span></label>
                       <Textarea
                         required
                         value={formData.message}

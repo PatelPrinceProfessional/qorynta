@@ -5,6 +5,7 @@ interface SEOProps {
   description?: string;
   canonical?: string;
   ogImage?: string;
+  children?: React.ReactNode;
 }
 
 export default function SEO({
@@ -12,6 +13,7 @@ export default function SEO({
   description,
   canonical,
   ogImage = "https://www.qorynta.in/social-preview.jpg",
+  children,
 }: SEOProps) {
   const siteTitle = "Qorynta Services";
   const defaultDescription =
@@ -45,6 +47,8 @@ export default function SEO({
       <meta name="twitter:title" content={title ? `${title} | ${siteTitle}` : siteTitle} />
       <meta name="twitter:description" content={description || defaultDescription} />
       <meta name="twitter:image" content={ogImage} />
+
+      {children}
     </Helmet>
   );
 }

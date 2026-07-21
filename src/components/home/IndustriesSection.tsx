@@ -127,11 +127,11 @@ const TechCard = ({ tech, index }: { tech: TechItem; index: number }) => {
         ref={cardRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        className="tech-card group h-full w-full bg-slate-50 dark:bg-slate-900/40 border border-slate-300 dark:border-slate-700/60 shadow-sm hover:bg-white dark:hover:bg-slate-800 rounded-xl p-8 flex flex-col items-center justify-center cursor-default will-change-transform"
+        className="tech-card group h-full w-full bg-slate-50 dark:bg-card/40 border border-slate-300 dark:border-border/80/60 shadow-sm hover:bg-white dark:hover:bg-slate-800 rounded-xl p-8 flex flex-col items-center justify-center cursor-default will-change-transform"
         style={style as React.CSSProperties}
       >
         <img src={tech.icon} alt="" aria-hidden="true" loading="lazy" className="w-10 h-10 mb-4 object-contain pointer-events-none drop-shadow-sm" />
-        <span className="text-sm font-semibold text-slate-700 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-slate-100 transition-colors duration-300 text-center pointer-events-none">
+        <span className="text-sm font-semibold text-slate-700 dark:text-muted-foreground group-hover:text-slate-900 dark:group-hover:text-slate-100 transition-colors duration-300 text-center pointer-events-none">
           {tech.name}
         </span>
       </div>
@@ -213,12 +213,12 @@ export const IndustriesSection = () => {
                 Our Tech Stack
               </span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight transition-colors duration-500">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-foreground leading-tight transition-colors duration-500">
               Empowering Ambition,<br />Transforming Potential.
             </h2>
           </div>
           <div className="md:w-1/3">
-            <p className="text-lg text-slate-500 dark:text-slate-400 font-medium leading-relaxed pb-2 transition-colors duration-500">
+            <p className="text-lg text-slate-500 dark:text-muted-foreground font-medium leading-relaxed pb-2 transition-colors duration-500">
               Explore our recent case studies in our <Link to="/case-studies" className="font-bold text-blue-600 dark:text-blue-400 hover:underline">Portfolio</Link> to see how we build enterprise software, or <Link to="/contact" className="font-bold text-blue-600 dark:text-blue-400 hover:underline">Contact Us</Link> to get a free technical scoping call.
             </p>
           </div>
@@ -226,7 +226,7 @@ export const IndustriesSection = () => {
 
         {/* Tab Navigation with Liquid Shift */}
         <div className="mb-12 overflow-x-auto pb-4 scrollbar-hide relative" ref={tabsContainerRef}>
-          <div className="flex items-center gap-2 p-1 w-max relative rounded-full border border-slate-200/60 dark:border-slate-700/60 bg-white dark:bg-slate-900/50 shadow-sm transition-colors duration-500">
+          <div className="flex items-center gap-2 p-1 w-max relative rounded-full border border-slate-200/60 dark:border-border/80/60 bg-white dark:bg-card/50 shadow-sm transition-colors duration-500">
             
             {/* The Liquid Shift Pill Background */}
             <div 
@@ -249,7 +249,7 @@ export const IndustriesSection = () => {
                   onClick={() => handleTabClick(category)}
                   className={`
                     relative z-10 px-6 py-2.5 rounded-full text-sm font-semibold transition-colors duration-300 ease-out whitespace-nowrap
-                    ${isActive ? 'text-white' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'}
+                    ${isActive ? 'text-white' : 'text-slate-600 dark:text-muted-foreground hover:text-slate-900 dark:hover:text-slate-100'}
                   `}
                 >
                   {category}

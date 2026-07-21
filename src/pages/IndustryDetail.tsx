@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
+import SEO from '@/components/SEO';
 import { CTABanner } from '@/components/home/CTABanner';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { ArrowRight, ShieldCheck, Zap, BarChart3, Lock } from 'lucide-react';
@@ -27,10 +27,11 @@ export const IndustryDetail = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{industryName} Software Development | Qorynta Services</title>
-        <meta name="description" content={`Custom software development and digital transformation for the ${industryName} sector.`} />
-      </Helmet>
+      <SEO
+        title={`${industryName} Software Development`}
+        description={`Custom software development and digital transformation for the ${industryName} sector.`}
+        canonical={`https://www.qorynta.in/industries/${slug}`}
+      />
 
       
       <main className="min-h-screen bg-background pt-20">

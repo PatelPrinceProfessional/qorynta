@@ -180,7 +180,7 @@ export const Industries = () => {
         </section>
 
         {/* The Qorynta Difference */}
-        <section className="py-24 bg-foreground text-background relative overflow-hidden">
+        <section className="py-24 bg-foreground dark:bg-card text-background dark:text-foreground relative overflow-hidden border-y dark:border-border/50 border-transparent">
           <div className="absolute inset-0 opacity-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary via-background to-background" />
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="flex flex-col lg:flex-row items-center gap-16">
@@ -189,7 +189,7 @@ export const Industries = () => {
                   <h2 className="text-3xl md:text-5xl font-extrabold mb-8 leading-tight">
                     Why Domain Expertise <span className="text-primary">Matters.</span>
                   </h2>
-                  <p className="text-lg text-slate-300 mb-8 leading-relaxed">
+                  <p className="text-lg text-slate-300 dark:text-muted-foreground mb-8 leading-relaxed">
                     Generic software development agencies learn on your dime. We bring battle-tested architectural patterns specific to your industry, drastically reducing time-to-market and technical risk.
                   </p>
                   <ul className="space-y-6">
@@ -198,8 +198,8 @@ export const Industries = () => {
                         <ShieldCheck className="w-4 h-4 text-primary" />
                       </div>
                       <div>
-                        <h4 className="font-bold text-xl mb-1">Pre-solved Compliance</h4>
-                        <p className="text-slate-400">SOC2, HIPAA, PCI-DSS. We design architectures that pass audits on day one.</p>
+                        <h4 className="font-bold text-xl mb-1 text-background dark:text-foreground">Pre-solved Compliance</h4>
+                        <p className="text-slate-400 dark:text-muted-foreground">SOC2, HIPAA, PCI-DSS. We design architectures that pass audits on day one.</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-4">
@@ -207,8 +207,8 @@ export const Industries = () => {
                         <Zap className="w-4 h-4 text-primary" />
                       </div>
                       <div>
-                        <h4 className="font-bold text-xl mb-1">Industry-specific Scale</h4>
-                        <p className="text-slate-400">Whether it's Black Friday retail spikes or high-frequency trading latency, we know the exact bottlenecks to avoid.</p>
+                        <h4 className="font-bold text-xl mb-1 text-background dark:text-foreground">Industry-specific Scale</h4>
+                        <p className="text-slate-400 dark:text-muted-foreground">Whether it's Black Friday retail spikes or high-frequency trading latency, we know the exact bottlenecks to avoid.</p>
                       </div>
                     </li>
                   </ul>
@@ -216,22 +216,22 @@ export const Industries = () => {
               </div>
               <div className="lg:w-1/2">
                 <ScrollReveal delay={0.2}>
-                  <div className="bg-slate-900 rounded-3xl p-8 md:p-12 border border-slate-800 shadow-2xl relative">
+                  <div className="bg-slate-900 dark:bg-background rounded-3xl p-8 md:p-12 border border-slate-800 dark:border-border shadow-2xl relative">
                     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-cyan-400 to-blue-500 rounded-t-3xl" />
                     <div className="space-y-8">
                       <div className="flex items-center gap-6">
                         <div className="text-4xl font-black text-primary">60%</div>
-                        <div className="text-sm font-semibold text-slate-300 uppercase tracking-widest leading-relaxed">Faster Time to<br />Production</div>
+                        <div className="text-sm font-semibold text-slate-300 dark:text-muted-foreground uppercase tracking-widest leading-relaxed">Faster Time to<br />Production</div>
                       </div>
-                      <div className="w-full h-px bg-slate-800" />
+                      <div className="w-full h-px bg-slate-800 dark:bg-border/50" />
                       <div className="flex items-center gap-6">
                         <div className="text-4xl font-black text-primary">3x</div>
-                        <div className="text-sm font-semibold text-slate-300 uppercase tracking-widest leading-relaxed">Higher System<br />Throughput</div>
+                        <div className="text-sm font-semibold text-slate-300 dark:text-muted-foreground uppercase tracking-widest leading-relaxed">Higher System<br />Throughput</div>
                       </div>
-                      <div className="w-full h-px bg-slate-800" />
+                      <div className="w-full h-px bg-slate-800 dark:bg-border/50" />
                       <div className="flex items-center gap-6">
                         <div className="text-4xl font-black text-primary">0</div>
-                        <div className="text-sm font-semibold text-slate-300 uppercase tracking-widest leading-relaxed">Failed Security<br />Audits</div>
+                        <div className="text-sm font-semibold text-slate-300 dark:text-muted-foreground uppercase tracking-widest leading-relaxed">Failed Security<br />Audits</div>
                       </div>
                     </div>
                   </div>

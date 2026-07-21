@@ -1,4 +1,6 @@
-export interface FAQItem {
+const fs = require('fs');
+
+const data = `export interface FAQItem {
   question: string;
   answer: string;
 }
@@ -7,7 +9,6 @@ export interface InsightData {
   slug: string;
   title: string;
   description: string;
-  published?: boolean;
   date: string;
   category: string;
   pillarTopic: string;
@@ -44,7 +45,7 @@ export const insights: InsightData[] = [
       { question: 'How do startups use AI?', answer: 'Startups use AI for customer support automation, predictive analytics, personalized recommendations, and generative content creation.' }
     ],
     author: { name: 'Qorynta Engineering', role: 'Core Team', avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80' },
-    content: `
+    content: \`
 Welcome to the definitive guide on AI development for startups in 2026. If you're looking to integrate machine learning, generative AI, or specialized agents into your product, you've come to the right place.
 
 ## The State of AI in 2026
@@ -62,7 +63,7 @@ Deploying AI involves handling asynchronous processes, long timeouts, and stream
 ## Measuring AI ROI
 Track metrics like task completion rates, cost per inference, and user retention. Remember, an AI feature must solve a real problem faster or better than traditional software.
 
-    `
+    \`
   },
 
   // PILLAR 2
@@ -83,7 +84,7 @@ Track metrics like task completion rates, cost per inference, and user retention
       { question: 'How much does it cost to build a SaaS?', answer: 'An MVP typically costs between $30,000 to $100,000 depending on complexity and features.' }
     ],
     author: { name: 'Qorynta Architecture', role: 'Systems Team', avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80' },
-    content: `
+    content: \`
 Building a B2B SaaS platform in 2026 demands more than just writing code. It requires deep architectural planning, multi-tenancy design, and a ruthless focus on security.
 
 ## Defining the MVP Scope
@@ -101,7 +102,7 @@ Never build your own auth or billing engine from scratch. Integrate specialized 
 ## CI/CD and Cloud Infrastructure
 Deploying on AWS, GCP, or Vercel with automated GitHub Actions pipelines ensures you can ship updates multiple times a day without breaking production.
 
-    `
+    \`
   },
 
   // PILLAR 3
@@ -121,7 +122,7 @@ Deploying on AWS, GCP, or Vercel with automated GitHub Actions pipelines ensures
       { question: 'Should startups build native or cross-platform apps?', answer: 'Cross-platform frameworks like React Native or Flutter are generally better for startups as they halve development time and costs.' }
     ],
     author: { name: 'Qorynta Mobile', role: 'App Team', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80' },
-    content: `
+    content: \`
 Launching a mobile app is one of the highest-risk, highest-reward initiatives a startup can undertake. User acquisition costs are high, so the product experience must be flawless.
 
 ## Native vs Cross-Platform
@@ -138,7 +139,7 @@ Users expect apps to work instantly. Implement robust local caching (using SQLit
 
 ## Navigating App Store Approvals
 Apple and Google have strict guidelines. Ensure your app handles user data transparently, provides an account deletion option, and follows in-app purchase rules to avoid rejection.
-    `
+    \`
   },
 
   // CLUSTER 4
@@ -152,13 +153,13 @@ Apple and Google have strict guidelines. Ensure your app handles user data trans
     keywords: ['AI agents', 'autonomous AI', 'AI automation'],
     canonical: 'https://www.qorynta.in/insights/what-is-an-ai-agent',
     readingTime: '8 min read',
-    featuredImage: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80',
+    featuredImage: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1200&q=80',
     internalLinks: ['/insights/ai-development-guide', '/insights/ai-chatbot-customer-support'],
     faq: [
       { question: 'What is the difference between an LLM and an AI agent?', answer: 'An LLM generates text. An AI agent uses an LLM as its brain to plan tasks, use tools (like web browsing or APIs), and execute multi-step workflows autonomously.' }
     ],
     author: { name: 'Qorynta AI Labs', role: 'Research Team', avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80' },
-    content: `
+    content: \`
 An AI agent is a system that can perceive its environment, make decisions, and take actions to achieve a specific goal autonomously.
 
 ## The Anatomy of an Agent
@@ -171,7 +172,7 @@ Agents require three core components: a brain (usually an LLM), a memory system 
 
 ## Enterprise Use Cases
 Agents are revolutionizing data entry, code generation, and complex scheduling. A customer service agent can now pull billing data, issue a refund via Stripe, and email a receipt without human intervention.
-    `
+    \`
   },
 
   // CLUSTER 5
@@ -185,13 +186,13 @@ Agents are revolutionizing data entry, code generation, and complex scheduling. 
     keywords: ['AI chatbot', 'customer support AI', 'RAG chatbot'],
     canonical: 'https://www.qorynta.in/insights/ai-chatbot-customer-support',
     readingTime: '10 min read',
-    featuredImage: 'https://images.unsplash.com/photo-1596524430615-b46475ddff6e?auto=format&fit=crop&w=1200&q=80',
+    featuredImage: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80',
     internalLinks: ['/insights/ai-development-guide', '/insights/what-is-an-ai-agent'],
     faq: [
       { question: 'How much does an AI chatbot cost to build?', answer: 'A custom enterprise chatbot using RAG can cost between $15,000 to $40,000 to develop and deploy securely.' }
     ],
     author: { name: 'Qorynta Engineering', role: 'Core Team', avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80' },
-    content: `
+    content: \`
 An AI chatbot for customer support automates responses to common questions, reduces ticket volume, and improves response times. This guide shows how to design, build, and deploy one using modern LLMs.
 
 ## What is an AI customer support chatbot?
@@ -204,7 +205,7 @@ Unlike legacy rules-based bots, modern AI bots use Retrieval-Augmented Generatio
 
 ## Preventing Hallucinations
 You must enforce strict system prompts that forbid the AI from inventing answers. If the vector search returns no relevant documents, the bot must seamlessly hand off to a human agent.
-    `
+    \`
   },
 
   // CLUSTER 6
@@ -218,11 +219,11 @@ You must enforce strict system prompts that forbid the AI from inventing answers
     keywords: ['AI for ecommerce', 'generative AI retail', 'ecommerce technology'],
     canonical: 'https://www.qorynta.in/insights/generative-ai-for-ecommerce',
     readingTime: '7 min read',
-    featuredImage: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=1200&q=80',
+    featuredImage: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1200&q=80',
     internalLinks: ['/insights/ai-development-guide', '/industries'],
     faq: [],
     author: { name: 'Qorynta Industry Solutions', role: 'Consulting', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80' },
-    content: `
+    content: \`
 Retail is undergoing a seismic shift driven by Generative AI. Here is how top brands are utilizing the technology today.
 
 ## 1. Hyper-Personalized Product Descriptions
@@ -236,7 +237,7 @@ Searching by exact product name is obsolete. Users can now chat with the catalog
 
 ## 4. Automated Inventory Forecasting
 While predictive ML is older, combining it with LLMs allows buyers to query complex supply chain data using plain English.
-    `
+    \`
   },
 
   // CLUSTER 7
@@ -250,11 +251,11 @@ While predictive ML is older, combining it with LLMs allows buyers to query comp
     keywords: ['AI development cost', 'custom software pricing', 'AI budgets'],
     canonical: 'https://www.qorynta.in/insights/custom-ai-development-cost',
     readingTime: '9 min read',
-    featuredImage: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80',
+    featuredImage: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80',
     internalLinks: ['/insights/ai-development-guide', '/insights/llm-vs-traditional-ml'],
     faq: [],
     author: { name: 'Qorynta Strategy', role: 'Business Team', avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80' },
-    content: `
+    content: \`
 Budgeting for AI development is notoriously difficult. The landscape shifts rapidly, but here is a concrete breakdown of expected costs.
 
 ## Proof of Concept (PoC) Phase
@@ -265,7 +266,7 @@ Taking a PoC to production involves implementing robust security, load balancing
 
 ## Ongoing Operational Costs (Inference)
 Development is a one-time Capex. Inference (API calls or GPU hosting) is Opex. A high-volume application leveraging GPT-4-tier models can easily incur thousands of dollars a month in API usage fees. Caching and prompt optimization are essential to control these costs.
-    `
+    \`
   },
 
   // CLUSTER 8
@@ -279,11 +280,11 @@ Development is a one-time Capex. Inference (API calls or GPU hosting) is Opex. A
     keywords: ['LLM vs ML', 'machine learning', 'predictive analytics'],
     canonical: 'https://www.qorynta.in/insights/llm-vs-traditional-ml',
     readingTime: '11 min read',
-    featuredImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
+    featuredImage: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1200&q=80',
     internalLinks: ['/insights/ai-development-guide', '/insights/what-is-an-ai-agent'],
     faq: [],
     author: { name: 'Qorynta Data Science', role: 'Data Team', avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80' },
-    content: `
+    content: \`
 Not every problem requires a billion-parameter language model. Knowing when to use an LLM versus traditional ML is the hallmark of mature engineering.
 
 ## When to use Traditional ML (XGBoost, Random Forests)
@@ -298,7 +299,7 @@ Not every problem requires a billion-parameter language model. Knowing when to u
 
 ## The Hybrid Approach
 The best architectures combine both. Use a traditional ML model to instantly flag a fraudulent transaction, then use an LLM to generate a plain-English explanation report for the compliance team.
-    `
+    \`
   },
 
   // CLUSTER 9
@@ -312,11 +313,11 @@ The best architectures combine both. Use a traditional ML model to instantly fla
     keywords: ['React vs Nextjs', 'SaaS architecture', 'frontend frameworks'],
     canonical: 'https://www.qorynta.in/insights/react-vs-nextjs-for-saas',
     readingTime: '8 min read',
-    featuredImage: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=1200&q=80',
+    featuredImage: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80',
     internalLinks: ['/insights/saas-product-development-guide'],
     faq: [],
     author: { name: 'Qorynta Frontend', role: 'UI Team', avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80' },
-    content: `
+    content: \`
 Choosing the frontend architecture for your SaaS dictates your developer velocity and product performance for years.
 
 ## Raw React (SPAs built with Vite)
@@ -329,7 +330,7 @@ Next.js provides Server-Side Rendering (SSR), file-based routing, and API routes
 
 ## The Verdict
 If your SaaS relies on public-facing content (like a marketplace or a publishing tool), Next.js is mandatory. If it is a purely private internal tool, raw React with Vite offers simpler deployment and maintenance.
-    `
+    \`
   },
 
   // CLUSTER 10
@@ -343,11 +344,11 @@ If your SaaS relies on public-facing content (like a marketplace or a publishing
     keywords: ['React Native vs Flutter', 'mobile frameworks', 'app development'],
     canonical: 'https://www.qorynta.in/insights/react-native-vs-flutter',
     readingTime: '9 min read',
-    featuredImage: 'https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?auto=format&fit=crop&w=1200&q=80',
+    featuredImage: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80',
     internalLinks: ['/insights/mobile-app-development-guide'],
     faq: [],
     author: { name: 'Qorynta Mobile', role: 'App Team', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80' },
-    content: `
+    content: \`
 Startups cannot afford to build distinct iOS and Android teams. Cross-platform is the answer, but the battle between React Native and Flutter rages on.
 
 ## React Native: The JavaScript Ecosystem
@@ -360,7 +361,7 @@ Backed by Google, Flutter uses Dart and renders its own UI using the Skia (or Im
 
 ## Which to Choose?
 If you have a strong web team that already knows React, choose React Native. If you are building a highly custom, design-heavy app that doesn't rely heavily on native device APIs, Flutter is unmatched.
-    `
+    \`
   },
 
   // CLUSTER 11
@@ -374,11 +375,11 @@ If you have a strong web team that already knows React, choose React Native. If 
     keywords: ['AI for fintech', 'financial software', 'fraud detection ML'],
     canonical: 'https://www.qorynta.in/insights/ai-for-fintech-overview',
     readingTime: '10 min read',
-    featuredImage: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80',
+    featuredImage: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1200&q=80',
     internalLinks: ['/insights/llm-vs-traditional-ml', '/industries'],
     faq: [],
     author: { name: 'Qorynta Financial', role: 'Industry Team', avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80' },
-    content: `
+    content: \`
 The financial sector is built on data. AI is the ultimate tool for processing that data at scale.
 
 ## Fraud Detection and AML
@@ -389,7 +390,7 @@ AI algorithms assess creditworthiness by analyzing non-traditional data points, 
 
 ## Generative AI in Compliance
 Compliance teams are using LLMs to continuously ingest and interpret new regulatory documentation, automatically generating gap-analysis reports against internal company policies.
-    `
+    \`
   },
 
   // CLUSTER 12
@@ -403,11 +404,11 @@ Compliance teams are using LLMs to continuously ingest and interpret new regulat
     keywords: ['AI for healthcare', 'medical software', 'healthtech'],
     canonical: 'https://www.qorynta.in/insights/ai-for-healthcare-overview',
     readingTime: '8 min read',
-    featuredImage: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80',
+    featuredImage: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1200&q=80',
     internalLinks: ['/insights/what-is-an-ai-agent', '/industries'],
     faq: [],
     author: { name: 'Qorynta Health', role: 'Industry Team', avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80' },
-    content: `
+    content: \`
 Healthcare professionals suffer from intense administrative burnout. AI in healthcare is primarily focused on workflow automation, not replacing doctors.
 
 ## Ambient Clinical Documentation
@@ -418,6 +419,10 @@ Computer vision models assist radiologists by instantly highlighting anomalies i
 
 ## Patient Triage Chatbots
 Before a patient sees a doctor, AI chatbots can collect symptoms, perform initial triage based on established medical guidelines, and route the patient to the appropriate care level, optimizing clinic bandwidth.
-    `
+    \`
   }
 ];
+`;
+
+fs.writeFileSync('src/data/insights.ts', data);
+console.log('Done');

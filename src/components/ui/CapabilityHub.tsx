@@ -286,7 +286,7 @@ export const CapabilityHub = ({ onNodeHover }: { onNodeHover?: (id: string | nul
                   >
                     {/* Node Base Button */}
                     <motion.div
-                      className={`relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full cursor-pointer transition-all duration-300 bg-white dark:bg-slate-800 shadow-[0_8px_30px_rgba(0,0,0,0.15)] border-2 border-blue-200 dark:border-blue-500/30 z-50 opacity-100 ${isActive ? 'scale-110 shadow-[0_0_25px_rgba(59,130,246,0.8)] ring-4 ring-blue-400' : 'hover:scale-110 shadow-[0_0_20px_rgba(59,130,246,0.5)]'}`}
+                      className={`relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full cursor-pointer transition-all duration-300 bg-white dark:bg-muted shadow-[0_8px_30px_rgba(0,0,0,0.15)] border-2 border-blue-200 dark:border-blue-500/30 z-50 opacity-100 ${isActive ? 'scale-110 shadow-[0_0_25px_rgba(59,130,246,0.8)] ring-4 ring-blue-400' : 'hover:scale-110 shadow-[0_0_20px_rgba(59,130,246,0.5)]'}`}
                     >
                       <Icon className="w-7 h-7 text-blue-700 dark:text-cyan-400 opacity-100 font-extrabold drop-shadow-md" />
                     </motion.div>

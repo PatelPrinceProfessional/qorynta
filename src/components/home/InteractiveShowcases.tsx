@@ -62,7 +62,7 @@ export const WebDevCanvas = () => {
 // 2. UIDesignCanvas: Visualizing bounding boxes and guides
 export const UIDesignCanvas = () => {
   return (
-    <div className="w-full h-full bg-slate-100 dark:bg-slate-900 rounded-3xl p-6 relative overflow-hidden flex items-center justify-center">
+    <div className="w-full h-full bg-slate-100 dark:bg-card rounded-3xl p-6 relative overflow-hidden flex items-center justify-center">
       {/* Grid background */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808020_1px,transparent_1px),linear-gradient(to_bottom,#80808020_1px,transparent_1px)] bg-[size:1rem_1rem]"></div>
       
