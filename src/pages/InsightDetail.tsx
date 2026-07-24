@@ -120,14 +120,29 @@ export const InsightDetail = () => {
         {/* Article Body */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl mb-12">
           <article className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-black prose-headings:tracking-tight prose-a:text-primary prose-img:rounded-2xl">
-            {post.content.split('\\n').map((paragraph, i) => {
-              if (paragraph.trim().startsWith('##')) {
-                return <h2 key={i} className="text-3xl font-black mt-12 mb-6">{paragraph.replace('##', '').trim()}</h2>;
+            {post.content.split('\n').map((paragraph, i) => {
+              const trimmed = paragraph.trim();
+              if (trimmed.startsWith('##')) {
+                return <h2 key={i} className="text-3xl font-black mt-12 mb-6">{trimmed.replace('##', '').trim()}</h2>;
               }
-              if (paragraph.trim().startsWith('- **')) {
-                return <li key={i} className="mb-2 text-muted-foreground">{paragraph.replace('-', '').trim()}</li>;
+              
+              const isBullet = trimmed.startsWith('- ');
+              const isNumbered = /^\d+\.\s/.test(trimmed);
+              
+              if (isBullet || isNumbered) {
+                const content = isBullet ? trimmed.replace(/^- /, '') : trimmed.replace(/^\d+\.\s/, '');
+                
+                const formattedContent = content.split(/(\*\*.*?\*\*)/).map((part, index) => {
+                  if (part.startsWith('**') && part.endsWith('**')) {
+                    return <strong key={index} className="text-foreground">{part.slice(2, -2)}</strong>;
+                  }
+                  return part;
+                });
+                
+                return <li key={i} className="mb-2 text-muted-foreground ml-6 list-outside" style={{ listStyleType: isNumbered ? 'decimal' : 'disc' }}>{formattedContent}</li>;
               }
-              if (paragraph.trim() === '') return null;
+
+              if (trimmed === '') return null;
               
               const formattedParagraph = paragraph.split(/(\*\*.*?\*\*)/).map((part, index) => {
                 if (part.startsWith('**') && part.endsWith('**')) {
