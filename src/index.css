@@ -569,3 +569,12 @@ html.lenis body {
 .PhoneInputCountrySelectArrow {
   @apply block w-[0.3em] h-[0.3em] ml-2 border-b-2 border-r-2 border-slate-500 dark:border-slate-400 transform rotate-45;
 }
+
+@layer utilities {
+  .hardware-accelerate {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-font-smoothing: antialiased;
+  }
+}

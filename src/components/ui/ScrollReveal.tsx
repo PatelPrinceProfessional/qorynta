@@ -49,7 +49,7 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
         delay,
         ease: [0.21, 0.47, 0.32, 0.98], // Custom spring-like easing
       }}
-      className={className}
+      className={`${className} hardware-accelerate`}
     >
       {children}
     </motion.div>

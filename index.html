@@ -179,9 +179,31 @@
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-10px); }
         }
+        .loader-text {
+          font-size: 1.5rem;
+          font-weight: 800;
+          letter-spacing: 0.15em;
+          margin-bottom: 8px;
+          z-index: 2;
+          background: linear-gradient(90deg, #60a5fa, #e879f9, #60a5fa);
+          background-size: 200% auto;
+          color: transparent;
+          -webkit-background-clip: text;
+          background-clip: text;
+          opacity: 0;
+          animation: appearText 1s ease-out 0.2s forwards, gradientShift 3s linear infinite;
+        }
+        @keyframes appearText {
+          from { opacity: 0; transform: translateY(15px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes gradientShift {
+          to { background-position: 200% center; }
+        }
       </style>
       <div class="loader-glow"></div>
       <div class="initial-loader-icon"></div>
+      <h1 class="loader-text">QORYNTA SERVICES</h1>
       <div class="premium-spinner"></div>
     </div>
     <div id="root"></div>

@@ -71,7 +71,7 @@ const CompactServiceCard = ({ service, index, onClick }: any) => {
       }}
       // Wrapper needs perspective for 3D transforms
       style={{ perspective: 1000 }}
-      className="h-full"
+      className="h-full hardware-accelerate"
     >
       <motion.div
         ref={ref}
