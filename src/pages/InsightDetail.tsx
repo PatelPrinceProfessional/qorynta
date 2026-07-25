@@ -1,23 +1,20 @@
 import { useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import SEO from '@/components/SEO';
 import { CTABanner } from '@/components/home/CTABanner';
-import { ArrowLeft, ArrowRight, ChevronDown } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { insights } from '@/data/insights';
+import NotFound from './NotFound';
 
 export const InsightDetail = () => {
   const { slug } = useParams<{ slug: string }>();
-  const navigate = useNavigate();
   const post = insights.find(p => p.slug === slug);
 
   useEffect(() => {
-    if (!post) {
-      navigate('/insights', { replace: true });
-    }
     window.scrollTo(0, 0);
-  }, [post, navigate]);
+  }, [post]);
 
-  if (!post) return null;
+  if (!post) return <NotFound />;
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -96,7 +93,7 @@ export const InsightDetail = () => {
             
             <div className="flex items-center justify-between border-y border-border/50 py-6">
               <div className="flex items-center gap-4">
-                <img src={post.author.avatar} alt={post.author.name} className="w-10 h-10 rounded-full object-cover" />
+                <img src={post.author.avatar} alt={post.author.name} width={40} height={40} loading="lazy" className="w-10 h-10 rounded-full object-cover" />
                 <div>
                   <p className="text-sm font-bold text-foreground">{post.author.name}</p>
                   <p className="text-xs text-muted-foreground">{post.author.role}</p>
@@ -113,7 +110,7 @@ export const InsightDetail = () => {
         {/* Hero Image */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl mb-16">
           <div className="w-full h-[400px] md:h-[600px] rounded-3xl overflow-hidden border border-border/50 shadow-2xl relative">
-            <img src={post.featuredImage} alt={`Illustration for ${post.title}`} className="w-full h-full object-cover" />
+            <img src={post.featuredImage} alt={`Illustration for ${post.title}`} width={1200} height={630} loading="eager" fetchPriority="high" className="w-full h-full object-cover" />
           </div>
         </div>
 
@@ -122,8 +119,14 @@ export const InsightDetail = () => {
           <article className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-black prose-headings:tracking-tight prose-a:text-primary prose-img:rounded-2xl">
             {post.content.split('\n').map((paragraph, i) => {
               const trimmed = paragraph.trim();
-              if (trimmed.startsWith('##')) {
-                return <h2 key={i} className="text-3xl font-black mt-12 mb-6">{trimmed.replace('##', '').trim()}</h2>;
+              if (trimmed === '***' || trimmed === '---') {
+                return <hr key={i} className="my-8 border-border/50" />;
+              }
+              if (trimmed.startsWith('### ')) {
+                return <h3 key={i} className="text-2xl font-bold mt-8 mb-4">{trimmed.replace('### ', '').trim()}</h3>;
+              }
+              if (trimmed.startsWith('## ')) {
+                return <h2 key={i} className="text-3xl font-black mt-12 mb-6">{trimmed.replace('## ', '').trim()}</h2>;
               }
               
               const isBullet = trimmed.startsWith('- ');
@@ -132,9 +135,14 @@ export const InsightDetail = () => {
               if (isBullet || isNumbered) {
                 const content = isBullet ? trimmed.replace(/^- /, '') : trimmed.replace(/^\d+\.\s/, '');
                 
-                const formattedContent = content.split(/(\*\*.*?\*\*)/).map((part, index) => {
+                const formattedContent = content.split(/(\*\*.*?\*\*|\[.*?\]\(.*?\))/).map((part, index) => {
                   if (part.startsWith('**') && part.endsWith('**')) {
                     return <strong key={index} className="text-foreground">{part.slice(2, -2)}</strong>;
+                  }
+                  if (part.startsWith('[') && part.includes('](')) {
+                    const text = part.slice(1, part.indexOf(']'));
+                    const url = part.slice(part.indexOf('](') + 2, -1);
+                    return <a key={index} href={url} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">{text}</a>;
                   }
                   return part;
                 });
@@ -144,9 +152,14 @@ export const InsightDetail = () => {
 
               if (trimmed === '') return null;
               
-              const formattedParagraph = paragraph.split(/(\*\*.*?\*\*)/).map((part, index) => {
+              const formattedParagraph = paragraph.split(/(\*\*.*?\*\*|\[.*?\]\(.*?\))/).map((part, index) => {
                 if (part.startsWith('**') && part.endsWith('**')) {
                   return <strong key={index} className="text-foreground">{part.slice(2, -2)}</strong>;
+                }
+                if (part.startsWith('[') && part.includes('](')) {
+                  const text = part.slice(1, part.indexOf(']'));
+                  const url = part.slice(part.indexOf('](') + 2, -1);
+                  return <a key={index} href={url} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">{text}</a>;
                 }
                 return part;
               });

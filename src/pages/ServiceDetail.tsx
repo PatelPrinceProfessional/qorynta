@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import SEO from '@/components/SEO';
 import { 
   ArrowLeft, 
@@ -22,21 +22,20 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from '@/components/ui/button';
+import NotFound from './NotFound';
 
 const ServiceDetail = () => {
   const { slug } = useParams<{ slug: string }>();
-  const navigate = useNavigate();
   
   const service = services.find(s => s.slug === slug);
 
   useEffect(() => {
-    if (!service) {
-      navigate('/services', { replace: true });
+    if (service) {
+      window.scrollTo(0, 0);
     }
-    window.scrollTo(0, 0);
-  }, [service, navigate]);
+  }, [service]);
 
-  if (!service) return null;
+  if (!service) return <NotFound />;
 
   // Find related insights (pillars or clusters that match this service's domain)
   // For simplicity, we search for keyword matches in the pillarTopic or category
@@ -64,16 +63,40 @@ const ServiceDetail = () => {
     }
   };
 
+  const faqSchema = service.faqs && service.faqs.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": service.faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.a
+      }
+    }))
+  } : null;
+
   return (
     <>
       <SEO
-        title={service.title}
-        description={service.description}
+        exactTitle={!!service.seoTitle}
+        title={service.seoTitle || service.title}
+        description={service.seoDescription || service.description}
         canonical={`https://www.qorynta.in/services/${service.slug}`}
       >
         <script type="application/ld+json">
           {JSON.stringify(schema)}
         </script>
+        {service.seoSchema && (
+          <script type="application/ld+json">
+            {JSON.stringify(service.seoSchema)}
+          </script>
+        )}
+        {faqSchema && (
+          <script type="application/ld+json">
+            {JSON.stringify(faqSchema)}
+          </script>
+        )}
       </SEO>
 
             
@@ -108,6 +131,18 @@ const ServiceDetail = () => {
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-6">
                   {service.title}
                 </h1>
+                
+                <div className="flex items-center flex-wrap gap-x-2 gap-y-1 text-xs sm:text-sm font-semibold text-muted-foreground bg-primary/5 border border-primary/10 rounded-full px-4 py-2 mb-6 w-fit">
+                  <span>💼 Clutch Verified</span>
+                  <span className="text-primary/40">•</span>
+                  <span>$25–49/hr</span>
+                  <span className="text-primary/40">•</span>
+                  <span>NDA First</span>
+                  <span className="text-primary/40">•</span>
+                  <span>24hr Response SLA</span>
+                  <span className="text-primary/40">•</span>
+                  <span>US/UK/UAE Clients Welcome</span>
+                </div>
                 <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8">
                   {service.longDescription}
                 </p>
@@ -252,29 +287,30 @@ const ServiceDetail = () => {
           </div>
         </section>
 
-        {/* See More Services */}
+        {/* Related Services (SEO Keyword Internal Linking) */}
         <section className="py-24 bg-muted/50 border-t border-border/50">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-            <h2 className="text-3xl font-bold mb-10 text-center">Explore Other Services</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {services.filter(s => s.slug !== service.slug).slice(0, 3).map((s) => (
-                <Link key={s.slug} to={`/services/${s.slug}`} className="group block bg-card rounded-2xl p-8 border border-border/50 shadow-sm hover:shadow-md transition-all hover:border-primary/30">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-                    <s.icon className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{s.title}</h3>
-                  <p className="text-muted-foreground text-sm line-clamp-3 mb-6">{s.description}</p>
-                  <span className="text-sm font-medium text-primary flex items-center gap-2">
-                    Learn More <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </span>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+            <h2 className="text-2xl font-bold mb-6">Related Services</h2>
+            <ul className="space-y-4">
+              <li>
+                <span className="text-primary mr-2">→</span>
+                <Link to="/services/ai-machine-learning" className="text-foreground hover:text-primary font-medium underline underline-offset-4 decoration-primary/30 hover:decoration-primary transition-all">
+                  AI & Machine Learning Development
                 </Link>
-              ))}
-            </div>
-            <div className="text-center mt-12">
-              <Link to="/services" className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 transition-colors">
-                View All Services <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
+              </li>
+              <li>
+                <span className="text-primary mr-2">→</span>
+                <Link to="/services/custom-web-development" className="text-foreground hover:text-primary font-medium underline underline-offset-4 decoration-primary/30 hover:decoration-primary transition-all">
+                  Custom Web Development
+                </Link>
+              </li>
+              <li>
+                <span className="text-primary mr-2">→</span>
+                <Link to="/services/mobile-app-development" className="text-foreground hover:text-primary font-medium underline underline-offset-4 decoration-primary/30 hover:decoration-primary transition-all">
+                  Mobile App Development
+                </Link>
+              </li>
+            </ul>
           </div>
         </section>
 
@@ -287,7 +323,7 @@ const ServiceDetail = () => {
                 {displayInsights.map((insight) => (
                   <Link key={insight.slug} to={`/insights/${insight.slug}`} className="group block bg-card rounded-2xl overflow-hidden border border-border/50 shadow-sm hover:shadow-md transition-all">
                     <div className="aspect-video overflow-hidden">
-                      <img src={insight.featuredImage} alt="" aria-hidden="true" loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                      <img src={insight.featuredImage} alt="" aria-hidden="true" loading="lazy" width={800} height={450} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     </div>
                     <div className="p-6">
                       <span className="text-xs font-bold text-primary tracking-widest uppercase mb-2 block">{insight.category}</span>

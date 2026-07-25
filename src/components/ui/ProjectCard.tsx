@@ -12,8 +12,9 @@ export const ProjectCard = ({ project }: { project: Project }) => {
       <div className="relative w-full h-56 md:h-64 overflow-hidden bg-slate-100 dark:bg-[#0A192F]">
         <img 
           src={project.image} 
-          alt="" 
-          aria-hidden="true"
+          alt={`Screenshot of ${project.title} project`}
+          width={600}
+          height={400}
           loading="lazy"
           decoding="async"
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.05] will-change-transform"

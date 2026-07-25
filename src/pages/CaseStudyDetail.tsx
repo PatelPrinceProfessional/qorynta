@@ -1,5 +1,5 @@
 import { useParams, Navigate, Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
+import SEO from '@/components/SEO';
 import { ArrowLeft, CheckCircle2, ChevronRight, Terminal, ArrowRight, Building2 } from 'lucide-react';
 import { allProjects } from '@/data/projects';
 import { CTABanner } from '@/components/home/CTABanner';
@@ -19,10 +19,11 @@ const CaseStudyDetail = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{project.title} | Case Study | Qorynta Services</title>
-        <meta name="description" content={project.overview} />
-      </Helmet>
+      <SEO
+        title={`${project.title} | Case Study | Qorynta Services`}
+        description={project.overview}
+        canonical={`https://www.qorynta.in/case-studies/${slug}`}
+      />
 
             
       <main className="min-h-screen bg-background pt-24 pb-20">
@@ -73,8 +74,12 @@ const CaseStudyDetail = () => {
             className="w-full h-[400px] md:h-[600px] rounded-3xl overflow-hidden shadow-2xl border border-border/50 relative"
           >
             <img 
-              src={project.image} 
-              alt={`Screenshot of ${project.title} project`} 
+              src={project.image}
+              alt={`${project.title} Interface`}
+              width={1200}
+              height={800}
+              loading="eager"
+              fetchPriority="high"
               className="w-full h-full object-cover object-center"
             />
           </motion.div>

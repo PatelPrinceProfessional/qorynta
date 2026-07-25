@@ -91,6 +91,7 @@ export const Navbar = () => {
 
   const navLinks = [
     { name: 'Home', path: '/' },
+    { name: 'Services', path: '/services' },
     { name: 'Industries', path: '/industries' },
     { name: 'Hire', path: '/hire' },
     { name: 'About', path: '/about' },
@@ -158,7 +159,7 @@ export const Navbar = () => {
             to="/" 
             className="absolute top-6 left-8 flex items-center gap-2 group pointer-events-auto transition-transform hover:scale-105 duration-300"
           >
-            <img src="/logo.webp" alt="Qorynta Services" className="h-10 w-auto object-contain" />
+            <img src="/logo.webp" alt="Qorynta Services" width={140} height={40} className="h-10 w-auto object-contain" />
           </Link>
 
           {/* Floating Navigation Dock (Right) */}
@@ -264,7 +265,7 @@ export const Navbar = () => {
                 </AnimatePresence>
               </motion.div>
 
-              {navLinks.slice(1).map((link) => (
+              {navLinks.filter(link => link.name !== 'Home' && link.name !== 'Services').map((link) => (
                 <motion.div 
                   key={link.name} 
                   className="relative" 

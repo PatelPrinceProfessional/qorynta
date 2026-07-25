@@ -174,7 +174,23 @@ const About = () => {
         title="About Qorynta – AI & Software Engineering Team"
         description="Learn about Qorynta’s mission, engineering culture, and how we build scalable digital products for global clients."
         canonical="https://www.qorynta.in/about"
-      />
+      >
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Qorynta Services",
+            "url": "https://www.qorynta.in",
+            "logo": "https://www.qorynta.in/logo.webp",
+            "description": "AI, machine learning, and custom software development agency.",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Ahmedabad",
+              "addressCountry": "IN"
+            }
+          })}
+        </script>
+      </SEO>
 
             
       <main className="min-h-screen bg-background pt-20 overflow-hidden relative">

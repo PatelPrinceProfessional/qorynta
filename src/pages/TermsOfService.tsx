@@ -1,13 +1,14 @@
-import { Helmet } from 'react-helmet';
+import SEO from '@/components/SEO';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 
 export const TermsOfService = () => {
   return (
     <>
-      <Helmet>
-        <title>Terms of Service | Qorynta Services</title>
-        <meta name="description" content="Terms of Service for Qorynta Services." />
-      </Helmet>
+      <SEO
+        title="Terms of Service | Qorynta Services"
+        description="Terms of Service and legal agreements for Qorynta Services."
+        canonical="https://www.qorynta.in/terms-of-service"
+      />
 
       
       <main className="min-h-screen bg-background pt-32 pb-24">

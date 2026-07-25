@@ -1,13 +1,14 @@
-import { Helmet } from 'react-helmet';
+import SEO from '@/components/SEO';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 
 export const PrivacyPolicy = () => {
   return (
     <>
-      <Helmet>
-        <title>Privacy Policy | Qorynta Services</title>
-        <meta name="description" content="Privacy Policy for Qorynta Services." />
-      </Helmet>
+      <SEO
+        title="Privacy Policy | Qorynta Services"
+        description="Privacy policy and data handling practices at Qorynta Services."
+        canonical="https://www.qorynta.in/privacy-policy"
+      />
 
       
       <main className="min-h-screen bg-background pt-32 pb-24">

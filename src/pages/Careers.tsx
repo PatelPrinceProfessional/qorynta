@@ -78,8 +78,9 @@ export const Careers = () => {
   return (
     <>
       <SEO
-        title="Careers at Qorynta – Software & AI Roles"
-        description="Join Qorynta’s engineering team. Open roles in full-stack, AI/ML, DevOps, and product design. Remote-friendly, Ahmedabad-based."
+        exactTitle={true}
+        title="Careers at Qorynta Services | Work on Global Projects | Ahmedabad India"
+        description="Join Qorynta Services and build products used by clients in 15+ countries. Open roles in React, Flutter, AI/ML, DevOps & UI/UX. Ahmedabad-based. Remote-first culture."
         canonical="https://www.qorynta.in/careers"
       />
 

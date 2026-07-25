@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /*.json$
 
 Sitemap: https://www.qorynta.in/sitemap.xml
+Host: https://www.qorynta.in

@@ -29,6 +29,9 @@ export interface ServiceData {
   techStack: string[];
   faqs: { q: string; a: string }[];
   category?: 'Core' | 'AI';
+  seoTitle?: string;
+  seoDescription?: string;
+  seoSchema?: any;
 }
 
 export const services: ServiceData[] = [
@@ -39,6 +42,8 @@ export const services: ServiceData[] = [
     slug: 'custom-web-development',
     icon: Code,
     title: 'Custom Web Development',
+    seoTitle: 'Custom Web Development Company India | React & Next.js | From $5K | Qorynta',
+    seoDescription: 'Custom web apps built in React, Next.js & Node.js. 50+ delivered globally. From $5,000. 8-week delivery. Clutch verified at $25–49/hr. Get a free 30-min technical consultation.',
     description: 'Pixel-perfect, performance-optimised websites and web apps built with React, Next.js, and Node.js.',
     longDescription: 'We build fast, secure, and scalable web applications tailored to your exact business needs. Leveraging modern JavaScript frameworks like React and Next.js, we ensure your web presence is not only visually stunning but also technically robust. Our development process prioritizes SEO, accessibility, and exceptional user experience across all devices.',
     tags: ['React', 'Next.js', 'Node.js', 'PostgreSQL'],
@@ -75,6 +80,8 @@ export const services: ServiceData[] = [
     slug: 'mobile-app-development',
     icon: Smartphone,
     title: 'Mobile App Development',
+    seoTitle: 'Mobile App Development Company India | Flutter & React Native | Qorynta',
+    seoDescription: 'iOS & Android apps built with Flutter and React Native. 8-week delivery to App Store & Play Store. 50+ apps shipped for US, UK & UAE clients. Clutch verified. Free quote today.',
     description: 'Native iOS & Android apps and cross-platform solutions using React Native and Flutter.',
     longDescription: 'Our mobile development team crafts native and cross-platform applications that deliver seamless experiences on iOS and Android. Whether you need a high-performance native app built with Swift/Kotlin or a cost-effective cross-platform solution using React Native or Flutter, we handle everything from UI/UX design to App Store deployment.',
     tags: ['React Native', 'Flutter', 'iOS', 'Android'],
@@ -145,31 +152,44 @@ export const services: ServiceData[] = [
     slug: 'ai-machine-learning',
     icon: Brain,
     title: 'AI & Machine Learning Solutions',
-    description: 'Production-grade ML models, LLM integrations, fraud detection systems, and data pipelines.',
-    longDescription: 'Transform your business operations with cutting-edge Artificial Intelligence and Machine Learning. We specialize in building and deploying custom ML models, integrating Large Language Models (LLMs) like OpenAI into existing workflows, and developing intelligent automation systems that save time and uncover hidden insights in your data.',
-    tags: ['Python', 'TensorFlow', 'LLMs', 'FinTech'],
+    seoTitle: 'AI & Machine Learning Development India | 99.2% Model Accuracy | Qorynta',
+    seoDescription: 'Production-grade AI and ML solutions: fraud detection (99.2% accuracy), LLM integrations, AI agents & generative AI for FinTech, SaaS & healthcare. Free architecture audit. $25–49/hr.',
+    seoSchema: {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "How much does AI development cost at Qorynta?", "acceptedAnswer": {"@type": "Answer", "text": "Qorynta offers AI and machine learning development at $25–49/hr (Clutch verified). Project-based pricing starts from $8,000 for custom ML models. Contact us for a free architecture audit."}},
+        {"@type": "Question", "name": "How long does it take to build an AI model?", "acceptedAnswer": {"@type": "Answer", "text": "A basic ML model takes 4–8 weeks. Complex AI systems with custom training data and production deployment pipelines take 12–20 weeks."}},
+        {"@type": "Question", "name": "Does Qorynta build generative AI and LLM integrations?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Qorynta builds custom ChatGPT-powered tools, LangChain pipelines, RAG systems, and AI agents using OpenAI, Anthropic, and open-source models."}},
+        {"@type": "Question", "name": "What industries does Qorynta build AI for?", "acceptedAnswer": {"@type": "Answer", "text": "We specialize in AI for FinTech (fraud detection, risk scoring), healthcare (diagnostic tools, patient data analysis), SaaS (recommendation engines, churn prediction), and e-commerce (personalization, inventory forecasting)."}},
+        {"@type": "Question", "name": "Can Qorynta deploy AI models to production on AWS or GCP?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Every AI model we build includes production deployment on your choice of AWS SageMaker, GCP Vertex AI, or Azure ML, with monitoring, logging, and CI/CD pipelines included."}}
+      ]
+    },
+    description: 'Production-grade ML models, LLM integrations, fraud detection systems, and scalable data pipelines designed to optimize business operations.',
+    longDescription: 'Transform your business operations and establish a formidable competitive advantage with our cutting-edge Artificial Intelligence and Machine Learning solutions. At Qorynta, we do not just implement AI for the sake of novelty; we architect highly specialized, scalable systems designed to solve concrete business challenges. From developing proprietary, custom-trained predictive analytics models that forecast market trends with pinpoint accuracy, to deeply integrating advanced Large Language Models (LLMs) like OpenAI’s GPT-4 and Anthropic’s Claude into your secure internal workflows. We empower your team to automate highly repetitive, manual tasks, freeing up human capital for strategic initiatives. Whether you require robust computer vision applications for manufacturing quality control, sophisticated Natural Language Processing (NLP) agents for autonomous 24/7 customer support, or highly accurate fraud detection algorithms for FinTech platforms, our elite AI engineers handle the entire lifecycle. We manage data extraction, cleansing, model training, fine-tuning, and the final production deployment on enterprise-grade cloud infrastructures like AWS SageMaker or Google Cloud Vertex AI, ensuring your AI operates securely, rapidly, and continuously without model drift.',
+    tags: ['Python', 'TensorFlow', 'LLMs', 'FinTech', 'Generative AI', 'Predictive Analytics'],
     features: [
-      'Custom Machine Learning Model Development',
-      'LLM (ChatGPT/Claude) Integration & Fine-tuning',
-      'Predictive Analytics & Forecasting',
-      'Computer Vision & Image Processing',
-      'Natural Language Processing (NLP)',
-      'Automated Data Pipelines & ETL'
+      'Custom Machine Learning Model Development & Hyperparameter Optimization',
+      'LLM (ChatGPT/Claude/Llama) Integration, Fine-tuning & Prompt Engineering',
+      'Advanced Predictive Analytics, Demand Forecasting & Risk Assessment',
+      'Computer Vision, Image Processing, & Automated Quality Inspection',
+      'Natural Language Processing (NLP) & Sentiment Analysis Pipelines',
+      'Automated Data Pipelines, ETL Workflows, & Big Data Processing'
     ],
     benefits: [
-      'Automate repetitive tasks and reduce operational costs',
-      'Gain competitive advantages through predictive insights',
-      'Enhance customer service with intelligent chatbots',
-      'Improve decision-making with data-driven models'
+      'Dramatically automate repetitive operational workflows and reduce manual labor costs by up to 80%',
+      'Empower leadership to make rapid, data-driven decisions utilizing real-time predictive analytics and forecasting',
+      'Significantly enhance customer experience and satisfaction metrics with intelligent, context-aware AI support agents',
+      'Maintain an industry-leading 99.2% model accuracy rate with our continuous production drift monitoring systems'
     ],
     process: [
-      { title: 'Data Audit', desc: 'Assessing your current data quality and availability.' },
-      { title: 'Model Selection', desc: 'Choosing the right algorithms or foundational models for the task.' },
-      { title: 'Training & Fine-tuning', desc: 'Training the models on your proprietary datasets.' },
-      { title: 'Integration', desc: 'Building the API layer to connect the AI with your software.' },
-      { title: 'Monitoring', desc: 'Tracking model accuracy and preventing drift in production.' }
+      { title: 'Comprehensive Data Audit & Strategy', desc: 'We begin by rigorously assessing your current data infrastructure, evaluating data quality, volume, and availability to ensure it can support advanced machine learning models.' },
+      { title: 'Algorithm & Foundation Model Selection', desc: 'Our AI architects select the optimal deep learning algorithms or foundational LLMs (open-source or proprietary) tailored specifically to your exact use case and budget.' },
+      { title: 'Model Training, Fine-Tuning & Validation', desc: 'We iteratively train and heavily fine-tune the selected models utilizing your secure, proprietary datasets, continually testing against strict validation sets to prevent overfitting.' },
+      { title: 'Seamless System Integration & API Development', desc: 'We engineer secure, high-performance API layers to seamlessly connect the newly trained AI models directly into your existing software ecosystem, web apps, or mobile platforms.' },
+      { title: 'Production Deployment & Continuous Monitoring', desc: 'We deploy your models to highly scalable cloud environments and establish continuous monitoring protocols to track real-time accuracy and immediately correct any concept drift.' }
     ],
-    techStack: ['Python', 'PyTorch', 'TensorFlow', 'OpenAI API', 'LangChain', 'Hugging Face'],
+    techStack: ['Python', 'PyTorch', 'TensorFlow', 'OpenAI API', 'LangChain', 'Hugging Face', 'AWS SageMaker', 'Google Vertex AI', 'Pinecone Vector DB'],
     faqs: [
       { q: 'Is my data safe when using LLMs?', a: 'We use enterprise-grade APIs (like Azure OpenAI) which guarantee your data is not used to train public models.' },
       { q: 'Do we need a massive dataset?', a: 'Not necessarily. With techniques like fine-tuning and RAG (Retrieval-Augmented Generation), we can leverage powerful models using relatively small amounts of your specific data.' }
@@ -215,31 +235,31 @@ export const services: ServiceData[] = [
     slug: 'e-commerce-solutions',
     icon: ShoppingCart,
     title: 'E-Commerce Solutions',
-    description: 'High-converting online stores built on Shopify, WooCommerce, or custom stacks.',
-    longDescription: 'Build a powerful online storefront that turns visitors into loyal customers. Whether you need a highly customized Shopify Plus setup, a robust WooCommerce integration, or a completely bespoke headless e-commerce platform, we deliver solutions optimized for speed, conversion, and seamless inventory management.',
-    tags: ['Shopify', 'WooCommerce', 'Stripe', 'Razorpay'],
+    description: 'High-converting online stores built on Shopify Plus, WooCommerce, or highly scalable custom headless stacks.',
+    longDescription: 'Construct a formidable, high-converting online storefront that seamlessly transforms casual visitors into highly loyal, repeat customers. At Qorynta, we recognize that modern e-commerce is about much more than a digital catalog; it requires a lightning-fast, ultra-secure, and highly intuitive user experience. Whether your enterprise requires a highly customized Shopify Plus ecosystem designed for massive global traffic, a robust WooCommerce integration tailored for complex product variations, or a completely bespoke, headless e-commerce architecture utilizing Next.js and Medusa.js for unparalleled frontend performance, we deliver end-to-end solutions. We optimize every pixel for speed, conversion rate optimization (CRO), and seamless mobile responsiveness. Furthermore, we deeply integrate your storefront with critical backend systems, including third-party logistics (3PL) providers, Enterprise Resource Planning (ERP) software, and Customer Relationship Management (CRM) tools to ensure your inventory management and fulfillment pipelines are fully automated and utterly flawless.',
+    tags: ['Shopify Plus', 'WooCommerce', 'Headless E-commerce', 'Stripe', 'Next.js Commerce'],
     features: [
-      'Custom Theme Design & Development',
-      'Headless E-commerce Architecture',
-      'Secure Payment Gateway Integration (Stripe, Razorpay)',
-      'Inventory & Order Management Systems (ERP syncing)',
-      'Conversion Rate Optimization (CRO)',
-      'B2B & Wholesale Portal Development'
+      'Bespoke Theme Design, Development, and Advanced UI/UX Optimization',
+      'High-Performance Headless E-commerce Architecture utilizing Next.js and Vercel',
+      'Highly Secure, PCI-Compliant Payment Gateway Integrations (Stripe, Razorpay, PayPal)',
+      'Complex Inventory, ERP, and Order Management System (OMS) API Synchronizations',
+      'Data-Driven Conversion Rate Optimization (CRO) and A/B Testing Implementation',
+      'Robust B2B Wholesale Portal Development with Custom Tiered Pricing Logic'
     ],
     benefits: [
-      'Frictionless checkout experiences increase sales',
-      'Scalable platforms handle Black Friday traffic levels',
-      'Automated inventory syncing reduces manual errors',
-      'Deep analytics integration provides actionable sales data'
+      'Deliver frictionless, one-click checkout experiences that drastically reduce cart abandonment and increase top-line sales',
+      'Rely on infinitely scalable, cloud-native platforms that effortlessly handle massive Black Friday and holiday traffic spikes',
+      'Eliminate manual data entry errors and reduce overhead through automated, real-time inventory and fulfillment syncing',
+      'Unlock deep, actionable business intelligence through comprehensive analytics and customized sales dashboard integrations'
     ],
     process: [
-      { title: 'Platform Selection', desc: 'Choosing between Shopify, Medusa, or custom builds based on SKU volume.' },
-      { title: 'UI/UX Design', desc: 'Designing high-conversion product pages and checkout flows.' },
-      { title: 'Development', desc: 'Building the frontend and integrating headless APIs.' },
-      { title: 'ERP/CRM Integration', desc: 'Connecting inventory and customer data to your back office.' },
-      { title: 'Launch & CRO', desc: 'Deploying the store and running A/B tests to maximize sales.' }
+      { title: 'Platform Evaluation & Strategic Architecture Selection', desc: 'We consult deeply with your team to evaluate and select the optimal platform (Shopify, Medusa, WooCommerce, or Custom) based on your exact SKU volume, traffic projections, and integration needs.' },
+      { title: 'Conversion-Centric UI/UX Design & Prototyping', desc: 'Our elite design team crafts visually stunning, high-conversion product landing pages, intuitive navigation structures, and optimized, multi-step checkout flows.' },
+      { title: 'Frontend Engineering & Headless API Integration', desc: 'Our developers rapidly build the lightning-fast frontend application and seamlessly integrate it with highly secure, scalable headless backend APIs and database systems.' },
+      { title: 'Complex ERP, CRM & Logistics Integration', desc: 'We meticulously connect your new storefront to your existing back-office software, ensuring customer data, inventory levels, and shipping logistics synchronize flawlessly.' },
+      { title: 'Rigorous Testing, Deployment & Ongoing CRO', desc: 'We subject the platform to extreme load testing and security audits prior to launch, followed by continuous A/B testing post-launch to continually maximize your digital sales.' }
     ],
-    techStack: ['Shopify Liquid', 'Next.js Commerce', 'Medusa.js', 'Stripe', 'Sanity CMS'],
+    techStack: ['Shopify Liquid', 'Next.js Commerce', 'Medusa.js', 'Stripe API', 'Sanity CMS', 'PostgreSQL', 'Redis'],
     faqs: [
       { q: 'Do you build headless e-commerce?', a: 'Yes, we frequently build Next.js frontends powered by Shopify or Medusa.js backends for maximum performance.' },
       { q: 'Can you migrate our store from Magento?', a: 'Absolutely. We handle secure data migration for products, customers, and order history.' }
@@ -492,9 +512,11 @@ export const services: ServiceData[] = [
   },
   {
     slug: 'ai-chatbots',
-    icon: MessageSquare,
-    title: 'AI Chatbots & Agents',
-    description: 'Next-generation conversational interfaces that actually solve customer problems.',
+    icon: Bot,
+    title: 'AI Chatbots & Virtual Assistants',
+    seoTitle: 'AI Chatbot Development Company India | Custom LLM Bots | Qorynta',
+    seoDescription: 'Custom AI chatbots powered by GPT-4, Claude & open-source LLMs. Deployed for customer support, lead gen & internal tools. 80% support ticket reduction for clients. Free demo.',
+    description: 'Intelligent, context-aware chatbots powered by Large Language Models (LLMs).',
     longDescription: 'Move beyond frustrating decision-tree bots. We build autonomous AI agents capable of understanding intent, executing API calls (like processing a refund or booking a flight), and conversing naturally with your customers across web, WhatsApp, and Slack.',
     tags: ['Conversational AI', 'Agents', 'WhatsApp'],
     features: [
@@ -523,5 +545,41 @@ export const services: ServiceData[] = [
       { q: 'What happens if the AI does not know the answer?', a: 'We implement strict confidence thresholds. If the AI is unsure, it smoothly transitions the chat to a live human agent with full context.' }
     ],
     category: 'AI'
+  },
+  {
+    slug: 'ecommerce-solutions',
+    icon: ShoppingCart,
+    title: 'E-Commerce Solutions',
+    seoTitle: 'E-Commerce Development Company India | Shopify & Custom Platforms | Qorynta',
+    seoDescription: 'Custom e-commerce platforms that generate revenue 24/7. Shopify, WooCommerce & bespoke builds. Average 3.2x conversion uplift for clients. From $5,000. Get a free audit.',
+    description: 'Custom e-commerce platforms that generate revenue 24/7. Shopify, WooCommerce & bespoke builds.',
+    longDescription: 'We build highly scalable e-commerce platforms designed to maximize conversion rates and revenue. From headless Shopify setups to fully custom bespoke marketplaces, our solutions integrate deeply with your CRM, inventory, and payment gateways to deliver a frictionless shopping experience.',
+    tags: ['Shopify', 'React', 'Next.js', 'Stripe'],
+    features: [
+      'Custom Storefront Development',
+      'Headless E-Commerce Architecture',
+      'Payment Gateway Integration',
+      'Inventory & CRM Sync',
+      'Performance & Conversion Optimization'
+    ],
+    benefits: [
+      'Increase conversion rates and average order value',
+      'Handle high traffic during sales events effortlessly',
+      'Streamline back-office operations with automation',
+      'Deliver lightning-fast shopping experiences'
+    ],
+    process: [
+      { title: 'Strategy', desc: 'Analyzing your target audience and product catalog.' },
+      { title: 'Design', desc: 'Creating a high-converting UI/UX optimized for mobile.' },
+      { title: 'Development', desc: 'Building the storefront and integrating backend APIs.' },
+      { title: 'Testing', desc: 'End-to-end testing of the checkout flow.' }
+    ],
+    techStack: ['Next.js', 'Shopify Plus', 'Stripe', 'Node.js'],
+    faqs: [
+      { q: 'Do you work with Shopify?', a: 'Yes, we specialize in both standard Shopify development and Headless Shopify builds using Next.js.' },
+      { q: 'Can you migrate my existing store?', a: 'Absolutely. We safely migrate data, customers, and orders from legacy platforms to modern stacks.' }
+    ],
+    category: 'Core'
   }
 ];
+

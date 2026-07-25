@@ -155,7 +155,28 @@ const Contact = () => {
         title="Contact Qorynta – Free Consultation"
         description="Get a free consultation for your next AI, web, or mobile project. Tell us about your goals and timeline."
         canonical="https://www.qorynta.in/contact"
-      />
+      >
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            "name": "Contact Qorynta Services",
+            "description": "Get in touch for a free consultation on AI, Web, and Mobile development.",
+            "url": "https://www.qorynta.in/contact",
+            "mainEntity": {
+              "@type": "Organization",
+              "name": "Qorynta Services",
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+91-9876543210", 
+                "contactType": "customer service",
+                "areaServed": ["US", "UK", "IN"],
+                "availableLanguage": "en"
+              }
+            }
+          })}
+        </script>
+      </SEO>
 
             <main className="min-h-screen bg-[#F8FAFC] dark:bg-background pt-20 relative overflow-hidden transition-colors duration-500">
         

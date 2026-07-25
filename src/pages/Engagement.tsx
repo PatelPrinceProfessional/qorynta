@@ -62,10 +62,11 @@ const models = [
 export const Engagement = () => {
   return (
     <>
-      <Helmet>
-        <title>Engagement Models & Pricing | Qorynta Services</title>
-        <meta name="description" content="Discover how to partner with Qorynta Services. We offer Dedicated Teams, Fixed Price, and Time & Materials engagement models tailored for enterprise needs." />
-      </Helmet>
+      <SEO
+        title="Engagement Models | Dedicated Teams & Fixed Price | Qorynta"
+        description="Flexible engagement models for startups and enterprises. Choose from Dedicated Teams, Fixed Price, or Time & Material to fit your budget and timeline."
+        canonical="https://www.qorynta.in/engagement"
+      />
 
       
       <main className="min-h-screen bg-background pt-20">

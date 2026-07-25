@@ -54,10 +54,11 @@ const techStack = [
 export const Hire = () => {
   return (
     <>
-      <Helmet>
-        <title>Hire Top Engineering Talent | Qorynta Services</title>
-        <meta name="description" content="Scale your engineering capacity with Qorynta's elite talent. Discover our dedicated teams, staff augmentation, and project-based engagement models." />
-      </Helmet>
+      <SEO
+        title="Hire Software Engineers & AI Experts | Team Augmentation | Qorynta"
+        description="Hire dedicated software developers, AI/ML engineers, and UI/UX designers from Qorynta Services to scale your engineering capacity rapidly."
+        canonical="https://www.qorynta.in/hire"
+      />
 
       <main className="min-h-screen bg-background pt-20 overflow-hidden">
         

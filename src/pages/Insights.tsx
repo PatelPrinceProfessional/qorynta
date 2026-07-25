@@ -40,8 +40,9 @@ export const Insights = () => {
   return (
     <>
       <SEO
-        title="Insights – AI, Web & Mobile Engineering"
-        description="Technical articles on AI, machine learning, web/mobile development, and product engineering from the Qorynta team."
+        exactTitle={true}
+        title="Tech Insights Blog | Web Dev, AI & Software Engineering | Qorynta"
+        description="Expert articles on web development, mobile apps, AI/ML, cloud DevOps & SaaS engineering. Written by the Qorynta team for founders, CTOs & product managers. Published weekly."
         canonical="https://www.qorynta.in/insights"
       />
 
@@ -76,7 +77,15 @@ export const Insights = () => {
                 <ScrollReveal key={idx} delay={0.1 * idx}>
                   <Link to={`/insights/${pillar.slug}`} className="group block h-full relative rounded-3xl overflow-hidden border border-border/50 bg-card shadow-lg hover:shadow-2xl transition-all duration-500">
                     <div className="relative h-48 overflow-hidden">
-                      <img src={pillar.featuredImage} alt="" aria-hidden="true" loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
+                      <img 
+                        src={pillar.featuredImage} 
+                        alt="" 
+                        aria-hidden="true" 
+                        loading="lazy" 
+                        width={800}
+                        height={450}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" 
+                      />
                       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
                       <div className="absolute bottom-4 left-6">
                         <span className="px-3 py-1 bg-primary/20 text-primary text-xs font-bold rounded-full backdrop-blur-md border border-primary/20">
@@ -135,7 +144,15 @@ export const Insights = () => {
                 <ScrollReveal key={idx} delay={0.1 * (idx % 3)}>
                   <Link to={`/insights/${post.slug}`} className="group flex flex-col h-full bg-card rounded-3xl overflow-hidden border border-border/50 shadow-sm hover:shadow-xl hover:border-primary/30 transition-all duration-500">
                     <div className="relative h-56 overflow-hidden">
-                      <img src={post.featuredImage} alt="" aria-hidden="true" loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                      <img 
+                        src={post.featuredImage} 
+                        alt="" 
+                        aria-hidden="true" 
+                        loading="lazy" 
+                        width={800}
+                        height={450}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                      />
                     </div>
                     <div className="p-6 flex flex-col flex-1">
                       <span className="text-xs font-bold text-primary tracking-widest uppercase mb-4">{post.category}</span>
