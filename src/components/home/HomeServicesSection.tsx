@@ -96,20 +96,20 @@ const CompactServiceCard = ({ service, index, onClick }: any) => {
           transformStyle: "preserve-3d",
           willChange: "transform"
         }}
-        className="group cursor-pointer flex flex-col items-center text-center p-6 md:p-8 bg-white dark:bg-card rounded-3xl border-2 border-slate-200 dark:border-border/80 shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.15)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.4)] dark:hover:shadow-[0_30px_60px_rgba(255,255,255,0.05)] transition-shadow duration-300 h-full"
+        className="group cursor-pointer flex flex-col items-center text-center p-4 sm:p-6 md:p-8 bg-white dark:bg-card rounded-3xl border-2 border-slate-200 dark:border-border/80 shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.15)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.4)] dark:hover:shadow-[0_30px_60px_rgba(255,255,255,0.05)] transition-shadow duration-300 h-full"
       >
         {/* Colorful Icon Container (Moves slightly forward on Z-axis to enhance 3D feel) */}
         <motion.div 
           style={{ translateZ: 30 }}
-          className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110 ${colors.bg}`}
+          className={`w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex items-center justify-center mb-3 sm:mb-4 md:mb-5 transition-transform duration-300 group-hover:scale-110 ${colors.bg}`}
         >
-          <service.icon className={`w-8 h-8 ${colors.text}`} strokeWidth={2} />
+          <service.icon className={`w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 ${colors.text}`} strokeWidth={2} />
         </motion.div>
         
         {/* Bold Blue Title */}
         <motion.h3 
           style={{ translateZ: 20 }}
-          className="text-lg font-bold text-[#0F172A] dark:text-foreground leading-tight mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"
+          className="text-[13px] sm:text-sm md:text-lg font-bold text-[#0F172A] dark:text-foreground leading-tight mb-2 md:mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"
         >
           {service.title}
         </motion.h3>
@@ -117,7 +117,7 @@ const CompactServiceCard = ({ service, index, onClick }: any) => {
         {/* Single-sentence succinct description */}
         <motion.p 
           style={{ translateZ: 10 }}
-          className="text-xs sm:text-sm text-slate-500 dark:text-muted-foreground font-medium leading-relaxed line-clamp-2"
+          className="text-[11px] sm:text-xs md:text-sm text-slate-500 dark:text-muted-foreground font-medium leading-snug md:leading-relaxed line-clamp-2 md:line-clamp-3"
         >
           {service.description}
         </motion.p>
@@ -147,15 +147,15 @@ export const HomeServicesSection = () => {
           </h2>
           
           {/* Subheader Ribbon */}
-          <div className="inline-flex items-center justify-center px-6 md:px-10 py-3 md:py-4 bg-blue-600 dark:bg-blue-600 rounded-full shadow-lg transform -rotate-1 hover:rotate-0 transition-transform duration-300">
-            <p className="text-sm md:text-lg text-white font-bold tracking-wider uppercase">
+          <div className="inline-flex items-center justify-center px-4 sm:px-6 md:px-10 py-2 sm:py-3 md:py-4 bg-blue-600 dark:bg-blue-600 rounded-full shadow-lg transform -rotate-1 hover:rotate-0 transition-transform duration-300">
+            <p className="text-xs sm:text-sm md:text-lg text-white font-bold tracking-wider uppercase text-center">
               To Empower Your Ideas & Grow Your Business
             </p>
           </div>
         </ScrollReveal>
 
-        {/* Dense 5x2 Matrix Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+        {/* Dense 5x2 Matrix Grid for Desktop, 2-column Grid for Mobile */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6">
           {services.map((service, index) => (
             <CompactServiceCard
               key={service.slug}

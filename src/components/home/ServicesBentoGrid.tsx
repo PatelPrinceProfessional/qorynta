@@ -77,7 +77,7 @@ const TiltCard = ({ service, isFlagship, isSecondary }: { service: Service, isFl
         transformStyle: "preserve-3d",
       }}
       className={`
-        group relative flex flex-col justify-between overflow-hidden rounded-3xl p-8 
+        group relative flex flex-col justify-between overflow-hidden rounded-3xl p-4 sm:p-5 md:p-8 
         bg-white/40 dark:bg-black/40 backdrop-blur-2xl border ${colors.border} shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.2)]
         transition-colors duration-300 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2
         ${colors.hoverBorder}
@@ -102,31 +102,31 @@ const TiltCard = ({ service, isFlagship, isSecondary }: { service: Service, isFl
       )}
 
       {isFlagship && (
-        <div className="absolute top-0 right-0 pt-6 pr-8 flex items-start z-10 pointer-events-none" style={{ transform: 'translateZ(20px)' }}>
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-primary text-primary-foreground shadow-sm">
+        <div className="absolute top-0 right-0 pt-4 pr-4 md:pt-6 md:pr-8 flex items-start z-10 pointer-events-none" style={{ transform: 'translateZ(20px)' }}>
+          <span className="inline-flex items-center px-2 py-0.5 md:px-3 md:py-1 rounded-full text-[9px] md:text-xs font-semibold bg-primary text-primary-foreground shadow-sm">
             Most requested
           </span>
         </div>
       )}
       
       <div className="relative z-10" style={{ transform: 'translateZ(30px)' }}>
-        <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-colors duration-300 ${colors.bg} ${colors.hoverBg}`}>
-          <service.icon className={`w-7 h-7 ${colors.text}`} aria-hidden="true" />
+        <div className={`w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl flex items-center justify-center mb-3 md:mb-6 transition-colors duration-300 ${colors.bg} ${colors.hoverBg}`}>
+          <service.icon className={`w-5 h-5 md:w-7 md:h-7 ${colors.text}`} aria-hidden="true" />
         </div>
         
-        <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3 tracking-tight">
+        <h3 className="text-sm sm:text-base md:text-xl lg:text-2xl font-bold text-foreground mb-2 md:mb-3 tracking-tight leading-tight">
           {service.name}
         </h3>
         
-        <p className="text-sm text-muted-foreground leading-relaxed mb-6 max-w-md">
+        <p className="text-[10px] sm:text-[11px] md:text-sm text-muted-foreground leading-snug md:leading-relaxed mb-4 md:mb-6 max-w-md line-clamp-3 md:line-clamp-none">
           {service.tagline}
         </p>
         
-        <div className="flex flex-wrap gap-2 mb-8 md:mb-4">
+        <div className="flex flex-wrap gap-1.5 md:gap-2 mb-6 md:mb-4">
           {service.tags.map(tag => (
             <span 
               key={tag} 
-              className={`text-xs font-semibold px-2.5 py-1 rounded-md bg-muted/40 backdrop-blur-md border border-border/40 ${colors.text}`}
+              className={`text-[8.5px] sm:text-[9.5px] md:text-xs font-semibold px-1.5 py-0.5 md:px-2.5 md:py-1 rounded-md bg-muted/40 backdrop-blur-md border border-border/40 ${colors.text}`}
             >
               {tag}
             </span>
@@ -145,7 +145,7 @@ const TiltCard = ({ service, isFlagship, isSecondary }: { service: Service, isFl
 export const ServicesBentoGrid: React.FC = () => {
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 perspective-1000">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[minmax(180px,auto)]">
+      <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 auto-rows-[minmax(180px,auto)]">
         {servicesConfig.map((service, index) => {
           const isFlagship = service.flagship;
           const isSecondary = index === 4; 

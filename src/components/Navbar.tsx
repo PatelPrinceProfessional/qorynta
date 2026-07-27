@@ -12,6 +12,7 @@ export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isMobileServicesExpanded, setIsMobileServicesExpanded] = useState(false);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const location = useLocation();
   const drawerRef = useRef<HTMLDivElement>(null);
@@ -325,16 +326,95 @@ export const Navbar = () => {
 
         <div className="flex-1 overflow-y-auto pt-20 pb-8 px-6 flex flex-col">
           <div className="flex flex-col space-y-6 flex-1">
-            {navLinks.map((link) => (
-              <Link 
-                key={link.name}
-                to={link.path} 
-                className="text-xl font-medium text-slate-900 dark:text-foreground hover:text-blue-600 transition-colors" 
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {link.name}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              if (link.name === 'Services') {
+                return (
+                  <div key={link.name} className="flex flex-col">
+                    <button 
+                      onClick={() => setIsMobileServicesExpanded(!isMobileServicesExpanded)}
+                      className="flex items-center justify-between text-xl font-medium text-slate-900 dark:text-foreground hover:text-blue-600 transition-colors"
+                    >
+                      {link.name}
+                      <ChevronDown className={cn("w-5 h-5 transition-transform duration-300", isMobileServicesExpanded && "rotate-180")} />
+                    </button>
+                    
+                    <AnimatePresence>
+                      {isMobileServicesExpanded && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                          className="overflow-hidden"
+                        >
+                          <div className="pt-4 pb-2">
+                            <div className="grid grid-cols-2 gap-x-4 gap-y-6 bg-slate-50 dark:bg-slate-900/50 p-4 rounded-xl border border-slate-100 dark:border-border/50">
+                              
+                              {/* Core Services Column */}
+                              <div>
+                                <h4 className="font-mono text-[10px] font-extrabold tracking-[0.15em] text-slate-500 dark:text-muted-foreground mb-4">CORE</h4>
+                                <div className="space-y-4">
+                                  {services.filter(s => s.category === 'Core').slice(0, 5).map((service, idx) => (
+                                    <Link
+                                      key={idx}
+                                      to={`/services/${service.slug}`}
+                                      className="block text-[11px] font-medium text-slate-700 dark:text-foreground/90 hover:text-blue-600 dark:hover:text-blue-400 transition-colors leading-tight"
+                                      onClick={() => setIsMobileMenuOpen(false)}
+                                    >
+                                      {service.title}
+                                    </Link>
+                                  ))}
+                                </div>
+                              </div>
+                              
+                              {/* AI Services Column */}
+                              <div>
+                                <h4 className="font-mono text-[10px] font-extrabold tracking-[0.15em] text-slate-500 dark:text-muted-foreground mb-4">AI</h4>
+                                <div className="space-y-4">
+                                  {services.filter(s => s.category === 'AI').map((service, idx) => (
+                                    <Link
+                                      key={idx}
+                                      to={`/services/${service.slug}`}
+                                      className="block text-[11px] font-medium text-slate-700 dark:text-foreground/90 hover:text-amber-600 dark:hover:text-amber-400 transition-colors leading-tight"
+                                      onClick={() => setIsMobileMenuOpen(false)}
+                                    >
+                                      {service.title}
+                                    </Link>
+                                  ))}
+                                </div>
+                              </div>
+                              
+                              {/* View All Services Button */}
+                              <div className="col-span-2 pt-4 mt-2 border-t border-slate-200 dark:border-border/50">
+                                <Link 
+                                  to="/services" 
+                                  className="block w-full text-center py-2.5 bg-white dark:bg-muted/50 text-slate-900 dark:text-foreground rounded-lg text-xs font-bold border border-slate-200 dark:border-border/50 hover:bg-slate-50 dark:hover:bg-muted transition-colors shadow-sm"
+                                  onClick={() => setIsMobileMenuOpen(false)}
+                                >
+                                  View All Services
+                                </Link>
+                              </div>
+
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              }
+
+              return (
+                <Link 
+                  key={link.name}
+                  to={link.path} 
+                  className="text-xl font-medium text-slate-900 dark:text-foreground hover:text-blue-600 transition-colors" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </div>
