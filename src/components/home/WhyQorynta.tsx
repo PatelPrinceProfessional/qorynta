@@ -4,12 +4,12 @@ import { ScrollReveal } from '@/components/ui/ScrollReveal';
 
 export const WhyQorynta = () => {
   return (
-    <section className="py-16 md:py-24 relative overflow-hidden bg-transparent group">
+    <section className="py-16 md:py-24 relative overflow-hidden bg-gradient-to-br from-[#E3F2FF] to-[#F2FAF4] dark:bg-none dark:bg-background group transition-colors duration-500">
       {/* Decorative dot grid top right */}
       <div 
-        className="absolute top-12 right-12 w-32 h-32 pointer-events-none opacity-10"
+        className="absolute top-12 right-12 w-32 h-32 pointer-events-none opacity-40"
         style={{
-          backgroundImage: 'radial-gradient(circle, #000 1.5px, transparent 1.5px)',
+          backgroundImage: 'radial-gradient(circle, var(--tw-gradient-from, #99CAFF) 1.5px, transparent 1.5px)',
           backgroundSize: '16px 16px'
         }}
       />
@@ -45,7 +45,10 @@ export const WhyQorynta = () => {
 
               {/* Center Primary Phone (FinTech App) */}
               <ScrollReveal direction="up" delay={0.1} className="relative mx-auto z-10 w-[200px] sm:w-[260px]">
-                <div className="w-full h-[420px] sm:h-[540px] bg-black rounded-[2.5rem] sm:rounded-[3rem] border-[8px] sm:border-[10px] border-black shadow-2xl overflow-hidden z-10 transition-transform hover:-translate-y-2 hover:scale-105 duration-500">
+                {/* Mobile Mockup Glow */}
+                <div className="absolute inset-0 bg-[#99CAFF]/25 blur-[50px] scale-[1.2] rounded-full z-0 pointer-events-none"></div>
+                
+                <div className="w-full h-[420px] sm:h-[540px] bg-black rounded-[2.5rem] sm:rounded-[3rem] border-[8px] sm:border-[10px] border-black shadow-2xl overflow-hidden z-10 transition-transform hover:-translate-y-2 hover:scale-105 duration-500 relative">
                   {/* Notch */}
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[40%] h-6 sm:h-7 bg-black rounded-b-2xl sm:rounded-b-3xl z-20"></div>
                   {/* Screen Content Image */}
@@ -58,51 +61,46 @@ export const WhyQorynta = () => {
 
           {/* Right-Side Content Block */}
           <div className="flex flex-col justify-center relative">
-            {/* Background glowing blob for the text section */}
-            <div className="absolute -inset-4 bg-primary/5 rounded-3xl blur-2xl -z-10" />
-            
             <ScrollReveal delay={0.4}>
               {/* Upper Tag */}
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm mb-6 border border-primary/20 shadow-[0_0_15px_rgba(34,211,238,0.2)]">
+              <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#E3F2FF] dark:bg-primary/10 text-[#004EE0] dark:text-primary font-[600] text-[13px] tracking-[0.5px] mb-6 border border-[#99CAFF] dark:border-primary/20 shadow-sm dark:shadow-[0_0_15px_rgba(34,211,238,0.2)]">
                 About Our Company ~
               </div>
 
               {/* Headline */}
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-6">
-                Choose <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 animate-pulse-slow">The Best</span> IT Service Company
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#00072D] dark:text-foreground leading-tight mb-6">
+                Choose <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#004EE0] via-[#0069D9] to-[#183EFF] dark:from-blue-600 dark:to-cyan-500">The Best</span> IT Service Company
               </h2>
 
               {/* Description */}
-              <p className="text-muted-foreground text-lg leading-relaxed mb-10 font-medium">
-                <span className="text-foreground font-semibold">Qorynta services</span> help businesses build powerful websites, mobile apps, and custom software. We deliver quality solutions with transparent communication, on-time delivery, and reliable support to help your business grow online.
+              <p className="text-[#051650] dark:text-muted-foreground text-lg leading-relaxed mb-10 font-medium">
+                <span className="text-[#00072D] dark:text-foreground font-bold">Qorynta services</span> help businesses build <span className="text-[#004EE0] dark:text-foreground font-[600]">powerful websites, mobile apps, and custom software</span>. We deliver quality solutions with <span className="text-[#0A2472] dark:text-foreground font-[600]">transparent communication, on-time delivery, and reliable support</span> to help your business <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#004EE0] to-[#0069D9] dark:from-blue-600 dark:to-cyan-500 font-[700]">grow online</span>.
               </p>
 
               {/* Feature Cards */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
                 {/* Card 1 */}
-                <div className="group relative p-6 rounded-2xl bg-card border border-border/50 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="group relative p-6 rounded-[16px] bg-[#FFFFFF] dark:bg-card bg-gradient-to-br from-[#E3F2FF]/30 to-transparent dark:from-transparent dark:to-transparent border border-[#99CAFF]/60 dark:border-border/50 shadow-[0px_10px_25px_rgba(5,22,80,0.04)] dark:shadow-sm hover:shadow-[0px_16px_35px_rgba(0,78,224,0.15)] dark:hover:shadow-lg hover:border-[1.5px] hover:border-[#004EE0] dark:hover:border-border/50 transition-all duration-300 hover:-translate-y-[3px] overflow-hidden">
                   <div className="relative flex items-start gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 flex items-center justify-center border border-blue-100 dark:border-blue-800/50 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_15px_rgba(37,99,235,0.2)]">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-[#E3F2FF] dark:bg-blue-900/20 text-[#004EE0] dark:text-blue-400 flex items-center justify-center border border-[#99CAFF] dark:border-blue-800/50 dark:shadow-[0_0_15px_rgba(37,99,235,0.2)] group-hover:scale-110 transition-transform duration-300 shadow-sm">
                       <Briefcase className="w-6 h-6" strokeWidth={1.5} />
                     </div>
                     <div>
-                      <h3 className="font-bold text-foreground text-lg mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Business Solution</h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed">Tailored strategies & robust software to solve complex challenges.</p>
+                      <h3 className="font-[700] text-[#00072D] text-lg mb-1 group-hover:text-[#004EE0] dark:hover:text-primary dark:group-hover:text-blue-400 transition-colors">Business Solution</h3>
+                      <p className="text-[#051650] dark:text-muted-foreground text-sm leading-relaxed">Tailored strategies & robust software to solve complex challenges.</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Card 2 */}
-                <div className="group relative p-6 rounded-2xl bg-card border border-border/50 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="group relative p-6 rounded-[16px] bg-[#FFFFFF] dark:bg-card bg-gradient-to-br from-[#E3F2FF]/30 to-transparent dark:from-transparent dark:to-transparent border border-[#99CAFF]/60 dark:border-border/50 shadow-[0px_10px_25px_rgba(5,22,80,0.04)] dark:shadow-sm hover:shadow-[0px_16px_35px_rgba(0,78,224,0.15)] dark:hover:shadow-lg hover:border-[1.5px] hover:border-[#004EE0] dark:hover:border-border/50 transition-all duration-300 hover:-translate-y-[3px] overflow-hidden">
                   <div className="relative flex items-start gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-cyan-50 dark:bg-cyan-900/20 text-cyan-600 dark:text-cyan-400 flex items-center justify-center border border-cyan-100 dark:border-cyan-800/50 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_15px_rgba(6,182,212,0.2)]">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-[#E3F2FF] dark:bg-cyan-900/20 text-[#004EE0] dark:text-cyan-400 flex items-center justify-center border border-[#99CAFF] dark:border-cyan-800/50 dark:shadow-[0_0_15px_rgba(6,182,212,0.2)] group-hover:scale-110 transition-transform duration-300 shadow-sm">
                       <Headset className="w-6 h-6" strokeWidth={1.5} />
                     </div>
                     <div>
-                      <h3 className="font-bold text-foreground text-lg mb-1 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">Technical Support</h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed">24/7 dedicated support to ensure systems run without downtime.</p>
+                      <h3 className="font-[700] text-[#00072D] text-lg mb-1 group-hover:text-[#004EE0] dark:hover:text-primary dark:group-hover:text-cyan-400 transition-colors">Technical Support</h3>
+                      <p className="text-[#051650] dark:text-muted-foreground text-sm leading-relaxed">24/7 dedicated support to ensure systems run without downtime.</p>
                     </div>
                   </div>
                 </div>
@@ -110,15 +108,15 @@ export const WhyQorynta = () => {
 
               {/* Action Row */}
               <div className="flex flex-col sm:flex-row items-center gap-6">
-                <Link to="/contact" className="w-full sm:w-auto px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-xl hover:bg-primary/90 shadow-[0_0_20px_rgba(34,211,238,0.4)] hover:shadow-[0_0_30px_rgba(34,211,238,0.6)] transition-all duration-300 flex items-center justify-center gap-2 group/btn">
+                <Link to="/contact" className="w-full sm:w-auto px-8 py-4 bg-gradient-to-br from-[#00072D] to-[#0A2472] dark:from-primary dark:to-primary text-[#F2FAF4] dark:text-primary-foreground font-bold tracking-wide rounded-xl hover:from-[#004EE0] hover:to-[#0A2472] dark:hover:from-primary/90 dark:hover:to-primary/90 shadow-md dark:shadow-[0_0_20px_rgba(34,211,238,0.4)] hover:shadow-[0px_10px_25px_rgba(0,78,224,0.35)] dark:hover:shadow-[0_0_30px_rgba(34,211,238,0.6)] transition-all duration-300 flex items-center justify-center gap-2 group/btn">
                   Contact Us!
                   <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
                 </Link>
-                <div className="flex items-center gap-3 text-foreground font-semibold text-lg bg-muted/50 px-5 py-3 rounded-xl border border-border/50 hover:bg-muted transition-colors">
-                  <div className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.8)]" />
+                <div className="flex items-center gap-3 text-[#00072D] font-[700] text-lg bg-[#FFFFFF]/90 backdrop-blur-sm px-5 py-3 rounded-xl border border-[#99CAFF] dark:border-primary/20 shadow-sm dark:shadow-[0_0_15px_rgba(34,211,238,0.2)] transition-colors">
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#0069D9] dark:bg-green-500 animate-pulse shadow-[0_0_8px_rgba(0,105,217,0.8)] dark:shadow-[0_0_8px_rgba(34,197,94,0.8)]" />
                   <div className="flex flex-col">
-                    <span className="text-muted-foreground font-medium text-xs uppercase tracking-wider">Tech & Biz Support</span>
-                    <a href="tel:+919316157949" className="hover:text-primary transition-colors text-[17px] tracking-tight">+91 9316157949</a>
+                    <span className="text-[#0A2472] dark:text-muted-foreground font-[700] text-xs uppercase tracking-wider">Tech & Biz Support</span>
+                    <a href="tel:+919316157949" className="hover:text-[#004EE0] dark:hover:text-primary transition-colors text-[17px] tracking-tight">+91 9316157949</a>
                   </div>
                 </div>
               </div>
