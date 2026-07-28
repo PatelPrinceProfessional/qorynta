@@ -96,7 +96,7 @@ const CompactServiceCard = ({ service, index, onClick }: any) => {
           transformStyle: "preserve-3d",
           willChange: "transform"
         }}
-        className="group cursor-pointer flex flex-col items-center text-center p-4 sm:p-6 md:p-8 bg-white dark:bg-card rounded-3xl border-2 border-slate-200 dark:border-border/80 shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.15)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.4)] dark:hover:shadow-[0_30px_60px_rgba(255,255,255,0.05)] transition-shadow duration-300 h-full"
+        className="group cursor-pointer flex flex-col items-center text-center p-4 sm:p-6 md:p-8 bg-[#FFFFFF] dark:bg-card rounded-[16px] border border-[#99CAFF]/50 hover:border-[#004EE0] shadow-[0px_10px_30px_rgba(5,22,80,0.04)] hover:shadow-[0px_18px_40px_rgba(0,78,224,0.12)] dark:border-border/80 dark:shadow-[0_8px_30px_rgb(0,0,0,0.4)] dark:hover:shadow-[0_30px_60px_rgba(255,255,255,0.05)] transition-colors transition-shadow duration-300 ease h-full"
       >
         {/* Colorful Icon Container (Moves slightly forward on Z-axis to enhance 3D feel) */}
         <motion.div
@@ -106,10 +106,10 @@ const CompactServiceCard = ({ service, index, onClick }: any) => {
           <service.icon className={`w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 ${colors.text}`} strokeWidth={2} />
         </motion.div>
 
-        {/* Bold Blue Title */}
+        {/* Bold Title */}
         <motion.h3
           style={{ translateZ: 20 }}
-          className="text-[13px] sm:text-sm md:text-lg font-bold text-[#0F172A] dark:text-foreground leading-tight mb-2 md:mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"
+          className="text-[13px] sm:text-sm md:text-lg font-bold text-[#00072D] dark:text-foreground leading-tight mb-2 md:mb-3 group-hover:text-[#004EE0] dark:group-hover:text-blue-400 transition-colors duration-300"
         >
           {service.title}
         </motion.h3>
@@ -117,7 +117,7 @@ const CompactServiceCard = ({ service, index, onClick }: any) => {
         {/* Single-sentence succinct description */}
         <motion.p
           style={{ translateZ: 10 }}
-          className="text-[11px] sm:text-xs md:text-sm text-slate-500 dark:text-muted-foreground font-medium leading-snug md:leading-relaxed line-clamp-2 md:line-clamp-3"
+          className="text-[11px] sm:text-xs md:text-sm text-[#051650] dark:text-muted-foreground font-medium leading-[1.5] line-clamp-2 md:line-clamp-3"
         >
           {service.description}
         </motion.p>
@@ -130,7 +130,7 @@ export const HomeServicesSection = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="py-24 md:py-32 relative bg-[#F8FAFC] dark:bg-background transition-colors duration-500 overflow-hidden">
+    <section className="py-24 md:py-32 relative bg-gradient-to-b from-[#E3F2FF] to-[#F2FAF4] dark:bg-background transition-colors duration-500 overflow-hidden">
 
       {/* 3) Ambient 'Breathing' Background Graphic */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] sm:w-[1200px] sm:h-[1200px] bg-blue-500/5 dark:bg-blue-500/10 rounded-full blur-[100px] sm:blur-[150px] animate-pulse-slow pointer-events-none z-0" />
@@ -139,16 +139,16 @@ export const HomeServicesSection = () => {
 
         {/* Header */}
         <ScrollReveal className="flex flex-col items-center text-center mb-16 md:mb-20">
-          <span className="text-sm md:text-base font-bold tracking-widest text-slate-500 dark:text-muted-foreground uppercase mb-4">
+          <span className="text-sm md:text-base font-[700] tracking-[2px] text-[#0A2472] dark:text-muted-foreground uppercase mb-4">
             — We Offer —
           </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-8 tracking-tight text-[#0F172A] dark:text-foreground uppercase">
-            All <span className="text-blue-600 dark:text-blue-500">Tech</span> Services
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-8 tracking-tight text-[#00072D] dark:text-foreground uppercase">
+            All <span className="bg-gradient-to-br from-[#004EE0] to-[#0A2472] text-transparent bg-clip-text dark:text-blue-500">Tech</span> Services
           </h2>
 
           {/* Subheader Ribbon */}
-          <div className="inline-flex items-center justify-center px-4 sm:px-6 md:px-10 py-2 sm:py-3 md:py-4 bg-blue-600 dark:bg-blue-600 rounded-full shadow-lg transform -rotate-1 hover:rotate-0 transition-transform duration-300">
-            <p className="text-xs sm:text-sm md:text-lg text-white font-bold tracking-wider uppercase text-center">
+          <div className="inline-flex items-center justify-center px-4 sm:px-6 md:px-10 py-2 sm:py-3 md:py-4 bg-gradient-to-r from-[#004EE0] to-[#0069D9] dark:bg-blue-600 rounded-full shadow-[0px_8px_24px_rgba(0,78,224,0.2)] transform -rotate-1 hover:rotate-0 transition-transform duration-300">
+            <p className="text-xs sm:text-sm md:text-lg text-[#F2FAF4] font-bold tracking-wider uppercase text-center">
               To Empower Your Ideas & Grow Your Business
             </p>
           </div>

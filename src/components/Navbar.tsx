@@ -165,7 +165,7 @@ export const Navbar = () => {
 
           {/* Floating Navigation Dock (Right) */}
           <nav
-            className="absolute top-6 right-8 flex items-center pointer-events-auto bg-white/80 dark:bg-background/85 hover:bg-slate-50/95 dark:hover:bg-slate-900/95 backdrop-blur-md shadow-[0_15px_40px_rgba(0,0,0,0.3)] dark:shadow-[0_15px_40px_rgba(0,0,0,0.8)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] dark:hover:shadow-[0_20px_50px_rgba(0,0,0,1)] active:shadow-[0_5px_20px_rgba(0,0,0,0.4)] active:scale-[0.99] border border-slate-200/60 dark:border-border/80 hover:border-blue-500/50 rounded-full transition-all duration-300"
+            className="absolute top-6 right-8 flex items-center pointer-events-auto bg-[#FFFFFF]/80 dark:bg-background/85 hover:bg-[#FFFFFF]/95 dark:hover:bg-slate-900/95 backdrop-blur-[10px] shadow-[0_15px_40px_rgba(0,0,0,0.3)] dark:shadow-[0_15px_40px_rgba(0,0,0,0.8)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] dark:hover:shadow-[0_20px_50px_rgba(0,0,0,1)] active:shadow-[0_5px_20px_rgba(0,0,0,0.4)] active:scale-[0.99] border border-slate-200/60 dark:border-border/80 hover:border-blue-500/50 rounded-full transition-all duration-300"
             style={{
               padding: "0.5rem 0.5rem 0.5rem 1.5rem", // py-2, pr-2, pl-6
             }}
@@ -183,7 +183,7 @@ export const Navbar = () => {
                 whileTap={{ scale: 0.95, y: 1 }}
               >
                 {hoveredItem === 'home' && <motion.div layoutId="activeNavPill" className="absolute inset-0 bg-blue-50/80 dark:bg-blue-500/10 rounded-full z-0" transition={{ type: "spring", stiffness: 400, damping: 28, mass: 0.8 }} />}
-                <Link to="/" className={cn("relative z-10 px-3 py-1.5 text-[13px] font-medium transition-colors duration-200 block", location.pathname === '/' ? 'text-slate-900 dark:text-foreground font-semibold' : 'text-slate-600 dark:text-foreground/90 hover:text-blue-600 dark:hover:text-blue-400')}>Home</Link>
+                <Link to="/" className={cn("relative z-10 px-3 py-1.5 text-[13px] font-medium transition-colors duration-200 block", location.pathname === '/' ? 'text-[#051650] dark:text-foreground font-semibold' : 'text-[#051650] dark:text-foreground/90 hover:text-[#004EE0] dark:hover:text-blue-400')}>Home</Link>
               </motion.div>
 
               {/* Services Dropdown */}
@@ -202,7 +202,7 @@ export const Navbar = () => {
                 {hoveredItem === 'services' && <motion.div layoutId="activeNavPill" className="absolute inset-0 bg-blue-50/80 dark:bg-blue-500/10 rounded-full z-0" transition={{ type: "spring", stiffness: 400, damping: 28, mass: 0.8 }} />}
                 <Link
                   to="/services"
-                  className={cn("relative z-10 px-3 py-1.5 text-[13px] font-medium transition-colors duration-200 flex items-center gap-1", location.pathname === '/services' ? 'text-slate-900 dark:text-foreground font-semibold' : 'text-slate-600 dark:text-foreground/90 hover:text-blue-600 dark:hover:text-blue-400')}
+                  className={cn("relative z-10 px-3 py-1.5 text-[13px] font-medium transition-colors duration-200 flex items-center gap-1", location.pathname === '/services' ? 'text-[#051650] dark:text-foreground font-semibold' : 'text-[#051650] dark:text-foreground/90 hover:text-[#004EE0] dark:hover:text-blue-400')}
                 >
                   Services
                   <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-300", isServicesOpen && "rotate-180")} />
@@ -274,7 +274,7 @@ export const Navbar = () => {
                   whileTap={{ scale: 0.95, y: 1 }}
                 >
                   {hoveredItem === link.name.toLowerCase() && <motion.div layoutId="activeNavPill" className="absolute inset-0 bg-blue-50/80 dark:bg-blue-500/10 rounded-full z-0" transition={{ type: "spring", stiffness: 400, damping: 28, mass: 0.8 }} />}
-                  <Link to={link.path} className={cn("relative z-10 px-3 py-1.5 text-[13px] font-medium transition-colors duration-200 block", location.pathname === link.path ? 'text-slate-900 dark:text-foreground font-semibold' : 'text-slate-600 dark:text-foreground/90 hover:text-blue-600 dark:hover:text-blue-400')}>{link.name}</Link>
+                  <Link to={link.path} className={cn("relative z-10 px-3 py-1.5 text-[13px] font-medium transition-colors duration-200 block", location.pathname === link.path ? 'text-[#051650] dark:text-foreground font-semibold' : 'text-[#051650] dark:text-foreground/90 hover:text-[#004EE0] dark:hover:text-blue-400')}>{link.name}</Link>
                 </motion.div>
               ))}
             </div>
@@ -287,7 +287,7 @@ export const Navbar = () => {
               <ThemeToggle />
               <Button
                 asChild
-                className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white transition-all duration-300 rounded-full px-5 h-9 text-[13px] font-semibold hover:shadow-lg hover:shadow-blue-500/25"
+                className="bg-gradient-to-r from-[#004EE0] to-[#0A2472] hover:brightness-110 text-[#F2FAF4] transition-all duration-300 rounded-full px-5 h-9 text-[13px] font-semibold hover:shadow-lg hover:shadow-[#004EE0]/30 border-none"
               >
                 <Link to="/contact">
                   <RevealContent>Get Free Consultation</RevealContent>
