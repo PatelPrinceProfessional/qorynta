@@ -7,7 +7,6 @@
     "prebuild": "node generate-sitemap.cjs",
     "dev": "vite",
     "build": "vite build",
-    "postbuild": "react-snap",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",

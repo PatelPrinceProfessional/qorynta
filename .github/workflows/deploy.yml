@@ -35,7 +35,7 @@ jobs:
         run: npx puppeteer browsers install chrome
 
       - name: Build Project
-        run: npm run build
+        run: npm run build && npx react-snap
         env:
           PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: "false"
 
