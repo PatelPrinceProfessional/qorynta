@@ -525,3 +525,5 @@ export const ServiceVisuals: React.FC<{ type: string }> = ({ type }) => {
       );
   }
 };
+
+// Trigger tailwind rebuild

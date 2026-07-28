@@ -6,9 +6,6 @@ export const ParticleNetwork = () => {
   const { resolvedTheme } = useTheme();
 
   useEffect(() => {
-    // Only render constellation in dark theme for best effect
-    if (resolvedTheme !== 'dark') return;
-    
     const canvas = canvasRef.current;
     if (!canvas) return;
     
@@ -49,9 +46,11 @@ export const ParticleNetwork = () => {
 
       draw(ctx: CanvasRenderingContext2D) {
         ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        // Using a soft cyan/blue for the dots
-        ctx.fillStyle = 'rgba(165, 243, 252, 0.6)'; // cyan-200 equivalent
+        // Slightly larger radius for better visibility in light mode
+        const renderRadius = resolvedTheme === 'dark' ? this.radius : this.radius * 1.5;
+        ctx.arc(this.x, this.y, renderRadius, 0, Math.PI * 2);
+        // Dark theme: soft cyan. Light theme: deep navy (#0a2472) at 40% for clear visibility
+        ctx.fillStyle = resolvedTheme === 'dark' ? 'rgba(165, 243, 252, 0.6)' : 'rgba(10, 36, 114, 0.4)'; 
         ctx.fill();
       }
     }
@@ -67,7 +66,7 @@ export const ParticleNetwork = () => {
         canvas.height = window.innerHeight;
       }
       
-      const particleCount = Math.min((canvas.width * canvas.height) / 15000, 150); // Scale with area
+      const particleCount = Math.min((canvas.width * canvas.height) / 10000, 200); // Increased density
       
       particles = [];
       for (let i = 0; i < particleCount; i++) {
@@ -94,8 +93,12 @@ export const ParticleNetwork = () => {
             
             // Opacity scales beautifully based on distance
             const opacity = 1 - (distance / connectionDistance);
-            ctx.strokeStyle = `rgba(147, 197, 253, ${opacity * 0.3})`; // blue-300 equivalent
-            ctx.lineWidth = 0.6;
+            if (resolvedTheme === 'dark') {
+              ctx.strokeStyle = `rgba(147, 197, 253, ${opacity * 0.3})`; 
+            } else {
+              ctx.strokeStyle = `rgba(18, 52, 153, ${opacity * 0.4})`; // #123499 at 40% max opacity
+            }
+            ctx.lineWidth = resolvedTheme === 'dark' ? 0.6 : 1.0; // Thicker lines in light mode
             ctx.stroke();
           }
         }
@@ -121,12 +124,10 @@ export const ParticleNetwork = () => {
     };
   }, [resolvedTheme]);
 
-  if (resolvedTheme !== 'dark') return null;
-
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 z-0 pointer-events-none opacity-70 mix-blend-screen transition-opacity duration-1000"
+      className="absolute inset-0 z-0 pointer-events-none opacity-100 dark:opacity-70 dark:mix-blend-screen transition-opacity duration-1000"
     />
   );
 };

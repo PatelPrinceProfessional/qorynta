@@ -62,10 +62,10 @@ export const Footer = () => {
 
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16 relative">
-          
+
           {/* Massive Background Text spanning the entire width */}
           <div className="absolute inset-0 top-[150px] left-0 w-full flex justify-center items-center pointer-events-none select-none z-0 overflow-hidden">
-            <motion.span 
+            <motion.span
               initial={{ opacity: 0, scale: 1.4 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}

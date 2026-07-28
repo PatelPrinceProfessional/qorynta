@@ -40,14 +40,14 @@ const CompactServiceCard = ({ service, index, onClick }: any) => {
     const rect = ref.current.getBoundingClientRect();
     const width = rect.width;
     const height = rect.height;
-    
+
     // Normalize mouse position relative to card center (between -0.5 and 0.5)
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
-    
+
     const xPct = mouseX / width - 0.5;
     const yPct = mouseY / height - 0.5;
-    
+
     x.set(xPct);
     y.set(yPct);
   };
@@ -64,8 +64,8 @@ const CompactServiceCard = ({ service, index, onClick }: any) => {
       initial={{ opacity: 0, x: -20, y: 10 }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
-      transition={{ 
-        duration: 0.5, 
+      transition={{
+        duration: 0.5,
         ease: "easeOut",
         delay: index * 0.05
       }}
@@ -99,23 +99,23 @@ const CompactServiceCard = ({ service, index, onClick }: any) => {
         className="group cursor-pointer flex flex-col items-center text-center p-4 sm:p-6 md:p-8 bg-white dark:bg-card rounded-3xl border-2 border-slate-200 dark:border-border/80 shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.15)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.4)] dark:hover:shadow-[0_30px_60px_rgba(255,255,255,0.05)] transition-shadow duration-300 h-full"
       >
         {/* Colorful Icon Container (Moves slightly forward on Z-axis to enhance 3D feel) */}
-        <motion.div 
+        <motion.div
           style={{ translateZ: 30 }}
           className={`w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex items-center justify-center mb-3 sm:mb-4 md:mb-5 transition-transform duration-300 group-hover:scale-110 ${colors.bg}`}
         >
           <service.icon className={`w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 ${colors.text}`} strokeWidth={2} />
         </motion.div>
-        
+
         {/* Bold Blue Title */}
-        <motion.h3 
+        <motion.h3
           style={{ translateZ: 20 }}
           className="text-[13px] sm:text-sm md:text-lg font-bold text-[#0F172A] dark:text-foreground leading-tight mb-2 md:mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"
         >
           {service.title}
         </motion.h3>
-        
+
         {/* Single-sentence succinct description */}
-        <motion.p 
+        <motion.p
           style={{ translateZ: 10 }}
           className="text-[11px] sm:text-xs md:text-sm text-slate-500 dark:text-muted-foreground font-medium leading-snug md:leading-relaxed line-clamp-2 md:line-clamp-3"
         >
@@ -131,12 +131,12 @@ export const HomeServicesSection = () => {
 
   return (
     <section className="py-24 md:py-32 relative bg-[#F8FAFC] dark:bg-background transition-colors duration-500 overflow-hidden">
-      
+
       {/* 3) Ambient 'Breathing' Background Graphic */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] sm:w-[1200px] sm:h-[1200px] bg-blue-500/5 dark:bg-blue-500/10 rounded-full blur-[100px] sm:blur-[150px] animate-pulse-slow pointer-events-none z-0" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-[1400px]">
-        
+
         {/* Header */}
         <ScrollReveal className="flex flex-col items-center text-center mb-16 md:mb-20">
           <span className="text-sm md:text-base font-bold tracking-widest text-slate-500 dark:text-muted-foreground uppercase mb-4">
@@ -145,7 +145,7 @@ export const HomeServicesSection = () => {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-8 tracking-tight text-[#0F172A] dark:text-foreground uppercase">
             All <span className="text-blue-600 dark:text-blue-500">Tech</span> Services
           </h2>
-          
+
           {/* Subheader Ribbon */}
           <div className="inline-flex items-center justify-center px-4 sm:px-6 md:px-10 py-2 sm:py-3 md:py-4 bg-blue-600 dark:bg-blue-600 rounded-full shadow-lg transform -rotate-1 hover:rotate-0 transition-transform duration-300">
             <p className="text-xs sm:text-sm md:text-lg text-white font-bold tracking-wider uppercase text-center">

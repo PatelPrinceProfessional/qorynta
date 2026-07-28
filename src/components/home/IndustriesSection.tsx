@@ -95,11 +95,11 @@ const TechCard = ({ tech, index }: { tech: TechItem; index: number }) => {
     const y = e.clientY - rect.top;
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    
+
     // Calculate tilt angles based on mouse position relative to center
     const rotateX = ((y - centerY) / centerY) * -12; // max 12 deg tilt
     const rotateY = ((x - centerX) / centerX) * 12;
-    
+
     setStyle({
       '--x-rotation': `${rotateX}deg`,
       '--y-rotation': `${rotateY}deg`,
@@ -119,11 +119,11 @@ const TechCard = ({ tech, index }: { tech: TechItem; index: number }) => {
   return (
     // Outer wrapper handles the "Pop-and-Stagger" entry animation cleanly
     // without overriding the dynamic 3D transform applied on hover.
-    <div 
+    <div
       className="pop-entrance"
       style={{ '--card-index': index } as React.CSSProperties}
     >
-      <div 
+      <div
         ref={cardRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
@@ -143,7 +143,7 @@ export const IndustriesSection = () => {
   const [activeTab, setActiveTab] = useState<TechCategory>('Front-end');
   const [displayTechs, setDisplayTechs] = useState<TechItem[]>(techStack['Front-end']);
   const [tabBounds, setTabBounds] = useState({ left: 0, width: 0 });
-  
+
   const tabsContainerRef = useRef<HTMLDivElement>(null);
   const tabsRef = useRef<(HTMLButtonElement | null)[]>([]);
 
@@ -152,7 +152,7 @@ export const IndustriesSection = () => {
     const activeIndex = techCategories.indexOf(activeTab);
     const activeElement = tabsRef.current[activeIndex];
     const container = tabsContainerRef.current;
-    
+
     if (activeElement && container) {
       // Offset relative to the scrolling container
       setTabBounds({
@@ -164,7 +164,7 @@ export const IndustriesSection = () => {
 
   const handleTabClick = (category: TechCategory) => {
     if (category === activeTab) return;
-    
+
     // We immediately update state because the entry animation 
     // applies automatically via the React DOM diffing mechanism 
     // when the key is re-mounted.
@@ -174,8 +174,9 @@ export const IndustriesSection = () => {
 
   return (
     <section className="py-24 bg-[#F9FAFB] dark:bg-background transition-colors duration-500 font-sans overflow-hidden">
-      
-      <style dangerouslySetInnerHTML={{ __html: `
+
+      <style dangerouslySetInnerHTML={{
+        __html: `
         /* Pop-and-Stagger Entry Animation */
         @keyframes popEntrance {
           0% { opacity: 0; transform: scale(0.92); }
@@ -203,7 +204,7 @@ export const IndustriesSection = () => {
       `}} />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        
+
         {/* Header Layout (Split Flex) */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
           <div className="md:w-1/2">
@@ -227,9 +228,9 @@ export const IndustriesSection = () => {
         {/* Tab Navigation with Liquid Shift */}
         <div className="mb-12 overflow-x-auto pb-4 scrollbar-hide relative" ref={tabsContainerRef}>
           <div className="flex items-center gap-2 p-1 w-max relative rounded-full border border-slate-200/60 dark:border-border/80/60 bg-white dark:bg-card/50 shadow-sm transition-colors duration-500">
-            
+
             {/* The Liquid Shift Pill Background */}
-            <div 
+            <div
               className="absolute top-1 bottom-1 bg-blue-600 rounded-full shadow-md shadow-blue-600/20 will-change-transform"
               style={{
                 left: 0,
@@ -260,7 +261,7 @@ export const IndustriesSection = () => {
         </div>
 
         {/* Grid System with Staggered Remount */}
-        <div 
+        <div
           key={activeTab} // Force remount on tab change to trigger pop-entrance animations reliably
           className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 lg:gap-6"
         >

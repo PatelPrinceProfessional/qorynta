@@ -108,24 +108,24 @@ const TiltCard = ({ service, isFlagship, isSecondary }: { service: Service, isFl
           </span>
         </div>
       )}
-      
+
       <div className="relative z-10" style={{ transform: 'translateZ(30px)' }}>
         <div className={`w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl flex items-center justify-center mb-3 md:mb-6 transition-colors duration-300 ${colors.bg} ${colors.hoverBg}`}>
           <service.icon className={`w-5 h-5 md:w-7 md:h-7 ${colors.text}`} aria-hidden="true" />
         </div>
-        
+
         <h3 className="text-sm sm:text-base md:text-xl lg:text-2xl font-bold text-foreground mb-2 md:mb-3 tracking-tight leading-tight">
           {service.name}
         </h3>
-        
+
         <p className="text-[10px] sm:text-[11px] md:text-sm text-muted-foreground leading-snug md:leading-relaxed mb-4 md:mb-6 max-w-md line-clamp-3 md:line-clamp-none">
           {service.tagline}
         </p>
-        
+
         <div className="flex flex-wrap gap-1.5 md:gap-2 mb-6 md:mb-4">
           {service.tags.map(tag => (
-            <span 
-              key={tag} 
+            <span
+              key={tag}
               className={`text-[8.5px] sm:text-[9.5px] md:text-xs font-semibold px-1.5 py-0.5 md:px-2.5 md:py-1 rounded-md bg-muted/40 backdrop-blur-md border border-border/40 ${colors.text}`}
             >
               {tag}
@@ -148,14 +148,14 @@ export const ServicesBentoGrid: React.FC = () => {
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 auto-rows-[minmax(180px,auto)]">
         {servicesConfig.map((service, index) => {
           const isFlagship = service.flagship;
-          const isSecondary = index === 4; 
-          
+          const isSecondary = index === 4;
+
           return (
-            <TiltCard 
-              key={service.id} 
-              service={service} 
-              isFlagship={isFlagship} 
-              isSecondary={isSecondary} 
+            <TiltCard
+              key={service.id}
+              service={service}
+              isFlagship={isFlagship}
+              isSecondary={isSecondary}
             />
           );
         })}

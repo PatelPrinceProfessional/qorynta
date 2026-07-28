@@ -70,7 +70,7 @@ export const Navbar = () => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
       document.addEventListener('keydown', handleKeyDown);
-      
+
       // Focus first element on open
       setTimeout(() => {
         const focusableElements = drawerRef.current?.querySelectorAll(
@@ -128,12 +128,12 @@ export const Navbar = () => {
           )}
           style={{ width: `${scrollProgress}%` }}
         />
-        
+
         {/* Mobile Header Layout (Fallback for < lg) */}
         <div className={cn(
           "lg:hidden w-full flex items-center justify-between transition-all duration-500 pointer-events-auto",
-          isScrolled 
-            ? "h-14 bg-background/80 backdrop-blur-xl border-b shadow-sm px-4" 
+          isScrolled
+            ? "h-14 bg-background/80 backdrop-blur-xl border-b shadow-sm px-4"
             : "h-16 bg-transparent px-4"
         )}>
           <Link to="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
@@ -154,17 +154,17 @@ export const Navbar = () => {
 
         {/* Asymmetric Crystal Dock (Desktop >= lg) */}
         <div className="hidden lg:block pointer-events-none h-0">
-          
+
           {/* Decoupled Logo Anchor */}
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className="absolute top-6 left-8 flex items-center gap-2 group pointer-events-auto transition-transform hover:scale-105 duration-300"
           >
             <img src="/logo.webp" alt="Qorynta Services" width={140} height={40} className="h-10 w-auto object-contain" />
           </Link>
 
           {/* Floating Navigation Dock (Right) */}
-          <nav 
+          <nav
             className="absolute top-6 right-8 flex items-center pointer-events-auto bg-white/80 dark:bg-background/85 hover:bg-slate-50/95 dark:hover:bg-slate-900/95 backdrop-blur-md shadow-[0_15px_40px_rgba(0,0,0,0.3)] dark:shadow-[0_15px_40px_rgba(0,0,0,0.8)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] dark:hover:shadow-[0_20px_50px_rgba(0,0,0,1)] active:shadow-[0_5px_20px_rgba(0,0,0,0.4)] active:scale-[0.99] border border-slate-200/60 dark:border-border/80 hover:border-blue-500/50 rounded-full transition-all duration-300"
             style={{
               padding: "0.5rem 0.5rem 0.5rem 1.5rem", // py-2, pr-2, pl-6
@@ -175,10 +175,10 @@ export const Navbar = () => {
             <div className="absolute inset-0 rounded-full pointer-events-none bg-radial from-blue-500/5 to-transparent z-[-1]" style={{ background: 'radial-gradient(circle at center, rgba(59,130,246,0.05) 0%, transparent 70%)' }} />
 
             <div className="flex items-center gap-1 mr-4">
-              
+
               {/* Home */}
-              <motion.div 
-                className="relative" 
+              <motion.div
+                className="relative"
                 onMouseEnter={() => setHoveredItem('home')}
                 whileTap={{ scale: 0.95, y: 1 }}
               >
@@ -210,7 +210,7 @@ export const Navbar = () => {
 
                 <AnimatePresence>
                   {isServicesOpen && (
-                    <motion.div 
+                    <motion.div
                       className="absolute top-full pt-4 left-1/2 -translate-x-1/2 w-[480px] z-50 pointer-events-auto"
                       initial={{ opacity: 0, y: 12, scale: 0.97, rotateX: -4 }}
                       animate={{ opacity: 1, y: 0, scale: 1, rotateX: 0 }}
@@ -218,7 +218,7 @@ export const Navbar = () => {
                       transition={{ type: "spring", stiffness: 350, damping: 26 }}
                       style={{ perspective: "1000px" }}
                     >
-                      <div 
+                      <div
                         className="overflow-hidden p-6 flex gap-6 bg-gradient-to-b from-white via-white/95 to-slate-50/90 dark:from-slate-950 dark:via-slate-950/98 dark:to-slate-900/95 shadow-[0_40px_80px_-15px_rgba(0,0,0,0.2)] dark:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.75)] border border-slate-200/60 dark:border-border/80 hover:border-blue-500/40 transition-colors duration-300 rounded-[1rem] backdrop-blur-xl"
                       >
                         <div className="flex-1">
@@ -252,9 +252,9 @@ export const Navbar = () => {
                               </motion.div>
                             ))}
                           </div>
-                          <Link 
-                            to="/services" 
-                            className="inline-block mt-4 ml-2 px-3 py-1.5 bg-slate-100 dark:bg-muted hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-foreground rounded-md text-[11px] font-bold transition-colors" 
+                          <Link
+                            to="/services"
+                            className="inline-block mt-4 ml-2 px-3 py-1.5 bg-slate-100 dark:bg-muted hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-foreground rounded-md text-[11px] font-bold transition-colors"
                             onClick={() => setIsServicesOpen(false)}
                           >
                             View All
@@ -267,9 +267,9 @@ export const Navbar = () => {
               </motion.div>
 
               {navLinks.filter(link => link.name !== 'Home' && link.name !== 'Services').map((link) => (
-                <motion.div 
-                  key={link.name} 
-                  className="relative" 
+                <motion.div
+                  key={link.name}
+                  className="relative"
                   onMouseEnter={() => setHoveredItem(link.name.toLowerCase())}
                   whileTap={{ scale: 0.95, y: 1 }}
                 >
@@ -330,14 +330,14 @@ export const Navbar = () => {
               if (link.name === 'Services') {
                 return (
                   <div key={link.name} className="flex flex-col">
-                    <button 
+                    <button
                       onClick={() => setIsMobileServicesExpanded(!isMobileServicesExpanded)}
                       className="flex items-center justify-between text-xl font-medium text-slate-900 dark:text-foreground hover:text-blue-600 transition-colors"
                     >
                       {link.name}
                       <ChevronDown className={cn("w-5 h-5 transition-transform duration-300", isMobileServicesExpanded && "rotate-180")} />
                     </button>
-                    
+
                     <AnimatePresence>
                       {isMobileServicesExpanded && (
                         <motion.div
@@ -349,7 +349,7 @@ export const Navbar = () => {
                         >
                           <div className="pt-4 pb-2">
                             <div className="grid grid-cols-2 gap-x-4 gap-y-6 bg-slate-50 dark:bg-slate-900/50 p-4 rounded-xl border border-slate-100 dark:border-border/50">
-                              
+
                               {/* Core Services Column */}
                               <div>
                                 <h4 className="font-mono text-[10px] font-extrabold tracking-[0.15em] text-slate-500 dark:text-muted-foreground mb-4">CORE</h4>
@@ -366,7 +366,7 @@ export const Navbar = () => {
                                   ))}
                                 </div>
                               </div>
-                              
+
                               {/* AI Services Column */}
                               <div>
                                 <h4 className="font-mono text-[10px] font-extrabold tracking-[0.15em] text-slate-500 dark:text-muted-foreground mb-4">AI</h4>
@@ -383,11 +383,11 @@ export const Navbar = () => {
                                   ))}
                                 </div>
                               </div>
-                              
+
                               {/* View All Services Button */}
                               <div className="col-span-2 pt-4 mt-2 border-t border-slate-200 dark:border-border/50">
-                                <Link 
-                                  to="/services" 
+                                <Link
+                                  to="/services"
                                   className="block w-full text-center py-2.5 bg-white dark:bg-muted/50 text-slate-900 dark:text-foreground rounded-lg text-xs font-bold border border-slate-200 dark:border-border/50 hover:bg-slate-50 dark:hover:bg-muted transition-colors shadow-sm"
                                   onClick={() => setIsMobileMenuOpen(false)}
                                 >
@@ -405,10 +405,10 @@ export const Navbar = () => {
               }
 
               return (
-                <Link 
+                <Link
                   key={link.name}
-                  to={link.path} 
-                  className="text-xl font-medium text-slate-900 dark:text-foreground hover:text-blue-600 transition-colors" 
+                  to={link.path}
+                  className="text-xl font-medium text-slate-900 dark:text-foreground hover:text-blue-600 transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}

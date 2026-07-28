@@ -7,73 +7,76 @@
 @layer base {
   :root {
     /* Backgrounds */
-    --background: 210 20% 98%;
-    /* #F9FAFB */
-    --foreground: 212 64% 19%;
-    /* #112D4E */
+    --background: 0 0% 100%;
+    /* #ffffff */
+    --foreground: 231 100% 9%;
+    /* #00072d - Rich Deep Navy */
 
     --card: 0 0% 100%;
-    /* #FFFFFF */
-    --card-foreground: 212 64% 19%;
-    /* #112D4E */
+    /* #ffffff */
+    --card-foreground: 231 100% 9%;
+    /* #00072d */
 
     --popover: 0 0% 100%;
-    --popover-foreground: 212 64% 19%;
+    --popover-foreground: 231 100% 9%;
 
     /* Brand Colors */
-    --primary: 213 47% 47%;
-    /* #3F72AF */
+    --primary: 225 84% 24%;
+    /* #0a2472 - Royal Blue */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 212 64% 19%;
-    /* #112D4E */
+    --secondary: 226 88% 17%;
+    /* #051650 - Dark Navy */
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 219 41% 90%;
-    /* #DBE2EF */
-    --muted-foreground: 213 47% 47%;
-    /* #3F72AF */
+    --muted: 135 15% 90%;
+    /* subtle tint */
+    --muted-foreground: 225 79% 34%;
+    /* #123499 - Vibrant Blue */
 
-    --accent: 219 41% 90%;
-    /* #DBE2EF */
-    --accent-foreground: 212 64% 19%;
+    --accent: 225 79% 34%;
+    /* #123499 - Vibrant Blue */
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 219 41% 90%;
-    /* #DBE2EF */
-    --input: 219 41% 90%;
-    --ring: 213 47% 47%;
-    /* #3F72AF */
+    --border: 226 88% 17%;
+    /* #051650 - Dark Navy */
+    --input: 226 88% 17%;
+    --ring: 225 84% 24%;
+    /* #0a2472 - Royal Blue */
 
     --radius: 0.75rem;
 
     /* Custom tokens for Qorynta */
-    --glow-primary: 213 47% 47%;
-    --glow-secondary: 212 64% 19%;
-    --glow-accent: 219 41% 90%;
+    --glow-primary: 225 79% 34%;
+    /* #123499 */
+    --glow-secondary: 225 84% 24%;
+    /* #0a2472 */
+    --glow-accent: 226 88% 17%;
+    /* #051650 */
 
     /* Gradient backgrounds */
-    --gradient-dark: linear-gradient(135deg, #F9F7F7 0%, #FFFFFF 100%);
-    --gradient-card: linear-gradient(145deg, #FFFFFF 0%, #F9F7F7 100%);
-    --gradient-primary: linear-gradient(135deg, #3F72AF 0%, #112D4E 100%);
-    --gradient-secondary: linear-gradient(135deg, #112D4E 0%, #3F72AF 100%);
-    --gradient-hero: linear-gradient(180deg, #F9F7F7 0%, #DBE2EF 50%, #F9F7F7 100%);
+    --gradient-dark: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
+    --gradient-card: linear-gradient(145deg, #ffffff 0%, #f9f9f9 100%);
+    --gradient-primary: linear-gradient(135deg, #0a2472 0%, #00072d 100%);
+    --gradient-secondary: linear-gradient(135deg, #00072d 0%, #0a2472 100%);
+    --gradient-hero: linear-gradient(180deg, #ffffff 0%, #e6efff 50%, #ffffff 100%);
 
     --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 212 64% 19%;
-    --sidebar-primary: 213 47% 47%;
+    --sidebar-foreground: 231 100% 9%;
+    --sidebar-primary: 225 84% 24%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 219 41% 90%;
-    --sidebar-accent-foreground: 212 64% 19%;
-    --sidebar-border: 219 41% 90%;
-    --sidebar-ring: 213 47% 47%;
+    --sidebar-accent: 225 79% 34%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 226 88% 17%;
+    --sidebar-ring: 225 84% 24%;
   }
 
   .dark {
     /* Pitch Black background to match WebGL Home Page */
-    --background: 0 0% 0%; 
+    --background: 0 0% 0%;
     --foreground: 0 0% 100%;
 
     /* Very dark cards that blend into space */
@@ -117,7 +120,7 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-[#051650]/15 dark:border-border;
   }
 
   html {

@@ -205,29 +205,29 @@ export const CapabilityHub = ({ onNodeHover }: { onNodeHover?: (id: string | nul
         <div className="absolute inset-0 rounded-full bg-cyan-500/5 blur-[80px] -z-10" />
 
         {/* Decorative Orbit Rings */}
-        <div className="absolute w-[200px] h-[200px] sm:w-[280px] sm:h-[280px] rounded-full border border-cyan-500/10 dark:border-cyan-500/5" />
-        <div className="absolute w-[280px] h-[280px] sm:w-[360px] sm:h-[360px] rounded-full border border-blue-500/10 dark:border-blue-500/5 border-dashed" />
+        <div className="absolute w-[200px] h-[200px] sm:w-[280px] sm:h-[280px] rounded-full border border-[#0a2472]/15 dark:border-cyan-500/5" />
+        <div className="absolute w-[280px] h-[280px] sm:w-[360px] sm:h-[360px] rounded-full border border-[#0a2472]/15 dark:border-blue-500/5 border-dashed" />
 
         {/* Central Core */}
         <motion.div
-          className="absolute z-20 flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-background/90 border border-cyan-500/30 shadow-[0_0_30px_rgba(6,182,212,0.2)] backdrop-blur-md cursor-pointer group/core"
+          className="absolute z-20 flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-background/90 border border-[#0a2472]/30 shadow-[0_0_35px_rgba(18,52,153,0.35)] dark:border-cyan-500/30 dark:shadow-[0_0_30px_rgba(6,182,212,0.2)] backdrop-blur-md cursor-pointer group/core"
           style={{
             x: useTransform(smoothX, [-1, 1], [-10, 10]),
             y: useTransform(smoothY, [-1, 1], [-10, 10]),
           }}
           animate={{
             boxShadow: [
-              "0 0 20px rgba(6,182,212,0.1)",
-              "0 0 60px rgba(6,182,212,0.4)",
-              "0 0 20px rgba(6,182,212,0.1)",
+              "0 0 35px rgba(18,52,153,0.35)",
+              "0 0 60px rgba(18,52,153,0.6)",
+              "0 0 35px rgba(18,52,153,0.35)",
             ]
           }}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
         >
-          <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 dark:from-slate-900 dark:to-slate-900 border border-transparent dark:border-cyan-700 flex items-center justify-center transition-all duration-300 group-hover/core:shadow-[0_0_30px_rgba(6,182,212,0.6)] group-hover/core:scale-110">
-            <span className="font-bold text-white dark:text-cyan-400 text-xs sm:text-sm tracking-widest z-10 transition-transform duration-300 group-hover/core:scale-110">CORE</span>
+          <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-[#0a2472] to-[#00072d] dark:from-slate-900 dark:to-slate-900 border border-transparent dark:border-cyan-700 flex items-center justify-center transition-all duration-300 group-hover/core:shadow-[0_0_30px_rgba(18,52,153,0.6)] dark:group-hover/core:shadow-[0_0_30px_rgba(6,182,212,0.6)] group-hover/core:scale-110">
+            <span className="font-bold text-[#f2faf4] dark:text-cyan-400 text-xs sm:text-sm tracking-widest z-10 transition-transform duration-300 group-hover/core:scale-110">CORE</span>
           </div>
         </motion.div>
 
@@ -286,9 +286,9 @@ export const CapabilityHub = ({ onNodeHover }: { onNodeHover?: (id: string | nul
                   >
                     {/* Node Base Button */}
                     <motion.div
-                      className={`relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full cursor-pointer transition-all duration-300 bg-white dark:bg-muted shadow-[0_8px_30px_rgba(0,0,0,0.15)] border-2 border-blue-200 dark:border-blue-500/30 z-50 opacity-100 ${isActive ? 'scale-110 shadow-[0_0_25px_rgba(59,130,246,0.8)] ring-4 ring-blue-400' : 'hover:scale-110 shadow-[0_0_20px_rgba(59,130,246,0.5)]'}`}
+                      className={`relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full cursor-pointer transition-all duration-300 bg-white/95 backdrop-blur-md dark:bg-muted shadow-[0_8px_20px_rgba(5,22,80,0.08)] border border-[#0a2472]/20 hover:border-[#123499] dark:border-blue-500/30 z-50 opacity-100 ${isActive ? 'scale-110 shadow-[0_8px_20px_rgba(5,22,80,0.2)] ring-4 ring-[#123499]/30 dark:ring-blue-400' : 'hover:scale-110 hover:shadow-[0_8px_20px_rgba(5,22,80,0.15)]'}`}
                     >
-                      <Icon className="w-7 h-7 text-blue-700 dark:text-cyan-400 opacity-100 font-extrabold drop-shadow-md" />
+                      <Icon className="w-7 h-7 text-[#0a2472] dark:text-cyan-400 opacity-100 font-extrabold drop-shadow-md" />
                     </motion.div>
 
                     {/* Expandable Insight Card (Desktop Only - Spawns to the side) */}
@@ -357,8 +357,8 @@ export const CapabilityHub = ({ onNodeHover }: { onNodeHover?: (id: string | nul
 
       {/* Desktop Instruction Text */}
       <div className="hidden sm:block absolute bottom-2 sm:bottom-6 left-1/2 -translate-x-1/2 w-full text-center pointer-events-none">
-        <span className="inline-block text-[10px] sm:text-xs font-semibold text-muted-foreground/80 tracking-widest uppercase px-4 py-2 rounded-full bg-background/50 backdrop-blur-md border border-border/50 shadow-sm animate-pulse">
-          Hover the icons above for statistics
+        <span className="inline-block text-[10px] font-mono font-semibold text-[#051650] dark:text-muted-foreground/80 tracking-widest uppercase px-4 py-2 rounded-full bg-white/90 dark:bg-background/50 backdrop-blur-md border border-[#051650]/20 dark:border-border/50 shadow-sm animate-pulse">
+          HOVER THE ICONS ABOVE FOR STATISTICS
         </span>
       </div>
     </div>

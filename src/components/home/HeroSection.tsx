@@ -31,7 +31,7 @@ const CyclingText = () => {
 
   return (
     <span
-      className={`inline-block pr-2 pb-1 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-cyan-300 dark:to-blue-500 drop-shadow-sm transition-opacity duration-500 ${fade ? 'opacity-100' : 'opacity-0'}`}
+      className={`inline-block pr-2 pb-1 bg-clip-text text-transparent bg-gradient-to-r from-[#0a2472] via-[#123499] to-[#0a2472] dark:from-cyan-300 dark:to-blue-500 drop-shadow-sm transition-opacity duration-500 ${fade ? 'opacity-100' : 'opacity-0'}`}
     >
       {words[index]}
     </span>
@@ -58,7 +58,7 @@ const BackgroundKeywords = () => {
       {words.map((word, i) => (
         <span
           key={word}
-          className={`absolute inset-0 flex items-center justify-center lg:justify-start font-black tracking-tighter text-foreground transition-all duration-1000 ease-in-out whitespace-nowrap ${i === index ? 'opacity-[0.15] dark:opacity-[0.25] translate-y-0 scale-100' : 'opacity-0 translate-y-4 scale-95'
+          className={`absolute inset-0 flex items-center justify-center lg:justify-start font-black tracking-tighter bg-clip-text text-transparent bg-gradient-to-br from-[#0a2472] to-[#123499] dark:text-foreground pointer-events-none select-none transition-all duration-1000 ease-in-out whitespace-nowrap ${i === index ? 'opacity-20 dark:opacity-[0.25] translate-y-0 scale-100' : 'opacity-0 translate-y-4 scale-95'
             }`}
           style={{ fontSize: 'clamp(2.5rem, 14vw, 10rem)', lineHeight: 0.8 }}
         >
@@ -86,14 +86,10 @@ export const HeroSection = () => {
   };
 
   useEffect(() => {
-    // Defer GSAP initialization to avoid forced reflows during initial React paint
-    const timer = setTimeout(() => {
-      initHeroEntrance();
-      initHeroScrollExit();
-    }, 100);
+    initHeroEntrance();
+    initHeroScrollExit();
 
     return () => {
-      clearTimeout(timer);
       gsap.killTweensOf('.hero-section *');
       ScrollTrigger.getAll().forEach(t => t.kill());
     };
@@ -122,15 +118,15 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="hero-section relative z-0 min-h-screen flex items-center justify-center overflow-hidden bg-transparent">
+    <section className="hero-section relative z-0 min-h-screen flex items-center justify-center overflow-hidden bg-[#f2faf4] dark:bg-transparent">
       {/* Background Radial Glow, Dot Grid, and Stars */}
       <div className="absolute inset-0 z-0">
         <div className="stars-bg" />
         <ParticleNetwork />
       </div>
       <div className={`absolute inset-0 dot-grid opacity-[0.04] sm:opacity-[0.04] ${styles.heroBackground}`} />
-      <div className={`absolute top-0 right-0 w-[400px] h-[400px] sm:w-[800px] sm:h-[800px] rounded-full blur-[80px] sm:blur-[120px] -translate-y-1/2 translate-x-1/3 animate-pulse-slow pointer-events-none transition-colors duration-1000 ease-in-out ${getGlowColor()}`} />
-      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] sm:w-[600px] sm:h-[600px] bg-accent/10 sm:bg-accent/20 rounded-full blur-[60px] sm:blur-[100px] translate-y-1/3 -translate-x-1/3 animate-pulse-slow pointer-events-none" style={{ animationDelay: '2s' }} />
+      <div className={`absolute top-0 right-0 w-[400px] h-[400px] sm:w-[800px] sm:h-[800px] rounded-full bg-gradient-to-tr from-[#123499]/15 via-[#0a2472]/10 to-transparent blur-[80px] sm:blur-[120px] -translate-y-1/2 translate-x-1/3 animate-pulse-slow pointer-events-none transition-colors duration-1000 ease-in-out`} />
+      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] sm:w-[600px] sm:h-[600px] bg-gradient-to-tr from-[#0a2472]/10 via-[#123499]/15 to-transparent rounded-full blur-[60px] sm:blur-[100px] translate-y-1/3 -translate-x-1/3 animate-pulse-slow pointer-events-none" style={{ animationDelay: '2s' }} />
 
       <div className="hero-content w-full container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 relative z-10" style={{ willChange: 'transform, filter, opacity' }}>
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -149,19 +145,19 @@ export const HeroSection = () => {
               </div>
               {/* Desktop text */}
               <div className="hidden md:flex items-center gap-2.5 mb-4">
-                <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                <span className="text-sm md:text-base font-semibold tracking-wider text-muted-foreground">Qorynta Services — BUILD. SCALE. DOMINATE.</span>
+                <div className="w-1.5 h-1.5 rounded-full bg-[#123499] dark:bg-primary animate-pulse" />
+                <span className="font-mono text-xs md:text-[13px] tracking-widest font-bold text-[#0a2472] dark:text-muted-foreground uppercase">Qorynta Services — BUILD. SCALE. DOMINATE.</span>
               </div>
             </div>
 
             {/* Headline */}
             <h1 ref={headlineRef} className="hero-headline w-full max-w-full text-4xl sm:text-[42px] md:text-[54px] lg:text-[72px] xl:text-[86px] font-display font-bold leading-tight lg:leading-[1.05] tracking-tighter mb-6 sm:mb-8 break-words">
-              <span className="word inline-block pr-1 sm:pr-2 pb-1 opacity-0 translate-y-4 bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-blue-900 dark:from-white dark:to-blue-300">Build</span>{" "}
-              <span className="word inline-block opacity-0 translate-y-4 text-foreground/90 font-serif italic text-primary/80">Digital</span>&nbsp;{" "}
-              <span className="word inline-block pr-2 pb-1 opacity-0 translate-y-4 bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-blue-900 dark:from-white dark:to-blue-300">Products</span>
+              <span className="word inline-block pr-1 sm:pr-2 pb-1 opacity-0 translate-y-4 text-[#00072d] dark:text-white">Build</span>{" "}
+              <span className="word inline-block opacity-0 translate-y-4 text-[#0a2472] dark:text-blue-300 font-serif italic">Digital</span>&nbsp;{" "}
+              <span className="word inline-block pr-2 pb-1 opacity-0 translate-y-4 text-[#00072d] dark:text-white">Products</span>
               <br className="hidden md:block" />
               <span className="whitespace-nowrap">
-                <span className="word inline-block pr-2 pb-1 opacity-0 translate-y-4 bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-blue-900 dark:from-white dark:to-blue-300">That</span>{" "}
+                <span className="word inline-block pr-2 pb-1 opacity-0 translate-y-4 text-[#00072d] dark:text-white">That</span>{" "}
                 <span className="word inline-block opacity-0 translate-y-4">
                   <CyclingText />
                 </span>
@@ -186,12 +182,12 @@ export const HeroSection = () => {
               <Button
                 asChild
                 size="lg"
-                className={`w-full sm:w-auto bg-foreground text-background hover:bg-foreground/90 hover:scale-105 shadow-[0_0_40px_rgba(255,255,255,0.1)] transition-all duration-500 ease-out text-base font-semibold px-10 h-16 group rounded-full overflow-hidden ${styles.heroCTAPrimary}`}
+                className={`w-full sm:w-auto bg-[#00072d] text-[#f2faf4] hover:bg-[#0a2472] dark:bg-foreground dark:text-background hover:scale-105 transition-all duration-300 hover:shadow-[0_10px_25px_rgba(10,36,114,0.3)] dark:hover:shadow-[0_0_40px_rgba(255,255,255,0.1)] ease-out text-base font-semibold px-10 h-16 group rounded-full overflow-hidden ${styles.heroCTAPrimary}`}
               >
                 <Link to="/contact" className="flex items-center justify-center">
                   <RevealContent>
                     Start Your Project
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform duration-500" />
+                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform duration-500 text-[#f2faf4] dark:text-background" />
                   </RevealContent>
                 </Link>
               </Button>
@@ -199,22 +195,22 @@ export const HeroSection = () => {
                 asChild
                 size="lg"
                 variant="outline"
-                className={`w-full sm:w-auto border-2 border-blue-600/50 dark:border-blue-400/50 text-blue-700 dark:text-blue-300 hover:bg-blue-600/10 hover:border-blue-600 dark:hover:bg-blue-400/10 dark:hover:border-blue-400 transition-all duration-500 text-base font-medium px-10 h-16 rounded-full bg-transparent backdrop-blur-md shadow-[0_0_20px_rgba(37,99,235,0.15)] dark:shadow-[0_0_20px_rgba(96,165,250,0.15)] hover:shadow-[0_0_30px_rgba(37,99,235,0.3)] dark:hover:shadow-[0_0_30px_rgba(96,165,250,0.3)] ${styles.heroCTASecondary}`}
+                className={`w-full sm:w-auto bg-white/80 hover:bg-[#f2faf4] dark:bg-transparent border border-[#0a2472]/30 hover:border-[#123499] text-[#00072d] dark:border-blue-400/50 dark:text-blue-300 dark:hover:bg-blue-400/10 dark:hover:border-blue-400 transition-all duration-500 text-base font-medium px-10 h-16 rounded-full backdrop-blur-md shadow-sm hover:shadow-md dark:shadow-[0_0_20px_rgba(96,165,250,0.15)] dark:hover:shadow-[0_0_30px_rgba(96,165,250,0.3)] ${styles.heroCTASecondary}`}
               >
                 <Link to="/case-studies">View Our Work</Link>
               </Button>
             </div>
 
             {/* Social Proof Strip (Marquee) */}
-            <div className="hero-cta opacity-0 w-full min-w-0 overflow-hidden border-t border-border/50 pt-6 mt-4 relative flex items-center h-12">
-              <div className="absolute left-0 top-6 bottom-0 w-8 md:w-16 bg-gradient-to-r from-background to-transparent z-10" />
-              <div className="absolute right-0 top-6 bottom-0 w-8 md:w-16 bg-gradient-to-l from-background to-transparent z-10" />
+            <div className="hero-cta opacity-0 w-full min-w-0 overflow-hidden border-t border-[#051650]/15 dark:border-border/50 pt-6 mt-4 relative flex items-center h-12">
+              <div className="absolute left-0 top-6 bottom-0 w-8 md:w-16 bg-gradient-to-r from-[#f2faf4] dark:from-background to-transparent z-10" />
+              <div className="absolute right-0 top-6 bottom-0 w-8 md:w-16 bg-gradient-to-l from-[#f2faf4] dark:from-background to-transparent z-10" />
 
               <div className="flex animate-marquee whitespace-nowrap">
                 {[...Array(2)].map((_, groupIdx) => (
-                  <div key={groupIdx} className="flex items-center justify-start min-w-max gap-4 md:gap-8 px-4 md:px-8 text-xs sm:text-sm font-medium text-muted-foreground">
+                  <div key={groupIdx} className="flex items-center justify-start min-w-max gap-4 md:gap-8 px-4 md:px-8 text-xs sm:text-sm font-medium text-[#00072d] dark:text-muted-foreground">
                     <div className="flex items-center gap-1.5 md:gap-2">
-                      <div className="flex text-[#F59E0B]">
+                      <div className="flex text-[#123499] dark:text-[#F59E0B]">
                         {[...Array(4)].map((_, i) => (
                           <Star key={i} className="w-3 h-3 md:w-4 md:h-4 fill-current" />
                         ))}
@@ -222,21 +218,21 @@ export const HeroSection = () => {
                       <span>Rated 4.0 by 40+ clients</span>
                     </div>
 
-                    <div className="w-px h-4 md:h-5 bg-border/50" />
+                    <div className="w-px h-4 md:h-5 bg-[#051650]/15 dark:bg-border/50" />
 
-                    <div className="flex items-center gap-1.5 md:gap-2">
-                      <Globe className="w-3 h-3 md:w-4 md:h-4 text-primary" />
+                    <div className="flex items-center gap-1.5 md:gap-2 text-[#00072d]">
+                      <Globe className="w-3 h-3 md:w-4 md:h-4 text-[#123499] dark:text-primary" />
                       <span>Clients in 8+ Countries</span>
                     </div>
 
-                    <div className="w-px h-4 md:h-5 bg-border/50" />
+                    <div className="w-px h-4 md:h-5 bg-[#051650]/15 dark:bg-border/50" />
 
                     <div className="flex items-center gap-1.5 md:gap-2">
 
                       <span>48hr Kickoff</span>
                     </div>
 
-                    <div className="w-px h-4 md:h-5 bg-border/50 hidden md:block" />
+                    <div className="w-px h-4 md:h-5 bg-[#051650]/15 hidden md:block dark:bg-border/50" />
                   </div>
                 ))}
               </div>

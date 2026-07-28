@@ -21,11 +21,11 @@ export const CaseStudySection = () => {
 
     const ctx = gsap.context(() => {
       // Header Animation
-      gsap.fromTo(headerRef.current, 
+      gsap.fromTo(headerRef.current,
         { y: 30, opacity: 0 },
-        { 
-          y: 0, opacity: 1, 
-          duration: 1, 
+        {
+          y: 0, opacity: 1,
+          duration: 1,
           ease: "power3.out",
           scrollTrigger: {
             trigger: sectionRef.current,
@@ -35,10 +35,10 @@ export const CaseStudySection = () => {
       );
 
       // Grid Stagger Entrance
-      gsap.fromTo(".project-card-item", 
+      gsap.fromTo(".project-card-item",
         { y: 40, opacity: 0 },
         {
-          y: 0, 
+          y: 0,
           opacity: 1,
           duration: 0.4,
           stagger: 0.05,
@@ -59,18 +59,18 @@ export const CaseStudySection = () => {
       {/* Optional faint glowing pulse for dark mode to match other sections */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[150px] pointer-events-none transition-colors duration-500" />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Header */}
         <div ref={headerRef} className="flex flex-col items-center justify-center text-center mb-20 opacity-0">
-            <span className="inline-block py-1 px-4 rounded-full bg-white/5 border border-white/10 text-primary text-sm font-semibold tracking-[0.2em] uppercase mb-6 backdrop-blur-md">
-              Featured Work
-            </span>
-            <h2 className="text-4xl md:text-5xl lg:text-7xl font-display font-bold text-foreground mb-6 leading-tight max-w-4xl tracking-tighter">
-              Engineered Experiences for <span className="font-serif italic font-light text-primary/80">Enterprise Scale</span>
-            </h2>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto font-light leading-relaxed">
-              Explore our deep-dive case studies showcasing how we solve complex technical challenges and deliver measurable business value.
-            </p>
+          <span className="inline-block py-1 px-4 rounded-full bg-white/5 border border-white/10 text-primary text-sm font-semibold tracking-[0.2em] uppercase mb-6 backdrop-blur-md">
+            Featured Work
+          </span>
+          <h2 className="text-4xl md:text-5xl lg:text-7xl font-display font-bold text-foreground mb-6 leading-tight max-w-4xl tracking-tighter">
+            Engineered Experiences for <span className="font-serif italic font-light text-primary/80">Enterprise Scale</span>
+          </h2>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto font-light leading-relaxed">
+            Explore our deep-dive case studies showcasing how we solve complex technical challenges and deliver measurable business value.
+          </p>
         </div>
 
         {/* Mobile: Infinite Auto-Scroll Carousel */}
@@ -86,7 +86,7 @@ export const CaseStudySection = () => {
             </div>
           ))}
         </div>
-        
+
         <div className="mt-16 text-center">
           <Link to="/case-studies" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
             View All Projects

@@ -15,7 +15,7 @@ export const GlobalTrustSection = () => {
   return (
     <section className="py-24 relative overflow-hidden bg-slate-50 dark:bg-slate-900/50">
       <div className="absolute inset-0 dot-grid opacity-[0.03]" />
-      
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto text-center mb-16">
           <ScrollReveal>
@@ -33,8 +33,8 @@ export const GlobalTrustSection = () => {
           <ScrollReveal delay={0.1}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
               {benefits.map((benefit, index) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className="flex items-start gap-4 p-6 rounded-2xl bg-white dark:bg-slate-900 border border-border/50 shadow-sm hover:shadow-md transition-shadow"
                 >
                   <div className="shrink-0 mt-1">
@@ -46,7 +46,7 @@ export const GlobalTrustSection = () => {
                 </div>
               ))}
             </div>
-            
+
             <div className="flex items-center justify-center p-6 rounded-2xl bg-primary/5 border border-primary/20 text-center">
               <div className="flex flex-col items-center gap-3">
                 <Mail className="w-8 h-8 text-primary" />
