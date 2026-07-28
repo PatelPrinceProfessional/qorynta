@@ -105,12 +105,7 @@ export const Navbar = () => {
   return (
     <>
 
-            <header
-        className={cn(
-          'fixed z-50 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] left-0 right-0',
-          isScrolled ? 'top-0 md:top-4' : 'top-0 md:top-[34px]'
-        )}
-      >
+      <header className="fixed z-50 left-0 right-0 top-0 pointer-events-none">
         {/* Glowing Scroll Progress Bar */}
         <div
           className={cn(
@@ -119,19 +114,53 @@ export const Navbar = () => {
           )}
           style={{ width: `${scrollProgress}%` }}
         />
-        
-        <div className="w-full md:container md:mx-auto px-0 md:px-6 lg:px-8">
-          <nav className={cn(
-            "w-full flex items-center justify-between transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] pointer-events-auto",
-            isScrolled 
-              ? "h-16 md:h-[72px] bg-[#FFFFFF]/90 dark:bg-background/85 backdrop-blur-xl border-b md:border border-slate-200/60 dark:border-border/80 shadow-[0_20px_40px_rgba(0,78,224,0.08)] dark:shadow-[0_15px_40px_rgba(0,0,0,0.8)] md:rounded-full px-4 sm:px-6 lg:px-8" 
-              : "h-20 md:h-[88px] bg-transparent border-b border-transparent px-4 sm:px-6 lg:px-8 md:px-0 lg:px-0"
-          )}>
-            <Link to="/" className="flex items-center gap-2 group z-50 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-105" onClick={() => setIsMobileMenuOpen(false)}>
-              <img src="/logo.webp" alt="Qorynta Services" width={140} height={40} fetchPriority="high" className={cn("w-auto object-contain transition-all duration-500", isScrolled ? "h-8" : "h-10")} />
-            </Link>
 
-            <div className="hidden lg:flex items-center gap-3 relative" onMouseLeave={() => setHoveredItem(null)}>
+        {/* Mobile Header Layout (Fallback for < lg) */}
+        <div className={cn(
+          "lg:hidden w-full flex items-center justify-between transition-all duration-500 pointer-events-auto",
+          isScrolled
+            ? "h-14 bg-background/80 backdrop-blur-xl border-b shadow-sm px-4"
+            : "h-16 bg-transparent px-4"
+        )}>
+          <Link to="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
+            <img src="/logo.webp" alt="Qorynta Services" width={140} height={40} fetchPriority="high" className={cn("w-auto object-contain transition-all duration-500", isScrolled ? "h-8" : "h-10")} />
+          </Link>
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              ref={menuButtonRef}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 rounded-lg text-foreground hover:bg-muted transition-colors"
+              aria-label="Toggle Mobile Menu"
+            >
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
+        </div>
+
+        {/* Asymmetric Crystal Dock (Desktop >= lg) */}
+        <div className="hidden lg:block pointer-events-none h-0">
+
+          {/* Decoupled Logo Anchor */}
+          <Link
+            to="/"
+            className="absolute top-6 left-8 flex items-center gap-2 group pointer-events-auto transition-transform hover:scale-105 duration-300"
+          >
+            <img src="/logo.webp" alt="Qorynta Services" width={140} height={40} className="h-10 w-auto object-contain" />
+          </Link>
+
+          {/* Floating Navigation Dock (Right) */}
+          <nav
+            className="absolute top-6 right-8 flex items-center pointer-events-auto bg-[#FFFFFF]/80 dark:bg-background/85 hover:bg-[#FFFFFF]/95 dark:hover:bg-slate-900/95 backdrop-blur-[10px] shadow-[0_15px_40px_rgba(0,0,0,0.3)] dark:shadow-[0_15px_40px_rgba(0,0,0,0.8)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] dark:hover:shadow-[0_20px_50px_rgba(0,0,0,1)] active:shadow-[0_5px_20px_rgba(0,0,0,0.4)] active:scale-[0.99] border border-slate-200/60 dark:border-border/80 hover:border-blue-500/50 rounded-full transition-all duration-300"
+            style={{
+              padding: "0.5rem 0.5rem 0.5rem 1.5rem", // py-2, pr-2, pl-6
+            }}
+            onMouseLeave={() => setHoveredItem(null)}
+          >
+            {/* Radial Color Grading Mask */}
+            <div className="absolute inset-0 rounded-full pointer-events-none bg-radial from-blue-500/5 to-transparent z-[-1]" style={{ background: 'radial-gradient(circle at center, rgba(59,130,246,0.05) 0%, transparent 70%)' }} />
+
+            <div className="flex items-center gap-1 mr-4">
 
               {/* Home */}
               <motion.div
@@ -139,8 +168,8 @@ export const Navbar = () => {
                 onMouseEnter={() => setHoveredItem('home')}
                 whileTap={{ scale: 0.95, y: 1 }}
               >
-                {hoveredItem === 'home' && <motion.div layoutId="activeNavPill" className="absolute inset-0 bg-gradient-to-r from-[#E3F2FF] to-[#F2FAF4] dark:from-blue-500/10 dark:to-blue-500/5 border border-[#99CAFF]/30 dark:border-blue-500/20 rounded-full z-0" transition={{ type: "spring", stiffness: 400, damping: 28, mass: 0.8 }} />}
-                <Link to="/" className={cn("relative z-10 px-5 py-2.5 text-[14px] font-[600] tracking-wide transition-colors duration-200 block", location.pathname === '/' ? 'text-[#051650] dark:text-foreground font-semibold' : 'text-[#051650] dark:text-foreground/90 hover:text-[#004EE0] dark:hover:text-blue-400')}>Home</Link>
+                {hoveredItem === 'home' && <motion.div layoutId="activeNavPill" className="absolute inset-0 bg-blue-50/80 dark:bg-blue-500/10 rounded-full z-0" transition={{ type: "spring", stiffness: 400, damping: 28, mass: 0.8 }} />}
+                <Link to="/" className={cn("relative z-10 px-3 py-1.5 text-[13px] font-medium transition-colors duration-200 block", location.pathname === '/' ? 'text-[#051650] dark:text-foreground font-semibold' : 'text-[#051650] dark:text-foreground/90 hover:text-[#004EE0] dark:hover:text-blue-400')}>Home</Link>
               </motion.div>
 
               {/* Services Dropdown */}
@@ -156,10 +185,10 @@ export const Navbar = () => {
                 }}
                 whileTap={{ scale: 0.95, y: 1 }}
               >
-                {hoveredItem === 'services' && <motion.div layoutId="activeNavPill" className="absolute inset-0 bg-gradient-to-r from-[#E3F2FF] to-[#F2FAF4] dark:from-blue-500/10 dark:to-blue-500/5 border border-[#99CAFF]/30 dark:border-blue-500/20 rounded-full z-0" transition={{ type: "spring", stiffness: 400, damping: 28, mass: 0.8 }} />}
+                {hoveredItem === 'services' && <motion.div layoutId="activeNavPill" className="absolute inset-0 bg-blue-50/80 dark:bg-blue-500/10 rounded-full z-0" transition={{ type: "spring", stiffness: 400, damping: 28, mass: 0.8 }} />}
                 <Link
                   to="/services"
-                  className={cn("relative z-10 px-5 py-2.5 text-[14px] font-[600] tracking-wide transition-colors duration-200 flex items-center gap-1", location.pathname === '/services' ? 'text-[#051650] dark:text-foreground font-semibold' : 'text-[#051650] dark:text-foreground/90 hover:text-[#004EE0] dark:hover:text-blue-400')}
+                  className={cn("relative z-10 px-3 py-1.5 text-[13px] font-medium transition-colors duration-200 flex items-center gap-1", location.pathname === '/services' ? 'text-[#051650] dark:text-foreground font-semibold' : 'text-[#051650] dark:text-foreground/90 hover:text-[#004EE0] dark:hover:text-blue-400')}
                 >
                   Services
                   <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-300", isServicesOpen && "rotate-180")} />
@@ -230,38 +259,26 @@ export const Navbar = () => {
                   onMouseEnter={() => setHoveredItem(link.name.toLowerCase())}
                   whileTap={{ scale: 0.95, y: 1 }}
                 >
-                  {hoveredItem === link.name.toLowerCase() && <motion.div layoutId="activeNavPill" className="absolute inset-0 bg-gradient-to-r from-[#E3F2FF] to-[#F2FAF4] dark:from-blue-500/10 dark:to-blue-500/5 border border-[#99CAFF]/30 dark:border-blue-500/20 rounded-full z-0" transition={{ type: "spring", stiffness: 400, damping: 28, mass: 0.8 }} />}
-                  <Link to={link.path} className={cn("relative z-10 px-5 py-2.5 text-[14px] font-[600] tracking-wide transition-colors duration-200 block", location.pathname === link.path ? 'text-[#051650] dark:text-foreground font-semibold' : 'text-[#051650] dark:text-foreground/90 hover:text-[#004EE0] dark:hover:text-blue-400')}>{link.name}</Link>
+                  {hoveredItem === link.name.toLowerCase() && <motion.div layoutId="activeNavPill" className="absolute inset-0 bg-blue-50/80 dark:bg-blue-500/10 rounded-full z-0" transition={{ type: "spring", stiffness: 400, damping: 28, mass: 0.8 }} />}
+                  <Link to={link.path} className={cn("relative z-10 px-3 py-1.5 text-[13px] font-medium transition-colors duration-200 block", location.pathname === link.path ? 'text-[#051650] dark:text-foreground font-semibold' : 'text-[#051650] dark:text-foreground/90 hover:text-[#004EE0] dark:hover:text-blue-400')}>{link.name}</Link>
                 </motion.div>
               ))}
-            
             </div>
 
-            {/* Dock Right Side (Desktop) */}
-            <div className="hidden lg:flex items-center gap-3">
+            {/* Separator */}
+            <div className="w-[1px] h-6 bg-slate-200 mr-4" />
+
+            {/* Dock Right Side */}
+            <div className="flex items-center gap-3">
               <ThemeToggle />
               <Button
                 asChild
-                className="bg-gradient-to-r from-[#004EE0] to-[#0A2472] hover:brightness-110 text-[#F2FAF4] transition-all duration-300 rounded-full px-6 h-11 text-[14px] font-[700] tracking-wide hover:shadow-lg hover:shadow-[#004EE0]/30 border-none"
+                className="bg-gradient-to-r from-[#004EE0] to-[#0A2472] hover:brightness-110 text-[#F2FAF4] transition-all duration-300 rounded-full px-5 h-9 text-[13px] font-semibold hover:shadow-lg hover:shadow-[#004EE0]/30 border-none"
               >
                 <Link to="/contact">
                   <RevealContent>Get Free Consultation</RevealContent>
                 </Link>
               </Button>
-            </div>
-
-
-            {/* Mobile Actions */}
-            <div className="flex lg:hidden items-center gap-2">
-              <ThemeToggle />
-              <button
-                ref={menuButtonRef}
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="p-2 rounded-lg text-foreground hover:bg-muted transition-colors"
-                aria-label="Toggle Mobile Menu"
-              >
-                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              </button>
             </div>
           </nav>
         </div>
