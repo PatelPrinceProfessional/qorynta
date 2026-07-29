@@ -8,13 +8,13 @@ import { MobileServicesDashboard } from './MobileServicesDashboard';
 
 const getAccentColorStyle = (accent: Service['accent']) => {
   switch (accent) {
-    case 'blue': return { text: 'text-blue-500', bg: 'bg-blue-500/10 dark:bg-blue-500/20', border: 'border-blue-500', buttonBg: 'bg-blue-600 hover:bg-blue-700 text-white' };
-    case 'teal': return { text: 'text-teal-500', bg: 'bg-teal-500/10 dark:bg-teal-500/20', border: 'border-teal-500', buttonBg: 'bg-teal-600 hover:bg-teal-700 text-white' };
-    case 'coral': return { text: 'text-rose-500', bg: 'bg-rose-500/10 dark:bg-rose-500/20', border: 'border-rose-500', buttonBg: 'bg-rose-600 hover:bg-rose-700 text-white' };
-    case 'purple': return { text: 'text-purple-500', bg: 'bg-purple-500/10 dark:bg-purple-500/20', border: 'border-purple-500', buttonBg: 'bg-purple-600 hover:bg-purple-700 text-white' };
-    case 'amber': return { text: 'text-amber-500', bg: 'bg-amber-500/10 dark:bg-amber-500/20', border: 'border-amber-500', buttonBg: 'bg-amber-600 hover:bg-amber-700 text-white' };
-    case 'emerald': return { text: 'text-emerald-500', bg: 'bg-emerald-500/10 dark:bg-emerald-500/20', border: 'border-emerald-500', buttonBg: 'bg-emerald-600 hover:bg-emerald-700 text-white' };
-    default: return { text: 'text-primary', bg: 'bg-primary/10', border: 'border-primary', buttonBg: 'bg-primary hover:bg-primary/90 text-primary-foreground' };
+    case 'blue': return { text: 'text-[#004EE0] dark:text-blue-400', bg: 'bg-blue-500/10 dark:bg-blue-500/20', border: 'border-[#004EE0] dark:border-blue-400', buttonBg: 'bg-blue-600 hover:bg-blue-700 text-white' };
+    case 'teal': return { text: 'text-teal-700 dark:text-teal-400', bg: 'bg-teal-500/10 dark:bg-teal-500/20', border: 'border-teal-600 dark:border-teal-400', buttonBg: 'bg-teal-600 hover:bg-teal-700 text-white' };
+    case 'coral': return { text: 'text-rose-600 dark:text-rose-400', bg: 'bg-rose-500/10 dark:bg-rose-500/20', border: 'border-rose-600 dark:border-rose-400', buttonBg: 'bg-rose-600 hover:bg-rose-700 text-white' };
+    case 'purple': return { text: 'text-purple-700 dark:text-purple-400', bg: 'bg-purple-500/10 dark:bg-purple-500/20', border: 'border-purple-600 dark:border-purple-400', buttonBg: 'bg-purple-600 hover:bg-purple-700 text-white' };
+    case 'amber': return { text: 'text-amber-700 dark:text-amber-400', bg: 'bg-amber-500/15 dark:bg-amber-500/20', border: 'border-amber-600 dark:border-amber-400', buttonBg: 'bg-amber-600 hover:bg-amber-700 text-white' };
+    case 'emerald': return { text: 'text-emerald-700 dark:text-emerald-400', bg: 'bg-emerald-500/10 dark:bg-emerald-500/20', border: 'border-emerald-600 dark:border-emerald-400', buttonBg: 'bg-emerald-600 hover:bg-emerald-700 text-white' };
+    default: return { text: 'text-[#004EE0] dark:text-primary', bg: 'bg-[#004EE0]/10 dark:bg-primary/20', border: 'border-[#004EE0] dark:border-primary', buttonBg: 'bg-primary hover:bg-primary/90 text-primary-foreground' };
   }
 };
 
@@ -88,7 +88,7 @@ export const ServicesScrollShowcase: React.FC = () => {
                         onClick={() => scrollToService(service.id)}
                         className={`
                           w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left text-sm transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary
-                          ${isActive ? `bg-muted/80 font-bold ${colors.text} border-l-4 ${colors.border}` : 'text-muted-foreground hover:bg-muted/50 hover:text-foreground font-medium border-l-4 border-transparent'}
+                          ${isActive ? `${colors.bg} font-bold ${colors.text} border-l-4 ${colors.border}` : 'text-[#051650]/80 dark:text-muted-foreground hover:bg-black/5 dark:hover:bg-muted/50 hover:text-[#004EE0] dark:hover:text-foreground font-medium border-l-4 border-transparent'}
                         `}
                         aria-current={isActive ? 'true' : undefined}
                       >

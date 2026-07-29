@@ -1,7 +1,7 @@
-import React from 'react';
+﻿import React from 'react';
 import { SectionLabel } from '@/components/ui/SectionLabel';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
-import { ServicesBentoGrid } from './ServicesBentoGrid';
+import { ServicesGlassGrid } from './ServicesGlassGrid';
 import { ServicesScrollShowcase } from './ServicesScrollShowcase';
 import { motion } from 'framer-motion';
 
@@ -23,7 +23,7 @@ export const ServicesSection: React.FC = () => {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_20%,transparent_100%)]"></div>
       </div>
 
-      {/* Overview Layer - Bento Grid */}
+      {/* Overview Layer - Glass Grid */}
       <div className="container mx-auto relative z-10">
         <ScrollReveal className="text-center max-w-3xl mx-auto mb-8 px-4 sm:px-6 lg:px-8">
           <SectionLabel text="OUR CAPABILITIES" />
@@ -35,7 +35,7 @@ export const ServicesSection: React.FC = () => {
           </p>
         </ScrollReveal>
 
-        <ServicesBentoGrid />
+        <ServicesGlassGrid />
       </div>
 
       {/* Visual Separator */}

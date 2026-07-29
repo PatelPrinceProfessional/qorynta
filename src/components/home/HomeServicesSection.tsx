@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+﻿import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { services } from '@/data/services';
@@ -130,7 +130,7 @@ export const HomeServicesSection = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="py-24 md:py-32 relative bg-gradient-to-b from-[#E3F2FF] to-[#F2FAF4] dark:bg-background transition-colors duration-500 overflow-hidden">
+    <section className="py-24 md:py-32 relative bg-gradient-to-b from-[#E3F2FF] to-[#F2FAF4] dark:bg-none dark:bg-background transition-colors duration-500 overflow-hidden">
 
       {/* 3) Ambient 'Breathing' Background Graphic */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] sm:w-[1200px] sm:h-[1200px] bg-blue-500/5 dark:bg-blue-500/10 rounded-full blur-[100px] sm:blur-[150px] animate-pulse-slow pointer-events-none z-0" />
@@ -140,14 +140,14 @@ export const HomeServicesSection = () => {
         {/* Header */}
         <ScrollReveal className="flex flex-col items-center text-center mb-16 md:mb-20">
           <span className="text-sm md:text-base font-[700] tracking-[2px] text-[#0A2472] dark:text-muted-foreground uppercase mb-4">
-            — We Offer —
+            â€” We Offer â€”
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-8 tracking-tight text-[#00072D] dark:text-foreground uppercase">
-            All <span className="bg-gradient-to-br from-[#004EE0] to-[#0A2472] text-transparent bg-clip-text dark:text-blue-500">Tech</span> Services
+            All <span className="bg-gradient-to-br from-[#004EE0] to-[#0A2472] dark:from-blue-400 dark:to-blue-600 text-transparent bg-clip-text">Tech</span> Services
           </h2>
 
           {/* Subheader Ribbon */}
-          <div className="inline-flex items-center justify-center px-4 sm:px-6 md:px-10 py-2 sm:py-3 md:py-4 bg-gradient-to-r from-[#004EE0] to-[#0069D9] dark:bg-blue-600 rounded-full shadow-[0px_8px_24px_rgba(0,78,224,0.2)] transform -rotate-1 hover:rotate-0 transition-transform duration-300">
+          <div className="inline-flex items-center justify-center px-4 sm:px-6 md:px-10 py-2 sm:py-3 md:py-4 bg-gradient-to-r from-[#004EE0] to-[#0069D9] dark:from-blue-600 dark:to-blue-800 rounded-full shadow-[0px_8px_24px_rgba(0,78,224,0.2)] transform -rotate-1 hover:rotate-0 transition-transform duration-300">
             <p className="text-xs sm:text-sm md:text-lg text-[#F2FAF4] font-bold tracking-wider uppercase text-center">
               To Empower Your Ideas & Grow Your Business
             </p>

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+﻿import React, { useEffect, useRef } from 'react';
 import { ArrowRight, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
@@ -55,7 +55,7 @@ export const CaseStudySection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 md:py-32 relative bg-gradient-to-b from-[#E3F2FF] to-[#F2FAF4] dark:bg-background dark:from-transparent dark:to-transparent transition-colors duration-500 border-t border-white/5">
+    <section ref={sectionRef} className="py-24 md:py-32 relative bg-gradient-to-b from-[#E3F2FF] to-[#F2FAF4] dark:bg-none dark:bg-background dark:from-transparent dark:to-transparent transition-colors duration-500 border-t border-white/5">
       {/* Optional faint glowing pulse for dark mode to match other sections */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[150px] pointer-events-none transition-colors duration-500" />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

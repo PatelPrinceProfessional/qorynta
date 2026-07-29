@@ -1,4 +1,4 @@
-import { Calendar, ArrowRight } from 'lucide-react';
+﻿import { Calendar, ArrowRight } from 'lucide-react';
 import { SectionLabel } from '@/components/ui/SectionLabel';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { StaggerContainer, StaggerItem } from '@/components/ui/StaggerContainer';

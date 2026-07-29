@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+﻿import React, { useRef, useState } from 'react';
 import { SectionLabel } from '@/components/ui/SectionLabel';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { StaggerContainer, StaggerItem } from '@/components/ui/StaggerContainer';
@@ -126,15 +126,15 @@ const PinnedValueCard = ({ card, index }: { card: typeof businessValueCards[0], 
         onMouseMove={handleMouseMove}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="relative h-full bg-[#f8fafc] dark:bg-card/90 rounded-2xl p-5 pt-8 flex flex-col justify-between transition-all duration-400 ease-out z-10"
+        className="relative h-full bg-[#FFFFFF] dark:bg-card/90 rounded-[18px] p-5 pt-8 flex flex-col justify-between transition-all duration-[350ms] ease-out z-10"
         style={{
-          transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${isHovered ? 1.05 : 1})`,
+          transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${isHovered ? 1.05 : 1}) translateY(${isHovered ? '-6px' : '0px'})`,
           transformStyle: 'preserve-3d',
           willChange: 'transform',
-          border: `1px solid ${isHovered ? pinColor : 'rgba(203, 213, 225, 0.5)'}`,
+          border: isHovered ? '1.5px solid #004EE0' : '1px solid rgba(153, 202, 255, 0.5)',
           boxShadow: isHovered
-            ? `0 40px 80px -20px rgba(0, 0, 0, 0.45), 0 0 40px -10px ${pinColor}40, inset 0 2px 20px ${pinColor}15`
-            : '0 20px 40px -15px rgba(0, 0, 0, 0.25)',
+            ? `0px 20px 40px rgba(0, 78, 224, 0.14), 0 0 40px -10px ${pinColor}40, inset 0 2px 20px ${pinColor}15`
+            : '0px 10px 25px rgba(5, 22, 80, 0.04)',
         }}
       >
         {/* Dynamic 3D Glare overlay */}
@@ -151,20 +151,20 @@ const PinnedValueCard = ({ card, index }: { card: typeof businessValueCards[0], 
 
         <div className="relative z-10 transform-style-3d">
           <h3
-            className="text-xl lg:text-[1.35rem] font-extrabold mb-4 text-[#0F172A] dark:text-foreground leading-[1.1] tracking-tighter drop-shadow-sm"
+            className={`text-xl lg:text-[1.35rem] font-[700] mb-4 leading-[1.1] tracking-tighter drop-shadow-sm transition-colors duration-[350ms] ${isHovered ? 'text-[#004EE0] dark:text-blue-400' : 'text-[#00072D] dark:text-foreground'}`}
             style={{
               transform: isHovered ? 'translateZ(40px)' : 'translateZ(0)',
-              transition: 'transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1)',
+              transition: 'transform 0.35s ease',
               textShadow: isHovered ? '0 10px 20px rgba(0,0,0,0.15)' : 'none'
             }}
           >
             {card.category}
           </h3>
           <p
-            className="text-[13px] lg:text-[15px] font-medium leading-[1.7] text-[#475569] dark:text-[#9CA3AF]"
+            className="text-[13px] lg:text-[15px] font-medium leading-[1.7] text-[#051650] dark:text-[#9CA3AF]"
             style={{
               transform: isHovered ? 'translateZ(25px)' : 'translateZ(0)',
-              transition: 'transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1)',
+              transition: 'transform 0.35s ease',
               textShadow: isHovered ? '0 5px 10px rgba(0,0,0,0.15)' : 'none'
             }}
           >
@@ -174,16 +174,16 @@ const PinnedValueCard = ({ card, index }: { card: typeof businessValueCards[0], 
 
         {/* ROI-Meter Bottom Section with extreme depth */}
         <div
-          className="relative z-10 mt-6 pt-4 border-t border-slate-300/60 dark:border-border/80/60 bg-white/50 dark:bg-card/50 -mx-5 -mb-5 p-5 rounded-b-2xl backdrop-blur-sm"
+          className="relative z-10 mt-6 pt-4 border-t border-slate-300/60 dark:border-border/80/60 bg-white/50 dark:bg-card/50 -mx-5 -mb-5 p-5 rounded-b-[18px] backdrop-blur-sm"
           style={{
             transform: isHovered ? 'translateZ(30px)' : 'translateZ(0)',
-            transition: 'transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1)',
+            transition: 'transform 0.35s ease',
             boxShadow: isHovered ? '0 -10px 20px -10px rgba(0,0,0,0.1)' : 'none'
           }}
         >
           <div className="flex justify-between items-end mb-4">
-            <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#64748B] dark:text-[#6B7280]">Impact Metric</span>
-            <span className="text-[13px] font-black tracking-tight text-[#0F172A] dark:text-foreground bg-white/80 dark:bg-muted/80 px-3.5 py-1.5 rounded-full shadow-sm border border-slate-200/50 dark:border-border/80/50 backdrop-blur-sm">{card.metric}</span>
+            <span className="text-[10px] font-[700] uppercase tracking-[1px] text-[#0A2472] dark:text-[#6B7280]">Impact Metric</span>
+            <span className="text-[13px] font-[700] tracking-tight text-[#00072D] dark:text-foreground bg-[#E3F2FF] dark:bg-muted/80 px-3.5 py-1.5 rounded-full shadow-sm border border-[#99CAFF] dark:border-border/80/50 backdrop-blur-sm">{card.metric}</span>
           </div>
           {/* Progress Bar Container */}
           <div className="w-full h-2.5 bg-slate-200 dark:bg-muted rounded-full overflow-hidden shadow-inner">
@@ -233,7 +233,7 @@ const GlassOrbs = () => (
 
 export const TechStackSection = () => {
   return (
-    <section className="py-10 md:py-16 relative bg-white dark:bg-background overflow-hidden">
+    <section className="py-10 md:py-16 relative bg-gradient-to-b from-[#E3F2FF] to-[#F2FAF4] dark:bg-none dark:bg-background overflow-hidden">
 
       {/* 1. Structural Foundation: Dot-Matrix Grid */}
       <div
@@ -261,11 +261,13 @@ export const TechStackSection = () => {
 
         {/* Header */}
         <ScrollReveal className="text-center max-w-4xl mx-auto mb-10 lg:mb-14 relative z-20">
-          <SectionLabel text="BUSINESS OUTCOMES" />
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-sans font-black text-[#0f172a] dark:text-foreground mb-6 tracking-tighter drop-shadow-md">
-            Engineered for <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#293681] to-[#3b82f6] dark:from-[#60a5fa] dark:to-[#3b82f6]">Enterprise Growth</span>
+          <span className="inline-block py-1 px-4 rounded-full bg-white/50 dark:bg-white/5 border border-[#99CAFF]/50 dark:border-white/10 text-[#0A2472] dark:text-primary text-sm font-[700] tracking-[2px] uppercase mb-6 backdrop-blur-md shadow-sm dark:shadow-none">
+            BUSINESS OUTCOMES
+          </span>
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-sans font-black text-[#00072D] dark:text-foreground mb-6 tracking-tighter drop-shadow-md">
+            Engineered for <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#004EE0] via-[#0069D9] to-[#183EFF] dark:from-[#60a5fa] dark:to-[#3b82f6]">Enterprise Growth</span>
           </h2>
-          <p className="text-lg md:text-xl text-[#334155] dark:text-foreground/90 font-bold leading-relaxed">
+          <p className="text-lg md:text-xl text-[#051650] dark:text-foreground/90 font-bold leading-[1.6]">
             We don't just write code. We build scalable digital assets designed to maximize your return on investment and secure your market position.
           </p>
         </ScrollReveal>

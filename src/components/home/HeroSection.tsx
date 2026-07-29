@@ -118,7 +118,7 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="hero-section relative z-0 min-h-screen flex items-center justify-center overflow-hidden bg-[#f2faf4] dark:bg-transparent">
+    <section className="hero-section relative z-0 min-h-[100vh] flex flex-col pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden bg-[#f2faf4] dark:bg-transparent">
       {/* Background Radial Glow, Dot Grid, and Stars */}
       <div className="absolute inset-0 z-0">
         <div className="stars-bg" />
@@ -128,7 +128,7 @@ export const HeroSection = () => {
       <div className={`absolute top-0 right-0 w-[400px] h-[400px] sm:w-[800px] sm:h-[800px] rounded-full bg-gradient-to-tr from-[#123499]/15 via-[#0a2472]/10 to-transparent blur-[80px] sm:blur-[120px] -translate-y-1/2 translate-x-1/3 animate-pulse-slow pointer-events-none transition-colors duration-1000 ease-in-out`} />
       <div className="absolute bottom-0 left-0 w-[300px] h-[300px] sm:w-[600px] sm:h-[600px] bg-gradient-to-tr from-[#0a2472]/10 via-[#123499]/15 to-transparent rounded-full blur-[60px] sm:blur-[100px] translate-y-1/3 -translate-x-1/3 animate-pulse-slow pointer-events-none" style={{ animationDelay: '2s' }} />
 
-      <div className="hero-content w-full container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 relative z-10" style={{ willChange: 'transform, filter, opacity' }}>
+      <div className="hero-content w-full container mx-auto px-4 sm:px-6 lg:px-8 my-auto relative z-10" style={{ willChange: 'transform, filter, opacity' }}>
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
 
           {/* Left Content (7 cols on lg) */}
@@ -141,12 +141,12 @@ export const HeroSection = () => {
             <div className="hero-eyebrow opacity-0 translate-y-3 w-full sm:w-auto">
               {/* Mobile text */}
               <div className="md:hidden">
-                <SectionLabel text="QORYNTA SERVICES — BUILD. SCALE. DOMINATE." />
+                <SectionLabel text="QORYNTA SERVICES â€” BUILD. SCALE. DOMINATE." />
               </div>
               {/* Desktop text */}
               <div className="hidden md:flex items-center gap-2.5 mb-4">
                 <div className="w-1.5 h-1.5 rounded-full bg-[#123499] dark:bg-primary animate-pulse" />
-                <span className="font-mono text-xs md:text-[13px] tracking-widest font-bold text-[#0a2472] dark:text-muted-foreground uppercase">Qorynta Services — BUILD. SCALE. DOMINATE.</span>
+                <span className="font-mono text-xs md:text-[13px] tracking-widest font-bold text-[#0a2472] dark:text-muted-foreground uppercase">Qorynta Services â€” BUILD. SCALE. DOMINATE.</span>
               </div>
             </div>
 
@@ -166,13 +166,13 @@ export const HeroSection = () => {
 
             {/* Invisible spacer to perfectly preserve layout spacing and prevent CTAs from shifting up */}
             <div className="invisible pointer-events-none select-none text-lg md:text-xl font-light mb-10 max-w-xl leading-relaxed font-mono" aria-hidden="true">
-              From mobile apps to enterprise web platforms — Qorynta services deliver
+              From mobile apps to enterprise web platforms â€” Qorynta services deliver
               production-grade digital solutions for Indian and global businesses
               at competitive rates.
             </div>
 
             <p className="hero-description absolute top-[65%] sm:top-[70%] text-lg md:text-xl font-light mb-10 max-w-xl leading-relaxed text-muted-foreground opacity-0">
-              From mobile apps to enterprise web platforms — Qorynta services deliver
+              From mobile apps to enterprise web platforms â€” Qorynta services deliver
               production-grade digital solutions for Indian and global businesses
               at competitive rates.
             </p>

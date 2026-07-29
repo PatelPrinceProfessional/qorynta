@@ -1,4 +1,4 @@
-import { Quote, Star } from 'lucide-react';
+﻿import { Quote, Star } from 'lucide-react';
 import { SectionLabel } from '@/components/ui/SectionLabel';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';

@@ -1,4 +1,4 @@
-import { CountUp } from '@/components/ui/CountUp';
+﻿import { CountUp } from '@/components/ui/CountUp';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { StaggerContainer, StaggerItem } from '@/components/ui/StaggerContainer';
 
@@ -6,7 +6,7 @@ const metrics = [
   { value: 40, suffix: '+', label: 'Happy Clients' },
   { value: 120, suffix: '+', label: 'Projects Delivered' },
   { value: 5, suffix: '+', label: 'Countries Served' },
-  { value: 4.7, suffix: '★', label: 'Average Rating', decimals: 1 },
+  { value: 4.7, suffix: 'â˜…', label: 'Average Rating', decimals: 1 },
   { value: 1, suffix: 'yr', label: 'In Business' },
 ];
 
