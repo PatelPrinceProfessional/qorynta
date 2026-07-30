@@ -1,8 +1,6 @@
 import SEO from '@/components/SEO';
 import { ServicesSection } from '@/components/home/ServicesSection';
 import { TechStackSection } from '@/components/home/TechStackSection';
-import { CTABanner } from '@/components/home/CTABanner';
-
 const Services = () => {
   return (
     <>
@@ -71,7 +69,6 @@ const Services = () => {
         
         <div className="relative z-10 bg-white/50 backdrop-blur-md border-t border-white/20">
           <TechStackSection />
-          <CTABanner />
         </div>
 
       </main>
@@ -97,7 +94,6 @@ const Services = () => {
         
         <TechStackSection />
         
-        <CTABanner />
       </main>
     </>
   );

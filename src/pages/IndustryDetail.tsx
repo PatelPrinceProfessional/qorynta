@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import SEO from '@/components/SEO';
-import { CTABanner } from '@/components/home/CTABanner';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { ArrowRight, ShieldCheck, Zap, BarChart3, Lock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -268,7 +267,6 @@ export const IndustryDetail = () => {
         )}
 
 
-        <CTABanner />
       </main>
 
                 </>

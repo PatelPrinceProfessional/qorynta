@@ -1,7 +1,6 @@
 import { useState, useMemo } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import SEO from '@/components/SEO';
-import { CTABanner } from '@/components/home/CTABanner';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { ArrowRight, Filter } from 'lucide-react';
 import { insights } from '@/data/insights';
@@ -195,7 +194,6 @@ export const Insights = () => {
           </div>
         </section>
 
-        <CTABanner />
       </main>
 
           </>

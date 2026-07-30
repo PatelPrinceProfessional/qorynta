@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import SEO from '@/components/SEO';
-import { CTABanner } from '@/components/home/CTABanner';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { insights } from '@/data/insights';
 import NotFound from './NotFound';
@@ -215,7 +214,6 @@ export const InsightDetail = () => {
           </div>
         </section>
 
-        <CTABanner />
       </main>
     </>
   );

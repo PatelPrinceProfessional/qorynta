@@ -9,7 +9,6 @@ import {
   Layers,
   ArrowRight
 } from 'lucide-react';
-import { CTABanner } from '@/components/home/CTABanner';
 import { SectionLabel } from '@/components/ui/SectionLabel';
 import { services, ServiceData } from '@/data/services';
 import { insights } from '@/data/insights';
@@ -341,8 +340,6 @@ const ServiceDetail = () => {
         )}
 
         {/* CTA */}
-        <CTABanner />
-
       </main>
 
                 </>

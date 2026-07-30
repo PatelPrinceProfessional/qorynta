@@ -2,7 +2,6 @@ import { useParams, Navigate, Link } from 'react-router-dom';
 import SEO from '@/components/SEO';
 import { ArrowLeft, CheckCircle2, ChevronRight, Terminal, ArrowRight, Building2 } from 'lucide-react';
 import { allProjects } from '@/data/projects';
-import { CTABanner } from '@/components/home/CTABanner';
 import { ProjectCard } from '@/components/ui/ProjectCard';
 import { motion } from 'framer-motion';
 
@@ -231,7 +230,6 @@ const CaseStudyDetail = () => {
         )}
 
         <div className="mt-24">
-          <CTABanner />
         </div>
       </main>
       

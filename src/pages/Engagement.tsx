@@ -1,5 +1,4 @@
 import SEO from '@/components/SEO';
-import { CTABanner } from '@/components/home/CTABanner';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
@@ -186,8 +185,6 @@ export const Engagement = () => {
             </div>
           </div>
         </section>
-
-        <CTABanner />
 
       </main>
       

@@ -3,7 +3,6 @@ import SEO from '@/components/SEO';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SectionLabel } from '@/components/ui/SectionLabel';
-import { CTABanner } from '@/components/home/CTABanner';
 import { allProjects } from '@/data/projects';
 import { ProjectCard } from '@/components/ui/ProjectCard';
 
@@ -85,8 +84,6 @@ const CaseStudies = () => {
             </div>
           </div>
         </section>
-
-        <CTABanner />
 
       </main>
                 </>

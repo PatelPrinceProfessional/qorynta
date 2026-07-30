@@ -118,7 +118,7 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="hero-section relative z-0 min-h-[100vh] flex flex-col pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden bg-[#f2faf4] dark:bg-transparent">
+    <section className="hero-section relative z-0 min-h-[100vh] flex flex-col overflow-hidden bg-[#f2faf4] dark:bg-transparent">
       {/* Background Radial Glow, Dot Grid, and Stars */}
       <div className="absolute inset-0 z-0">
         <div className="stars-bg" />
@@ -128,7 +128,7 @@ export const HeroSection = () => {
       <div className={`absolute top-0 right-0 w-[400px] h-[400px] sm:w-[800px] sm:h-[800px] rounded-full bg-gradient-to-tr from-[#123499]/15 via-[#0a2472]/10 to-transparent blur-[80px] sm:blur-[120px] -translate-y-1/2 translate-x-1/3 animate-pulse-slow pointer-events-none transition-colors duration-1000 ease-in-out`} />
       <div className="absolute bottom-0 left-0 w-[300px] h-[300px] sm:w-[600px] sm:h-[600px] bg-gradient-to-tr from-[#0a2472]/10 via-[#123499]/15 to-transparent rounded-full blur-[60px] sm:blur-[100px] translate-y-1/3 -translate-x-1/3 animate-pulse-slow pointer-events-none" style={{ animationDelay: '2s' }} />
 
-      <div className="hero-content w-full container mx-auto px-4 sm:px-6 lg:px-8 my-auto relative z-10" style={{ willChange: 'transform, filter, opacity' }}>
+      <div className="hero-content w-full container mx-auto px-4 sm:px-6 lg:px-8 flex-1 flex flex-col justify-center pt-32 pb-12 md:pt-40 md:pb-20 relative z-10" style={{ willChange: 'transform, filter, opacity' }}>
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
 
           {/* Left Content (7 cols on lg) */}

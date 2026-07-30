@@ -8,8 +8,6 @@ const HomeServicesSection = React.lazy(() => import('@/components/home/HomeServi
 const ProcessSection = React.lazy(() => import('@/components/home/ProcessSection').then(m => ({ default: m.ProcessSection })));
 const CaseStudySection = React.lazy(() => import('@/components/home/CaseStudySection').then(m => ({ default: m.CaseStudySection })));
 const TechStackSection = React.lazy(() => import('@/components/home/TechStackSection').then(m => ({ default: m.TechStackSection })));
-const CTABanner = React.lazy(() => import('@/components/home/CTABanner').then(m => ({ default: m.CTABanner })));
-
 // New Phase 1 Sections
 const IndustriesSection = React.lazy(() => import('@/components/home/IndustriesSection').then(m => ({ default: m.IndustriesSection })));
 const CertificationsSection = React.lazy(() => import('@/components/home/CertificationsSection').then(m => ({ default: m.CertificationsSection })));

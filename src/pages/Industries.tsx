@@ -1,7 +1,6 @@
 import SEO from '@/components/SEO';
 import { Link } from 'react-router-dom';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
-import { CTABanner } from '@/components/home/CTABanner';
 import {
   Building2,
   Stethoscope,
@@ -382,7 +381,6 @@ export const Industries = () => {
         </section>
 
         {/* CTA */}
-        <CTABanner />
       </main>
     </>
   );

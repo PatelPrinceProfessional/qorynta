@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import SEO from '@/components/SEO';
-import { CTABanner } from '@/components/home/CTABanner';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { ArrowRight, CheckCircle2, Users, Code2, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -239,7 +238,6 @@ export const HireDetail = () => {
           </div>
         </section>
 
-        <CTABanner />
       </main>
 
                 </>
