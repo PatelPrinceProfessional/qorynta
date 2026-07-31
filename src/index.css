@@ -75,16 +75,16 @@
   }
 
   .dark {
-    /* Pitch Black background to match WebGL Home Page */
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
+    /* Cosmic Obsidian background */
+    --background: 216 46% 3%; /* #030508 */
+    --foreground: 210 40% 98%; /* slate-50 */
 
-    /* Very dark cards that blend into space */
-    --card: 220 20% 4%;
-    --card-foreground: 0 0% 100%;
+    /* Elevated Obsidian Glass Cards */
+    --card: 225 60% 10%; /* #0B132B */
+    --card-foreground: 210 40% 98%;
 
-    --popover: 220 20% 4%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 225 60% 10%;
+    --popover-foreground: 210 40% 98%;
 
     /* Vibrant Cyan / Sky Blue matching 'Win Markets' */
     --primary: 199 89% 48%;

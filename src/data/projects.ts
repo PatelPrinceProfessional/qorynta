@@ -54,16 +54,16 @@ export const allProjects: Project[] = [
     result: 'Reduced fraud detection time by 60%',
     metrics: [
       { label: 'Fraud Detection Accuracy', value: '98.5%' },
-      { label: 'False Positives Reduced', value: '40%' },
-      { label: 'Inference Latency', value: '<50ms' }
+      { label: 'False Positive Reduction', value: '-40%' },
+      { label: 'Transaction Scoring Latency', value: '<50ms' }
     ],
     overview: 'A major digital payment provider required a predictive analytics model to identify fraudulent transactions in real-time, aiming to stop chargebacks without increasing false positives that frustrated legitimate users.',
     challenge: [
       'Legacy rule-based systems were catching only 45% of fraudulent activity.',
-      'An unacceptably high false-positive rate resulted in blocked cards and increased customer support tickets.',
-      'Lack of a user-friendly interface for the risk assessment team to review flagged anomalies.'
+      'High false-positive rates resulted in blocked legitimate cards and increased support tickets.',
+      'Lack of a user-friendly interface for risk teams to review flagged anomalies.'
     ],
-    solution: 'We developed an end-to-end Machine Learning pipeline using Python and TensorFlow. The Deep Learning model was trained on millions of historical transactions and deployed via a highly available FastAPI microservice. We subsequently built a secure React dashboard utilizing explainable AI metrics (SHAP values) so analysts could understand exactly why a transaction was flagged.',
+    solution: 'We developed an end-to-end Machine Learning Pipeline using Python and TensorFlow. The Deep Learning model was trained on millions of historical transactions and deployed via a highly available FastAPI Microservice. We built a secure React dashboard utilizing Explainable AI (SHAP Values) so risk analysts understand exact decision factors.',
     techStack: ['Python', 'TensorFlow', 'FastAPI', 'React', 'AWS SageMaker', 'Kafka'],
     featuresAndResults: [
       'Increased overall fraud detection accuracy to 98.5% within the first month.',
@@ -81,22 +81,22 @@ export const allProjects: Project[] = [
     image: '/portfolio/salon-professional.webp',
     result: 'Boosted online bookings by 150%',
     metrics: [
-      { label: 'Booking Conversion', value: '+150%' },
-      { label: 'No-Shows Reduced', value: '35%' },
-      { label: 'Admin Overhead Saved', value: '25 hrs/wk' }
+      { label: 'Online Booking Conversion', value: '+150%' },
+      { label: 'No-Show Appointments', value: '-35%' },
+      { label: 'Google Lighthouse Score', value: '100/100' }
     ],
     overview: 'A premium healthcare clinic chain required a modern, HIPAA-compliant digital storefront with integrated appointment scheduling to drive patient acquisition and reduce front-desk administrative load.',
     challenge: [
-      'High bounce rate on the existing legacy website due to poor mobile optimization.',
+      'High bounce rate on existing legacy website due to poor mobile optimization.',
       'Cumbersome manual booking process reliant entirely on phone calls.',
       'Lack of clear service visualization and pricing transparency for elective procedures.'
     ],
-    solution: 'We designed a sleek, brand-aligned Next.js application optimized for core web vitals. We integrated a custom booking engine with automated calendar syncing (Google Workspace) and SMS reminders via Twilio, all wrapped in an elegant UI utilizing framer-motion for a premium feel.',
+    solution: 'We designed a sleek, brand-aligned Next.js application optimized for Core Web Vitals Performance. We integrated a custom booking engine with Automated Google Workspace Syncing and two-way Twilio SMS Reminders, wrapped in Framer Motion animations.',
     techStack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Stripe', 'Twilio API', 'PostgreSQL'],
     featuresAndResults: [
       'Increased online booking conversion rate by 150% in the first two months.',
       'Reduced no-show appointments by 35% via automated two-way SMS.',
-      'Achieved a perfect 100/100 Google Lighthouse performance and accessibility score.'
+      'Achieved a perfect 100/100 Google Lighthouse performance & accessibility score.'
     ],
     businessValue: 'By shifting to a fully automated digital booking flow, the clinic reduced front-desk administrative overhead by 25 hours a week, allowing them to scale their operations across three new locations without hiring additional receptionist staff.'
   },
@@ -109,20 +109,20 @@ export const allProjects: Project[] = [
     image: '/portfolio/e-commerce-store.webp',
     result: 'Scaled to handle 50,000+ concurrent flash-sale users',
     metrics: [
-      { label: 'Concurrent Users Supported', value: '50k+' },
-      { label: 'Checkout Abandonment', value: '-18%' },
-      { label: 'Page Load Speed', value: '0.8s' }
+      { label: 'Concurrent Flash-Sale Users', value: '50k+' },
+      { label: 'Checkout Abandonment Rate', value: '-18%' },
+      { label: 'Platform Uptime SLA', value: '99.99%' }
     ],
     overview: 'A fast-growing direct-to-consumer apparel brand needed an enterprise-grade e-commerce platform capable of handling extreme high-volume traffic spikes during influencer-driven product drops.',
     challenge: [
-      'The previous monolithic site crashed during major marketing campaigns due to database locks.',
+      'Monolithic site crashed during major marketing campaigns due to database locks.',
       'Checkout abandonment rate was significantly above the industry average on mobile.',
       'Complex international shipping and tax logic was handled manually.'
     ],
-    solution: 'We architected a modern headless e-commerce solution using Shopify Plus as the backend commerce engine and a custom Next.js frontend. We implemented aggressive CDN caching strategies via Vercel, edge computing for localized pricing, and a streamlined, single-page checkout flow.',
+    solution: 'We architected a modern Headless E-Commerce Solution using Shopify Plus as the backend commerce engine and a custom Next.js frontend. We implemented aggressive Vercel Edge CDN Caching and localized pricing via edge computing with a Single-Page Checkout Flow.',
     techStack: ['Next.js', 'Shopify Storefront API', 'Vercel Edge Functions', 'Redis', 'Tailwind CSS'],
     featuresAndResults: [
-      'Successfully handled 50,000+ concurrent users during a major product drop with zero downtime.',
+      'Successfully handled 50,000+ concurrent users during product drops with zero downtime.',
       'Reduced checkout abandonment by 18% through a localized, frictionless flow.',
       'Automated complex international shipping calculations using third-party API integration.'
     ],
@@ -137,9 +137,9 @@ export const allProjects: Project[] = [
     image: '/portfolio/cafe-dashboard.webp',
     result: 'Centralized reporting and real-time inventory tracking',
     metrics: [
-      { label: 'Inventory Waste Reduced', value: '45%' },
-      { label: 'Reporting Speed', value: '10x Faster' },
-      { label: 'Locations Managed', value: '120+' }
+      { label: 'POS Endpoints Consolidated', value: '120+' },
+      { label: 'Inventory Waste Reduction', value: '-45%' },
+      { label: 'Data Sync Latency', value: 'Real-Time' }
     ],
     overview: 'A rapidly expanding national cafe franchise needed a centralized management dashboard to gain real-time visibility into inventory, staffing, and sales across more than 120 regional locations.',
     challenge: [
@@ -147,12 +147,12 @@ export const allProjects: Project[] = [
       'Significant inventory waste due to predictive ordering inaccuracies.',
       'Lack of a unified system to visualize regional performance metrics.'
     ],
-    solution: 'We engineered a centralized, real-time analytics dashboard using React and D3.js. By building custom API connectors to their existing POS hardware, we aggregated sales and inventory data into a unified Firebase backend, enabling instant, rich data visualization and predictive ordering alerts.',
+    solution: 'We engineered a centralized analytics dashboard using React and D3.js. By building custom POS Hardware API Connectors, we aggregated real-time sales and inventory data into a unified Firebase backend, enabling Predictive Ordering Inventory Alerts and Interactive D3.js Data Visualizations.',
     techStack: ['React', 'D3.js', 'Firebase', 'Node.js', 'Tailwind CSS'],
     featuresAndResults: [
       'Aggregated data from 120+ unique POS endpoints with zero data loss.',
       'Implemented real-time alerts for low inventory thresholds, reducing waste by 45%.',
-      'Created custom, interactive D3.js charts for regional managers to track performance instantly.'
+      'Created custom, interactive D3.js charts for regional managers to track performance.'
     ],
     businessValue: 'The executive team achieved total operational visibility, empowering them to optimize supply chain logistics globally. Franchisees saved an average of 15 hours a week previously spent on manual reporting.'
   },
@@ -165,9 +165,9 @@ export const allProjects: Project[] = [
     image: '/portfolio/saas-product.webp',
     result: 'Launched scalable MVP in 3 months, securing Series A funding',
     metrics: [
-      { label: 'Time to Market', value: '3 Months' },
-      { label: 'User Retention', value: '92%' },
-      { label: 'API Uptime', value: '99.99%' }
+      { label: 'Time to Market', value: '12 Weeks' },
+      { label: 'HIPAA & SOC2 Compliant', value: '100%' },
+      { label: 'Isolated Architecture', value: 'Multi-Tenant' }
     ],
     overview: 'A fintech startup required a highly secure, scalable MVP to demonstrate their automated ledger reconciliation concept to prospective clients and seed investors within an aggressive timeline.',
     challenge: [
@@ -175,7 +175,7 @@ export const allProjects: Project[] = [
       'Aggressive 3-month go-to-market deadline to secure investor funding.',
       'Need for a robust, multi-tenant architecture from day one to support rapid scaling.'
     ],
-    solution: 'We architected a secure, multi-tenant SaaS application using Django and Vue.js. We prioritized a rock-solid, HIPAA and SOC2 compliant PostgreSQL database schema, while deploying the infrastructure on AWS using automated CI/CD pipelines to ensure rapid iteration and flawless deployments.',
+    solution: 'We architected a secure, Multi-Tenant SaaS Architecture using Django and Vue.js. We prioritized a rock-solid HIPAA & SOC2 Compliant PostgreSQL Schema, deploying infrastructure on AWS using Automated CI/CD Pipelines alongside integrated Stripe subscription billing.',
     techStack: ['Vue.js', 'Django', 'PostgreSQL', 'Docker', 'AWS ECS', 'Stripe'],
     featuresAndResults: [
       'Successfully launched a fully functional, secure MVP in exactly 12 weeks.',

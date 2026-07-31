@@ -219,78 +219,79 @@ const About = () => {
           })}
         </script>
       </SEO>
-      <main className="min-h-screen bg-background overflow-hidden relative">
+      <main className="min-h-screen bg-background dark:bg-transparent overflow-hidden relative z-10">
         
         {/* Hero Section */}
-        <section className="bg-[#f2faf4] transition-colors duration-300 relative overflow-hidden pt-28 pb-20 px-4">
+        <section className="bg-[#f2faf4] dark:bg-transparent transition-colors duration-300 relative overflow-hidden pt-28 pb-20 px-4">
           
           {/* Ambient Canvas & Architectural Lighting Mesh */}
-          <div className="bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#E3F2FF] via-[#99CAFF]/30 to-transparent w-[1000px] h-[500px] blur-3xl absolute -top-16 left-1/2 -translate-x-1/2 pointer-events-none" />
-          <div className="bg-[#99CAFF]/15 blur-3xl w-80 h-80 absolute top-20 left-10 pointer-events-none" />
-          <div className="bg-[#004EE0]/10 blur-3xl w-96 h-96 absolute top-10 right-10 pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle,rgba(13,27,62,0.8)_0%,rgba(3,5,8,0)_70%)] pointer-events-none hidden dark:block" />
+          <div className="bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#E3F2FF] via-[#99CAFF]/30 to-transparent w-[1000px] h-[500px] blur-3xl absolute -top-16 left-1/2 -translate-x-1/2 pointer-events-none dark:hidden" />
+          <div className="bg-[#99CAFF]/15 blur-3xl w-80 h-80 absolute top-20 left-10 pointer-events-none dark:hidden" />
+          <div className="bg-[#004EE0]/10 blur-3xl w-96 h-96 absolute top-10 right-10 pointer-events-none dark:hidden" />
           {/* Vignetted Micro-Grid Pattern */}
-          <div className="absolute inset-0 bg-[radial-gradient(#042E7B_1.2px,transparent_1.2px)] [background-size:24px_24px] opacity-30 [mask-image:radial-gradient(ellipse_65%_55%_at_50%_40%,black_30%,transparent_100%)] pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(#042E7B_1.2px,transparent_1.2px)] dark:hidden [background-size:24px_24px] opacity-30 [mask-image:radial-gradient(ellipse_65%_55%_at_50%_40%,black_30%,transparent_100%)] pointer-events-none" />
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-5xl relative z-10">
             
             <UnfoldReveal delay={0}>
               
-              <div className="bg-white/90 backdrop-blur-xl border border-[#99CAFF] shadow-[0_4px_20px_rgba(0,78,224,0.08)] px-5 py-2 rounded-full inline-flex items-center gap-2.5 mb-8 mx-auto hover:border-[#004EE0] hover:bg-[#E3F2FF] hover:scale-105 transition-all duration-300 cursor-pointer">
+              <div className="bg-white/90 dark:bg-white/5 backdrop-blur-xl border border-[#99CAFF] dark:border-cyan-500/30 shadow-[0_4px_20px_rgba(0,78,224,0.08)] dark:shadow-[0_4px_20px_rgba(0,240,255,0.1)] px-5 py-2 rounded-full inline-flex items-center gap-2.5 mb-8 mx-auto hover:border-[#004EE0] dark:hover:border-cyan-400 hover:bg-[#E3F2FF] dark:hover:bg-cyan-500/10 hover:scale-105 transition-all duration-300 cursor-pointer">
                 
-                <div className="w-2 h-2 rounded-full bg-[#004EE0] animate-pulse shadow-[0_0_8px_#004EE0]" />
-                <span className="text-[#042E7B] font-mono text-xs uppercase tracking-[0.25em] font-extrabold">
+                <div className="w-2 h-2 rounded-full bg-[#004EE0] dark:bg-cyan-400 animate-pulse shadow-[0_0_8px_#004EE0] dark:shadow-[0_0_8px_#22d3ee]" />
+                <span className="text-[#042E7B] dark:text-cyan-300 font-mono text-xs uppercase tracking-[0.25em] font-extrabold">
                   The Agency
                 </span>
               </div>
             </UnfoldReveal>
             <UnfoldReveal delay={0.2}>
               
-              <h1 className="text-[#00072d] font-black tracking-tight text-4xl sm:text-6xl lg:text-7xl leading-[1.1] max-w-5xl mx-auto text-center mb-6">
+              <h1 className="text-[#00072d] dark:text-white font-black tracking-tight text-4xl sm:text-6xl lg:text-7xl leading-[1.1] max-w-5xl mx-auto text-center mb-6">
                 
                 We Build the Digital Backbone of
-                <span className="bg-gradient-to-r from-[#042E7B] via-[#004EE0] to-[#1831FF] bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[#042E7B] via-[#004EE0] to-[#1831FF] dark:from-[#00F0FF] dark:via-[#38BDF8] dark:to-[#60A5FA] bg-clip-text text-transparent block sm:inline sm:ml-4 italic font-serif font-normal">
                   Industry Leaders.
                 </span>
               </h1>
             </UnfoldReveal>
             <UnfoldReveal delay={0.4}>
               
-              <p className="text-[#051650] font-medium text-base sm:text-xl max-w-3xl mx-auto text-center leading-relaxed mt-6">
+              <p className="text-[#051650] dark:text-slate-300 font-medium text-base sm:text-xl max-w-3xl mx-auto text-center leading-relaxed mt-6">
                 
                 Qorynta Services is not just another dev shop. We are an
-                <strong>elite software engineering task force</strong>
+                <strong className="dark:text-white"> elite software engineering task force </strong>
                 partnering with high-growth startups and global enterprises to
                 architect, scale, and ship
-                <strong>mission-critical digital infrastructure</strong>.
+                <strong className="dark:text-white"> mission-critical digital infrastructure</strong>.
               </p>
             </UnfoldReveal>
             <UnfoldReveal delay={0.6}>
               
-              <div className="mt-12 max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 rounded-2xl bg-white/70 backdrop-blur-xl border border-[#99CAFF]/60 shadow-sm">
+              <div className="mt-12 max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 rounded-2xl bg-white/70 dark:bg-[#070A10]/60 backdrop-blur-xl border border-[#99CAFF]/60 dark:border-cyan-500/30 shadow-sm dark:shadow-[0_0_25px_rgba(0,240,255,0.05)]">
                 
                 <div className="py-2">
                   
-                  <div className="text-[#004EE0] font-black text-2xl sm:text-3xl">
+                  <div className="text-[#004EE0] dark:text-cyan-400 font-black text-2xl sm:text-3xl">
                     99.9%
                   </div>
-                  <div className="text-[#051650] font-mono text-[11px] sm:text-xs uppercase tracking-wider font-bold block mt-1">
+                  <div className="text-[#051650] dark:text-slate-300 font-mono text-[11px] sm:text-xs uppercase tracking-wider font-bold block mt-1">
                     System Uptime SLAs
                   </div>
                 </div>
-                <div className="py-2 sm:border-x border-[#99CAFF]/40 ">
+                <div className="py-2 sm:border-x border-[#99CAFF]/40 dark:border-slate-800">
                   
-                  <div className="text-[#004EE0] font-black text-2xl sm:text-3xl">
+                  <div className="text-[#004EE0] dark:text-cyan-400 font-black text-2xl sm:text-3xl">
                     100+
                   </div>
-                  <div className="text-[#051650] font-mono text-[11px] sm:text-xs uppercase tracking-wider font-bold block mt-1">
+                  <div className="text-[#051650] dark:text-slate-300 font-mono text-[11px] sm:text-xs uppercase tracking-wider font-bold block mt-1">
                     Enterprise Deployments
                   </div>
                 </div>
                 <div className="py-2">
                   
-                  <div className="text-[#004EE0] font-black text-2xl sm:text-3xl">
+                  <div className="text-[#004EE0] dark:text-cyan-400 font-black text-2xl sm:text-3xl">
                     Top 1%
                   </div>
-                  <div className="text-[#051650] font-mono text-[11px] sm:text-xs uppercase tracking-wider font-bold block mt-1">
+                  <div className="text-[#051650] dark:text-slate-300 font-mono text-[11px] sm:text-xs uppercase tracking-wider font-bold block mt-1">
                     Vetted Talent Sourcing
                   </div>
                 </div>
@@ -299,41 +300,41 @@ const About = () => {
           </div>
         </section>
         {/* Core Values / DNA Grid */}
-        <section className="bg-[#f2faf4] transition-colors duration-500 py-24 px-4 relative overflow-hidden">
+        <section className="bg-[#f2faf4] dark:bg-transparent transition-colors duration-500 py-24 px-4 relative overflow-hidden">
           
           {/* Dual-Theme Multi-Orb Ambient Backdrop Mesh */}
-          <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#E3F2FF] via-[#99CAFF]/25 to-transparent w-[1100px] h-[550px] blur-3xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
-          <div className="bg-[#99CAFF]/20 blur-3xl w-80 h-80 absolute top-10 left-10 pointer-events-none" />
-          <div className="bg-[#004EE0]/10 blur-3xl w-96 h-96 absolute bottom-10 right-10 pointer-events-none" />
+          <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#E3F2FF] via-[#99CAFF]/25 to-transparent w-[1100px] h-[550px] blur-3xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none dark:hidden" />
+          <div className="bg-[#99CAFF]/20 blur-3xl w-80 h-80 absolute top-10 left-10 pointer-events-none dark:hidden" />
+          <div className="bg-[#004EE0]/10 blur-3xl w-96 h-96 absolute bottom-10 right-10 pointer-events-none dark:hidden" />
           {/* Architectural Micro-Grid Matrix */}
-          <div className="absolute inset-0 bg-[radial-gradient(#042E7B_1.2px,transparent_1.2px)] [background-size:24px_24px] opacity-30 [mask-image:radial-gradient(ellipse_65%_55%_at_50%_40%,black_30%,transparent_100%)] pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(#042E7B_1.2px,transparent_1.2px)] dark:hidden [background-size:24px_24px] opacity-30 [mask-image:radial-gradient(ellipse_65%_55%_at_50%_40%,black_30%,transparent_100%)] pointer-events-none" />
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             
             <ScrollReveal className="text-center max-w-3xl mx-auto mb-16">
               
               {/* Eyebrow Glass Capsule Badge */}
-              <div className="bg-white/90 backdrop-blur-xl border border-[#99CAFF] shadow-[0_4px_20px_rgba(0,78,224,0.08)] px-5 py-2 rounded-full inline-flex items-center gap-2.5 mb-6 mx-auto">
+              <div className="bg-white/90 dark:bg-white/5 backdrop-blur-xl border border-[#99CAFF] dark:border-cyan-500/30 shadow-[0_4px_20px_rgba(0,78,224,0.08)] dark:shadow-[0_4px_20px_rgba(0,240,255,0.1)] px-5 py-2 rounded-full inline-flex items-center gap-2.5 mb-6 mx-auto">
                 
-                <div className="w-2 h-2 rounded-full bg-[#004EE0] animate-pulse shadow-[0_0_8px_#004EE0]" />
-                <span className="text-[#042E7B] font-mono text-xs uppercase tracking-[0.25em] font-extrabold">
+                <div className="w-2 h-2 rounded-full bg-[#004EE0] dark:bg-cyan-400 animate-pulse shadow-[0_0_8px_#004EE0] dark:shadow-[0_0_8px_#22d3ee]" />
+                <span className="text-[#042E7B] dark:text-cyan-300 font-mono text-xs uppercase tracking-[0.25em] font-extrabold">
                   ⚡ ZERO COMPROMISE. HIGH VELOCITY.
                 </span>
               </div>
               {/* Main Section Headline */}
-              <h2 className="text-[#00072d] font-black tracking-tight text-4xl sm:text-6xl text-center mb-4">
+              <h2 className="text-[#00072d] dark:text-white font-black tracking-tight text-4xl sm:text-6xl text-center mb-4">
                 
                 Our Engineering
-                <span className="bg-gradient-to-r from-[#042E7B] via-[#004EE0] to-[#1831FF] bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[#042E7B] via-[#004EE0] to-[#1831FF] dark:from-[#00F0FF] dark:via-[#38BDF8] dark:to-[#60A5FA] bg-clip-text text-transparent ml-3">
                   DNA.
                 </span>
               </h2>
               {/* SEO Subtitle Paragraph */}
-              <p className="text-[#051650] font-medium text-base sm:text-lg max-w-2xl mx-auto text-center leading-relaxed">
+              <p className="text-[#051650] dark:text-slate-300 font-medium text-base sm:text-lg max-w-2xl mx-auto text-center leading-relaxed">
                 
                 We don't cut corners or compromise on code quality. Our core
                 engineering culture is built around
-                <strong>
-                  clean software architecture, radical agile transparency, and
+                <strong className="dark:text-white">
+                  {" "}clean software architecture, radical agile transparency, and
                   high-velocity delivery
                 </strong>
                 .
@@ -345,20 +346,20 @@ const About = () => {
               {/* CARD 1: PRECISION EXECUTION */}
               <ScrollReveal delay={0.1}>
                 
-                <div className="bg-white/85 backdrop-blur-2xl border border-[#99CAFF]/70 rounded-3xl p-8 sm:p-10 shadow-[0_12px_40px_-15px_rgba(4,46,123,0.06)] relative overflow-hidden transition-all duration-300 group hover:-translate-y-2 hover:border-[#004EE0] hover:shadow-[0_25px_60px_-10px_rgba(0,78,224,0.18)] before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-[#99CAFF] before:to-transparent group-hover:before:via-[#004EE0] h-full flex flex-col items-start">
+                <div className="bg-white/85 dark:bg-[#070A10]/90 backdrop-blur-2xl border border-[#99CAFF]/70 dark:border-cyan-500/30 rounded-3xl p-8 sm:p-10 shadow-[0_12px_40px_-15px_rgba(4,46,123,0.06)] dark:shadow-[0_0_25px_rgba(0,240,255,0.12)] relative overflow-hidden transition-all duration-300 group hover:-translate-y-2 hover:border-[#004EE0] dark:hover:border-cyan-400 hover:shadow-[0_25px_60px_-10px_rgba(0,78,224,0.18)] dark:hover:shadow-[0_0_35px_rgba(0,240,255,0.3)] before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-[#99CAFF] dark:before:via-cyan-500 before:to-transparent group-hover:before:via-[#004EE0] dark:group-hover:before:via-cyan-400 h-full flex flex-col items-start">
                   
-                  <div className="bg-[#E3F2FF] border border-[#99CAFF]/80 text-[#004EE0] rounded-2xl w-14 h-14 flex items-center justify-center mb-6 shadow-sm group-hover:bg-[#004EE0] group-hover:text-white transition-all duration-300">
+                  <div className="bg-[#E3F2FF] dark:bg-slate-950 border border-[#99CAFF]/80 dark:border-cyan-500/40 text-[#004EE0] dark:text-cyan-400 rounded-2xl w-14 h-14 flex items-center justify-center mb-6 shadow-sm group-hover:bg-[#004EE0] group-hover:text-white transition-all duration-300">
                     
                     <Target className="w-7 h-7" />
                   </div>
-                  <h3 className="text-[#00072d] font-black text-2xl tracking-tight mb-3 group-hover:text-[#004EE0] transition-colors">
+                  <h3 className="text-[#00072d] dark:text-white font-black text-2xl tracking-tight mb-3 group-hover:text-[#004EE0] dark:group-hover:text-cyan-400 transition-colors">
                     Precision Execution & Clean Code
                   </h3>
-                  <p className="text-[#051650] font-medium text-sm sm:text-base leading-relaxed">
+                  <p className="text-[#051650] dark:text-slate-300 font-medium text-sm sm:text-base leading-relaxed">
                     
                     We reject 'good enough.' Our engineers write
-                    <strong>clean, self-documenting code</strong> and build
-                    <strong>scalable microservice architectures</strong>
+                    <strong className="dark:text-white"> clean, self-documenting code </strong> and build
+                    <strong className="dark:text-white"> scalable microservice architectures </strong>
                     designed to perform flawlessly under extreme enterprise
                     traffic loads.
                   </p>
@@ -367,21 +368,21 @@ const About = () => {
               {/* CARD 2: RADICAL TRANSPARENCY */}
               <ScrollReveal delay={0.2}>
                 
-                <div className="bg-white/85 backdrop-blur-2xl border border-[#99CAFF]/70 rounded-3xl p-8 sm:p-10 shadow-[0_12px_40px_-15px_rgba(4,46,123,0.06)] relative overflow-hidden transition-all duration-300 group hover:-translate-y-2 hover:border-[#004EE0] hover:shadow-[0_25px_60px_-10px_rgba(0,78,224,0.18)] before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-[#99CAFF] before:to-transparent group-hover:before:via-[#004EE0] h-full flex flex-col items-start">
+                <div className="bg-white/85 dark:bg-[#070A10]/90 backdrop-blur-2xl border border-[#99CAFF]/70 dark:border-cyan-500/30 rounded-3xl p-8 sm:p-10 shadow-[0_12px_40px_-15px_rgba(4,46,123,0.06)] dark:shadow-[0_0_25px_rgba(0,240,255,0.12)] relative overflow-hidden transition-all duration-300 group hover:-translate-y-2 hover:border-[#004EE0] dark:hover:border-cyan-400 hover:shadow-[0_25px_60px_-10px_rgba(0,78,224,0.18)] dark:hover:shadow-[0_0_35px_rgba(0,240,255,0.3)] before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-[#99CAFF] dark:before:via-cyan-500 before:to-transparent group-hover:before:via-[#004EE0] dark:group-hover:before:via-cyan-400 h-full flex flex-col items-start">
                   
-                  <div className="bg-[#E3F2FF] border border-[#99CAFF]/80 text-[#004EE0] rounded-2xl w-14 h-14 flex items-center justify-center mb-6 shadow-sm group-hover:bg-[#004EE0] group-hover:text-white transition-all duration-300">
+                  <div className="bg-[#E3F2FF] dark:bg-slate-950 border border-[#99CAFF]/80 dark:border-cyan-500/40 text-[#004EE0] dark:text-cyan-400 rounded-2xl w-14 h-14 flex items-center justify-center mb-6 shadow-sm group-hover:bg-[#004EE0] group-hover:text-white transition-all duration-300">
                     
                     <Lightbulb className="w-7 h-7" />
                   </div>
-                  <h3 className="text-[#00072d] font-black text-2xl tracking-tight mb-3 group-hover:text-[#004EE0] transition-colors">
+                  <h3 className="text-[#00072d] dark:text-white font-black text-2xl tracking-tight mb-3 group-hover:text-[#004EE0] dark:group-hover:text-cyan-400 transition-colors">
                     Radical Sprint Transparency
                   </h3>
-                  <p className="text-[#051650] font-medium text-sm sm:text-base leading-relaxed">
+                  <p className="text-[#051650] dark:text-slate-300 font-medium text-sm sm:text-base leading-relaxed">
                     
                     No black-box development or hidden costs. You receive direct
-                    <strong>git repository access</strong>, real-time Slack/Jira
+                    <strong className="dark:text-white"> git repository access</strong>, real-time Slack/Jira
                     integration, and
-                    <strong>live weekly milestone demos</strong> from day
+                    <strong className="dark:text-white"> live weekly milestone demos </strong> from day
                     one.
                   </p>
                 </div>
@@ -389,20 +390,20 @@ const About = () => {
               {/* CARD 3: TRUE PARTNERSHIP */}
               <ScrollReveal delay={0.3}>
                 
-                <div className="bg-white/85 backdrop-blur-2xl border border-[#99CAFF]/70 rounded-3xl p-8 sm:p-10 shadow-[0_12px_40px_-15px_rgba(4,46,123,0.06)] relative overflow-hidden transition-all duration-300 group hover:-translate-y-2 hover:border-[#004EE0] hover:shadow-[0_25px_60px_-10px_rgba(0,78,224,0.18)] before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-[#99CAFF] before:to-transparent group-hover:before:via-[#004EE0] h-full flex flex-col items-start">
+                <div className="bg-white/85 dark:bg-[#070A10]/90 backdrop-blur-2xl border border-[#99CAFF]/70 dark:border-cyan-500/30 rounded-3xl p-8 sm:p-10 shadow-[0_12px_40px_-15px_rgba(4,46,123,0.06)] dark:shadow-[0_0_25px_rgba(0,240,255,0.12)] relative overflow-hidden transition-all duration-300 group hover:-translate-y-2 hover:border-[#004EE0] dark:hover:border-cyan-400 hover:shadow-[0_25px_60px_-10px_rgba(0,78,224,0.18)] dark:hover:shadow-[0_0_35px_rgba(0,240,255,0.3)] before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-[#99CAFF] dark:before:via-cyan-500 before:to-transparent group-hover:before:via-[#004EE0] dark:group-hover:before:via-cyan-400 h-full flex flex-col items-start">
                   
-                  <div className="bg-[#E3F2FF] border border-[#99CAFF]/80 text-[#004EE0] rounded-2xl w-14 h-14 flex items-center justify-center mb-6 shadow-sm group-hover:bg-[#004EE0] group-hover:text-white transition-all duration-300">
+                  <div className="bg-[#E3F2FF] dark:bg-slate-950 border border-[#99CAFF]/80 dark:border-cyan-500/40 text-[#004EE0] dark:text-cyan-400 rounded-2xl w-14 h-14 flex items-center justify-center mb-6 shadow-sm group-hover:bg-[#004EE0] group-hover:text-white transition-all duration-300">
                     
                     <Users className="w-7 h-7" />
                   </div>
-                  <h3 className="text-[#00072d] font-black text-2xl tracking-tight mb-3 group-hover:text-[#004EE0] transition-colors">
+                  <h3 className="text-[#00072d] dark:text-white font-black text-2xl tracking-tight mb-3 group-hover:text-[#004EE0] dark:group-hover:text-cyan-400 transition-colors">
                     Dedicated Engineering Partnership
                   </h3>
-                  <p className="text-[#051650] font-medium text-sm sm:text-base leading-relaxed">
+                  <p className="text-[#051650] dark:text-slate-300 font-medium text-sm sm:text-base leading-relaxed">
                     
                     We act as your extended technical team. We don't just take
                     tickets; we proactively recommend
-                    <strong>cost-saving cloud optimizations</strong> and product
+                    <strong className="dark:text-white"> cost-saving cloud optimizations </strong> and product
                     feature enhancements.
                   </p>
                 </div>
@@ -410,19 +411,19 @@ const About = () => {
               {/* CARD 4: GLOBAL PERSPECTIVE */}
               <ScrollReveal delay={0.4}>
                 
-                <div className="bg-white/85 backdrop-blur-2xl border border-[#99CAFF]/70 rounded-3xl p-8 sm:p-10 shadow-[0_12px_40px_-15px_rgba(4,46,123,0.06)] relative overflow-hidden transition-all duration-300 group hover:-translate-y-2 hover:border-[#004EE0] hover:shadow-[0_25px_60px_-10px_rgba(0,78,224,0.18)] before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-[#99CAFF] before:to-transparent group-hover:before:via-[#004EE0] h-full flex flex-col items-start">
+                <div className="bg-white/85 dark:bg-[#070A10]/90 backdrop-blur-2xl border border-[#99CAFF]/70 dark:border-cyan-500/30 rounded-3xl p-8 sm:p-10 shadow-[0_12px_40px_-15px_rgba(4,46,123,0.06)] dark:shadow-[0_0_25px_rgba(0,240,255,0.12)] relative overflow-hidden transition-all duration-300 group hover:-translate-y-2 hover:border-[#004EE0] dark:hover:border-cyan-400 hover:shadow-[0_25px_60px_-10px_rgba(0,78,224,0.18)] dark:hover:shadow-[0_0_35px_rgba(0,240,255,0.3)] before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-[#99CAFF] dark:before:via-cyan-500 before:to-transparent group-hover:before:via-[#004EE0] dark:group-hover:before:via-cyan-400 h-full flex flex-col items-start">
                   
-                  <div className="bg-[#E3F2FF] border border-[#99CAFF]/80 text-[#004EE0] rounded-2xl w-14 h-14 flex items-center justify-center mb-6 shadow-sm group-hover:bg-[#004EE0] group-hover:text-white transition-all duration-300">
+                  <div className="bg-[#E3F2FF] dark:bg-slate-950 border border-[#99CAFF]/80 dark:border-cyan-500/40 text-[#004EE0] dark:text-cyan-400 rounded-2xl w-14 h-14 flex items-center justify-center mb-6 shadow-sm group-hover:bg-[#004EE0] group-hover:text-white transition-all duration-300">
                     
                     <Globe2 className="w-7 h-7" />
                   </div>
-                  <h3 className="text-[#00072d] font-black text-2xl tracking-tight mb-3 group-hover:text-[#004EE0] transition-colors">
+                  <h3 className="text-[#00072d] dark:text-white font-black text-2xl tracking-tight mb-3 group-hover:text-[#004EE0] dark:group-hover:text-cyan-400 transition-colors">
                     Global Talent & Western Design
                   </h3>
-                  <p className="text-[#051650] font-medium text-sm sm:text-base leading-relaxed">
+                  <p className="text-[#051650] dark:text-slate-300 font-medium text-sm sm:text-base leading-relaxed">
                     
                     Building for a global market. We fuse
-                    <strong>elite Indian engineering capabilities</strong> with
+                    <strong className="dark:text-white"> elite Indian engineering capabilities </strong> with
                     Western product UX standards and rigorous project
                     governance.
                   </p>
@@ -432,13 +433,13 @@ const About = () => {
           </div>
         </section>
         {/* 3-Step Pipeline */}
-        <section className="bg-[#f2faf4] transition-colors duration-500 py-24 px-4 relative overflow-hidden">
+        <section className="bg-[#f2faf4] dark:bg-transparent transition-colors duration-500 py-24 px-4 relative overflow-hidden">
           
           {/* Dual-Theme Multi-Orb Ambient Backdrop Mesh */}
-          <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#E3F2FF] via-[#99CAFF]/30 to-transparent w-[800px] h-[500px] blur-3xl absolute top-1/2 left-0 -translate-y-1/2 pointer-events-none" />
-          <div className="bg-[#004EE0]/10 blur-3xl w-[700px] h-[500px] absolute top-1/3 right-0 pointer-events-none" />
+          <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#E3F2FF] via-[#99CAFF]/30 to-transparent w-[800px] h-[500px] blur-3xl absolute top-1/2 left-0 -translate-y-1/2 pointer-events-none dark:hidden" />
+          <div className="bg-[#004EE0]/10 blur-3xl w-[700px] h-[500px] absolute top-1/3 right-0 pointer-events-none dark:hidden" />
           {/* Vignetted Micro-Grid Pattern */}
-          <div className="absolute inset-0 bg-[radial-gradient(#042E7B_1.2px,transparent_1.2px)] [background-size:24px_24px] opacity-30 [mask-image:radial-gradient(ellipse_65%_55%_at_50%_50%,black_30%,transparent_100%)] pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(#042E7B_1.2px,transparent_1.2px)] dark:hidden [background-size:24px_24px] opacity-30 [mask-image:radial-gradient(ellipse_65%_55%_at_50%_50%,black_30%,transparent_100%)] pointer-events-none" />
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             
             <div className="flex flex-col lg:flex-row gap-16 lg:gap-20 items-center">
@@ -449,53 +450,53 @@ const About = () => {
                 <ScrollReveal>
                   
                   {/* Eyebrow Glass Badge */}
-                  <div className="inline-flex items-center gap-2.5 bg-white/90 backdrop-blur-xl border border-[#99CAFF] shadow-[0_4px_20px_rgba(0,78,224,0.08)] px-4 py-1.5 rounded-full mb-6">
+                  <div className="inline-flex items-center gap-2.5 bg-white/90 dark:bg-white/5 backdrop-blur-xl border border-[#99CAFF] dark:border-cyan-500/30 shadow-[0_4px_20px_rgba(0,78,224,0.08)] dark:shadow-[0_4px_20px_rgba(0,240,255,0.1)] px-4 py-1.5 rounded-full mb-6">
                     
-                    <div className="w-2 h-2 rounded-full bg-[#004EE0] animate-pulse shadow-[0_0_8px_#004EE0]" />
-                    <span className="text-[#042E7B] font-mono text-xs uppercase tracking-[0.2em] font-extrabold">
+                    <div className="w-2 h-2 rounded-full bg-[#004EE0] dark:bg-cyan-400 animate-pulse shadow-[0_0_8px_#004EE0] dark:shadow-[0_0_8px_#22d3ee]" />
+                    <span className="text-[#042E7B] dark:text-cyan-300 font-mono text-xs uppercase tracking-[0.2em] font-extrabold">
                       ⚡ DELIVERY ENGINE
                     </span>
                   </div>
                   {/* Main Headline */}
-                  <h2 className="text-[#00072d] font-black tracking-tight text-3xl sm:text-5xl leading-tight">
+                  <h2 className="text-[#00072d] dark:text-white font-black tracking-tight text-3xl sm:text-5xl leading-tight">
                     
                     How We Ship <br className="hidden sm:block" />
-                    <span className="bg-gradient-to-r from-[#042E7B] via-[#004EE0] to-[#1831FF] bg-clip-text text-transparent">
+                    <span className="bg-gradient-to-r from-[#042E7B] via-[#004EE0] to-[#1831FF] dark:from-[#00F0FF] dark:via-[#38BDF8] dark:to-[#60A5FA] bg-clip-text text-transparent">
                       At High Velocity.
                     </span>
                   </h2>
                   {/* SEO Subtitle Paragraph */}
-                  <p className="text-[#051650] font-medium text-base sm:text-lg leading-relaxed mt-4 mb-10 max-w-xl">
+                  <p className="text-[#051650] dark:text-slate-300 font-medium text-base sm:text-lg leading-relaxed mt-4 mb-10 max-w-xl">
                     
                     We've replaced bloated agency overhead with a lean,
-                    <strong>3-step agile engineering pipeline</strong>. We
+                    <strong className="dark:text-white"> 3-step agile engineering pipeline</strong>. We
                     integrate seamlessly as a high-speed,
-                    <strong>dedicated technical task force</strong> inside your
+                    <strong className="dark:text-white"> dedicated technical task force </strong> inside your
                     organization.
                   </p>
                 </ScrollReveal>
                 {/* Stack Container with Connecting Progress Line */}
-                <div className="space-y-4 relative before:absolute before:left-7 before:top-8 before:bottom-8 before:w-[2px] before:bg-gradient-to-b before:from-[#004EE0] before:via-[#99CAFF]/50 before:to-transparent ">
+                <div className="space-y-4 relative before:absolute before:left-7 before:top-8 before:bottom-8 before:w-[2px] before:bg-gradient-to-b before:from-[#004EE0] dark:before:from-cyan-400 before:via-[#99CAFF]/50 dark:before:via-cyan-900/50 before:to-transparent ">
                   
                   {/* STEP 1 */}
                   <ScrollReveal delay={0.1}>
                     
-                    <div className="bg-white/85 backdrop-blur-2xl border border-[#99CAFF]/70 rounded-2xl p-6 relative z-10 transition-all duration-300 group hover:-translate-x-1 hover:border-[#004EE0] hover:shadow-[0_15px_35px_-10px_rgba(0,78,224,0.15)] flex items-start gap-5">
+                    <div className="bg-white/85 dark:bg-[#070A10]/90 backdrop-blur-2xl border border-[#99CAFF]/70 dark:border-cyan-500/30 rounded-2xl p-6 relative z-10 transition-all duration-300 group hover:-translate-x-1 hover:border-[#004EE0] dark:hover:border-cyan-400 hover:shadow-[0_15px_35px_-10px_rgba(0,78,224,0.15)] dark:hover:shadow-[0_0_25px_rgba(0,240,255,0.2)] flex items-start gap-5">
                       
-                      <div className="bg-[#E3F2FF] border border-[#99CAFF]/80 text-[#004EE0] rounded-xl w-12 h-12 flex items-center justify-center shrink-0 group-hover:bg-[#004EE0] group-hover:text-white transition-all">
+                      <div className="bg-[#E3F2FF] dark:bg-slate-950 border border-[#99CAFF]/80 dark:border-cyan-500/40 text-[#004EE0] dark:text-cyan-400 rounded-xl w-12 h-12 flex items-center justify-center shrink-0 group-hover:bg-[#004EE0] dark:group-hover:bg-cyan-500/20 group-hover:text-white transition-all">
                         
                         <Target className="w-5 h-5" />
                       </div>
                       <div>
                         
-                        <h4 className="text-[#00072d] font-black text-lg group-hover:text-[#004EE0] transition-colors">
+                        <h4 className="text-[#00072d] dark:text-white font-black text-lg group-hover:text-[#004EE0] dark:group-hover:text-cyan-400 transition-colors">
                           1. Strategic Discovery & Tech Stack Alignment
                         </h4>
-                        <p className="text-[#051650] text-sm leading-relaxed mt-1 font-medium">
+                        <p className="text-[#051650] dark:text-slate-300 text-sm leading-relaxed mt-1 font-medium">
                           
                           We align on
-                          <strong>
-                            system architecture, cloud tech stacks, and core
+                          <strong className="dark:text-white">
+                            {" "}system architecture, cloud tech stacks, and core
                             business SLAs
                           </strong>
                           before writing a single line of code. Zero
@@ -507,20 +508,20 @@ const About = () => {
                   {/* STEP 2 */}
                   <ScrollReveal delay={0.2}>
                     
-                    <div className="border-2 border-[#004EE0] shadow-[0_10px_30px_-5px_rgba(0,78,224,0.2)] bg-gradient-to-r from-white via-[#E3F2FF]/30 to-white rounded-2xl p-6 relative z-10 transition-all duration-300 group flex items-start gap-5">
+                    <div className="border-2 border-[#004EE0] dark:border-cyan-400 shadow-[0_10px_30px_-5px_rgba(0,78,224,0.2)] dark:shadow-[0_0_30px_rgba(0,240,255,0.2)] bg-gradient-to-r from-white via-[#E3F2FF]/30 to-white dark:from-[#070A10] dark:via-[#09152C] dark:to-[#070A10] rounded-2xl p-6 relative z-10 transition-all duration-300 group flex items-start gap-5">
                       
-                      <div className="bg-gradient-to-r from-[#004EE0] to-[#1831FF] text-white rounded-xl w-12 h-12 flex items-center justify-center shrink-0 shadow-md shadow-[#004EE0]/30">
+                      <div className="bg-gradient-to-r from-[#004EE0] to-[#1831FF] dark:from-[#00F0FF] dark:to-[#0284c7] text-white rounded-xl w-12 h-12 flex items-center justify-center shrink-0 shadow-md shadow-[#004EE0]/30 dark:shadow-[#00F0FF]/40">
                         
                         <Code2 className="w-5 h-5" />
                       </div>
                       <div>
                         
-                        <h4 className="text-[#00072d] font-black text-lg text-[#004EE0] ">
+                        <h4 className="text-[#00072d] dark:text-cyan-300 font-black text-lg text-[#004EE0] ">
                           2. High-Velocity Engineering & CI/CD
                         </h4>
-                        <p className="text-[#051650] text-sm leading-relaxed mt-1 font-medium">
+                        <p className="text-[#051650] dark:text-slate-300 text-sm leading-relaxed mt-1 font-medium">
                           
-                          <strong>
+                          <strong className="dark:text-white">
                             Two-week agile sprints, daily stand-ups
                           </strong>
                           , and automated test suites ensure rapid deployment of
@@ -532,21 +533,21 @@ const About = () => {
                   {/* STEP 3 */}
                   <ScrollReveal delay={0.3}>
                     
-                    <div className="bg-white/85 backdrop-blur-2xl border border-[#99CAFF]/70 rounded-2xl p-6 relative z-10 transition-all duration-300 group hover:-translate-x-1 hover:border-[#004EE0] hover:shadow-[0_15px_35px_-10px_rgba(0,78,224,0.15)] flex items-start gap-5">
+                    <div className="bg-white/85 dark:bg-[#070A10]/90 backdrop-blur-2xl border border-[#99CAFF]/70 dark:border-cyan-500/30 rounded-2xl p-6 relative z-10 transition-all duration-300 group hover:-translate-x-1 hover:border-[#004EE0] dark:hover:border-cyan-400 hover:shadow-[0_15px_35px_-10px_rgba(0,78,224,0.15)] dark:hover:shadow-[0_0_25px_rgba(0,240,255,0.2)] flex items-start gap-5">
                       
-                      <div className="bg-[#E3F2FF] border border-[#99CAFF]/80 text-[#004EE0] rounded-xl w-12 h-12 flex items-center justify-center shrink-0 group-hover:bg-[#004EE0] group-hover:text-white transition-all">
+                      <div className="bg-[#E3F2FF] dark:bg-slate-950 border border-[#99CAFF]/80 dark:border-cyan-500/40 text-[#004EE0] dark:text-cyan-400 rounded-xl w-12 h-12 flex items-center justify-center shrink-0 group-hover:bg-[#004EE0] dark:group-hover:bg-cyan-500/20 group-hover:text-white transition-all">
                         
                         <Rocket className="w-5 h-5" />
                       </div>
                       <div>
                         
-                        <h4 className="text-[#00072d] font-black text-lg group-hover:text-[#004EE0] transition-colors">
+                        <h4 className="text-[#00072d] dark:text-white font-black text-lg group-hover:text-[#004EE0] dark:group-hover:text-cyan-400 transition-colors">
                           3. Cloud Infrastructure Scaling & Ongoing SLAs
                         </h4>
-                        <p className="text-[#051650] text-sm leading-relaxed mt-1 font-medium">
+                        <p className="text-[#051650] dark:text-slate-300 text-sm leading-relaxed mt-1 font-medium">
                           
                           Deploy to highly resilient
-                          <strong>AWS/GCP cloud environments</strong> with 24/7
+                          <strong className="dark:text-white"> AWS/GCP cloud environments </strong> with 24/7
                           proactive system monitoring and continuous feature
                           evolution.
                         </p>
@@ -560,26 +561,26 @@ const About = () => {
                 
                 <ScrollReveal delay={0.4}>
                   
-                  <div className="relative rounded-[2.5rem] overflow-hidden border-2 border-[#99CAFF]/80 shadow-[0_20px_50px_-10px_rgba(4,46,123,0.15)] min-h-[480px] flex items-end p-8 sm:p-10 group">
+                  <div className="relative rounded-[2.5rem] overflow-hidden border-2 border-[#99CAFF]/80 dark:border-cyan-500/40 shadow-[0_20px_50px_-10px_rgba(4,46,123,0.15)] dark:shadow-[0_0_40px_rgba(0,240,255,0.15)] min-h-[480px] flex items-end p-8 sm:p-10 group">
                     
                     <img
                       src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80"
                       alt="Qorynta Engineering Process"
                       className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#00072d]/90 via-[#00072d]/40 to-transparent " />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#00072d]/90 dark:from-[#020617]/95 via-[#00072d]/40 dark:via-[#020617]/50 to-transparent " />
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent pointer-events-none" />
-                    <div className="relative z-20 w-full bg-white/90 backdrop-blur-2xl border border-white/60 rounded-2xl p-6 shadow-[0_15px_35px_rgba(0,0,0,0.2)]">
+                    <div className="relative z-20 w-full bg-white/90 dark:bg-[#070A10]/80 backdrop-blur-2xl border border-white/60 dark:border-cyan-500/30 rounded-2xl p-6 shadow-[0_15px_35px_rgba(0,0,0,0.2)] dark:shadow-[0_0_20px_rgba(0,240,255,0.1)]">
                       
-                      <div className="border-l-4 border-[#004EE0] pl-4">
+                      <div className="border-l-4 border-[#004EE0] dark:border-cyan-400 pl-4">
                         
-                        <p className="text-[#00072d] font-black text-base sm:text-lg italic leading-snug">
+                        <p className="text-[#00072d] dark:text-white font-black text-base sm:text-lg italic leading-snug">
                           
                           "We treat every client's codebase as if it were our
                           own flagship product.
-                          <strong>Quality is never negotiated.</strong>"
+                          <strong className="dark:text-cyan-300"> Quality is never negotiated.</strong>"
                         </p>
-                        <span className="text-[#042E7B] font-mono text-xs font-extrabold uppercase tracking-widest block mt-3">
+                        <span className="text-[#042E7B] dark:text-slate-400 font-mono text-xs font-extrabold uppercase tracking-widest block mt-3">
                           Qorynta Standard
                         </span>
                       </div>
@@ -591,12 +592,12 @@ const About = () => {
           </div>
         </section>
         {/* Global Reach - Executive Metric Showcase */}
-        <section className="bg-[#f2faf4] transition-colors duration-500 py-28 px-4 relative overflow-hidden">
+        <section className="bg-[#f2faf4] dark:bg-[#0B1221]/40 transition-colors duration-500 py-28 px-4 relative overflow-hidden">
           
           {/* Subtle Ambient Light Mesh */}
-          <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#E3F2FF]/60 via-transparent to-transparent w-[900px] h-[450px] blur-3xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+          <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#E3F2FF]/60 via-transparent to-transparent w-[900px] h-[450px] blur-3xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none dark:hidden" />
           {/* Hairline Grid Backplate */}
-          <div className="bg-[linear-gradient(to_right,#042E7B08_1px,transparent_1px),linear-gradient(to_bottom,#042E7B08_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] absolute inset-0 pointer-events-none" />
+          <div className="bg-[linear-gradient(to_right,#042E7B08_1px,transparent_1px),linear-gradient(to_bottom,#042E7B08_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#22d3ee08_1px,transparent_1px),linear-gradient(to_bottom,#22d3ee08_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] absolute inset-0 pointer-events-none" />
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             
             <UnfoldReveal
@@ -605,25 +606,25 @@ const About = () => {
             >
               
               {/* Top Eyebrow Badge */}
-              <div className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.3em] font-bold text-[#004EE0] mb-6 bg-white/80 border border-[#99CAFF]/50 px-4 py-1.5 rounded-full shadow-sm">
+              <div className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.3em] font-bold text-[#004EE0] dark:text-cyan-400 mb-6 bg-white/80 dark:bg-white/5 border border-[#99CAFF]/50 dark:border-cyan-500/30 px-4 py-1.5 rounded-full shadow-sm">
                 
                 GLOBAL FOOTPRINT
               </div>
               {/* Main Headline */}
-              <h2 className="text-[#00072d] font-black tracking-tight text-3xl sm:text-5xl lg:text-6xl text-center leading-tight mb-4">
+              <h2 className="text-[#00072d] dark:text-white font-black tracking-tight text-3xl sm:text-5xl lg:text-6xl text-center leading-tight mb-4">
                 
                 Headquartered in India, <br className="hidden sm:block" />
-                <span className="bg-gradient-to-r from-[#042E7B] via-[#004EE0] to-[#1831FF] bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[#042E7B] via-[#004EE0] to-[#1831FF] dark:from-[#00F0FF] dark:via-[#38BDF8] dark:to-[#60A5FA] bg-clip-text text-transparent">
                   Built for the World.
                 </span>
               </h2>
               {/* Subtitle Paragraph */}
-              <p className="text-[#051650]/80 font-medium text-base sm:text-lg max-w-2xl mx-auto text-center leading-relaxed mt-5">
+              <p className="text-[#051650]/80 dark:text-slate-300 font-medium text-base sm:text-lg max-w-2xl mx-auto text-center leading-relaxed mt-5">
                 
                 We've optimized our asynchronous engineering workflows,
                 cross-border compliance, and agile sprints to ensure geography
                 is never a barrier to delivering
-                <strong>world-class software products</strong>.
+                <strong className="dark:text-white"> world-class software products</strong>.
               </p>
             </UnfoldReveal>
             {/* Executive Glass Metric Cards Grid */}
@@ -632,13 +633,13 @@ const About = () => {
               {/* CARD 1: ENTERPRISE CLIENTS */}
               <ScrollReveal delay={0.1}>
                 
-                <div className="bg-white/70 backdrop-blur-xl border border-[#99CAFF]/60 rounded-2xl p-8 text-center relative overflow-hidden transition-all duration-300 group hover:-translate-y-1 hover:border-[#004EE0]/80 hover:shadow-[0_20px_40px_-15px_rgba(0,78,224,0.12)] before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-[#004EE0] before:to-transparent before:opacity-0 group-hover:before:opacity-100 before:transition-opacity before:duration-300">
+                <div className="bg-white/70 dark:bg-[#070A10]/80 backdrop-blur-xl border border-[#99CAFF]/60 dark:border-cyan-500/30 rounded-2xl p-8 text-center relative overflow-hidden transition-all duration-300 group hover:-translate-y-1 hover:border-[#004EE0]/80 dark:hover:border-cyan-400 hover:shadow-[0_20px_40px_-15px_rgba(0,78,224,0.12)] dark:hover:shadow-[0_0_25px_rgba(0,240,255,0.2)] before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-[#004EE0] dark:before:via-cyan-400 before:to-transparent before:opacity-0 group-hover:before:opacity-100 before:transition-opacity before:duration-300">
                   
-                  <div className="font-black text-4xl sm:text-5xl text-[#00072d] tracking-tight group-hover:text-[#004EE0] transition-colors duration-300">
+                  <div className="font-black text-4xl sm:text-5xl text-[#00072d] dark:text-white tracking-tight group-hover:text-[#004EE0] dark:group-hover:text-cyan-400 transition-colors duration-300">
                     
                     <AnimatedCounter from={0} to={40} suffix="+" />
                   </div>
-                  <span className="font-mono text-xs uppercase tracking-[0.2em] font-bold text-[#042E7B] mt-3 block">
+                  <span className="font-mono text-xs uppercase tracking-[0.2em] font-bold text-[#042E7B] dark:text-cyan-300 mt-3 block">
                     ENTERPRISE CLIENTS
                   </span>
                 </div>
@@ -646,13 +647,13 @@ const About = () => {
               {/* CARD 2: COUNTRIES SERVED */}
               <ScrollReveal delay={0.2}>
                 
-                <div className="bg-white/70 backdrop-blur-xl border border-[#99CAFF]/60 rounded-2xl p-8 text-center relative overflow-hidden transition-all duration-300 group hover:-translate-y-1 hover:border-[#004EE0]/80 hover:shadow-[0_20px_40px_-15px_rgba(0,78,224,0.12)] before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-[#004EE0] before:to-transparent before:opacity-0 group-hover:before:opacity-100 before:transition-opacity before:duration-300">
+                <div className="bg-white/70 dark:bg-[#070A10]/80 backdrop-blur-xl border border-[#99CAFF]/60 dark:border-cyan-500/30 rounded-2xl p-8 text-center relative overflow-hidden transition-all duration-300 group hover:-translate-y-1 hover:border-[#004EE0]/80 dark:hover:border-cyan-400 hover:shadow-[0_20px_40px_-15px_rgba(0,78,224,0.12)] dark:hover:shadow-[0_0_25px_rgba(0,240,255,0.2)] before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-[#004EE0] dark:before:via-cyan-400 before:to-transparent before:opacity-0 group-hover:before:opacity-100 before:transition-opacity before:duration-300">
                   
-                  <div className="font-black text-4xl sm:text-5xl text-[#00072d] tracking-tight group-hover:text-[#004EE0] transition-colors duration-300">
+                  <div className="font-black text-4xl sm:text-5xl text-[#00072d] dark:text-white tracking-tight group-hover:text-[#004EE0] dark:group-hover:text-cyan-400 transition-colors duration-300">
                     
                     <AnimatedCounter from={0} to={8} suffix="+" />
                   </div>
-                  <span className="font-mono text-xs uppercase tracking-[0.2em] font-bold text-[#042E7B] mt-3 block">
+                  <span className="font-mono text-xs uppercase tracking-[0.2em] font-bold text-[#042E7B] dark:text-cyan-300 mt-3 block">
                     GLOBAL REGIONS SERVED
                   </span>
                 </div>
@@ -660,13 +661,13 @@ const About = () => {
               {/* CARD 3: PROJECTS SHIPPED */}
               <ScrollReveal delay={0.3}>
                 
-                <div className="bg-white/70 backdrop-blur-xl border border-[#99CAFF]/60 rounded-2xl p-8 text-center relative overflow-hidden transition-all duration-300 group hover:-translate-y-1 hover:border-[#004EE0]/80 hover:shadow-[0_20px_40px_-15px_rgba(0,78,224,0.12)] before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-[#004EE0] before:to-transparent before:opacity-0 group-hover:before:opacity-100 before:transition-opacity before:duration-300">
+                <div className="bg-white/70 dark:bg-[#070A10]/80 backdrop-blur-xl border border-[#99CAFF]/60 dark:border-cyan-500/30 rounded-2xl p-8 text-center relative overflow-hidden transition-all duration-300 group hover:-translate-y-1 hover:border-[#004EE0]/80 dark:hover:border-cyan-400 hover:shadow-[0_20px_40px_-15px_rgba(0,78,224,0.12)] dark:hover:shadow-[0_0_25px_rgba(0,240,255,0.2)] before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-[#004EE0] dark:before:via-cyan-400 before:to-transparent before:opacity-0 group-hover:before:opacity-100 before:transition-opacity before:duration-300">
                   
-                  <div className="font-black text-4xl sm:text-5xl text-[#00072d] tracking-tight group-hover:text-[#004EE0] transition-colors duration-300">
+                  <div className="font-black text-4xl sm:text-5xl text-[#00072d] dark:text-white tracking-tight group-hover:text-[#004EE0] dark:group-hover:text-cyan-400 transition-colors duration-300">
                     
                     <AnimatedCounter from={0} to={120} suffix="+" />
                   </div>
-                  <span className="font-mono text-xs uppercase tracking-[0.2em] font-bold text-[#042E7B] mt-3 block">
+                  <span className="font-mono text-xs uppercase tracking-[0.2em] font-bold text-[#042E7B] dark:text-cyan-300 mt-3 block">
                     ENTERPRISE DEPLOYMENTS
                   </span>
                 </div>
@@ -674,13 +675,13 @@ const About = () => {
               {/* CARD 4: CLIENT RETENTION */}
               <ScrollReveal delay={0.4}>
                 
-                <div className="bg-white/70 backdrop-blur-xl border border-[#99CAFF]/60 rounded-2xl p-8 text-center relative overflow-hidden transition-all duration-300 group hover:-translate-y-1 hover:border-[#004EE0]/80 hover:shadow-[0_20px_40px_-15px_rgba(0,78,224,0.12)] before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-[#004EE0] before:to-transparent before:opacity-0 group-hover:before:opacity-100 before:transition-opacity before:duration-300">
+                <div className="bg-white/70 dark:bg-[#070A10]/80 backdrop-blur-xl border border-[#99CAFF]/60 dark:border-cyan-500/30 rounded-2xl p-8 text-center relative overflow-hidden transition-all duration-300 group hover:-translate-y-1 hover:border-[#004EE0]/80 dark:hover:border-cyan-400 hover:shadow-[0_20px_40px_-15px_rgba(0,78,224,0.12)] dark:hover:shadow-[0_0_25px_rgba(0,240,255,0.2)] before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-[#004EE0] dark:before:via-cyan-400 before:to-transparent before:opacity-0 group-hover:before:opacity-100 before:transition-opacity before:duration-300">
                   
-                  <div className="font-black text-4xl sm:text-5xl text-[#00072d] tracking-tight group-hover:text-[#004EE0] transition-colors duration-300">
+                  <div className="font-black text-4xl sm:text-5xl text-[#00072d] dark:text-white tracking-tight group-hover:text-[#004EE0] dark:group-hover:text-cyan-400 transition-colors duration-300">
                     
                     <AnimatedCounter from={0} to={98} suffix="%" />
                   </div>
-                  <span className="font-mono text-xs uppercase tracking-[0.2em] font-bold text-[#042E7B] mt-3 block">
+                  <span className="font-mono text-xs uppercase tracking-[0.2em] font-bold text-[#042E7B] dark:text-cyan-300 mt-3 block">
                     CLIENT RETENTION RATE
                   </span>
                 </div>
@@ -689,7 +690,7 @@ const About = () => {
           </div>
         </section>
         {/* Local SEO Section */}
-        <section className="py-20 bg-muted/30 px-4">
+        <section className="py-20 bg-muted/30 dark:bg-transparent px-4">
           
           <div className="container mx-auto max-w-4xl text-center">
             

@@ -31,7 +31,7 @@ const CyclingText = () => {
 
   return (
     <span
-      className={`inline-block pr-2 pb-1 bg-clip-text text-transparent bg-gradient-to-r from-[#0a2472] via-[#123499] to-[#0a2472] dark:from-cyan-300 dark:to-blue-500 drop-shadow-sm transition-opacity duration-500 ${fade ? 'opacity-100' : 'opacity-0'}`}
+      className={`inline-block md:pr-2 pb-1 bg-clip-text text-transparent bg-gradient-to-r from-[#0a2472] to-[#123499] dark:from-[#00F0FF] dark:via-[#38BDF8] dark:to-[#60A5FA] drop-shadow-sm font-black transition-opacity duration-500 ${fade ? 'opacity-100' : 'opacity-0'}`}
     >
       {words[index]}
     </span>
@@ -121,15 +121,22 @@ export const HeroSection = () => {
     <section className="hero-section relative z-0 min-h-[100vh] flex flex-col overflow-hidden bg-[#f2faf4] dark:bg-transparent">
       {/* Background Radial Glow, Dot Grid, and Stars */}
       <div className="absolute inset-0 z-0">
-        <div className="stars-bg" />
-        <ParticleNetwork />
+        <div className="stars-bg hidden dark:block" />
+        <div className="absolute inset-0 opacity-100 dark:opacity-60">
+          <ParticleNetwork />
+        </div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-transparent via-[#000000]/0 to-transparent dark:from-[rgba(0,240,255,0.05)] dark:via-transparent dark:to-transparent hidden dark:block" />
       </div>
-      <div className={`absolute inset-0 dot-grid opacity-[0.04] sm:opacity-[0.04] ${styles.heroBackground}`} />
-      <div className={`absolute top-0 right-0 w-[400px] h-[400px] sm:w-[800px] sm:h-[800px] rounded-full bg-gradient-to-tr from-[#123499]/15 via-[#0a2472]/10 to-transparent blur-[80px] sm:blur-[120px] -translate-y-1/2 translate-x-1/3 animate-pulse-slow pointer-events-none transition-colors duration-1000 ease-in-out`} />
-      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] sm:w-[600px] sm:h-[600px] bg-gradient-to-tr from-[#0a2472]/10 via-[#123499]/15 to-transparent rounded-full blur-[60px] sm:blur-[100px] translate-y-1/3 -translate-x-1/3 animate-pulse-slow pointer-events-none" style={{ animationDelay: '2s' }} />
+      
+      {/* Central Node Radial Aura Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle,rgba(13,27,62,0.85)_0%,rgba(3,5,8,0)_70%)] pointer-events-none z-0 hidden dark:block" />
 
-      <div className="hero-content w-full container mx-auto px-4 sm:px-6 lg:px-8 flex-1 flex flex-col justify-center pt-32 pb-12 md:pt-40 md:pb-20 relative z-10" style={{ willChange: 'transform, filter, opacity' }}>
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      <div className={`absolute inset-0 dot-grid opacity-[0.04] sm:opacity-[0.04] ${styles.heroBackground}`} />
+      <div className={`absolute top-0 right-0 w-[400px] h-[400px] sm:w-[800px] sm:h-[800px] rounded-full bg-gradient-to-tr from-[#123499]/15 via-[#0a2472]/10 to-transparent blur-[80px] sm:blur-[120px] -translate-y-1/2 translate-x-1/3 animate-pulse-slow pointer-events-none transition-colors duration-1000 ease-in-out dark:hidden`} />
+      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] sm:w-[600px] sm:h-[600px] bg-gradient-to-tr from-[#0a2472]/10 via-[#123499]/15 to-transparent rounded-full blur-[60px] sm:blur-[100px] translate-y-1/3 -translate-x-1/3 animate-pulse-slow pointer-events-none dark:hidden" style={{ animationDelay: '2s' }} />
+
+      <div className="hero-content w-full container mx-auto px-4 sm:px-6 lg:px-8 flex-1 flex flex-col justify-center pt-24 pb-8 md:pt-40 md:pb-20 relative z-10" style={{ willChange: 'transform, filter, opacity' }}>
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-8 items-center">
 
           {/* Left Content (7 cols on lg) */}
           <div className="lg:col-span-7 flex flex-col text-center lg:text-left items-center lg:items-start relative min-w-0">
@@ -138,67 +145,60 @@ export const HeroSection = () => {
             <div className="flex absolute top-[38%] sm:top-[40%] md:top-[45%] lg:top-[65%] left-0 right-0 lg:right-auto -translate-y-1/2 lg:-translate-x-4 z-[-2] pointer-events-none select-none w-full lg:w-auto overflow-hidden sm:overflow-visible justify-center lg:justify-start">
               <BackgroundKeywords />
             </div>
-            <div className="hero-eyebrow opacity-0 translate-y-3 w-full sm:w-auto">
+            {/* Giant Background Ghost Watermark */}
+            <div className="absolute -bottom-6 left-0 text-slate-800/20 font-black text-8xl sm:text-[12rem] tracking-tighter uppercase pointer-events-none select-none z-0 hidden dark:block">WEB</div>
+
+            <div className="hero-eyebrow opacity-0 translate-y-3 w-full sm:w-auto relative z-10">
               {/* Mobile text */}
               <div className="md:hidden">
-                <SectionLabel text="QORYNTA SERVICES â€” BUILD. SCALE. DOMINATE." />
+                <SectionLabel text="QORYNTA SERVICES — BUILD. SCALE. DOMINATE." />
               </div>
               {/* Desktop text */}
               <div className="hidden md:flex items-center gap-2.5 mb-4">
                 <div className="w-1.5 h-1.5 rounded-full bg-[#123499] dark:bg-primary animate-pulse" />
-                <span className="font-mono text-xs md:text-[13px] tracking-widest font-bold text-[#0a2472] dark:text-muted-foreground uppercase">Qorynta Services â€” BUILD. SCALE. DOMINATE.</span>
+                <span className="font-mono text-xs md:text-[13px] tracking-widest font-bold text-[#0a2472] dark:text-muted-foreground uppercase">Qorynta Services — BUILD. SCALE. DOMINATE.</span>
               </div>
             </div>
 
             {/* Headline */}
-            <h1 ref={headlineRef} className="hero-headline w-full max-w-full text-4xl sm:text-[42px] md:text-[54px] lg:text-[72px] xl:text-[86px] font-display font-bold leading-tight lg:leading-[1.05] tracking-tighter mb-6 sm:mb-8 break-words">
-              <span className="word inline-block pr-1 sm:pr-2 pb-1 opacity-0 translate-y-4 text-[#00072d] dark:text-white">Build</span>{" "}
-              <span className="word inline-block opacity-0 translate-y-4 text-[#0a2472] dark:text-blue-300 font-serif italic">Digital</span>&nbsp;{" "}
-              <span className="word inline-block pr-2 pb-1 opacity-0 translate-y-4 text-[#00072d] dark:text-white">Products</span>
+            <h1 ref={headlineRef} className="hero-headline w-full max-w-full text-4xl sm:text-[42px] md:text-[54px] lg:text-[72px] xl:text-[86px] font-display font-bold leading-tight lg:leading-[1.05] tracking-tighter mb-4 sm:mb-8 break-words">
+              <span className="word inline-block md:pr-2 pb-1 opacity-0 translate-y-4 text-[#00072d] dark:text-white font-extrabold tracking-tight">Build</span>{" "}
+              <span className="word inline-block opacity-0 translate-y-4 text-[#0a2472] dark:text-sky-300 font-serif italic font-normal opacity-90">Digital</span>&nbsp;{" "}
+              <span className="word inline-block md:pr-2 pb-1 opacity-0 translate-y-4 text-[#00072d] dark:text-white font-extrabold tracking-tight">Products</span>
               <br className="hidden md:block" />
-              <span className="whitespace-nowrap">
-                <span className="word inline-block pr-2 pb-1 opacity-0 translate-y-4 text-[#00072d] dark:text-white">That</span>{" "}
+              <span className="md:whitespace-nowrap block md:inline mt-1 md:mt-0">
+                <span className="word inline-block md:pr-2 pb-1 opacity-0 translate-y-4 text-[#00072d] dark:text-white font-extrabold tracking-tight">That</span>
+                <br className="block md:hidden" />
+                <span className="hidden md:inline"> </span>
                 <span className="word inline-block opacity-0 translate-y-4">
                   <CyclingText />
                 </span>
               </span>
             </h1>
 
-            {/* Invisible spacer to perfectly preserve layout spacing and prevent CTAs from shifting up */}
-            <div className="invisible pointer-events-none select-none text-lg md:text-xl font-light mb-10 max-w-xl leading-relaxed font-mono" aria-hidden="true">
-              From mobile apps to enterprise web platforms â€” Qorynta services deliver
-              production-grade digital solutions for Indian and global businesses
-              at competitive rates.
-            </div>
-
-            <p className="hero-description absolute top-[65%] sm:top-[70%] text-lg md:text-xl font-light mb-10 max-w-xl leading-relaxed text-muted-foreground opacity-0">
-              From mobile apps to enterprise web platforms â€” Qorynta services deliver
+            <p className="hero-description text-base md:text-xl font-light mb-6 sm:mb-8 max-w-xl leading-relaxed text-[#00072d] dark:text-muted-foreground opacity-0">
+              From mobile apps to enterprise web platforms — Qorynta services deliver
               production-grade digital solutions for Indian and global businesses
               at competitive rates.
             </p>
 
             {/* CTAs */}
-            <div className="hero-cta opacity-0 translate-y-2 flex flex-col sm:flex-row items-center gap-6 w-full sm:w-auto mb-12">
-              <Button
-                asChild
-                size="lg"
-                className={`w-full sm:w-auto bg-[#00072d] text-[#f2faf4] hover:bg-[#0a2472] dark:bg-foreground dark:text-background hover:scale-105 transition-all duration-300 hover:shadow-[0_10px_25px_rgba(10,36,114,0.3)] dark:hover:shadow-[0_0_40px_rgba(255,255,255,0.1)] ease-out text-base font-semibold px-10 h-16 group rounded-full overflow-hidden ${styles.heroCTAPrimary}`}
+            <div className="hero-cta opacity-0 translate-y-2 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto mb-8 sm:mb-12 relative z-10">
+              <Link 
+                to="/contact"
+                className={`w-full sm:w-auto flex items-center justify-center bg-[#00072d] text-[#f2faf4] hover:bg-[#0a2472] dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200 hover:scale-105 transition-all duration-300 hover:shadow-[0_10px_25px_rgba(10,36,114,0.3)] dark:shadow-[0_0_25px_rgba(255,255,255,0.3)] ease-out text-base font-extrabold px-10 h-16 group rounded-full overflow-hidden ${styles.heroCTAPrimary}`}
               >
-                <Link to="/contact" className="flex items-center justify-center">
-                  <RevealContent>
-                    Start Your Project
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform duration-500 text-[#f2faf4] dark:text-background" />
-                  </RevealContent>
-                </Link>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className={`w-full sm:w-auto bg-white/80 hover:bg-[#f2faf4] dark:bg-transparent border border-[#0a2472]/30 hover:border-[#123499] text-[#00072d] dark:border-blue-400/50 dark:text-blue-300 dark:hover:bg-blue-400/10 dark:hover:border-blue-400 transition-all duration-500 text-base font-medium px-10 h-16 rounded-full backdrop-blur-md shadow-sm hover:shadow-md dark:shadow-[0_0_20px_rgba(96,165,250,0.15)] dark:hover:shadow-[0_0_30px_rgba(96,165,250,0.3)] ${styles.heroCTASecondary}`}
+                <div className="flex items-center justify-center">
+                  <span>Start Your Project</span>
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform duration-500 text-[#f2faf4] dark:text-slate-950" />
+                </div>
+              </Link>
+              <Link 
+                to="/case-studies"
+                className={`w-full sm:w-auto flex items-center justify-center bg-white/80 hover:bg-[#f2faf4] dark:bg-slate-950/60 dark:text-white dark:border dark:border-slate-700/80 dark:hover:border-cyan-400/80 dark:hover:bg-cyan-500/10 transition-all duration-500 text-base font-bold px-10 h-16 rounded-full backdrop-blur-md shadow-sm hover:shadow-md ${styles.heroCTASecondary}`}
               >
-                <Link to="/case-studies">View Our Work</Link>
-              </Button>
+                <span className="flex items-center gap-2">View Our Work</span>
+              </Link>
             </div>
 
             {/* Social Proof Strip (Marquee) */}

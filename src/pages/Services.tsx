@@ -74,14 +74,20 @@ const Services = () => {
       </main>
 
       {/* --- ORIGINAL DARK MODE --- */}
-      <main className="min-h-screen flex-col bg-background hidden dark:flex">
+      <main className="min-h-screen flex-col bg-transparent hidden dark:flex relative z-10">
         {/* Page Header */}
-        <section className="pt-32 pb-20 bg-gradient-to-b from-muted to-background text-center px-4">
-          <div className="container mx-auto max-w-4xl">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-6">
-              Engineering Excellence <br className="hidden md:block" /> Across the Stack
+        <section className="pt-32 pb-20 text-center px-4 relative">
+          {/* Deep Royal Blue Radial Aura Glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(13,27,62,0.85)_0%,rgba(3,5,8,0)_70%)] pointer-events-none z-0" />
+          
+          <div className="container mx-auto max-w-4xl relative z-10">
+            {/* Giant Background Ghost Watermark */}
+            <div className="absolute -top-10 left-1/2 -translate-x-1/2 text-slate-800/20 font-black text-6xl sm:text-[10rem] tracking-tighter uppercase pointer-events-none select-none z-0">SERVICES</div>
+            
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 tracking-tight relative z-10">
+              <span className="font-serif italic text-sky-300 font-normal opacity-90">Engineering</span> Excellence <br className="hidden md:block" /> Across the Stack
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground">
+            <p className="text-lg md:text-xl text-slate-300 relative z-10">
               We provide end-to-end technology solutions tailored for your business scale, from high-converting landing pages to complex ML infrastructure.
             </p>
           </div>

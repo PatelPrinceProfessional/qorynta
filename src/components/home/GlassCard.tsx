@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { type Service } from '@/data/services.config';
@@ -177,10 +177,11 @@ export const GlassCard: React.FC<GlassCardProps> = ({ service, index, isFlagship
       className={`
         group relative w-full rounded-[24px] overflow-hidden block
         backdrop-blur-xl bg-gradient-to-br ${gradient}
+        dark:from-[#040A18]/90 dark:to-[#0B152E]/90 dark:border-[#00F0FF]/20 dark:shadow-[0_0_25px_rgba(0,240,255,0.05)]
         border border-[#042E7B]/15 shadow-[0_10px_30px_rgba(5,22,80,0.04)]
         transition-all duration-[400ms]
-        hover:-translate-y-[6px] hover:scale-[1.01] hover:border-[#004EE0]
-        hover:shadow-[0_0_20px_rgba(0,78,224,0.18)]
+        hover:-translate-y-[6px] hover:scale-[1.01] hover:border-[#004EE0] dark:hover:border-[#00F0FF]/50
+        hover:shadow-[0_0_20px_rgba(0,78,224,0.18)] dark:hover:shadow-[0_0_35px_rgba(0,240,255,0.2)]
         ${isFlagship ? 'md:row-span-2 lg:row-span-2' : ''}
         ${isSecondary ? 'lg:col-span-2' : ''}
       `}
@@ -195,13 +196,13 @@ export const GlassCard: React.FC<GlassCardProps> = ({ service, index, isFlagship
         {/* Left Column (Text & Action) */}
         <div className="p-6 md:p-8 flex flex-col justify-between z-10 relative">
           <div>
-            <span className="text-[#051650] font-bold opacity-100 text-lg mb-2 block">
+            <span className="text-[#051650] dark:text-[#00F0FF] font-black opacity-100 text-lg mb-2 block">
               {displayIndex}
             </span>
-            <h3 className="text-[#00072D] font-[800] text-[22px] leading-[1.2] mb-3">
+            <h3 className="text-[#00072D] dark:text-white font-[800] text-[22px] leading-[1.2] mb-3">
               {service.name}
             </h3>
-            <p className="text-[#051650] text-[14px] leading-[1.5] mb-6">
+            <p className="text-[#051650] dark:text-slate-300 text-[14px] leading-[1.5] mb-6">
               {service.tagline}
             </p>
             
@@ -209,7 +210,7 @@ export const GlassCard: React.FC<GlassCardProps> = ({ service, index, isFlagship
               {service.tags.map(tag => (
                 <span 
                   key={tag}
-                  className="bg-[#E3F2FF] text-[#004EE0] rounded-[20px] px-[10px] py-[4px] text-[11px] font-semibold whitespace-nowrap"
+                  className="bg-[#E3F2FF] text-[#004EE0] dark:bg-[#00F0FF]/10 dark:text-[#00F0FF] dark:border dark:border-[#00F0FF]/20 rounded-[20px] px-[10px] py-[4px] text-[11px] font-semibold whitespace-nowrap"
                 >
                   {tag}
                 </span>
@@ -218,15 +219,15 @@ export const GlassCard: React.FC<GlassCardProps> = ({ service, index, isFlagship
           </div>
 
           {/* Bottom-Left Action Button */}
-          <div className="w-10 h-10 rounded-full bg-[#00072D]/10 group-hover:bg-[#004EE0] flex items-center justify-center transition-colors duration-300 shrink-0">
-            <ArrowRight className="w-4 h-4 text-[#00072D] group-hover:text-white transform group-hover:translate-x-[3px] transition-all duration-300" />
+          <div className="w-10 h-10 rounded-full bg-[#00072D]/10 dark:bg-[#00F0FF]/10 dark:border dark:border-[#00F0FF]/30 dark:shadow-[inset_0_0_10px_rgba(0,240,255,0.15)] group-hover:bg-[#004EE0] dark:group-hover:bg-[#00F0FF]/30 flex items-center justify-center transition-colors duration-300 shrink-0">
+            <ArrowRight className="w-4 h-4 text-[#00072D] dark:text-[#00F0FF] group-hover:text-white dark:group-hover:text-white transform group-hover:translate-x-[3px] transition-all duration-300" />
           </div>
         </div>
 
         {/* Right Column (3D Glass Artwork) */}
         <div className="relative min-h-[160px] md:min-h-full overflow-hidden flex items-center justify-center p-6 pointer-events-none">
           {/* Ambient light glow behind artwork */}
-          <div className="absolute inset-0 bg-white/20 mix-blend-overlay"></div>
+          <div className="absolute inset-0 bg-white/20 dark:bg-transparent mix-blend-overlay"></div>
           {graphic}
         </div>
       </div>
