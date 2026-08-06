@@ -61,24 +61,24 @@ export const InsightDetail = () => {
       </SEO>
 
       <main className="min-h-screen bg-background pt-20">
-        
+
         {/* Back Link */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-8 max-w-4xl">
           <div className="flex items-center justify-between mb-12">
-            <Link 
-              to="/insights" 
+            <Link
+              to="/insights"
               className="inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-primary transition-colors"
             >
               <ArrowLeft className="w-4 h-4" /> Back to Insights
             </Link>
-            <Link 
-              to="/" 
+            <Link
+              to="/"
               className="inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-primary transition-colors"
             >
               Go to Home
             </Link>
           </div>
-          
+
           {/* Header */}
           <div className="mb-12">
             <div className="flex flex-wrap items-center gap-2 mb-4">
@@ -89,7 +89,7 @@ export const InsightDetail = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground mb-8 leading-tight tracking-tight">
               {post.title}
             </h1>
-            
+
             <div className="flex items-center justify-between border-y border-border/50 py-6">
               <div className="flex items-center gap-4">
                 <img src={post.author.avatar} alt={post.author.name} width={40} height={40} loading="lazy" className="w-10 h-10 rounded-full object-cover" />
@@ -127,13 +127,13 @@ export const InsightDetail = () => {
               if (trimmed.startsWith('## ')) {
                 return <h2 key={i} className="text-3xl font-black mt-12 mb-6">{trimmed.replace('## ', '').trim()}</h2>;
               }
-              
+
               const isBullet = trimmed.startsWith('- ');
               const isNumbered = /^\d+\.\s/.test(trimmed);
-              
+
               if (isBullet || isNumbered) {
                 const content = isBullet ? trimmed.replace(/^- /, '') : trimmed.replace(/^\d+\.\s/, '');
-                
+
                 const formattedContent = content.split(/(\*\*.*?\*\*|\[.*?\]\(.*?\))/).map((part, index) => {
                   if (part.startsWith('**') && part.endsWith('**')) {
                     return <strong key={index} className="text-foreground">{part.slice(2, -2)}</strong>;
@@ -145,12 +145,12 @@ export const InsightDetail = () => {
                   }
                   return part;
                 });
-                
+
                 return <li key={i} className="mb-2 text-muted-foreground ml-6 list-outside" style={{ listStyleType: isNumbered ? 'decimal' : 'disc' }}>{formattedContent}</li>;
               }
 
               if (trimmed === '') return null;
-              
+
               const formattedParagraph = paragraph.split(/(\*\*.*?\*\*|\[.*?\]\(.*?\))/).map((part, index) => {
                 if (part.startsWith('**') && part.endsWith('**')) {
                   return <strong key={index} className="text-foreground">{part.slice(2, -2)}</strong>;

@@ -150,24 +150,24 @@ export const CapabilityHub = ({ onNodeHover }: { onNodeHover?: (id: string | nul
 
   const renderCardContent = (cap: typeof CAPABILITIES[0], isActive: boolean, Icon: any) => (
     <>
-      <div className="absolute inset-0 bg-gradient-to-t from-transparent to-white/10 rounded-2xl pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-transparent dark:from-white/20 dark:via-transparent dark:to-transparent rounded-2xl sm:rounded-3xl pointer-events-none border border-[#004EE0]/10 dark:border-white/10 z-0" />
       <div className="relative z-10 flex flex-col gap-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="p-1.5 rounded-lg bg-white/10 text-cyan-300">
+            <div className="p-1.5 rounded-lg bg-[#004EE0]/10 dark:bg-cyan-400/20 text-[#004EE0] dark:text-cyan-300 shadow-[inset_0_0_10px_rgba(0,78,224,0.1)] dark:shadow-[inset_0_0_10px_rgba(34,211,238,0.2)]">
               <Icon className="w-4 h-4" />
             </div>
-            <span className="text-xs font-semibold text-indigo-100 uppercase tracking-wider">{cap.label}</span>
+            <span className="text-xs font-bold text-[#00072D] dark:text-sky-100 uppercase tracking-wider">{cap.label}</span>
           </div>
-          <ArrowUpRight className="w-4 h-4 text-cyan-400" />
+          <ArrowUpRight className="w-4 h-4 text-[#004EE0] dark:text-cyan-400" />
         </div>
 
         <div>
-          <h3 className="text-2xl font-bold text-white tracking-tight drop-shadow-sm">{cap.roiMetric}</h3>
-          <p className="text-xs text-indigo-200 mt-1 leading-relaxed opacity-90">{cap.outcome}</p>
+          <h3 className="text-2xl font-black text-[#00072D] dark:text-white tracking-tight drop-shadow-md">{cap.roiMetric}</h3>
+          <p className="text-xs text-slate-600 dark:text-sky-200 mt-1 leading-relaxed font-medium opacity-90">{cap.outcome}</p>
         </div>
 
-        <div className="pt-2 border-t border-indigo-400/20 text-cyan-300">
+        <div className="pt-2 border-t border-[#004EE0]/20 dark:border-cyan-500/20 text-[#004EE0] dark:text-cyan-400">
           <Sparkline type={cap.chartType} isActive={isActive} />
         </div>
       </div>
@@ -299,7 +299,7 @@ export const CapabilityHub = ({ onNodeHover }: { onNodeHover?: (id: string | nul
                           animate={{ opacity: 1, scale: 1, x: 0 }}
                           exit={{ opacity: 0, scale: 0.5, x: isLeft ? 20 : -20, transition: { duration: 0.2 } }}
                           transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                          className={`hidden sm:block absolute top-1/2 -translate-y-1/2 ${isLeft ? 'right-full mr-4' : 'left-full ml-4'} w-72 p-5 rounded-2xl bg-gradient-to-br from-indigo-900/95 to-violet-800/95 backdrop-blur-xl shadow-[0_20px_40px_-15px_rgba(49,46,129,0.5)] border border-indigo-400/30 z-50 overflow-hidden`}
+                          className={`hidden sm:block absolute top-1/2 -translate-y-1/2 ${isLeft ? 'right-full mr-4' : 'left-full ml-4'} w-72 p-5 rounded-3xl bg-white/95 dark:bg-[#00072D]/95 backdrop-blur-xl shadow-[0_20px_50px_-10px_rgba(0,78,224,0.15)] dark:shadow-[0_20px_50px_-10px_rgba(0,78,224,0.4)] border border-slate-200 dark:border-[#004EE0]/50 z-50 overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-b before:from-[#004EE0]/5 dark:before:from-[#004EE0]/20 before:to-transparent before:pointer-events-none`}
                         >
                           {renderCardContent(cap, isActive, Icon)}
                         </motion.div>
@@ -334,16 +334,18 @@ export const CapabilityHub = ({ onNodeHover }: { onNodeHover?: (id: string | nul
               animate={{ y: 0 }}
               exit={{ y: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="relative w-full rounded-t-3xl bg-gradient-to-br from-indigo-900 to-violet-900 p-6 pb-10 border-t border-indigo-400/30 shadow-[0_-15px_40px_rgba(0,0,0,0.3)] pointer-events-auto"
+              className="relative w-full rounded-t-3xl bg-white dark:bg-[#00072D] p-6 pb-10 border-t border-slate-200 dark:border-[#004EE0]/50 shadow-[0_-15px_50px_rgba(0,78,224,0.1)] dark:shadow-[0_-15px_50px_rgba(0,78,224,0.2)] pointer-events-auto overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-b before:from-[#004EE0]/5 dark:before:from-[#004EE0]/20 before:to-transparent before:pointer-events-none"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Drag Handle (Visual only) */}
               <div 
-                className="w-12 h-1.5 bg-white/20 rounded-full mx-auto mb-6 cursor-pointer hover:bg-white/40 transition-colors"
+                className="w-12 h-1.5 bg-slate-300 dark:bg-sky-200/30 rounded-full mx-auto mb-6 cursor-pointer hover:bg-slate-400 dark:hover:bg-sky-200/50 transition-colors relative z-10"
                 onClick={() => setActiveNode(null)}
               />
               
-              {renderCardContent(CAPABILITIES[activeNode], true, CAPABILITIES[activeNode].icon)}
+              <div className="relative z-10">
+                {renderCardContent(CAPABILITIES[activeNode], true, CAPABILITIES[activeNode].icon)}
+              </div>
             </motion.div>
           </div>
         )}
