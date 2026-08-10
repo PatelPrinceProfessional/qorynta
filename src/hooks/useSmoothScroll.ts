@@ -5,21 +5,20 @@ export const useSmoothScroll = () => {
   useEffect(() => {
     // Respect prefers-reduced-motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobile = window.innerWidth <= 768 || ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
     
-    // Disable only on reduced motion
-    if (prefersReducedMotion) {
+    // Disable on reduced motion or on mobile/touch devices to preserve native hardware-accelerated scrolling
+    if (prefersReducedMotion || isMobile) {
       return;
     }
 
     const lenis = new Lenis({
-      duration: 0.8, // Reduced duration for faster snap/responsiveness
+      duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
       orientation: 'vertical',
       gestureOrientation: 'vertical',
-      smoothWheel: true,
-      wheelMultiplier: 1.5,
-      syncTouch: true, // Synchronize touch scroll
-      touchMultiplier: 6.5, // Massively increased touch scrolling speed
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
     });
 
     function raf(time: number) {
