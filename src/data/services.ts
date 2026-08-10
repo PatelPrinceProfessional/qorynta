@@ -45,7 +45,7 @@ export const services: ServiceData[] = [
     seoTitle: 'Custom Web Development Company India | React & Next.js | From $5K | Qorynta',
     seoDescription: 'Custom web apps built in React, Next.js & Node.js. 50+ delivered globally. From $5,000. 8-week delivery. Clutch verified at $25–49/hr. Get a free 30-min technical consultation.',
     description: 'Pixel-perfect, performance-optimised websites and web apps built with React, Next.js, and Node.js.',
-    longDescription: 'We build fast, secure, and scalable web applications tailored to your exact business needs. Leveraging modern JavaScript frameworks like React and Next.js, we ensure your web presence is not only visually stunning but also technically robust. Our development process prioritizes SEO, accessibility, and exceptional user experience across all devices.',
+    longDescription: 'We engineer lightning-fast, highly secure <mark class="bg-violet-500/15 text-violet-700 dark:text-violet-300 border border-violet-500/30 px-2 py-0.5 rounded-lg font-bold">Enterprise Web Applications</mark> tailored to your precise operational workflows. Leveraging <mark class="bg-cyan-500/15 text-cyan-700 dark:text-cyan-300 border border-cyan-500/30 px-2 py-0.5 rounded-lg font-bold">React & Next.js SSR Architectures</mark>, we guarantee sub-second load speeds, 100/100 Lighthouse performance, and <mark class="bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded-lg font-bold">Maximum Conversion Rates</mark>.',
     tags: ['React', 'Next.js', 'Node.js', 'PostgreSQL'],
     features: [
       'Single Page Applications (SPAs)',
@@ -68,7 +68,7 @@ export const services: ServiceData[] = [
       { title: 'Testing & QA', desc: 'Rigorous automated and manual testing across browsers and devices.' },
       { title: 'Deployment', desc: 'Seamless deployment to production with zero downtime.' }
     ],
-    techStack: ['React', 'Next.js', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Tailwind CSS', 'Redis'],
+    techStack: ['React', 'Next.js', 'TypeScript', 'Node.js', 'PostgreSQL', 'Tailwind CSS'],
     faqs: [
       { q: 'How long does a custom web app take to build?', a: 'Depending on complexity, a standard web application takes 8-12 weeks from kickoff to launch.' },
       { q: 'Will the website be SEO friendly?', a: 'Yes, we use Next.js for server-side rendering, ensuring your site is fully optimized for search engines.' },
@@ -83,7 +83,7 @@ export const services: ServiceData[] = [
     seoTitle: 'Mobile App Development Company India | Flutter & React Native | Qorynta',
     seoDescription: 'iOS & Android apps built with Flutter and React Native. 8-week delivery to App Store & Play Store. 50+ apps shipped for US, UK & UAE clients. Clutch verified. Free quote today.',
     description: 'Native iOS & Android apps and cross-platform solutions using React Native and Flutter.',
-    longDescription: 'Our mobile development team crafts native and cross-platform applications that deliver seamless experiences on iOS and Android. Whether you need a high-performance native app built with Swift/Kotlin or a cost-effective cross-platform solution using React Native or Flutter, we handle everything from UI/UX design to App Store deployment.',
+    longDescription: 'Our team crafts native and cross-platform mobile apps that deliver seamless UI/UX across iOS and Android. Utilizing <mark class="bg-violet-500/15 text-violet-700 dark:text-violet-300 border border-violet-500/30 px-2 py-0.5 rounded-lg font-bold">React Native & Flutter</mark>, we achieve 60fps performance and <mark class="bg-cyan-500/15 text-cyan-700 dark:text-cyan-300 border border-cyan-500/30 px-2 py-0.5 rounded-lg font-bold">Native Hardware Integration</mark> while cutting overall time-to-market by 40%.',
     tags: ['React Native', 'Flutter', 'iOS', 'Android'],
     features: [
       'Native iOS & Android Development',
@@ -106,7 +106,7 @@ export const services: ServiceData[] = [
       { title: 'QA & Device Testing', desc: 'Testing on real physical devices for varied screen sizes.' },
       { title: 'App Store Submission', desc: 'Handling the complex approval process for App Store and Google Play.' }
     ],
-    techStack: ['React Native', 'Flutter', 'Swift', 'Kotlin', 'Firebase', 'SQLite'],
+    techStack: ['React Native', 'Flutter', 'iOS Swift', 'Android Kotlin', 'GraphQL'],
     faqs: [
       { q: 'Should I choose Native or Cross-Platform?', a: 'For most B2B and consumer apps, React Native or Flutter is incredibly cost-effective. Native is best for heavy 3D rendering or deep hardware integration.' },
       { q: 'Do you handle App Store rejections?', a: 'Yes, we ensure all guidelines are followed and handle any appeals or necessary changes during submission.' }
@@ -118,7 +118,7 @@ export const services: ServiceData[] = [
     icon: Palette,
     title: 'UI/UX Design & Prototyping',
     description: 'Research-driven design that converts. We craft intuitive interfaces and design systems in Figma.',
-    longDescription: 'Design is more than just aesthetics; it\'s about solving problems and guiding users to their goals. Our UI/UX design process is rooted in user research and behavioral psychology. We create wireframes, interactive prototypes, and comprehensive design systems that ensure brand consistency and drive meaningful user interactions.',
+    longDescription: 'We transform complex enterprise software into simple, intuitive user experiences through <mark class="bg-violet-500/15 text-violet-700 dark:text-violet-300 border border-violet-500/30 px-2 py-0.5 rounded-lg font-bold">Behavioral Psychology & User Research</mark>. We build production-ready <mark class="bg-cyan-500/15 text-cyan-700 dark:text-cyan-300 border border-cyan-500/30 px-2 py-0.5 rounded-lg font-bold">Figma Design Systems</mark> that accelerate engineering velocity and reduce user churn.',
     tags: ['Figma', 'Design Systems', 'Wireframing'],
     features: [
       'User Research & Persona Development',
@@ -141,7 +141,7 @@ export const services: ServiceData[] = [
       { title: 'Prototyping', desc: 'Creating interactive Figma prototypes for stakeholder review.' },
       { title: 'Handoff', desc: 'Providing developers with pixel-perfect specs and a component library.' }
     ],
-    techStack: ['Figma', 'Adobe Creative Suite', 'Framer', 'Webflow'],
+    techStack: ['Figma', 'Design Systems', 'Wireframing', 'Usability Testing', 'Prototyping'],
     faqs: [
       { q: 'Do you do branding as well?', a: 'Yes, we can establish brand guidelines, logos, and color palettes as part of the UX package.' },
       { q: 'Can I just hire you for design, without development?', a: 'Absolutely. We frequently act as the design arm for internal engineering teams.' }
@@ -166,7 +166,7 @@ export const services: ServiceData[] = [
       ]
     },
     description: 'Production-grade ML models, LLM integrations, fraud detection systems, and scalable data pipelines designed to optimize business operations.',
-    longDescription: 'Transform your business operations and establish a formidable competitive advantage with our cutting-edge Artificial Intelligence and Machine Learning solutions. At Qorynta, we do not just implement AI for the sake of novelty; we architect highly specialized, scalable systems designed to solve concrete business challenges. From developing proprietary, custom-trained predictive analytics models that forecast market trends with pinpoint accuracy, to deeply integrating advanced Large Language Models (LLMs) like OpenAI’s GPT-4 and Anthropic’s Claude into your secure internal workflows. We empower your team to automate highly repetitive, manual tasks, freeing up human capital for strategic initiatives. Whether you require robust computer vision applications for manufacturing quality control, sophisticated Natural Language Processing (NLP) agents for autonomous 24/7 customer support, or highly accurate fraud detection algorithms for FinTech platforms, our elite AI engineers handle the entire lifecycle. We manage data extraction, cleansing, model training, fine-tuning, and the final production deployment on enterprise-grade cloud infrastructures like AWS SageMaker or Google Cloud Vertex AI, ensuring your AI operates securely, rapidly, and continuously without model drift.',
+    longDescription: 'We deploy custom <mark class="bg-violet-500/15 text-violet-700 dark:text-violet-300 border border-violet-500/30 px-2 py-0.5 rounded-lg font-bold">Predictive Machine Learning Models</mark> that automate operational decision-making. From data prep to production MLOps, we build models that deliver <mark class="bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded-lg font-bold">99%+ Accuracy</mark> for fraud detection and user analytics.',
     tags: ['Python', 'TensorFlow', 'LLMs', 'FinTech', 'Generative AI', 'Predictive Analytics'],
     features: [
       'Custom Machine Learning Model Development & Hyperparameter Optimization',
@@ -189,7 +189,7 @@ export const services: ServiceData[] = [
       { title: 'Seamless System Integration & API Development', desc: 'We engineer secure, high-performance API layers to seamlessly connect the newly trained AI models directly into your existing software ecosystem, web apps, or mobile platforms.' },
       { title: 'Production Deployment & Continuous Monitoring', desc: 'We deploy your models to highly scalable cloud environments and establish continuous monitoring protocols to track real-time accuracy and immediately correct any concept drift.' }
     ],
-    techStack: ['Python', 'PyTorch', 'TensorFlow', 'OpenAI API', 'LangChain', 'Hugging Face', 'AWS SageMaker', 'Google Vertex AI', 'Pinecone Vector DB'],
+    techStack: ['Python', 'PyTorch', 'Scikit-Learn', 'MLOps', 'FastAPI'],
     faqs: [
       { q: 'Is my data safe when using LLMs?', a: 'We use enterprise-grade APIs (like Azure OpenAI) which guarantee your data is not used to train public models.' },
       { q: 'Do we need a massive dataset?', a: 'Not necessarily. With techniques like fine-tuning and RAG (Retrieval-Augmented Generation), we can leverage powerful models using relatively small amounts of your specific data.' }
@@ -201,7 +201,7 @@ export const services: ServiceData[] = [
     icon: Cloud,
     title: 'Cloud Infrastructure & DevOps',
     description: 'Scalable AWS/GCP/Azure architecture, CI/CD pipelines, Docker/Kubernetes deployments.',
-    longDescription: 'Ensure your applications are always online, secure, and ready to scale. Our DevOps engineers design robust cloud architectures on AWS, Google Cloud, and Azure. We implement modern CI/CD pipelines to automate testing and deployment, allowing your development team to ship features faster and more reliably.',
+    longDescription: 'Architect resilient, auto-scaling cloud environments with <mark class="bg-violet-500/15 text-violet-700 dark:text-violet-300 border border-violet-500/30 px-2 py-0.5 rounded-lg font-bold">Kubernetes & Terraform IaC</mark>. We eliminate deployment downtime, enforce zero-trust security, and achieve <mark class="bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded-lg font-bold">99.99% Infrastructure Uptime</mark>.',
     tags: ['AWS', 'GCP', 'Docker', 'Kubernetes'],
     features: [
       'Cloud Architecture Design (AWS, GCP, Azure)',
@@ -224,7 +224,7 @@ export const services: ServiceData[] = [
       { title: 'Migration', desc: 'Safely moving databases and applications with minimal downtime.' },
       { title: 'Monitoring Setup', desc: 'Configuring Datadog, CloudWatch, or Grafana alerts.' }
     ],
-    techStack: ['AWS', 'Google Cloud', 'Docker', 'Kubernetes', 'Terraform', 'GitHub Actions', 'Jenkins'],
+    techStack: ['AWS', 'Docker', 'Kubernetes', 'Terraform', 'CI/CD GitHub Actions'],
     faqs: [
       { q: 'Can you help us migrate from on-premise to the cloud?', a: 'Yes, we specialize in lift-and-shift as well as cloud-native refactoring.' },
       { q: 'How do you handle security?', a: 'We implement zero-trust networking, regular vulnerability scanning, and strict IAM policies.' }
@@ -412,7 +412,7 @@ export const services: ServiceData[] = [
     icon: Cpu,
     title: 'Generative AI & LLMs',
     description: 'Fine-tuned Large Language Models, RAG systems, and custom AI agents.',
-    longDescription: 'We help enterprises harness the power of Generative AI. By utilizing advanced Retrieval-Augmented Generation (RAG) and fine-tuning techniques, we build secure, context-aware LLM applications that converse directly with your proprietary data—without leaking information to public models.',
+    longDescription: 'Harness enterprise LLMs with secure <mark class="bg-violet-500/15 text-violet-700 dark:text-violet-300 border border-violet-500/30 px-2 py-0.5 rounded-lg font-bold">Retrieval-Augmented Generation (RAG)</mark> pipelines. Query your proprietary company data with complete privacy, zero hallucinations, and <mark class="bg-cyan-500/15 text-cyan-700 dark:text-cyan-300 border border-cyan-500/30 px-2 py-0.5 rounded-lg font-bold">Sub-100ms Vector DB Searches</mark>.',
     tags: ['OpenAI', 'RAG', 'LangChain', 'Vector DBs'],
     features: [
       'Retrieval-Augmented Generation (RAG) Systems',
@@ -435,7 +435,7 @@ export const services: ServiceData[] = [
       { title: 'Testing Guardrails', desc: 'Ensuring the AI does not hallucinate or output unsafe content.' },
       { title: 'Deployment', desc: 'Hosting securely on AWS/Azure.' }
     ],
-    techStack: ['OpenAI API', 'Anthropic Claude', 'LangChain', 'Pinecone', 'Weaviate', 'Python'],
+    techStack: ['OpenAI', 'RAG Architecture', 'LangChain', 'Pinecone', 'Vector DBs'],
     faqs: [
       { q: 'Will the AI hallucinate?', a: 'By utilizing RAG, we force the AI to cite sources from your actual data, drastically reducing hallucinations.' },
       { q: 'Is our data secure?', a: 'Yes, we deploy inside your secure cloud VPC and use APIs that guarantee zero data retention for training.' }
@@ -445,9 +445,9 @@ export const services: ServiceData[] = [
   {
     slug: 'computer-vision',
     icon: Eye,
-    title: 'Computer Vision',
+    title: 'Computer Vision & Video Analytics',
     description: 'Automated image processing, object detection, and visual QA systems.',
-    longDescription: 'Transform visual data into actionable insights. We build custom computer vision models for manufacturing QA, medical imaging, retail analytics, and autonomous monitoring. From edge device deployment to massive cloud-based image processing pipelines, we bring sight to your software.',
+    longDescription: 'Automate visual inspections and real-time tracking using <mark class="bg-violet-500/15 text-violet-700 dark:text-violet-300 border border-violet-500/30 px-2 py-0.5 rounded-lg font-bold">OpenCV & YOLOv8 Neural Networks</mark>. Process high-definition video feeds at the edge with <mark class="bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded-lg font-bold">Zero Latency Processing</mark>.',
     tags: ['OpenCV', 'YOLO', 'Image Processing'],
     features: [
       'Object Detection & Tracking',
@@ -470,7 +470,7 @@ export const services: ServiceData[] = [
       { title: 'Optimization', desc: 'Compressing the model for speed (TensorRT/ONNX).' },
       { title: 'Integration', desc: 'Deploying the vision pipeline to the edge or cloud.' }
     ],
-    techStack: ['PyTorch', 'OpenCV', 'YOLOv8', 'TensorRT', 'NVIDIA DeepStream'],
+    techStack: ['OpenCV', 'YOLOv8', 'TensorFlow', 'Edge AI', 'CUDA'],
     faqs: [
       { q: 'Can you deploy on edge devices?', a: 'Yes, we optimize models to run efficiently on low-power devices like Raspberry Pi or NVIDIA Jetson.' }
     ],
@@ -479,9 +479,9 @@ export const services: ServiceData[] = [
   {
     slug: 'nlp-text-analysis',
     icon: Bot,
-    title: 'NLP & Text Analysis',
+    title: 'NLP & Sentiment Analysis',
     description: 'Sentiment analysis, entity extraction, and automated document processing.',
-    longDescription: 'Unlock the value hidden in unstructured text. Our Natural Language Processing solutions can automatically classify support tickets, extract key entities from legal contracts, summarize financial reports, and gauge brand sentiment across social media.',
+    longDescription: 'Extract structured insights from unstructured documents with <mark class="bg-violet-500/15 text-violet-700 dark:text-violet-300 border border-violet-500/30 px-2 py-0.5 rounded-lg font-bold">BERT & Transformer Models</mark>. Automate document parsing, sentiment classification, and <mark class="bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded-lg font-bold">Multilingual Data Extraction</mark>.',
     tags: ['Spacy', 'Hugging Face', 'BERT'],
     features: [
       'Automated Text Classification & Routing',
@@ -504,7 +504,7 @@ export const services: ServiceData[] = [
       { title: 'Validation', desc: 'Measuring Precision, Recall, and F1 scores.' },
       { title: 'API Delivery', desc: 'Deploying the NLP model as a scalable REST API.' }
     ],
-    techStack: ['spaCy', 'Hugging Face Transformers', 'NLTK', 'FastAPI'],
+    techStack: ['Hugging Face', 'BERT', 'SpaCy', 'Entity Recognition', 'FastAPI'],
     faqs: [
       { q: 'Does this work for non-English languages?', a: 'Yes, we utilize multilingual models capable of processing dozens of languages accurately.' }
     ],
@@ -513,11 +513,11 @@ export const services: ServiceData[] = [
   {
     slug: 'ai-chatbots',
     icon: Bot,
-    title: 'AI Chatbots & Virtual Assistants',
+    title: 'AI Chatbots & Agents',
     seoTitle: 'AI Chatbot Development Company India | Custom LLM Bots | Qorynta',
     seoDescription: 'Custom AI chatbots powered by GPT-4, Claude & open-source LLMs. Deployed for customer support, lead gen & internal tools. 80% support ticket reduction for clients. Free demo.',
     description: 'Intelligent, context-aware chatbots powered by Large Language Models (LLMs).',
-    longDescription: 'Move beyond frustrating decision-tree bots. We build autonomous AI agents capable of understanding intent, executing API calls (like processing a refund or booking a flight), and conversing naturally with your customers across web, WhatsApp, and Slack.',
+    longDescription: 'Deploy autonomous customer support agents that resolve <mark class="bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded-lg font-bold">80%+ of Inbound Inquiries</mark> automatically. Integrated directly into CRM systems with human-in-the-loop fallback and <mark class="bg-cyan-500/15 text-cyan-700 dark:text-cyan-300 border border-cyan-500/30 px-2 py-0.5 rounded-lg font-bold">Contextual Multi-Turn Memory</mark>.',
     tags: ['Conversational AI', 'Agents', 'WhatsApp'],
     features: [
       'Intent Recognition & Dialog Management',
@@ -540,7 +540,7 @@ export const services: ServiceData[] = [
       { title: 'Simulated Testing', desc: 'Testing edge cases and adversarial inputs.' },
       { title: 'Deployment', desc: 'Pushing to WhatsApp Business API or Web Widget.' }
     ],
-    techStack: ['Dialogflow', 'LangChain Agents', 'Twilio', 'WhatsApp Business API', 'React'],
+    techStack: ['LangGraph', 'LlamaIndex', 'Zendesk API', 'WebSockets', 'Python'],
     faqs: [
       { q: 'What happens if the AI does not know the answer?', a: 'We implement strict confidence thresholds. If the AI is unsure, it smoothly transitions the chat to a live human agent with full context.' }
     ],

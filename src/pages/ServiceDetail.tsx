@@ -127,34 +127,32 @@ const ServiceDetail = () => {
             <div className="flex flex-col md:flex-row gap-12 items-center">
               <ScrollReveal className="flex-1">
                 <SectionLabel text={service.category === 'AI' ? 'AI CAPABILITIES' : 'CORE SERVICE'} />
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-6">
+                <h1 className="text-4xl md:text-5xl lg:text-7xl font-black mb-6 tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-[#00072D] via-[#00072D]/90 to-[#004EE0] dark:from-white dark:via-white/90 dark:to-cyan-300 drop-shadow-sm">
                   {service.title}
                 </h1>
                 
-                <div className="flex items-center flex-wrap gap-x-2 gap-y-1 text-xs sm:text-sm font-semibold text-muted-foreground bg-primary/5 border border-primary/10 rounded-full px-4 py-2 mb-6 w-fit">
+                <div className="flex items-center flex-wrap gap-x-2 gap-y-1 text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-200 bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm border border-[#004EE0]/20 dark:border-cyan-400/20 rounded-full px-5 py-2.5 mb-8 w-fit shadow-sm">
                   <span>💼 Clutch Verified</span>
-                  <span className="text-primary/40">•</span>
+                  <span className="text-[#004EE0]/40 dark:text-cyan-400/40">•</span>
                   <span>$25–49/hr</span>
-                  <span className="text-primary/40">•</span>
+                  <span className="text-[#004EE0]/40 dark:text-cyan-400/40">•</span>
                   <span>NDA First</span>
-                  <span className="text-primary/40">•</span>
+                  <span className="text-[#004EE0]/40 dark:text-cyan-400/40">•</span>
                   <span>24hr Response SLA</span>
-                  <span className="text-primary/40">•</span>
+                  <span className="text-[#004EE0]/40 dark:text-cyan-400/40">•</span>
                   <span>US/UK/UAE Clients Welcome</span>
                 </div>
-                <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8">
-                  {service.longDescription}
-                </p>
+                <p className="text-lg md:text-xl text-slate-700 dark:text-slate-200 font-medium leading-relaxed mb-10" dangerouslySetInnerHTML={{ __html: service.longDescription }} />
                 
-                <div className="flex flex-wrap gap-2 mb-8">
+                <div className="flex flex-wrap gap-2.5 mb-10">
                   {service.tags.map(tag => (
-                    <span key={tag} className="px-3 py-1 bg-muted border border-border rounded-full text-sm font-medium text-foreground">
+                    <span key={tag} className="px-4 py-1.5 bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-full text-sm font-bold text-[#00072D] dark:text-white shadow-sm hover:shadow-md hover:border-[#004EE0] dark:hover:border-cyan-400 transition-all cursor-default">
                       {tag}
                     </span>
                   ))}
                 </div>
                 
-                <Button size="lg" className="rounded-full shadow-lg h-14 px-8 text-base overflow-hidden group" asChild>
+                <Button size="lg" className="rounded-full shadow-xl shadow-blue-500/20 dark:shadow-cyan-500/20 h-14 px-8 text-base font-bold bg-gradient-to-r from-[#004EE0] to-blue-600 hover:from-blue-600 hover:to-[#004EE0] dark:from-cyan-500 dark:to-blue-500 text-white overflow-hidden group transition-all hover:scale-105" asChild>
                   <Link to="/contact">
                     <RevealContent>
                       Discuss Your Project <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -164,59 +162,81 @@ const ServiceDetail = () => {
               </ScrollReveal>
               
               <ScrollReveal delay={0.2} className="flex-1 w-full flex justify-center">
-                <div className="relative w-full max-w-md aspect-square rounded-full bg-primary/5 border border-border/50 flex items-center justify-center p-12">
-                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent opacity-60 rounded-full" />
-                  <service.icon className="w-full h-full text-primary drop-shadow-[0_0_30px_rgba(59,130,246,0.3)] animate-float relative z-10" />
+                <div className="relative w-full max-w-md aspect-square rounded-full bg-gradient-to-b from-blue-50/50 to-transparent dark:from-slate-800/50 dark:to-transparent border border-slate-200/50 dark:border-slate-700/50 flex items-center justify-center p-12 shadow-2xl shadow-blue-500/5 dark:shadow-cyan-500/5 backdrop-blur-3xl">
+                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#004EE0]/20 via-transparent to-transparent dark:from-cyan-400/20 opacity-60 rounded-full blur-2xl" />
+                  <service.icon className="w-full h-full text-[#004EE0] dark:text-cyan-400 drop-shadow-[0_0_30px_rgba(0,78,224,0.3)] dark:drop-shadow-[0_0_30px_rgba(34,211,238,0.3)] animate-float relative z-10" />
                 </div>
               </ScrollReveal>
             </div>
           </div>
         </section>
 
-        {/* What's Included / Benefits Grid */}
-        <section className="py-24 bg-muted border-y border-border/50">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <ScrollReveal className="text-center mb-16 max-w-3xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Core Deliverables & Business Impact</h2>
-              <p className="text-muted-foreground text-lg">What you get when you partner with us for {service.title.toLowerCase()}.</p>
+        {/* SECTION 1: CORE DELIVERABLES & BUSINESS IMPACT GRID */}
+        <section className="py-24 px-4 sm:px-8 lg:px-12 bg-slate-50/50 dark:bg-[#040814] transition-colors duration-500 relative overflow-hidden">
+          {/* Subtle background glow */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-64 bg-[#004EE0]/5 dark:bg-cyan-500/5 blur-[100px] rounded-full pointer-events-none" />
+          
+          <div className="container mx-auto relative z-10">
+            <ScrollReveal className="text-center mb-16 max-w-2xl mx-auto">
+              <h2 className="text-[#00072D] dark:text-white font-black text-4xl sm:text-5xl text-center tracking-tight mb-4">Core Deliverables & Business Impact</h2>
+              <p className="text-slate-600 dark:text-slate-300 text-lg text-center font-medium">What you get when you partner with us for {service.title.toLowerCase()}.</p>
             </ScrollReveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16">
+            <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
               
-              {/* Features */}
-              <ScrollReveal delay={0.1}>
-                <div className="bg-card p-8 rounded-3xl border border-border/50 shadow-sm h-full">
-                  <h3 className="text-2xl font-bold text-foreground mb-8 flex items-center gap-3">
-                    <Layers className="w-6 h-6 text-primary" /> Key Features
-                  </h3>
-                  <div className="space-y-6">
-                    {service.features.map((feature, idx) => (
-                      <div key={idx} className="flex gap-4">
-                        <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
-                          <CheckCircle2 className="w-4 h-4 text-primary" />
-                        </div>
-                        <p className="text-foreground font-medium">{feature}</p>
+              {/* Features Card */}
+              <ScrollReveal delay={0.1} className="h-full">
+                <div className="relative h-full group rounded-[2rem] bg-gradient-to-b from-slate-200/50 to-transparent dark:from-slate-800/50 p-[1px] transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/20 dark:hover:shadow-cyan-500/20 hover:-translate-y-2">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 via-transparent to-blue-500/0 group-hover:from-blue-500/10 group-hover:to-cyan-400/10 dark:group-hover:from-cyan-400/10 dark:group-hover:to-blue-600/10 rounded-[2rem] transition-all duration-500" />
+                  <div className="relative h-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl rounded-[2rem] p-8 sm:p-10 xl:p-12 overflow-hidden">
+                    {/* Decorative corner glow */}
+                    <div className="absolute -top-24 -right-24 w-48 h-48 bg-blue-500/10 dark:bg-cyan-500/10 blur-[40px] rounded-full group-hover:bg-blue-500/20 dark:group-hover:bg-cyan-500/20 transition-colors duration-500" />
+                    
+                    <h3 className="flex items-center gap-4 text-[#00072D] dark:text-white font-black text-2xl sm:text-3xl mb-8 relative z-10">
+                      <div className="w-12 h-12 rounded-2xl bg-blue-50 dark:bg-slate-800 flex items-center justify-center shadow-inner group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
+                        <span className="text-2xl drop-shadow-sm">🌐</span>
                       </div>
-                    ))}
+                      Key Features
+                    </h3>
+                    <div className="space-y-5 relative z-10">
+                      {service.features.map((feature, idx) => (
+                        <div key={idx} className="flex items-start gap-4 text-slate-700 dark:text-slate-200 font-semibold text-base sm:text-lg group/item">
+                          <div className="w-6 h-6 rounded-full bg-blue-50 dark:bg-slate-800 border border-blue-100 dark:border-slate-700 text-[#004EE0] dark:text-cyan-400 flex items-center justify-center shrink-0 mt-0.5 shadow-sm group-hover/item:bg-[#004EE0] group-hover/item:text-white dark:group-hover/item:bg-cyan-400 dark:group-hover/item:text-slate-900 group-hover/item:border-transparent transition-colors duration-300">
+                            <CheckCircle2 className="w-4 h-4" />
+                          </div>
+                          {/* We use dangerouslySetInnerHTML in case the data has <mark> tags */}
+                          <p className="leading-snug" dangerouslySetInnerHTML={{ __html: feature }} />
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </ScrollReveal>
 
-              {/* Benefits */}
-              <ScrollReveal delay={0.2}>
-                <div className="bg-card p-8 rounded-3xl border border-border/50 shadow-sm h-full">
-                  <h3 className="text-2xl font-bold text-foreground mb-8 flex items-center gap-3">
-                    <Zap className="w-6 h-6 text-[#F59E0B]" /> Business Benefits
-                  </h3>
-                  <div className="space-y-6">
-                    {service.benefits.map((benefit, idx) => (
-                      <div key={idx} className="flex gap-4">
-                        <div className="w-6 h-6 rounded-full bg-amber-500/10 flex items-center justify-center shrink-0 mt-0.5">
-                          <CheckCircle2 className="w-4 h-4 text-[#F59E0B]" />
-                        </div>
-                        <p className="text-foreground font-medium">{benefit}</p>
+              {/* Benefits Card */}
+              <ScrollReveal delay={0.2} className="h-full">
+                <div className="relative h-full group rounded-[2rem] bg-gradient-to-b from-slate-200/50 to-transparent dark:from-slate-800/50 p-[1px] transition-all duration-500 hover:shadow-2xl hover:shadow-emerald-500/20 dark:hover:shadow-emerald-400/20 hover:-translate-y-2">
+                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/0 via-transparent to-emerald-500/0 group-hover:from-emerald-500/10 group-hover:to-teal-400/10 dark:group-hover:from-teal-400/10 dark:group-hover:to-emerald-600/10 rounded-[2rem] transition-all duration-500" />
+                  <div className="relative h-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl rounded-[2rem] p-8 sm:p-10 xl:p-12 overflow-hidden">
+                    {/* Decorative corner glow */}
+                    <div className="absolute -top-24 -right-24 w-48 h-48 bg-emerald-500/10 dark:bg-emerald-500/10 blur-[40px] rounded-full group-hover:bg-emerald-500/20 dark:group-hover:bg-emerald-500/20 transition-colors duration-500" />
+                    
+                    <h3 className="flex items-center gap-4 text-[#00072D] dark:text-white font-black text-2xl sm:text-3xl mb-8 relative z-10">
+                      <div className="w-12 h-12 rounded-2xl bg-emerald-50 dark:bg-slate-800 flex items-center justify-center shadow-inner group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
+                        <span className="text-2xl drop-shadow-sm">⚡</span>
                       </div>
-                    ))}
+                      Business Benefits
+                    </h3>
+                    <div className="space-y-5 relative z-10">
+                      {service.benefits.map((benefit, idx) => (
+                        <div key={idx} className="flex items-start gap-4 text-slate-700 dark:text-slate-200 font-semibold text-base sm:text-lg group/item">
+                          <div className="w-6 h-6 rounded-full bg-emerald-50 dark:bg-slate-800 border border-emerald-100 dark:border-slate-700 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 shadow-sm group-hover/item:bg-emerald-500 group-hover/item:text-white dark:group-hover/item:bg-emerald-400 dark:group-hover/item:text-slate-900 group-hover/item:border-transparent transition-colors duration-300">
+                            <CheckCircle2 className="w-4 h-4" />
+                          </div>
+                          <p className="leading-snug" dangerouslySetInnerHTML={{ __html: benefit }} />
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </ScrollReveal>
@@ -225,22 +245,26 @@ const ServiceDetail = () => {
           </div>
         </section>
 
-        {/* Our Process Timeline */}
-        <section className="py-24 bg-background">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+        {/* SECTION 2: OUR METHODOLOGY PIPELINE */}
+        <section className="py-24 px-4 sm:px-8 lg:px-12 bg-white dark:bg-[#020617] relative">
+          <div className="container mx-auto">
             <ScrollReveal className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Methodology</h2>
-              <p className="text-muted-foreground text-lg">How we deliver exceptional results, step-by-step.</p>
+              <h2 className="text-[#00072D] dark:text-white font-black text-3xl sm:text-5xl text-center tracking-tight mb-3">Our Methodology</h2>
+              <p className="text-slate-600 dark:text-slate-300 text-center font-normal text-base sm:text-lg">How we deliver exceptional results, step-by-step.</p>
             </ScrollReveal>
 
-            <div className="relative border-l-2 border-primary/20 ml-4 md:ml-8 space-y-12">
+            <div className="max-w-3xl mx-auto relative pl-8 sm:pl-10 space-y-12">
+              <div className="absolute left-3 sm:left-4 top-3 bottom-3 w-0.5 bg-gradient-to-b from-[#004EE0] via-cyan-400 to-emerald-400 opacity-40 rounded-full" />
+              
               {service.process.map((step, idx) => (
                 <ScrollReveal key={idx} delay={idx * 0.1}>
-                  <div className="relative pl-8 md:pl-12">
-                    <div className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-primary ring-4 ring-background" />
-                    <span className="text-sm font-bold text-primary mb-1 block uppercase tracking-wider">Step {idx + 1}</span>
-                    <h3 className="text-xl font-bold text-foreground mb-2">{step.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed">{step.desc}</p>
+                  <div className="relative group hover:translate-x-2 transition-transform duration-300">
+                    <div className="absolute -left-[45px] sm:-left-[53px] top-1.5 w-6 h-6 rounded-full bg-white dark:bg-slate-900 border-2 border-[#004EE0] dark:border-cyan-400 shadow-[0_0_12px_rgba(0,78,224,0.4)] dark:shadow-[0_0_12px_rgba(34,211,238,0.4)] flex items-center justify-center group-hover:scale-125 transition-transform duration-300">
+                      <div className="w-2 h-2 rounded-full bg-[#004EE0] dark:bg-cyan-400 animate-pulse" />
+                    </div>
+                    <span className="text-[#004EE0] dark:text-cyan-400 font-mono text-xs font-black uppercase tracking-widest mb-1 block">Step {idx + 1}</span>
+                    <h3 className="text-[#00072D] dark:text-white font-black text-xl sm:text-2xl mb-2" dangerouslySetInnerHTML={{ __html: step.title }} />
+                    <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base font-medium leading-relaxed" dangerouslySetInnerHTML={{ __html: step.desc }} />
                   </div>
                 </ScrollReveal>
               ))}
@@ -248,15 +272,15 @@ const ServiceDetail = () => {
           </div>
         </section>
 
-        {/* Tech Stack Marquee (Static layout for now) */}
-        <section className="py-16 bg-muted/30 border-y border-border/50 overflow-hidden">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h3 className="text-sm font-bold tracking-widest text-muted-foreground uppercase mb-10">
-              Technology Stack Used
+        {/* SECTION 3: TECHNOLOGY STACK USED */}
+        <section className="py-16 px-4 sm:px-8 bg-slate-50 dark:bg-slate-900/50 border-y border-slate-200/80 dark:border-slate-800/80 overflow-hidden">
+          <div className="container mx-auto text-center">
+            <h3 className="font-mono text-xs font-black uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400 mb-8">
+              TECHNOLOGY STACK USED
             </h3>
-            <div className="flex flex-wrap justify-center gap-4 md:gap-6">
+            <div className="max-w-4xl mx-auto flex flex-wrap justify-center gap-3 sm:gap-4">
               {service.techStack.map(tech => (
-                <div key={tech} className="px-6 py-3 bg-card border border-border/50 rounded-xl shadow-sm text-foreground font-bold">
+                <div key={tech} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-mono text-xs sm:text-sm font-bold px-5 py-2.5 rounded-xl shadow-sm hover:shadow-md hover:border-[#004EE0] dark:hover:border-cyan-400 hover:text-[#004EE0] dark:hover:text-cyan-400 hover:scale-105 transition-all duration-300 cursor-default">
                   {tech}
                 </div>
               ))}
@@ -264,21 +288,24 @@ const ServiceDetail = () => {
           </div>
         </section>
 
-        {/* FAQ Accordion */}
-        <section className="py-24 bg-background">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-            <ScrollReveal className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+        {/* SECTION 4: FREQUENTLY ASKED QUESTIONS ACCORDION */}
+        <section className="py-24 px-4 sm:px-8 lg:px-12 bg-white dark:bg-[#020617]">
+          <div className="container mx-auto max-w-3xl">
+            <ScrollReveal className="text-center mb-16">
+              <h2 className="text-[#00072D] dark:text-white font-black text-3xl sm:text-5xl text-center tracking-tight mb-4">Frequently Asked Questions</h2>
             </ScrollReveal>
 
-            <Accordion type="single" collapsible className="w-full">
+            <Accordion type="single" collapsible className="w-full space-y-4">
               {service.faqs.map((faq, i) => (
-                <AccordionItem key={i} value={`item-${i}`} className="border-b border-border/40 py-2">
-                  <AccordionTrigger className="text-left text-lg font-semibold hover:text-primary transition-colors">
-                    {faq.q}
+                <AccordionItem key={i} value={`item-${i}`} className="bg-slate-50/80 dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl overflow-hidden transition-all duration-300 shadow-sm hover:shadow-md data-[state=open]:shadow-md">
+                  <AccordionTrigger className="w-full p-6 text-left flex items-center justify-between gap-4 font-black text-lg text-[#00072D] dark:text-white hover:text-[#004EE0] dark:hover:text-cyan-400 transition-colors group [&[data-state=open]>div]:rotate-180">
+                    <span dangerouslySetInnerHTML={{ __html: faq.q }} />
+                    <div className="w-8 h-8 rounded-full bg-slate-200/60 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex items-center justify-center transition-transform duration-300 shrink-0">
+                      <ChevronDown className="w-4 h-4" />
+                    </div>
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground text-base leading-relaxed">
-                    {faq.a}
+                  <AccordionContent className="px-6 pb-6 pt-0 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed font-normal">
+                    <div dangerouslySetInnerHTML={{ __html: faq.a }} />
                   </AccordionContent>
                 </AccordionItem>
               ))}
@@ -286,50 +313,41 @@ const ServiceDetail = () => {
           </div>
         </section>
 
-        {/* Related Services (SEO Keyword Internal Linking) */}
-        <section className="py-24 bg-muted/50 border-t border-border/50">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-            <h2 className="text-2xl font-bold mb-6">Related Services</h2>
-            <ul className="space-y-4">
-              <li>
-                <span className="text-primary mr-2">→</span>
-                <Link to="/services/ai-machine-learning" className="text-foreground hover:text-primary font-medium underline underline-offset-4 decoration-primary/30 hover:decoration-primary transition-all">
-                  AI & Machine Learning Development
-                </Link>
-              </li>
-              <li>
-                <span className="text-primary mr-2">→</span>
-                <Link to="/services/custom-web-development" className="text-foreground hover:text-primary font-medium underline underline-offset-4 decoration-primary/30 hover:decoration-primary transition-all">
-                  Custom Web Development
-                </Link>
-              </li>
-              <li>
-                <span className="text-primary mr-2">→</span>
-                <Link to="/services/mobile-app-development" className="text-foreground hover:text-primary font-medium underline underline-offset-4 decoration-primary/30 hover:decoration-primary transition-all">
-                  Mobile App Development
-                </Link>
-              </li>
-            </ul>
+        {/* SECTION 5: RELATED SERVICES NAVIGATION */}
+        <section className="py-16 px-4 bg-slate-100/60 dark:bg-slate-900/40 border-t border-slate-200/80 dark:border-slate-800/80">
+          <div className="container mx-auto max-w-4xl text-center">
+            <h2 className="text-center font-black text-xl text-[#00072D] dark:text-white mb-6">Related Services</h2>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm font-mono font-bold text-[#004EE0] dark:text-cyan-400">
+              <Link to="/services/ai-machine-learning" className="hover:underline flex items-center gap-1.5 hover:translate-x-1 transition-transform">
+                AI & Machine Learning Solutions <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link to="/services/custom-web-development" className="hover:underline flex items-center gap-1.5 hover:translate-x-1 transition-transform">
+                Custom Web Development <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link to="/services/mobile-app-development" className="hover:underline flex items-center gap-1.5 hover:translate-x-1 transition-transform">
+                Mobile App Development <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
           </div>
         </section>
 
-        {/* Related Insights */}
+        {/* SECTION 6: RELATED INSIGHTS & GUIDES GRID */}
         {displayInsights.length > 0 && (
-          <section className="py-24 bg-background">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-              <h2 className="text-3xl font-bold mb-10 text-center">Related Insights & Guides</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <section className="py-20 px-4 sm:px-8 lg:px-12 bg-white dark:bg-[#020617]">
+            <div className="container mx-auto">
+              <h2 className="text-[#00072D] dark:text-white font-black text-3xl text-center tracking-tight mb-12">Related Insights & Guides</h2>
+              <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
                 {displayInsights.map((insight) => (
-                  <Link key={insight.slug} to={`/insights/${insight.slug}`} className="group block bg-card rounded-2xl overflow-hidden border border-border/50 shadow-sm hover:shadow-md transition-all">
-                    <div className="aspect-video overflow-hidden">
-                      <img src={insight.featuredImage} alt="" aria-hidden="true" loading="lazy" width={800} height={450} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <Link key={insight.slug} to={`/insights/${insight.slug}`} className="group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:border-[#004EE0]/40 dark:hover:border-cyan-400/40 transition-all duration-300 hover:-translate-y-2 block">
+                    <div className="w-full aspect-video overflow-hidden">
+                      <img src={insight.featuredImage} alt="" aria-hidden="true" loading="lazy" width={800} height={450} className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" />
                     </div>
                     <div className="p-6">
-                      <span className="text-xs font-bold text-primary tracking-widest uppercase mb-2 block">{insight.category}</span>
-                      <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors line-clamp-2">{insight.title}</h3>
-                      <p className="text-muted-foreground text-sm line-clamp-2 mb-4">{insight.description}</p>
-                      <span className="text-sm font-medium text-primary flex items-center gap-2">
-                        Read Guide <ArrowRight className="w-4 h-4" />
+                      <span className="text-[#004EE0] dark:text-cyan-400 font-mono text-[10px] font-black uppercase tracking-widest mb-2 block">{insight.category}</span>
+                      <h3 className="text-[#00072D] dark:text-white font-black text-lg leading-snug mb-2 group-hover:text-[#004EE0] dark:group-hover:text-cyan-400 transition-colors line-clamp-2">{insight.title}</h3>
+                      <p className="text-slate-600 dark:text-slate-400 text-xs line-clamp-2 leading-relaxed mb-4">{insight.description}</p>
+                      <span className="text-xs font-mono font-bold text-[#004EE0] dark:text-cyan-400 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                        Read Guide <ArrowRight className="w-3.5 h-3.5" />
                       </span>
                     </div>
                   </Link>
@@ -338,6 +356,9 @@ const ServiceDetail = () => {
             </div>
           </section>
         )}
+        
+        {/* SECTION 7: SEAMLESS FOOTER CTA TRANSITION */}
+        <div className="w-full h-12 bg-gradient-to-b from-white dark:from-[#020617] to-[#020B24] pointer-events-none"></div>
 
         {/* CTA */}
       </main>
